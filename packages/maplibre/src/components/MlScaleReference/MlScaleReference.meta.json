@@ -1,0 +1,14 @@
+{
+  "name": "MlScaleReference",
+  "title": "Reference scale",
+  "description": "",
+  "i18n": {
+    "de": {
+      "title": "Maßstabsreferenz",
+      "description": ""
+    }
+  },
+  "tags": [],
+  "category": "",
+  "type": "component"
+}

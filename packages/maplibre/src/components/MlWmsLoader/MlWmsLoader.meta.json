@@ -1,0 +1,14 @@
+{
+  "name": "MlWmsLoader",
+  "title": "WMS loader",
+  "description": "",
+  "i18n": {
+    "de": {
+      "title": "WMS Feature Info",
+      "description": ""
+    }
+  },
+  "tags": [],
+  "category": "",
+  "type": "component"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "MlTransitionGeoJsonLayer",
+  "title": "Transition GeoJSON layer",
+  "description": "",
+  "i18n": {
+    "de": {
+      "title": "Animierte GeoJSON Ebene",
+      "description": ""
+    }
+  },
+  "tags": [],
+  "category": "",
+  "type": "component"
+}

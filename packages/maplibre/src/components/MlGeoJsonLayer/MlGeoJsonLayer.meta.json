@@ -1,0 +1,14 @@
+{
+  "name": "MlGeoJsonLayer",
+  "title": "GeoJSON layer",
+  "description": "",
+  "i18n": {
+    "de": {
+      "title": "GeoJSON Darstellung",
+      "description": ""
+    }
+  },
+  "tags": [],
+  "category": "",
+  "type": "component"
+}

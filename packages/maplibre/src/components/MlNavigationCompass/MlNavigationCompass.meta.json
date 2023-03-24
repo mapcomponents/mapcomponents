@@ -1,0 +1,14 @@
+{
+  "name": "MlNavigationCompass",
+  "title": "Compass",
+  "description": "",
+  "i18n": {
+    "de": {
+      "title": "Kompass",
+      "description": ""
+    }
+  },
+  "tags": [],
+  "category": "",
+  "type": "component"
+}

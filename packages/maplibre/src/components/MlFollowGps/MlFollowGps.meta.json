@@ -1,0 +1,14 @@
+{
+  "name": "MlFollowGps",
+  "title": "GPS tracker",
+  "description": "",
+  "i18n": {
+    "de": {
+      "title": "GPS-Tracker",
+      "description": ""
+    }
+  },
+  "tags": [],
+  "category": "",
+  "type": "component"
+}

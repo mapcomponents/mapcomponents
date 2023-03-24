@@ -1,0 +1,14 @@
+{
+  "name": "MlMeasureTool",
+  "title": "Measure tool",
+  "description": "",
+  "i18n": {
+    "de": {
+      "title": "Messwerkzeug",
+      "description": ""
+    }
+  },
+  "tags": [],
+  "category": "",
+  "type": "component"
+}
