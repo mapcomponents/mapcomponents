@@ -1,6 +1,6 @@
 {
 	"name": "@mapcomponents/react-maplibre",
-	"version": "0.1.73",
+	"version": "0.1.80",
 	"main": "dist/index.esm.js",
 	"license": "MIT",
 	"module": "dist/index.esm.js",
@@ -20,13 +20,12 @@
 	},
 	"dependencies": {
 		"@emotion/css": "^11.10.5",
-		"@emotion/react": "^11.10.5",
-		"@emotion/styled": "^11.10.5",
+		"@emotion/react": "^11.10.8",
+		"@emotion/styled": "^11.10.8",
 		"@mapbox/mapbox-gl-draw": "^1.4.0",
 		"@mapbox/mapbox-gl-sync-move": "^0.3.1",
 		"@mui/icons-material": "^5.11.0",
-		"@mui/material": "^5.11.7",
-		"@mui/styles": "^5.11.7",
+		"@mui/material": "^5.12.3",
 		"@turf/turf": "^6.5.0",
 		"@types/react-color": "^3.0.6",
 		"d3": "^7.8.2",
@@ -83,7 +82,7 @@
 		"babel-plugin-inline-react-svg": "^2.0.1",
 		"babel-plugin-styled-components": "^2.0.7",
 		"babel-preset-react-app": "^10.0.1",
-		"cypress": "^12.4.1",
+		"cypress": "^12.11.0",
 		"enzyme": "^3.11.0",
 		"eslint": "^8.32.0",
 		"eslint-config-prettier": "^8.6.0",
@@ -134,7 +133,7 @@
 			"<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
 		],
 		"testEnvironment": "jsdom",
-		"testRunner": "../../node_modules/jest-circus/runner.js",
+		"testRunner": "./node_modules/jest-circus/runner.js",
 		"transform": {
 			"^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/config/jest/babelTransform.js",
 			"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",

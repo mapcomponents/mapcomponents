@@ -1,9 +1,15 @@
+import { ListItemTextProps } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import { Theme } from '@mui/system';
 
 declare module '@mui/material/Button' {
 	interface ButtonPropsVariantOverrides {
 		navtools: true;
+	}
+}
+declare module '@mui/material' {
+	export interface ListItemTextProps {
+		variant?: "layerlist";
 	}
 }
 
@@ -25,8 +31,9 @@ const getDesignTokens = (mode: 'light' | 'dark') => ({
 		...(mode === 'dark'
 			? {
 					primary: {
-						main: '#009FE3',
+						main: '#009EE0',
 					},
+					secondary: { main: '#747577' },
 					background: {
 						default: '#222222',
 						paper: '#414141',
@@ -39,8 +46,9 @@ const getDesignTokens = (mode: 'light' | 'dark') => ({
 			  }
 			: {
 					primary: {
-						main: '#009FE3',
+						main: '#009EE0',
 					},
+					secondary: { main: '#747577' },
 
 					background: {
 						default: '#fff',
@@ -48,7 +56,7 @@ const getDesignTokens = (mode: 'light' | 'dark') => ({
 						icon: '#bdbdbd',
 					},
 					text: {
-						primary: '#111',
+						primary: '#1A171B',
 						secondary: '#121212',
 						contrast: '#fff',
 					},
@@ -123,6 +131,22 @@ const getTheme = (mode: 'light' | 'dark') => {
 						},
 					},
 				],
+			},
+			MuiListItemText: {
+				styleOverrides: {
+					primary: ({ ownerState }: { ownerState: ListItemTextProps }) => {
+						if (ownerState?.variant === 'layerlist') {
+							return { fontSize: '0.9rem' };
+						}
+						return {};
+					},
+					secondary: ({ ownerState }: { ownerState: ListItemTextProps }) => {
+						if (ownerState?.variant === 'layerlist') {
+							return { fontSize: '0.7rem' };
+						}
+						return {};
+					},
+				},
 			},
 		},
 	});

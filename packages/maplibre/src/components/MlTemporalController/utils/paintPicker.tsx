@@ -82,7 +82,8 @@ export default function paintPicker(props: paintPickerProps) {
 	};
 	const defaultLinePaint = {
 'line-color': props.featuresColor,
-'line-opacity': opacityInterpolate 
+'line-width': 3,
+'line-opacity': opacityInterpolate
 
 	};
 
@@ -118,6 +119,7 @@ export default function paintPicker(props: paintPickerProps) {
 
 	const lineAccumulatePaint = {
 		'line-color': props.featuresColor,
+		'line-width': 3,
 		'line-opacity': accumulatedOpacityInterpolate
 	};
 
@@ -151,7 +153,14 @@ export default function paintPicker(props: paintPickerProps) {
 					} else {
 						return defaultLinePaint;
 					}
-				
+				case undefined:
+					if (props.currentVal === props.minVal && !props.isPlaying) {
+						return circleNoShow;
+					} else if (props.accumulate ) {
+						return circleAccumulatePaint;
+					} else {
+						return defaultCirclePaint;
+					}
 		}
 	}
 }

@@ -1,4 +1,4 @@
-import { Checkbox, IconButton, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { Checkbox, IconButton, ListItem, ListItemIcon, ListItemText, SxProps } from '@mui/material';
 import TuneIcon from '@mui/icons-material/Tune';
 import React, { useMemo, useRef, useState } from 'react';
 import getDefaulLayerTypeByGeometry from '../../components/MlGeoJsonLayer/util/getDefaultLayerTypeByGeometry';
@@ -8,6 +8,8 @@ import LayerListFolder from './LayerListFolder';
 import { LayerSpecification } from 'maplibre-gl';
 import LayerListItemVectorLayer from './util/LayerListItemVectorLayer';
 import { useEffect } from 'react';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ConfirmDialog from '../ConfirmDialog';
 
 type Props = {
 	layerComponent: JSX.Element;
@@ -17,6 +19,9 @@ type Props = {
 	name: string;
 	description?: string;
 	setLayerState?: (state: unknown) => void;
+	showDeleteButton?: boolean;
+	listItemSx?: SxProps;
+	buttons?: JSX.Element;
 };
 
 function LayerListItem({
@@ -27,17 +32,20 @@ function LayerListItem({
 	description,
 	configurable,
 	setLayerState,
+	...props
 }: Props) {
 	const [localVisible, setLocalVisible] = useState(true);
 	const [paintPropsFormVisible, setPaintPropsFormVisible] = useState(false);
+	const [showDeletionConfirmationDialog, setShowDeletionConfirmationDialog] = useState(false);
+	const deletedRef = useRef<boolean>(false);
 	const visibleRef = useRef<boolean>(visible);
 
 	// this state variable is used for layer components that provide a paint attribute
 	const [paintProps, setPaintProps] = useState(
 		layerComponent?.props?.paint ||
-			getDefaultPaintPropsByType(
-				layerComponent?.props?.type || getDefaulLayerTypeByGeometry(layerComponent.props.geojson)
-			)
+		getDefaultPaintPropsByType(
+			layerComponent?.props?.type || getDefaulLayerTypeByGeometry(layerComponent.props.geojson)
+		)
 	);
 
 	const _visible = useMemo(() => {
@@ -53,24 +61,38 @@ function LayerListItem({
 		visibleRef.current = _visible;
 
 		const state = { ...layerComponent?.props };
-		if (layerComponent?.props?.layers) {
-			state.layers = layerComponent?.props?.layers.map((el: LayerSpecification) => {
-				if (el.layout) {
-					el.layout['visibility'] = _visible ? 'visible' : 'none';
-				} else {
-					el.layout = { visibility: _visible ? 'visible' : 'none' };
+		switch (layerComponent.type.name) {
+			case 'MlWmsLayer':
+				break;
+			case 'MlVectorTileLayer':
+				if (layerComponent?.props?.layers && !deletedRef.current) {
+					state.layers = layerComponent?.props?.layers.map((el: LayerSpecification) => {
+						if (el.layout) {
+							el.layout['visibility'] = _visible ? 'visible' : 'none';
+						} else {
+							el.layout = { visibility: _visible ? 'visible' : 'none' };
+						}
+						return el;
+					});
+					console.log('setLayerState', state.layers);
+					setLayerState(state);
 				}
-				return el;
-			});
+				break;
+			case 'MlGeoJsonLayer':
+				break;
+			default:
+				break;
 		}
-		setLayerState(state);
-	}, [_visible, setLayerState, layerComponent?.props?.layers]);
+	}, [_visible, setLayerState, layerComponent]);
 
 	useEffect(() => {
-		if (!setLayerState || !paintProps) return;
+		if (!setLayerState || deletedRef.current || !paintProps || layerComponent?.props?.layers)
+			return;
+
+		if (JSON.stringify(paintProps) === JSON.stringify(layerComponent.props?.paint)) return;
 
 		setLayerState({ ...layerComponent.props, paint: paintProps });
-	}, [paintProps, setLayerState]);
+	}, [paintProps, setLayerState, layerComponent.props?.paint]);
 
 	const _layerComponent = useMemo(() => {
 		if (layerComponent && type === 'layer') {
@@ -84,7 +106,6 @@ function LayerListItem({
 				case 'MlVectorTileLayer':
 					return React.cloneElement(layerComponent, {
 						...layerComponent?.props,
-						layers: layerComponent?.props?.layers,
 					});
 					break;
 				default:
@@ -92,8 +113,6 @@ function LayerListItem({
 					return React.cloneElement(layerComponent, {
 						layout: {
 							visibility: _visible ? 'visible' : 'none',
-							...layerComponent?.props?.layout,
-							...layerComponent?.props?.options?.layout,
 						},
 						...(setLayerState ? {} : { paint: paintProps }),
 					});
@@ -101,7 +120,7 @@ function LayerListItem({
 			}
 		}
 		return <></>;
-	}, [type, layerComponent, paintProps, _visible, layerComponent?.props?.layers]);
+	}, [type, layerComponent, paintProps, _visible, layerComponent?.props?.layers, setLayerState]);
 
 	const layerType = useMemo(() => {
 		if (layerComponent && type === 'layer') {
@@ -125,21 +144,65 @@ function LayerListItem({
 						paddingLeft: 0,
 						paddingTop: 0,
 						paddingBottom: '4px',
+						...props.listItemSx
 					}}
 					secondaryAction={
-						configurable ? (
-							<IconButton
-								edge="end"
-								aria-label="comments"
-								onClick={() => {
-									setPaintPropsFormVisible((current) => {
-										return !current;
-									});
-								}}
-								sx={{ padding: '4px', marginTop: '-3px' }}
-							>
-								<TuneIcon />
-							</IconButton>
+						configurable && Object.keys(paintProps)?.length > 0 ? (
+							<>
+								{props?.buttons}
+								<IconButton
+									edge={props.showDeleteButton ? false : 'end'}
+									aria-label="settings"
+									onClick={() => {
+										setPaintPropsFormVisible((current) => {
+											return !current;
+										});
+									}}
+									sx={{
+										padding: '4px',
+										marginTop: '-3px',
+										...(props.showDeleteButton ? { marginRight: '4px' } : {}),
+									}}
+								>
+									<TuneIcon />
+								</IconButton>
+								{props.showDeleteButton && (
+									<>
+										<IconButton
+											edge="end"
+											aria-label="delete"
+											onClick={() => {
+												if (typeof setLayerState === 'function') {
+													setShowDeletionConfirmationDialog(true);
+												}
+											}}
+											sx={{
+												padding: '4px',
+												marginTop: '-3px',
+											}}
+										>
+											<DeleteIcon />
+										</IconButton>
+										{showDeletionConfirmationDialog && (
+											<ConfirmDialog
+												open={showDeletionConfirmationDialog}
+												onConfirm={() => {
+													if (typeof setLayerState === 'function') {
+														deletedRef.current = true;
+														setLayerState(false);
+														setShowDeletionConfirmationDialog(false);
+													}
+												}}
+												onCancel={() => {
+													setShowDeletionConfirmationDialog(false);
+												}}
+												title="Delete layer"
+												text="Are you sure you want to delete this layer?"
+											/>
+										)}
+									</>
+								)}
+							</>
 						) : undefined
 					}
 				>
@@ -153,22 +216,20 @@ function LayerListItem({
 							}}
 						/>
 					</ListItemIcon>
-					<ListItemText
-						primary={name}
-						primaryTypographyProps={{ sx: { fontSize: '0.9rem' } }}
-						secondary={description}
-						secondaryTypographyProps={{ sx: { fontSize: '0.7rem' } }}
-					/>
+					<ListItemText variant="layerlist" primary={name} secondary={description} primaryTypographyProps={{ overflow: 'hidden' }} />
 				</ListItem>
 			)}
 			{_layerComponent}
-			{!layerComponent?.props?.layers && configurable && paintPropsFormVisible && (
-				<LayerPropertyForm
-					paintProps={paintProps}
-					setPaintProps={setPaintProps}
-					layerType={layerType}
-				/>
-			)}
+			{!layerComponent?.props?.layers &&
+				Object.keys(paintProps).length > 0 &&
+				configurable &&
+				paintPropsFormVisible && (
+					<LayerPropertyForm
+						paintProps={paintProps}
+						setPaintProps={setPaintProps}
+						layerType={layerType}
+					/>
+				)}
 
 			{layerComponent?.props?.layers && (
 				<LayerListFolder visible={localVisible} setVisible={setLocalVisible} name={name}>
@@ -190,6 +251,8 @@ function LayerListItem({
 LayerListItem.defaultProps = {
 	type: 'layer',
 	visible: true,
+	showDeleteButton: false,
+	buttons: <></>,
 };
 
 export default LayerListItem;

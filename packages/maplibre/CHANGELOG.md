@@ -1,5 +1,86 @@
 # Change Log
 
+## [v0.1.8] - 2023-06-01
+
+### Added
+
+- bea7ecc: add a test, add thumbnail (#112) …
+
+### Fixed
+
+- f423ada: fix layerContext moveUp moveDown functions (#114) …
+
+## [v0.1.79] - 2023-05-31
+
+### Added
+
+- f253071: Reliable & adjustable layer order (#105) …
+- c7c4fdf: add MlTerrainLayer component (#108) …
+- 70c18d7: optimize map libre map stories presentation (#103) …
+- a02db81: add missing catalogue descriptions (#109) …
+- bdd32ae: add SpeedDial UI component (#106) …
+
+### Changed
+
+- **Breaking:** 36be5ab: change MlFeatureEditor to useFeatureEditor hook, replace custom draw modes with default modes, draw mode strings require adjustment to the equivalent default mode (#110) …
+
+
+### Fixed
+
+- c0c302a: Feature/fix wmsloader featureinfo (#111) …
+- e743b79: Fix/cypress config (#104) …
+
+## [v0.1.78] - 2023-04-28
+
+### Added
+- cedf14b: add interval parameter to MlTemporalController
+
+## [v0.1.77] - 2023-04-05
+
+
+### Fixed
+- 92bac5c: remove deprecated @mui/styles dependency; fixes npm compatibility
+
+### Added
+- 6512e26: add name prop to MlWmsLoader
+
+### Changed
+- 6512e26: make AddLayerPopup initial config state configurable
+- 6512e26: make MlWmsLoader featureInfoActive controllable from parent component
+- 6512e26: make LayerListItemFactory control featureInfoActive to always reflect the state in LayerConfig
+
+### Added
+
+## [v0.1.76] - 2023-04-04
+
+### Fixed
+- b879750: fix MlGeoJsonLayer layout option props spread order
+
+### Added
+- b879750: add thumbnails to style select menu
+
+## [v0.1.75] - 2023-04-04
+
+### Fixed
+- 66c8df2: add missing LayerListItemFactory export
+## [v0.1.74] - 2023-04-03
+
+### Fixed
+- 6e68b8c: fix wmsLoader feature info
+- 3eac872: fix useLayer hook source attribution settings
+
+### Added
+- 5a4c581: add component MlTemporalController
+- a85a5b1: add LayerListItemFactory
+- a85a5b1: add GeoJsonLayerForm
+- a85a5b1: add WmsLayerForm
+- a85a5b1: add LayerTypeForm
+- a85a5b1: add AddLayerButton
+- a85a5b1: add MlWmsLoader featureInfo configuration prop and queryable indicator next to layer
+- a85a5b1: add LayerContext and localStorage persistence to AddLayerButton story
+
+### Changed
+- a85a5b1: change MlWmsLoader to return LayerListItem compatible list elements
 
 ## [v0.1.73] - 2023-03-11
 
@@ -36,7 +117,7 @@
 ## [v0.1.69] - 2023-02-07
 
 ### Changed
-- readd dependencies to package.dependencies
+- read dependencies from package.dependencies
 
 ## [v0.1.68] - 2023-02-07
 
@@ -135,7 +216,7 @@
 
 ### Changed
 
-- 7687eec: change MlVectorTileLayer layers prop type from object to array
+- **Breaking:** 7687eec: change MlVectorTileLayer layers prop type from object to array
 
 ## [v0.1.59] - 2022-10-04
 

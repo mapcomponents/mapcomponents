@@ -107,6 +107,11 @@ export interface MlTemporalControllerProps {
 	 */
 	step?: number;
 	/**
+	 *  The time between each addition to the counter, expressed in milliseconds. 
+	 *  By default, 200 ms.
+	 */
+    interval?: number;
+	/**
 	 * A numeric value that sets how many steps before the feature starts to appear.
 	 * By default it is set to 5 steps.
 	 */
@@ -145,6 +150,10 @@ export interface MlTemporalControllerProps {
 	 * By default it is set to 5 steps.
 	 */
 	labelFadeOut?: number;
+	/**
+	 * If true, the current time value will be displayed in the controlls panel.
+	 */
+	displayCurrentValue?: boolean;
 	/**
 	 * Click event handler that is executed whenever a geometry rendered by this component is clicked.
 	 */
@@ -303,7 +312,7 @@ const MlTemporalController = (props: MlTemporalControllerProps) => {
 
 			{props.label && (
 				<MlTemporalControllerLabels
-					data={filteredData}
+					data={(filteredData as FeatureCollection)}
 					currentVal={currentVal}
 					fadeIn={props.labelFadeIn as number}
 					fadeOut={props.labelFadeOut as number}
@@ -321,6 +330,7 @@ const MlTemporalController = (props: MlTemporalControllerProps) => {
 				currentVal={currentVal}
 				isPlaying={isPlaying}
 				step={props.step as number}
+				interval={props.interval as number}
 				minVal={minVal}
 				maxVal={maxVal}
 				returnCurrent={setCurrentVal}
@@ -334,6 +344,7 @@ const MlTemporalController = (props: MlTemporalControllerProps) => {
 				labelFadeIn={props.labelFadeIn as number}
 				labelFadeOut={props.labelFadeOut as number}
 				accumulate={props.accumulate as boolean}
+				display={(props.displayCurrentValue as boolean)}
 			/>
 		</>
 	);
@@ -344,6 +355,7 @@ MlTemporalController.defaultProps = {
 	ownLayer: true,
 	type: 'circle',
 	step: 1,
+	interval: 200,
 	fadeIn: 5,
 	fadeOut: 5,
 	labelFadeIn: 5,
@@ -352,6 +364,7 @@ MlTemporalController.defaultProps = {
 	fitBounds: true,
 	label: true,
 	attribution: '',
+	displayCurrentValue: false
 };
 
 export default MlTemporalController;
