@@ -30,7 +30,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn install
+        run: npx lerna bootstrap
 
       - id: files
         uses: jitterbit/get-changed-files@v1
@@ -42,5 +42,5 @@ jobs:
         with:
           files: ${{ steps.files.outputs.added_modified}}
           eslintTarget: "**/*.{jsx,tsx,ts,js}"
-          s0: "yarn run eslint"
-          s1: "yarn run prettier --check"
+          s0: "npx lerna run eslint"
+          s1: "npx lerna run prettier --check"
