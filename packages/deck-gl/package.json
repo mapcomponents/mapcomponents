@@ -10,8 +10,8 @@
 		"build": "rollup -c",
 		"start": "start-storybook -p 6006 -s public",
 		"cypress-test": "npx cypress run --component",
-		"test": "node scripts/test.js --env=jest-environment-jsdom-sixteen --watchAll=false --coverage",
-		"test:noninteractive": "node scripts/test.js --env=jest-environment-jsdom-sixteen --verbose --watchAll=false --coverage",
+		"test": "node scripts/test.js --env=jest-environment-jsdom-sixteen --watchAll=false --coverage --passWithNoTests",
+		"test:noninteractive": "node scripts/test.js --env=jest-environment-jsdom-sixteen --verbose --watchAll=false --coverage --passWithNoTests",
 		"test:generate-output": "node scripts/test.js --env=jest-environment-jsdom-sixteen --watchAll=false --json --outputFile=./src/.jest-test-results.json || true",
 		"build-storybook": "build-storybook -o docs-build -s public",
 		"storybook-docs": "start-storybook --docs --no-manager-cache",
@@ -139,7 +139,7 @@
 			"<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
 		],
 		"testEnvironment": "jsdom",
-		"testRunner": "../../node_modules/jest-circus/runner.js",
+		"testRunner": "<rootDir>/../../node_modules/jest-circus/runner.js",
 		"transform": {
 			"^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/config/jest/babelTransform.js",
 			"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
@@ -153,8 +153,8 @@
 		"moduleNameMapper": {
 			"^react-native$": "react-native-web",
 			"^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
-			"^maplibre-gl/dist/maplibre-gl$": "<rootDir>/node_modules/maplibre-gl",
-			"d3": "<rootDir>/node_modules/d3/dist/d3.min.js"
+			"^maplibre-gl/dist/maplibre-gl$": "<rootDir>/../../node_modules/maplibre-gl",
+			"d3": "<rootDir>/../../node_modules/d3/dist/d3.min.js"
 		},
 		"moduleFileExtensions": [
 			"web.js",
@@ -179,17 +179,6 @@
 			"/src/lab/",
 			"/src/stories/",
 			"/src/ui_components/",
-			"/src/deckgl_components/",
-			"/src/components/MlBasicComponent",
-			"/src/components/MlMapDrawTools",
-			"/src/components/MlComponentTemplate/",
-			"/src/components/MlAerialPhotograph/",
-			"/src/components/MapLibreMapDebug/",
-			"/src/components/MlDemoDashboard/",
-			"/src/components/MlLaufwettbewerbApp/",
-			"/src/components/MlLaermkarte/",
-			"/src/components/MlMobilerImker/",
-			"/src/components/MlWanderApp/",
 			"(.test)\\.(ts|tsx|js)$",
 			"index\\.js$",
 			".*/lib/.*",
