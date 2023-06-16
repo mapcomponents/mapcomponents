@@ -133,7 +133,7 @@
 			"<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
 		],
 		"testEnvironment": "jsdom",
-		"testRunner": "./node_modules/jest-circus/runner.js",
+		"testRunner": "<rootDir>/../../node_modules/jest-circus/runner.js",
 		"transform": {
 			"^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/config/jest/babelTransform.js",
 			"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
@@ -147,8 +147,8 @@
 		"moduleNameMapper": {
 			"^react-native$": "react-native-web",
 			"^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
-			"^maplibre-gl/dist/maplibre-gl$": "<rootDir>/node_modules/maplibre-gl",
-			"d3": "<rootDir>/node_modules/d3/dist/d3.min.js"
+			"^maplibre-gl/dist/maplibre-gl$": "<rootDir>/../../node_modules/maplibre-gl",
+			"d3": "<rootDir>/../../node_modules/d3/dist/d3.min.js"
 		},
 		"moduleFileExtensions": [
 			"web.js",
