@@ -13,7 +13,7 @@ jobs:
           persist-credentials: false
       - name: Install and build 🔧
         run: | # Install packages and build the Storybook files
-          npx lerna bootstrap --scope=@mapcomponents/react-maplibre
+          yarn
           npx lerna run build-catalogue-meta --scope=@mapcomponents/react-maplibre
           npx lerna run build-storybook -scope=@mapcomponents/react-maplibre
           cd packages/maplibre

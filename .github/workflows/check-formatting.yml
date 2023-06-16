@@ -30,7 +30,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: npx lerna bootstrap
+        run: yarn
 
       - id: files
         uses: jitterbit/get-changed-files@v1
