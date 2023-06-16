@@ -23,4 +23,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: yarn
       - run: npx lerna run test:noninteractive
-      - run: npx lerna build
+      - run: npx lerna run build

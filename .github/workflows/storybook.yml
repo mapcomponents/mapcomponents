@@ -15,7 +15,7 @@ jobs:
         run: | # Install packages and build the Storybook files
           yarn
           npx lerna run build-catalogue-meta --scope=@mapcomponents/react-maplibre
-          npx lerna run build-storybook -scope=@mapcomponents/react-maplibre
+          npx lerna run build-storybook --scope=@mapcomponents/react-maplibre
           cd packages/maplibre
           npx sb extract ./docs-build ./docs-build/stories.json
       - name: Deploy 🚀
