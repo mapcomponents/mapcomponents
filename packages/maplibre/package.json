@@ -16,7 +16,9 @@
 		"build-storybook": "build-storybook -o docs-build -s public",
 		"storybook-docs": "start-storybook --docs --no-manager-cache",
 		"build-catalogue-meta": "node scripts/build-catalogue-meta.js",
-		"create-component": "./scripts/create-map-component.sh"
+		"create-component": "./scripts/create-map-component.sh",
+		"eslint-lint": "yarn run eslint",
+		"prettier-format": "yarn run prettier --check"
 	},
 	"dependencies": {
 		"@emotion/css": "^11.10.5",

@@ -42,5 +42,5 @@ jobs:
         with:
           files: ${{ steps.files.outputs.added_modified}}
           eslintTarget: "**/*.{jsx,tsx,ts,js}"
-          s0: "npx lerna run eslint"
-          s1: "npx lerna run prettier --check"
+          s0: "npx lerna run eslint-lint"
+          s1: "npx lerna run prettier-format"
