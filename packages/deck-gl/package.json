@@ -45,7 +45,7 @@
 		"uuid": "^9.0.0",
 		"wms-capabilities": "^0.6.0",
 		"xmldom": "^0.6.0",
-		"@mapcomponents/react-maplibre":"*"
+		"@mapcomponents/react-maplibre":"^0.1.84"
 	},
 	"peerDependencies": {},
 	"devDependencies": {

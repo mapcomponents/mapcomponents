@@ -1,21 +1,21 @@
-#name: Publish node.js Package
-#on:
-#  push:
-#    tags:
-#      - v*
-#jobs:
-#  build:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v2
-#      # Setup .npmrc file to publish to npm
-#      - uses: actions/setup-node@v2
-#        with:
-#          node-version: '16.x'
-#          registry-url: 'https://registry.npmjs.org'
-#      - run: yarn
-#      - run: npx lerna run build
-#      - run: npx lerna run test:noninteractive
-#      - run: npx lerna run publish
-#        env:
-#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+name: Publish node.js Package
+on:
+  push:
+    tags:
+      - v*
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn
+      - run: npx lerna run build
+      - run: npx lerna run test:noninteractive
+      - run: npx lerna publish --force-publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
