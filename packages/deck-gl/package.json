@@ -1,6 +1,6 @@
 {
 	"name": "@mapcomponents/deck-gl",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"main": "index.js",
 	"license": "MIT",
 	"module": "dist/index.esm.js",
