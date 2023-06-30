@@ -191,5 +191,8 @@
 			"(.stories)\\.(ts|tsx|js)$",
 			"/distribution/.*\\.(ts|js)$"
 		]
-	}
+	},
+	  "publishConfig": {
+    	"access": "public"
+  }
 }
