@@ -121,6 +121,8 @@ const MlHexagonMap = (props: MlHexagonMapProps) => {
 			return;
 		initializedRef.current = true;
 
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		const hexagonLayer = new HexagonLayer({
 			...deckGlLayerProps,
 		} as unknown as HexagonLayerProps);
