@@ -48,9 +48,6 @@ const config = defineConfig([
 			sourcemap: true,
 		},
 		plugins: [
-			svgr({
-				svgo: false,
-			}),
 			url(),
 			babel({
 				presets: ['@babel/preset-react'],
@@ -62,11 +59,7 @@ const config = defineConfig([
 			del({ targets: ['dist/*'] }),
 		],
 		external: [
-			'react',
-			'react-dom',
-			'd3',
 			...Object.keys(pkg.dependencies),
-			...Object.keys(pkg.peerDependencies),
 			...Object.keys(pkg.devDependencies),
 		],
 	},
