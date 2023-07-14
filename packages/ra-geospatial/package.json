@@ -1,0 +1,42 @@
+{
+  "name": "@mapcomponents/ra-geospatial",
+  "version": "1.0.4",
+  "description": "",
+  "private": false,
+  "main": "index.js",
+  "license": "MIT",
+  "module": "dist/index.esm.js",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "dependencies": {
+    "@turf/turf": "^6.5.0",
+    "maplibre-gl": "^2.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@mapcomponents/react-maplibre": "^0.1.69",
+    "@rollup/plugin-alias": "^4.0.3",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-url": "^8.0.1",
+    "@turf/helpers": "^6.5.0",
+    "@types/wellknown": "^0.5.4",
+    "react": "^18.2.0",
+    "react-admin": "^4.7.2",
+    "rollup": "^3.12.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-import-css": "^3.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "typescript": "^4.9.5",
+    "wellknown": "^0.5.0"
+  }
+}
