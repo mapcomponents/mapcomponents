@@ -1,20 +1,18 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { InputProps, useInput, useRecordContext } from "react-admin";
 import {
-  stringify as wellknownStringify,
-  parse as wellknownParse,
-  GeoJSONGeometry,
-  GeoJSONFeature,
-  GeoJSONPoint,
+	GeoJSONGeometry,
+	parse as wellknownParse,
+	stringify as wellknownStringify
 } from "wellknown";
 import {
-  useMap,
-  MapLibreMap,
-  MlFeatureEditor,
-  MlGeoJsonLayer,
+	MapLibreMap,
+	MlFeatureEditor,
+	MlGeoJsonLayer,
+	useMap
 } from "@mapcomponents/react-maplibre";
 import { LngLatLike } from "maplibre-gl";
-import { feature, centroid } from "@turf/turf";
+import { centroid, feature } from "@turf/turf";
 import { Feature } from "@turf/helpers";
 
 export interface GeospatialInputMapProps extends InputProps<any> {
@@ -41,7 +39,7 @@ function GeospatialInputMap(props: GeospatialInputMapProps) {
   useEffect(() => {
     if (typeof record === "undefined" || !record[source]) return;
 
-    let _geoJson = {
+    const _geoJson = {
       type: "Feature",
       properties: {},
       geometry: wellknownParse(record[source]),
