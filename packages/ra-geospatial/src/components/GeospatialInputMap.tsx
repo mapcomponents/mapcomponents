@@ -104,7 +104,7 @@ function GeospatialInputMap(props: GeospatialInputMapProps) {
           <MlFeatureEditor
             mapId={props?.mapId}
             geojson={geojson as typeof feature}
-            mode={geojson ? "custom_select" : "draw_point"}
+            mode={geojson ? "simple_select": "draw_point"}
             onChange={(_geojson) => {
               if (typeof _geojson[0] !== "undefined") {
                 onChange(wellknownStringify(_geojson[0] as GeoJSONGeometry));
@@ -131,7 +131,7 @@ function GeospatialInputMap(props: GeospatialInputMapProps) {
           <MlFeatureEditor
             mapId={props?.mapId}
             geojson={geojson as typeof feature}
-            mode={geojson ? "custom_select" : "draw_polygon"}
+            mode={geojson ? "simple_select": "draw_polygon"}
             onChange={(_geojson) => {
               if (typeof _geojson[0] !== "undefined") {
                 onChange(wellknownStringify(_geojson[0] as GeoJSONGeometry));
@@ -159,7 +159,7 @@ function GeospatialInputMap(props: GeospatialInputMapProps) {
           <MlFeatureEditor
             mapId={props?.mapId}
             geojson={geojson as typeof feature}
-            mode={geojson ? "custom_select" : "draw_line_string"}
+            mode={geojson ? "simple_select": "draw_line_string"}
             onChange={(_geojson) => {
               if (typeof _geojson[0] !== "undefined") {
                 onChange(wellknownStringify(_geojson[0] as GeoJSONGeometry));
