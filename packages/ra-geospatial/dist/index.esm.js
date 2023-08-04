@@ -18,6 +18,8 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
+/* global Reflect, Promise */
+
 
 function __rest(s, e) {
     var t = {};
@@ -42,7 +44,7 @@ function GeospatialInputMap(props) {
     useEffect(() => {
         if (typeof record === "undefined" || !record[source])
             return;
-        let _geoJson = {
+        const _geoJson = {
             type: "Feature",
             properties: {},
             geometry: parse(record[source]),
@@ -71,7 +73,7 @@ function GeospatialInputMap(props) {
                     "circle-stroke-width": 3,
                     "circle-opacity": 0.8,
                 }, type: "circle", insertBeforeLayer: "gl-draw-polygon-fill-inactive.cold" })),
-            React.createElement(MlFeatureEditor, { mapId: props === null || props === void 0 ? void 0 : props.mapId, geojson: geojson, mode: geojson ? "custom_select" : "draw_point", onChange: (_geojson) => {
+            React.createElement(MlFeatureEditor, { mapId: props === null || props === void 0 ? void 0 : props.mapId, geojson: geojson, mode: geojson ? "simple_select" : "draw_point", onChange: (_geojson) => {
                     if (typeof _geojson[0] !== "undefined") {
                         onChange(stringify(_geojson[0]));
                     }
@@ -81,7 +83,7 @@ function GeospatialInputMap(props) {
                     "fill-color": "#6f6f96",
                     "fill-opacity": 0.6,
                 }, type: "fill", insertBeforeLayer: "gl-draw-polygon-fill-inactive.cold" })),
-            React.createElement(MlFeatureEditor, { mapId: props === null || props === void 0 ? void 0 : props.mapId, geojson: geojson, mode: geojson ? "custom_select" : "draw_polygon", onChange: (_geojson) => {
+            React.createElement(MlFeatureEditor, { mapId: props === null || props === void 0 ? void 0 : props.mapId, geojson: geojson, mode: geojson ? "simple_select" : "draw_polygon", onChange: (_geojson) => {
                     if (typeof _geojson[0] !== "undefined") {
                         onChange(stringify(_geojson[0]));
                     }
@@ -92,7 +94,7 @@ function GeospatialInputMap(props) {
                     "line-color": "#6f6f96",
                     "line-opacity": 0.6,
                 }, type: "line", insertBeforeLayer: "gl-draw-polygon-fill-inactive.cold" })),
-            React.createElement(MlFeatureEditor, { mapId: props === null || props === void 0 ? void 0 : props.mapId, geojson: geojson, mode: geojson ? "custom_select" : "draw_line_string", onChange: (_geojson) => {
+            React.createElement(MlFeatureEditor, { mapId: props === null || props === void 0 ? void 0 : props.mapId, geojson: geojson, mode: geojson ? "simple_select" : "draw_line_string", onChange: (_geojson) => {
                     if (typeof _geojson[0] !== "undefined") {
                         onChange(stringify(_geojson[0]));
                     }
