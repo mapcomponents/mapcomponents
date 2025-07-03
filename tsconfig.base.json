@@ -1,0 +1,16 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"composite": true,
+		"declarationMap": true,
+		"emitDeclarationOnly": true,
+		"isolatedModules": true,
+		"noEmitOnError": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"strict": true,
+		"customConditions": ["development"]
+	}
+}
