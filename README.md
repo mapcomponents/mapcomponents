@@ -1,3 +1,6 @@
+
+### Standard NX readme - TODO replace with project specific info
+
 ## Sync `package.json` files with Syncpack
 
 Keep your dependencies consistent across your monorepo using [Syncpack](https://github.com/JamieMason/syncpack):

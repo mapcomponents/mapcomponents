@@ -1,5 +1,15 @@
 # Add files here to ignore them from prettier formatting
-/dist
-/coverage
-/.nx/cache
-/.nx/workspace-data
+dist
+coverage
+.nx/cache
+.nx/workspace-data
+.cache
+.github
+.storybook
+.vscode
+coverage/
+docs/
+docs-build/
+js-docs/
+node_modules/
+storybook-static/
