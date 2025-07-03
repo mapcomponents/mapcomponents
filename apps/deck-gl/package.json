@@ -17,7 +17,8 @@
 		"storybook-docs": "start-storybook --docs --no-manager-cache",
 		"build-catalogue-meta": "node scripts/build-catalogue-meta.js",
 		"build-catalogue-markdown-docs": "node scripts/build-catalogue-markdown-docs.js",
-		"create-component": "./scripts/create-map-component.sh"
+		"create-component": "./scripts/create-map-component.sh",
+		"publish": "npm publish"
 	},
 	"dependencies": {
 		"@deck.gl/aggregation-layers": "^8.8.23",
