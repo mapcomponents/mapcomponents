@@ -1,3 +1,14 @@
+# MapComponents monorepo
+
+### create a new version
+
+Using lerna for this as there is no nx feature for simultaneous versioning of multiple packages.
+
+```bash
+npx lerna version patch --force-publish
+npx lerna version minor --force-publish
+npx lerna version major --force-publish
+```
 
 ### Standard NX readme - TODO replace with project specific info
 

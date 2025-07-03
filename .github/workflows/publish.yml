@@ -8,14 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v2
         with:
-          node-version: '16.x'
+          fetch-depth: 0
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: yarn
-      - run: npx lerna run build
-      - run: npx lerna run test:noninteractive
-      - run: npx lerna publish from-git --yes --no-private
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: npx nx run-many -t build --all
+      - run: npx nx run-many -t test:noninteractive --all --skip-nx-cache || npx nx run-many -t test --all --skip-nx-cache || true
+      - run: npx nx run-many -t publish --all --skip-nx-cache
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
