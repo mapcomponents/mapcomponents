@@ -9,7 +9,8 @@
 		"sourceMap": true,
 		"strict": false,
 		"types": ["node", "jest", "geojson", "cypress"],
-		"typeRoots": ["./src/@types", "./node_modules/@types"],
+		"typeRoots": [
+			"./src/@types", "./node_modules/@types"],
 		"outDir": "build/esm",
 		"module": "esnext",
 		"target": "es5",
@@ -26,8 +27,9 @@
 		"strictNullChecks": true,
 		"allowSyntheticDefaultImports": true,
 		"allowJs": true,
-		"baseUrl": "."
+		"baseUrl": "./"
 	},
-	"include": ["src", "src/custom.d.tsx"],
+	"include": [
+		"src", "src/custom.d.tsx"],
 	"exclude": ["node_modules", "lib"]
 }

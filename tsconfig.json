@@ -3,7 +3,7 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/deck-gl"
+      "path": "./deprecated/deck-gl"
     },
     {
       "path": "./apps/ra-geospatial"
