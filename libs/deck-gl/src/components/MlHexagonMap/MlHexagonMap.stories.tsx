@@ -1,7 +1,6 @@
-import React from 'react';
-import mapContextDecorator from '../../decorators/MapContextDecorator';
+import mapContextDecorator from '../../decorators/MapContextDecorator.js';
 import MlHexagonMap from './MlHexagonMap';
-import { DeckGlContextProvider } from '../../contexts/DeckGlContext';
+import { DeckGlContextProvider } from 'deck-gl';
 
 const storyoptions = {
 	title: 'MapComponents/MlHexagonMap',

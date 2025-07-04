@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { useMap } from '@mapcomponents/react-maplibre';
-import { Deck, Layer } from '@deck.gl/core/typed';
-import { MapboxLayer } from '@deck.gl/mapbox/typed';
+import { Deck, Layer } from '@deck.gl/core';
+import MapboxLayer from '@deck.gl/mapbox/dist/mapbox-layer';
 
 export interface DeckGlContextType {
 	deckGl: Deck | undefined;

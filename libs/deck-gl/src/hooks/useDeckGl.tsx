@@ -1,6 +1,6 @@
 import DeckGlContext from '../contexts/DeckGlContext';
 import { useContext } from 'react';
-import { Layer } from '@deck.gl/core/typed';
+import { Layer } from '@deck.gl/core';
 
 function useDeckGl() {
 	const deckGlContext = useContext(DeckGlContext);

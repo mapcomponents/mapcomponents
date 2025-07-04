@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { useMap}  from '@mapcomponents/react-maplibre';
 import DeckGlContext from '../../contexts/DeckGlContext';
-import { HexagonLayer, HexagonLayerProps } from '@deck.gl/aggregation-layers/typed';
 import useDeckGl from '../../hooks/useDeckGl';
+import { HexagonLayer, HexagonLayerProps } from '@deck.gl/aggregation-layers';
 
 export interface MlHexagonMapProps {
 	/**

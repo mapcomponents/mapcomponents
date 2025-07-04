@@ -11,6 +11,10 @@
 		"noImplicitReturns": true,
 		"noUnusedLocals": true,
 		"strict": true,
-		"customConditions": ["development"]
+		"customConditions": ["development"],
+		"paths": {
+			"deck-gl": ["libs/deck-gl/src/index.ts"],
+			"testlib": ["libs/testlib/src/index.ts"]
+		}
 	}
 }

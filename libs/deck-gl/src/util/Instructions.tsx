@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import {Fade, SxProps} from '@mui/material';
-import BubbleStyle from './BubbleForInstructions';
+import BubbleStyle from './BubbleForInstructions.js';
 
 interface StepObject {
 	duration: number;

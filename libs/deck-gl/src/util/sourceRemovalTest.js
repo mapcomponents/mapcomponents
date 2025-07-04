@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { mount, configure } from "enzyme";
 import { MapContext, MapComponentsProvider } from "../index";
-import MapLibreMap from "./../components/MapLibreMap/MapLibreMap";
+import MapLibreMap from "../components/MapLibreMap/MapLibreMap";
 
 const sourceRemovalTest = (
 	ComponentName,
