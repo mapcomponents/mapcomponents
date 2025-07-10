@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
 import {
 	MapComponentsProvider,
@@ -10,7 +10,7 @@ import './style.css';
 import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 
 const decorators = [
-	(Story, context) => {
+	(Story: any, context: any) => {
 		const theme = useMemo(() => getTheme(context?.globals?.theme), [context?.globals?.theme]);
 
 		return (

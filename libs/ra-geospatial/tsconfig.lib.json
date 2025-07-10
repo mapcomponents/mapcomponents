@@ -1,5 +1,4 @@
 {
-	"baseUrl": "./",
 	"extends": "./tsconfig.json",
 	"compilerOptions": {
 		"outDir": "../../dist/out-tsc",
@@ -10,7 +9,6 @@
 			"vite/client"
 		]
 	},
-	"include": ["src"],
 	"exclude": [
 		"**/*.spec.ts",
 		"**/*.test.ts",
@@ -23,5 +21,6 @@
 		"jest.config.ts",
 		"src/**/*.spec.ts",
 		"src/**/*.test.ts"
-	]
+	],
+	"include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
 }

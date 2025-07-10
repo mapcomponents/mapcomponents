@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { InputProps, useRecordContext } from "react-admin";
-import { parse as wellknownParse, GeoJSONPoint } from "wellknown";
+import { parse as wellknownParse } from "wellknown";
 import {
   MapLibreMap,
   MlGeoJsonLayer,

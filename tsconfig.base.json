@@ -5,16 +5,24 @@
 		"declarationMap": true,
 		"emitDeclarationOnly": true,
 		"isolatedModules": true,
+		"esModuleInterop": true,
 		"noEmitOnError": true,
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitOverride": true,
 		"noImplicitReturns": true,
 		"noUnusedLocals": true,
 		"strict": true,
-		"customConditions": ["development"],
+		"skipLibCheck": true,
+		"jsx": "react-jsx",
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"moduleResolution": "nodenext",
+		"module": "NodeNext",
+		"types": ["vite/client"],
 		"paths": {
-			"deck-gl": ["libs/deck-gl/src/index.ts"],
-			"testlib": ["libs/testlib/src/index.ts"]
+			"@mapcomponents/ra-geospatial": ["libs/ra-geospatial/src/index.ts"],
+			"deck-gl": ["./libs/deck-gl/src/index.ts"],
+			"test": ["libs/test/src/index.ts"]
 		}
 	}
 }

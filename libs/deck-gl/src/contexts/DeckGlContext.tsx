@@ -1,10 +1,9 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { useMap } from '@mapcomponents/react-maplibre';
 import { Deck, Layer } from '@deck.gl/core';
-import MapboxLayer from '@deck.gl/mapbox/dist/mapbox-layer';
-
+import {MapboxOverlay} from '@deck.gl/mapbox';
 export interface DeckGlContextType {
-	deckGl: Deck | undefined;
+	deckGl: Deck<null> | undefined;
 	deckGlLayerArray: Layer[];
 	setDeckGlLayerArray: React.Dispatch<React.SetStateAction<Layer[]>>;
 }
@@ -20,20 +19,19 @@ const DeckGlContextProvider = ({ mapId, children }: DeckGlContextProviderProps) 
 	const mapHook = useMap({ mapId });
 
 	const [deckGl, setDeckGl] = useState<Deck | undefined>(undefined);
-	const layerRef = useRef<MapboxLayer<Layer> | undefined>(undefined);
-	const [deckGlLayerArray, setDeckGlLayerArray] = useState([]);
+	const layerRef = useRef<MapboxOverlay | undefined>(undefined);
+	const [deckGlLayerArray, setDeckGlLayerArray] = useState<Layer[]>([]);
 
 	useEffect(() => {
 		if (!mapHook.map) return;
 
 		const deck = new Deck({
-			gl: mapHook.map.painter.context.gl,
+			gl: mapHook.map.painter.context.gl as WebGL2RenderingContext,
 			layers: [],
 		});
 
-		layerRef.current = new MapboxLayer({
+		layerRef.current = new MapboxOverlay({
 			id: layerId,
-			deck: deck,
 		});
 
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment

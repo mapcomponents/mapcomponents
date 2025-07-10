@@ -1,4 +1,3 @@
-import React from "react";
 import { MapComponentsProvider } from "@mapcomponents/react-maplibre";
 import GeometryInputMap, {
   GeospatialInputMapProps,

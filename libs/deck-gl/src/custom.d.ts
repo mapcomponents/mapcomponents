@@ -1,4 +1,4 @@
 import { GeoJSONFeature } from "maplibre-gl";
-import { GeoJSONObject } from '@turf/turf';
+import { GeoJsonObject } from 'geojson';
 
-export type GeoJSON = (GeoJSONFeature & GeoJSONObject);
+export type GeoJSON = (GeoJSONFeature & GeoJsonObject);

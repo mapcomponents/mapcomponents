@@ -1,8 +1,8 @@
 import { useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { useMap}  from '@mapcomponents/react-maplibre';
-import DeckGlContext from '../../contexts/DeckGlContext';
+import DeckGlContext, { DeckGlContextType } from '../../contexts/DeckGlContext';
 import useDeckGl from '../../hooks/useDeckGl';
 import { HexagonLayer, HexagonLayerProps } from '@deck.gl/aggregation-layers';
+import { useMap } from '@mapcomponents/react-maplibre';
 
 export interface MlHexagonMapProps {
 	/**
@@ -17,7 +17,7 @@ export interface MlHexagonMapProps {
 }
 
 const MlHexagonMap = (props: MlHexagonMapProps) => {
-	const deckGlContext = useContext(DeckGlContext);
+	const deckGlContext: DeckGlContextType = useContext(DeckGlContext);
 
 	const DATA_URL = 'assets/3D/laerm_points.json';
 	const deckGlHook = useDeckGl();
