@@ -114,7 +114,6 @@ const MlHexagonMap = (props: MlHexagonMapProps) => {
 	useEffect(() => {
 		if (
 			!mapHook.map ||
-			!deckGlContext.deckGl ||
 			noiseData.features.length <= 0 ||
 			(initializedRef.current && deckGlContext.deckGl && noiseData.features.length >= 0)
 		)

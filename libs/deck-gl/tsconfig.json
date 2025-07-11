@@ -1,16 +1,19 @@
 {
-  "compilerOptions": {
-    "baseUrl": "./src"
-  },
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.lib.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ],
-  "extends": "../../tsconfig.base.json"
+	"compilerOptions": {
+		"baseUrl": "./src"
+	},
+	"files": [],
+	"include": [],
+	"references": [
+		{
+			"path": "./tsconfig.lib.json"
+		},
+		{
+			"path": "./tsconfig.spec.json"
+		},
+		{
+			"path": "./tsconfig.storybook.json"
+		}
+	],
+	"extends": "../../tsconfig.base.json"
 }

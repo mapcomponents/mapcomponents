@@ -4,10 +4,14 @@
 
 Using lerna for this as there is no nx feature for simultaneous versioning of multiple packages.
 
-```bash
-npx lerna version patch --force-publish
-npx lerna version minor --force-publish
-npx lerna version major --force-publish
+```shell
+  npx lerna version patch --force-publish
+```
+```shell
+  npx lerna version minor --force-publish
+```
+```shell
+  npx lerna version major --force-publish
 ```
 
 ### Standard NX readme - TODO replace with project specific info
@@ -18,12 +22,12 @@ Keep your dependencies consistent across your monorepo using [Syncpack](https://
 
 ### List mismatched dependency versions
 ```bash
-    npx syncpack list-mismatches
+  npx syncpack list-mismatches
 ```
 
 ### Automatically fix mismatched versions
 ```bash
-    npx syncpack fix-mismatches
+  npx syncpack fix-mismatches
 ```
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
@@ -37,19 +41,19 @@ Keep your dependencies consistent across your monorepo using [Syncpack](https://
 To run the dev server for your app, use:
 
 ```sh
-npx nx serve MapComponents
+  npx nx serve MapComponents
 ```
 
 To create a production bundle:
 
 ```sh
-npx nx build MapComponents
+  npx nx build MapComponents
 ```
 
 To see all available targets to run for a project, run:
 
 ```sh
-npx nx show project MapComponents
+  npx nx show project MapComponents
 ```
 
 These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
@@ -65,15 +69,21 @@ Use the plugin's generator to create new projects.
 To generate a new application, use:
 
 ```sh
-npx nx g @nx/react:app apps/my-app --bundler=vite
+  npx nx g @nx/react:app apps/my-app --bundler=vite
 ```
 
 To generate a new library, use:
 
 ```sh
-npx nx g @nx/react:lib libs/my-lib --bundler=vite
+  npx nx g @nx/react:lib libs/my-lib --bundler=vite
 ```
 
 You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
 
 [Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+## Add storybook to an existing project
+
+```shell
+  nx g @nrwl/storybook:configuration {app/lib name} --tsConfiguration=true
+```
