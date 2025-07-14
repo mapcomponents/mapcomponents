@@ -115,7 +115,7 @@ const MlHexagonMap = (props: MlHexagonMapProps) => {
 		if (
 			!mapHook.map ||
 			noiseData.features.length <= 0 ||
-			(initializedRef.current && deckGlContext.deckGl && noiseData.features.length >= 0)
+			(initializedRef.current && noiseData.features.length >= 0)
 		)
 			return;
 		initializedRef.current = true;
@@ -131,7 +131,7 @@ const MlHexagonMap = (props: MlHexagonMapProps) => {
 			hexagonLayer && deckGlHook.removeLayer(hexagonLayer);
 			initializedRef.current = false;
 		};
-	}, [mapHook.map, deckGlContext.deckGl, props.mapId, deckGlLayerProps]);
+	}, [mapHook.map, props.mapId, deckGlLayerProps]);
 
 	return <></>;
 };
