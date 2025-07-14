@@ -16,6 +16,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Install pnpm
+        run: npm install -g pnpm
       - name: Use Node.js ${{ matrix.node-version }}
       # Setup .npmrc file to publish to npm
         uses: actions/setup-node@v2
