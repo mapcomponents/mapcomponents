@@ -3,6 +3,7 @@ on:
   push:
     tags:
       - v*
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,8 +16,8 @@ jobs:
         with:
           node-version: '22.x'
           registry-url: 'https://registry.npmjs.org'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
       - run: npx nx run-many -t build --all
       - run: npx nx run-many -t test:noninteractive --all --skip-nx-cache || npx nx run-many -t test --all --skip-nx-cache || true
       - run: npx nx run-many -t publish --all --skip-nx-cache

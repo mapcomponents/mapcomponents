@@ -14,8 +14,8 @@ jobs:
         with:
           persist-credentials: false
       - name: Install NX CLI
-        run: yarn global add nx
+        run: pnpm add -g nx
       - name: Install and build 🔧
         run: | # Install packages and build the catalogue meta.json file for schema checks only
-          yarn
+          pnpm install
           nx run-many -t build-catalogue-meta
