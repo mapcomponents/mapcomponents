@@ -2,10 +2,10 @@
 	"files": [],
 	"references": [
 		{
-			"path": "./apps/deck-gl"
+			"path": "./libs/deck-gl"
 		},
 		{
-			"path": "./apps/ra-geospatial"
+			"path": "./libs/ra-geospatial"
 		}
 	],
 	"extends": "./tsconfig.base.json",
