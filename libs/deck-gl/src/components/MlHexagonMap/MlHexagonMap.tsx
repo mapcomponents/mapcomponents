@@ -1,5 +1,4 @@
-import { useContext, useEffect, useMemo, useRef, useState } from 'react';
-import DeckGlContext, { DeckGlContextType } from '../../contexts/DeckGlContext';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import useDeckGl from '../../hooks/useDeckGl';
 import { HexagonLayer, HexagonLayerProps } from '@deck.gl/aggregation-layers';
 import { useMap } from '@mapcomponents/react-maplibre';
@@ -17,8 +16,6 @@ export interface MlHexagonMapProps {
 }
 
 const MlHexagonMap = (props: MlHexagonMapProps) => {
-	const deckGlContext: DeckGlContextType = useContext(DeckGlContext);
-
 	const DATA_URL = 'assets/3D/laerm_points.json';
 	const deckGlHook = useDeckGl();
 	const [noiseData, setNoiseData] = useState({
@@ -32,10 +29,10 @@ const MlHexagonMap = (props: MlHexagonMapProps) => {
 				Accept: 'application/json',
 			},
 		})
-			.then(function (response) {
+			.then(function(response) {
 				return response.json();
 			})
-			.then(function (json) {
+			.then(function(json) {
 				setNoiseData(json);
 			});
 	};
@@ -46,7 +43,7 @@ const MlHexagonMap = (props: MlHexagonMapProps) => {
 	const layerOpacity = 0.8;
 	const specularColor: [number, number, number] = [51, 51, 51];
 	const getColorRange: (layerOpacity: number) => [number, number, number, number][] = (
-		layerOpacity: number
+		layerOpacity: number,
 	) => [
 		[1, 152, 189, Math.round(80 * layerOpacity)],
 		[73, 227, 206, Math.round(90 * layerOpacity)],
