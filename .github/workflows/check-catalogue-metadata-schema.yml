@@ -16,7 +16,7 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
       - name: Install NX CLI
-        run: pnpm install -g nx
+        run: pnpm install nx
       - name: Install and build 🔧
         run: | # Install packages and build the catalogue meta.json file for schema checks only
           pnpm install
