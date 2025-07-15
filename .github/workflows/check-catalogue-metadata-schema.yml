@@ -14,12 +14,12 @@ jobs:
         with:
           persist-credentials: false
       - name: Install pnpm
-        run: npm install pnpm
+        run: npm install -g pnpm --force
       - name: Setup pnpm global bin
         run: pnpm setup
       - name: Install NX CLI
         run: pnpm install -g nx
       - name: Install and build 🔧
-        run: | # Install packages and build the catalogue meta.json file for schema checks only
-          pnpm install
+        run: |
+          pnpm install --frozen-lockfile
           nx run-many -t build-catalogue-meta
