@@ -19,11 +19,19 @@
 		"allowSyntheticDefaultImports": true,
 		"moduleResolution": "nodenext",
 		"module": "NodeNext",
-		"types": ["vite/client"],
+		"types": [
+			"vite/client"
+		],
 		"paths": {
-			"@mapcomponents/deck-gl": ["./libs/deck-gl/src/index.ts"],
-			"@mapcomponents/ra-geospatial": ["libs/ra-geospatial/src/index.ts"],
-			"test": ["libts/test/src/index.ts"]
+			"@mapcomponents/ra-geospatial": [
+				"libs/ra-geospatial/src/index.ts"
+			],
+			"deck-gl": [
+				"./libs/deck-gl/src/index.ts"
+			],
+			"test": [
+				"libs/test/src/index.ts"
+			]
 		}
 	}
 }

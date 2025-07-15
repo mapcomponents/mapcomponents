@@ -4,6 +4,7 @@
 	"license": "MIT",
 	"private": true,
 	"dependencies": {
+		"@babel/plugin-transform-typescript": "^7.28.0",
 		"@typescript-eslint/eslint-plugin": "^8.36.0",
 		"@typescript-eslint/parser": "^8.36.0",
 		"babel-plugin-inline-react-svg": "^2.0.2",
