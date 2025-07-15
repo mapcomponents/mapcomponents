@@ -10,6 +10,7 @@ import './style.css';
 import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 
 const decorators = [
+	// eslint-disable-next-line
 	(Story: any, context: any) => {
 		const theme = useMemo(() => getTheme(context?.globals?.theme), [context?.globals?.theme]);
 

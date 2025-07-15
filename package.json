@@ -2,7 +2,6 @@
 	"name": "mapcomponents",
 	"version": "0.0.0",
 	"license": "MIT",
-	"scripts": {},
 	"private": true,
 	"dependencies": {
 		"@typescript-eslint/eslint-plugin": "^8.36.0",

@@ -12,7 +12,7 @@ const layerRemovalTest = (
 	afterWrapperInit,
 	createWrapperFunction
 ) => {
-	const TestComponent = (props) => {
+	const TestComponent = () => {
 		const [layerVisible, setLayerVisible] = useState(true);
 		const [refreshTrigger, setRefreshTrigger] = useState(0);
 		const mapContext = useContext(MapContext);

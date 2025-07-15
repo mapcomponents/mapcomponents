@@ -18,13 +18,14 @@ require('../config/env');
 
 const jest = require('jest');
 const execSync = require('child_process').execSync;
-let argv = process.argv.slice(2);
+const argv = process.argv.slice(2);
 
 function isInGitRepository() {
   try {
     execSync('git rev-parse --is-inside-work-tree', { stdio: 'ignore' });
     return true;
   } catch (e) {
+		console.log(e);
     return false;
   }
 }
@@ -34,6 +35,7 @@ function isInMercurialRepository() {
     execSync('hg --cwd . root', { stdio: 'ignore' });
     return true;
   } catch (e) {
+		console.log(e);
     return false;
   }
 }

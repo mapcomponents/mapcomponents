@@ -45,5 +45,5 @@ jobs:
         with:
           files: ${{ steps.files.outputs.added_modified}}
           eslintTarget: "**/*.{jsx,tsx,ts,js}"
-          s0: "pnpm run eslint"
+          s0: "nx run-many --target=lint --all"
           s1: "pnpm run prettier --check"

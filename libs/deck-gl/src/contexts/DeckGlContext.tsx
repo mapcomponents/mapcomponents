@@ -35,6 +35,7 @@ const DeckGlContextProvider = ({ mapId, children }: DeckGlContextProviderProps) 
 		mapHook.map.addControl(overlayRef.current);
 
 		return () => {
+			// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 			overlayRef.current && mapHook.map?.removeControl(overlayRef.current);
 			overlayRef.current = undefined;
 		};

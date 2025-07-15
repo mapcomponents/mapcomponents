@@ -4,11 +4,11 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 import { configure } from 'enzyme';
 
-var uuid_regex = '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}';
+const uuid_regex = '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}';
 export { uuid_regex };
 
 // MapLibre-gl mockup
-var mockMapLibreMethods = {
+const mockMapLibreMethods = {
 	on: jest.fn(),
 	off: jest.fn(),
 	addControl: jest.fn(),
@@ -30,12 +30,12 @@ jest.mock('maplibre-gl/dist/maplibre-gl', () => {
 		GeolocateControl: jest.fn(),
 		Map: function () {
 			// eslint-disable-next-line @typescript-eslint/no-this-alias
-			var self = this;
+			const self = this;
 			this.layers = [];
 			this.sources = [];
 			this.style = { sourceCaches: {} };
 
-			let styleFunctions = {
+			const styleFunctions = {
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				addSource: (id, source) => {
 					if (typeof id.id !== 'undefined') {
@@ -109,5 +109,7 @@ jest.mock('maplibre-gl/dist/maplibre-gl', () => {
 
 configure({ adapter: new Adapter() });
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 window.URL.createObjectURL = function () {};
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 window.HTMLCanvasElement.prototype.getContext = () => {};

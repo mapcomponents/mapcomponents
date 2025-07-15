@@ -20,6 +20,7 @@ const Template = (props: TemplateProps) => (
 	</DeckGlContextProvider>
 );
 
+// eslint-disable-next-line
 export const NoiseMap: {[key: string]: any}= Template.bind({});
 NoiseMap.parameters = {};
 NoiseMap.args = {

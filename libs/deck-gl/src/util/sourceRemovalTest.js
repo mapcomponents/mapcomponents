@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { mount, configure } from "enzyme";
+import { mount } from "enzyme";
 import { MapContext, MapComponentsProvider } from "../index";
 import MapLibreMap from "../components/MapLibreMap/MapLibreMap";
 
@@ -11,7 +11,7 @@ const sourceRemovalTest = (
 	beforeWrapperInit,
 	afterWrapperInit
 ) => {
-	const TestComponent = (props) => {
+	const TestComponent = () => {
 		const [layerVisible, setLayerVisible] = useState(true);
 		const [refreshTrigger, setRefreshTrigger] = useState(0);
 		const mapContext = useContext(MapContext);

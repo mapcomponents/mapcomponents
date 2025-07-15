@@ -23,6 +23,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: pnpm
+      - run: pnpm install
       - run: npx nx run-many --target=test:noninteractive
       - run: npx nx run-many --target=build

@@ -66,6 +66,7 @@ const MlHexagonMap = (props: MlHexagonMapProps) => {
 			elevationScale: 10,
 			extruded: true,
 			autoHighlight: true,
+			// eslint-disable-next-line
 			getPosition: (d: any) => {
 				return d.geometry.coordinates;
 			},
@@ -89,7 +90,9 @@ const MlHexagonMap = (props: MlHexagonMapProps) => {
 				}, -Infinity);
 				return Math.round(elVal);
 			},
+			// eslint-disable-next-line
 			getElevationValue: (points: any): number => {
+				// eslint-disable-next-line
 				const elVal = points.reduce((acc: any, point: any) => {
 					if (!point.properties && point.source.properties)
 						return acc < point.source.properties.dba ? point.source.properties.dba : acc;
@@ -125,6 +128,7 @@ const MlHexagonMap = (props: MlHexagonMapProps) => {
 		deckGlHook.addLayer(hexagonLayer);
 
 		return () => {
+			// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 			hexagonLayer && deckGlHook.removeLayer(hexagonLayer);
 			initializedRef.current = false;
 		};
