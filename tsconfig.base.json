@@ -21,8 +21,8 @@
 		"module": "NodeNext",
 		"types": ["vite/client"],
 		"paths": {
-			"@mapcomponents/ra-geospatial": ["libs/ra-geospatial/src/index.ts"],
-			"deck-gl": ["./libs/deck-gl/src/index.ts"]
+			"@mapcomponents/deck-gl": ["libs/deck-gl/src/index.ts"],
+			"@mapcomponents/ra-geospatial": ["libs/ra-geospatial/src/index.ts"]
 		}
 	}
 }

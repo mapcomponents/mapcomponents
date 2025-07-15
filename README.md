@@ -82,7 +82,9 @@ To generate a new library, use:
   npx nx g @nx/react:lib libs/my-lib --bundler=vite
 ```
 
-<mark> Don't get distracted by the project.json when creating a new app or lib it's important for Nx. For example, when using the generation command. </mark>
+<mark> Nx uses project.json for its own configuration—keep its name simple, like my-app.
+For publishing, you need a package.json with a full package name, e.g. @mapcomponents/my-app.
+Both files are needed, but serve different purposes. </mark>
 
 You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
 

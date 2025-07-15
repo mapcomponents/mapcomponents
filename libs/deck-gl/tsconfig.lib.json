@@ -25,6 +25,12 @@
 		"**/*.stories.ts",
 		"**/*.stories.js",
 		"**/*.stories.jsx",
-		"**/*.stories.tsx"
+		"**/*.stories.tsx",
+		"cypress/**/*",
+		"cypress.config.ts",
+		"**/*.cy.ts",
+		"**/*.cy.js",
+		"**/*.cy.tsx",
+		"**/*.cy.jsx"
 	]
 }
