@@ -17,13 +17,13 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install pnpm
-        run: npm install -g pnpm
+        run: npm install -g pnpm#
+
+      - name: Install nx
+        run: npm add -g nx
 
       - name: Setup pnpm global bin
         run: pnpm setup
-
-      - name: Add pnpm global bin to PATH
-        run: echo "$PNPM_HOME" >> $GITHUB_PATH
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
