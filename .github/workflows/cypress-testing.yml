@@ -20,7 +20,12 @@ jobs:
 
       - name: Install pnpm
         run: npm install -g pnpm
+
+      - name: install cypress
+        run: pnpm cypress install
+
       - name: Install dependencies
         run: pnpm install
+
       - name: Run Cypress tests
         run: npx nx run-many -t cypress-test
