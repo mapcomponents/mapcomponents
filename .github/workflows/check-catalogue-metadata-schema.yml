@@ -15,8 +15,10 @@ jobs:
           persist-credentials: false
       - name: Install pnpm
         run: npm install -g pnpm
+      - name: Setup pnpm global bin
+        run: pnpm setup
       - name: Install NX CLI
-        run: pnpm install nx
+        run: pnpm add -g nx
       - name: Install and build 🔧
         run: | # Install packages and build the catalogue meta.json file for schema checks only
           pnpm install
