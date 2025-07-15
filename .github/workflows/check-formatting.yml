@@ -19,9 +19,6 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
-      - name: Install nx
-        run: npm add -g nx
-
       - name: Setup pnpm global bin
         run: pnpm setup
 
@@ -47,4 +44,4 @@ jobs:
           format: csv
 
       - name: Lint all projects
-        run: nx run-many --target=lint --all
+        run: npx nx run-many --target=lint --all
