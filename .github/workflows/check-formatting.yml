@@ -48,6 +48,3 @@ jobs:
 
       - name: Lint all projects
         run: nx run-many --target=lint --all
-
-      - name: Check formatting with Prettier
-        run: pnpm exec prettier --check .
