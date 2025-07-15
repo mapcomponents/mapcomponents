@@ -19,6 +19,12 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
+      - name: Setup pnpm global bin
+        run: pnpm setup
+
+      - name: Add pnpm global bin to PATH
+        run: echo "$PNPM_HOME" >> $GITHUB_PATH
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
