@@ -21,7 +21,7 @@ const Template = (props: TemplateProps) => (
 );
 
 // eslint-disable-next-line
-export const NoiseMap: {[key: string]: any}= Template.bind({});
+export const NoiseMap: { [key: string]: any } = Template.bind({});
 NoiseMap.parameters = {};
 NoiseMap.args = {
 	mapId: 'map_1',

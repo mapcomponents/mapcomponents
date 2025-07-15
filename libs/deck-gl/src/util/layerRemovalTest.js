@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
-import { mount } from "enzyme";
-import { MapContext, MapComponentsProvider } from "../index";
-import MapLibreMap from "../components/MapLibreMap/MapLibreMap";
+import React, { useContext, useState } from 'react';
+import { mount } from 'enzyme';
+import { MapContext, MapComponentsProvider } from '../index';
+import MapLibreMap from '../components/MapLibreMap/MapLibreMap';
 
 const layerRemovalTest = (
 	ComponentName,
@@ -40,16 +40,14 @@ const layerRemovalTest = (
 					refresh
 				</button>
 				<div className="layers_json">
-					{mapContext.map &&
-						refreshTrigger &&
-						JSON.stringify(mapContext.map.map.layers)}
+					{mapContext.map && refreshTrigger && JSON.stringify(mapContext.map.map.layers)}
 				</div>
 			</>
 		);
 	};
 
 	const createWrapper =
-		(typeof createWrapperFunction === "function" && createWrapperFunction) ||
+		(typeof createWrapperFunction === 'function' && createWrapperFunction) ||
 		(() =>
 			mount(
 				<MapComponentsProvider>
@@ -59,30 +57,26 @@ const layerRemovalTest = (
 
 	describe(ComponentName, () => {
 		it(
-			"should add a Layer with the id '" +
-				humanReadableLayerName +
-				"' to the MapLibre instance",
+			"should add a Layer with the id '" + humanReadableLayerName + "' to the MapLibre instance",
 			async () => {
-				if (typeof beforeWrapperInit === "function") {
+				if (typeof beforeWrapperInit === 'function') {
 					await beforeWrapperInit();
 				}
 
 				const wrapper = createWrapper(TestComponent);
 
-				if (typeof afterWrapperInit === "function") {
+				if (typeof afterWrapperInit === 'function') {
 					await afterWrapperInit();
 				}
 
-				wrapper.find(".trigger_refresh").simulate("click");
+				wrapper.find('.trigger_refresh').simulate('click');
 
 				// debug helper
 				//console.log('layer removal test')
 				//console.log(wrapper.find(".layers_json").text());
 				//console.log(regexLayerNameTest.toString());
 				//console.log(regexLayerNameTest.test(wrapper.find(".layers_json").text()));
-				expect(regexLayerNameTest.test(wrapper.find(".layers_json").text())).toEqual(
-					true
-				);
+				expect(regexLayerNameTest.test(wrapper.find('.layers_json').text())).toEqual(true);
 			}
 		);
 
@@ -91,28 +85,24 @@ const layerRemovalTest = (
 				humanReadableLayerName +
 				"' from the MapLibre instance",
 			async () => {
-				if (typeof beforeWrapperInit === "function") {
+				if (typeof beforeWrapperInit === 'function') {
 					await beforeWrapperInit();
 				}
 
 				const wrapper = createWrapper(TestComponent);
 
-				if (typeof afterWrapperInit === "function") {
+				if (typeof afterWrapperInit === 'function') {
 					await afterWrapperInit();
 				}
 
-				wrapper.find(".trigger_refresh").simulate("click");
+				wrapper.find('.trigger_refresh').simulate('click');
 
-				expect(regexLayerNameTest.test(wrapper.find(".layers_json").text())).toEqual(
-					true
-				);
+				expect(regexLayerNameTest.test(wrapper.find('.layers_json').text())).toEqual(true);
 
-				wrapper.find(".toggle_layer_visible").simulate("click");
-				wrapper.find(".trigger_refresh").simulate("click");
+				wrapper.find('.toggle_layer_visible').simulate('click');
+				wrapper.find('.trigger_refresh').simulate('click');
 
-				expect(regexLayerNameTest.test(wrapper.find(".layers_json").text())).toEqual(
-					false
-				);
+				expect(regexLayerNameTest.test(wrapper.find('.layers_json').text())).toEqual(false);
 			}
 		);
 	});

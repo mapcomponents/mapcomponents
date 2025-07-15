@@ -25,7 +25,6 @@ const DeckGlContextProvider = ({ mapId, children }: DeckGlContextProviderProps) 
 	useEffect(() => {
 		if (!mapHook.map) return;
 
-
 		overlayRef.current = new MapboxOverlay({
 			id: overlayId,
 		});

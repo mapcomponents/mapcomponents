@@ -29,10 +29,10 @@ const MlHexagonMap = (props: MlHexagonMapProps) => {
 				Accept: 'application/json',
 			},
 		})
-			.then(function(response) {
+			.then(function (response) {
 				return response.json();
 			})
-			.then(function(json) {
+			.then(function (json) {
 				setNoiseData(json);
 			});
 	};
@@ -43,7 +43,7 @@ const MlHexagonMap = (props: MlHexagonMapProps) => {
 	const layerOpacity = 0.8;
 	const specularColor: [number, number, number] = [51, 51, 51];
 	const getColorRange: (layerOpacity: number) => [number, number, number, number][] = (
-		layerOpacity: number,
+		layerOpacity: number
 	) => [
 		[1, 152, 189, Math.round(80 * layerOpacity)],
 		[73, 227, 206, Math.round(90 * layerOpacity)],

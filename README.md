@@ -7,9 +7,11 @@ Using lerna for this as there is no nx feature for simultaneous versioning of mu
 ```shell
   npx lerna version patch --force-publish
 ```
+
 ```shell
   npx lerna version minor --force-publish
 ```
+
 ```shell
   npx lerna version major --force-publish
 ```
@@ -21,11 +23,13 @@ Using lerna for this as there is no nx feature for simultaneous versioning of mu
 Keep your dependencies consistent across your monorepo using [Syncpack](https://github.com/JamieMason/syncpack):
 
 ### List mismatched dependency versions
+
 ```bash
   npx syncpack list-mismatches
 ```
 
 ### Automatically fix mismatched versions
+
 ```bash
   npx syncpack fix-mismatches
 ```
@@ -34,7 +38,7 @@ Keep your dependencies consistent across your monorepo using [Syncpack](https://
 
 ✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/react-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/react-monorepo-tutorial?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
 
 ## Run tasks
 
@@ -77,6 +81,7 @@ To generate a new library, use:
 ```sh
   npx nx g @nx/react:lib libs/my-lib --bundler=vite
 ```
+
 <mark> Don't get distracted by the project.json when creating a new app or lib it's important for Nx. For example, when using the generation command. </mark>
 
 You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.

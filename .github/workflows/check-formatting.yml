@@ -50,4 +50,4 @@ jobs:
         run: nx run-many --target=lint --all
 
       - name: Check formatting with Prettier
-        run: pnpm run prettier --check
+        run: pnpm exec prettier --check .

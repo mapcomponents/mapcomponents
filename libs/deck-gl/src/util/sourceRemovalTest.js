@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
-import { mount } from "enzyme";
-import { MapContext, MapComponentsProvider } from "../index";
-import MapLibreMap from "../components/MapLibreMap/MapLibreMap";
+import React, { useContext, useState } from 'react';
+import { mount } from 'enzyme';
+import { MapContext, MapComponentsProvider } from '../index';
+import MapLibreMap from '../components/MapLibreMap/MapLibreMap';
 
 const sourceRemovalTest = (
 	ComponentName,
@@ -39,9 +39,7 @@ const sourceRemovalTest = (
 					refresh
 				</button>
 				<div className="sources_json">
-					{mapContext.map &&
-						refreshTrigger &&
-						JSON.stringify(mapContext.map.map.sources)}
+					{mapContext.map && refreshTrigger && JSON.stringify(mapContext.map.map.sources)}
 				</div>
 			</>
 		);
@@ -56,25 +54,21 @@ const sourceRemovalTest = (
 
 	describe(ComponentName, () => {
 		it(
-			"should add a Source with the id '" +
-				humanReadableLayerName +
-				"' to the MapLibre instance",
+			"should add a Source with the id '" + humanReadableLayerName + "' to the MapLibre instance",
 			async () => {
-				if (typeof beforeWrapperInit === "function") {
+				if (typeof beforeWrapperInit === 'function') {
 					await beforeWrapperInit();
 				}
 
 				const wrapper = createWrapper();
 
-				if (typeof afterWrapperInit === "function") {
+				if (typeof afterWrapperInit === 'function') {
 					await afterWrapperInit();
 				}
 
-				wrapper.find(".trigger_refresh").simulate("click");
+				wrapper.find('.trigger_refresh').simulate('click');
 
-				expect(
-					regexLayerNameTest.test(wrapper.find(".sources_json").text())
-				).toEqual(true);
+				expect(regexLayerNameTest.test(wrapper.find('.sources_json').text())).toEqual(true);
 			}
 		);
 
@@ -83,28 +77,24 @@ const sourceRemovalTest = (
 				humanReadableLayerName +
 				"' from the MapLibre instance",
 			async () => {
-				if (typeof beforeWrapperInit === "function") {
+				if (typeof beforeWrapperInit === 'function') {
 					await beforeWrapperInit();
 				}
 
 				const wrapper = createWrapper();
 
-				if (typeof afterWrapperInit === "function") {
+				if (typeof afterWrapperInit === 'function') {
 					await afterWrapperInit();
 				}
 
-				wrapper.find(".trigger_refresh").simulate("click");
+				wrapper.find('.trigger_refresh').simulate('click');
 
-				expect(
-					regexLayerNameTest.test(wrapper.find(".sources_json").text())
-				).toEqual(true);
+				expect(regexLayerNameTest.test(wrapper.find('.sources_json').text())).toEqual(true);
 
-				wrapper.find(".toggle_layer_visible").simulate("click");
-				wrapper.find(".trigger_refresh").simulate("click");
+				wrapper.find('.toggle_layer_visible').simulate('click');
+				wrapper.find('.trigger_refresh').simulate('click');
 
-				expect(
-					regexLayerNameTest.test(wrapper.find(".sources_json").text())
-				).toEqual(false);
+				expect(regexLayerNameTest.test(wrapper.find('.sources_json').text())).toEqual(false);
 			}
 		);
 	});

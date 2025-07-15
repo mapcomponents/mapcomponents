@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import {Fade, SxProps} from '@mui/material';
+import { Fade, SxProps } from '@mui/material';
 import BubbleStyle from './BubbleForInstructions.js';
 import { JSX } from 'react/jsx-runtime';
 
@@ -46,7 +46,7 @@ const Instructions = (props: InstructionProps) => {
 	return (
 		<>
 			{typeof activeStep !== 'undefined' && (
-				<Fade in={true} timeout={150} >
+				<Fade in={true} timeout={150}>
 					<div>
 						<BubbleStyle {...props.steps[activeStep].props}>
 							{props.steps[activeStep].content}
