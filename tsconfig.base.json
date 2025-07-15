@@ -29,9 +29,6 @@
 			"deck-gl": [
 				"./libs/deck-gl/src/index.ts"
 			],
-			"test": [
-				"libs/test/src/index.ts"
-			]
 		}
 	}
 }
