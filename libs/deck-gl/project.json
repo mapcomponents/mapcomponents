@@ -13,12 +13,6 @@
 				"assets": ["libs/deck-gl/src/assets"]
 			}
 		},
-		"lint": {
-			"executor": "@nx/linter:eslint",
-			"options": {
-				"lintFilePatterns": ["libs/deck-gl/**/*.ts", "libs/deck-gl/**/*.tsx"]
-			}
-		},
 		"test": {
 			"executor": "@nx/jest:jest",
 			"options": {
