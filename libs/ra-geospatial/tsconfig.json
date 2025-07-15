@@ -1,5 +1,4 @@
 {
-
 	"files": [],
 	"include": [],
 	"references": [
@@ -8,6 +7,9 @@
 		},
 		{
 			"path": "./tsconfig.spec.json"
+		},
+		{
+			"path": "./tsconfig.storybook.json"
 		}
 	],
 	"extends": "../../tsconfig.base.json"
