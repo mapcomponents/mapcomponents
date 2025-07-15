@@ -15,10 +15,8 @@ jobs:
           persist-credentials: false
       - name: Install pnpm
         run: npm install -g pnpm --force
-      - name: Setup pnpm global bin
-        run: pnpm setup
       - name: Install NX CLI
-        run: pnpm install -g nx
+        run: pnpm install nx
       - name: Install and build 🔧
         run: |
           pnpm install --frozen-lockfile
