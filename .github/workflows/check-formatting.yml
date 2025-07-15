@@ -46,10 +46,8 @@ jobs:
         with:
           format: csv
 
-      - name: Run scoped actions
-        uses: DukeManh/scoped-actions@v1
-        with:
-          files: ${{ steps.files.outputs.added_modified}}
-          eslintTarget: "**/*.{jsx,tsx,ts,js}"
-          s0: "nx run-many --target=lint --all"
-          s1: "pnpm run prettier --check"
+      - name: Lint all projects
+        run: nx run-many --target=lint --all
+
+      - name: Check formatting with Prettier
+        run: pnpm run prettier --check
