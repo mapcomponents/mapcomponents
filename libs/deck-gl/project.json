@@ -1,0 +1,31 @@
+{
+	"name": "deck-gl",
+	"projectType": "library",
+	"root": "libs/deck-gl",
+	"sourceRoot": "libs/deck-gl/src",
+	"targets": {
+		"build": {
+			"executor": "@nx/vite:build",
+			"options": {
+				"outputPath": "dist/libs/deck-gl",
+				"main": "libs/deck-gl/src/index.ts",
+				"tsConfig": "libs/deck-gl/tsconfig.lib.json",
+				"assets": ["libs/deck-gl/src/assets"]
+			}
+		},
+		"lint": {
+			"executor": "@nx/linter:eslint",
+			"options": {
+				"lintFilePatterns": ["libs/deck-gl/**/*.ts", "libs/deck-gl/**/*.tsx"]
+			}
+		},
+		"test": {
+			"executor": "@nx/jest:jest",
+			"options": {
+				"jestConfig": "libs/deck-gl/jest.config.ts",
+				"passWithNoTests": true
+			}
+		}
+	},
+	"tags": ["npm:public"]
+}
