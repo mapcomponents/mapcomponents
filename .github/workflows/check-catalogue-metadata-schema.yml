@@ -16,7 +16,7 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm --force
       - name: Install NX CLI
-        run: pnpm install nx
+        run: pnpm install -w nx
       - name: Install and build 🔧
         run: |
           pnpm install --frozen-lockfile
