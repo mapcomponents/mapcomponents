@@ -82,6 +82,7 @@ const MlHexagonMap = (props: MlHexagonMapProps) => {
 			transitions: {
 				elevationScale: 1500,
 			},
+			// eslint-disable-next-line
 			getColorValue: (points: any[]) => {
 				const elVal = points.reduce((acc, point) => {
 					if (!point?.properties && point.source.properties)
