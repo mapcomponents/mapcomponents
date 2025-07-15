@@ -18,7 +18,7 @@ jobs:
       - name: Setup pnpm global bin
         run: pnpm setup
       - name: Install NX CLI
-        run: pnpm add -g nx
+        run: pnpm install -g nx
       - name: Install and build 🔧
         run: | # Install packages and build the catalogue meta.json file for schema checks only
           pnpm install
