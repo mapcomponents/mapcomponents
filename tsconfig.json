@@ -5,7 +5,7 @@
 			"path": "./libs/ra-geospatial"
 		},
 		{
-			"path": "./libs/deck-gl",
+			"path": "./libs/deck-gl"
 		}
 	],
 	"extends": "./tsconfig.base.json",

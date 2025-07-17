@@ -1,15 +1,15 @@
 import { MapComponentsProvider } from '@mapcomponents/react-maplibre';
-import GeometryInputMap, { GeospatialInputMapProps } from './GeospatialInputMap.js';
+import GeospatialInputMap, { GeospatialInputMapProps } from './GeospatialInputMap.js';
 
 function GeospatialInput(props: GeospatialInputMapProps) {
 	return (
 		<>
 			{props.embeddedMap ? (
 				<MapComponentsProvider>
-					<GeometryInputMap {...props} />
+					<GeospatialInputMap {...props} />
 				</MapComponentsProvider>
 			) : (
-				<GeometryInputMap {...props} />
+				<GeospatialInputMap {...props} />
 			)}
 		</>
 	);

@@ -22,7 +22,8 @@
 		"paths": {
 			"@mapcomponents/deck-gl": ["libs/deck-gl/src/index.ts"],
 			"@mapcomponents/deck-gl/*": ["libs/deck-gl/src/*"],
-			"@mapcomponents/ra-geospatial": ["libs/ra-geospatial/src/index.ts"]
+			"@mapcomponents/ra-geospatial/*": ["libs/ra-geospatial/src/*"],
+			"@mapcomponents/ra-geosptial": ["libs/ra-geospatial/src/index.ts"]
 		}
 	}
 }
