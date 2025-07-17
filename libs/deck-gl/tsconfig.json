@@ -1,18 +1,10 @@
 {
 	"compilerOptions": {
-		"baseUrl": "./src"
+		"baseUrl": "./src",
 	},
-	"files": [],
-	"include": [],
 	"references": [
 		{
 			"path": "./tsconfig.lib.json"
-		},
-		{
-			"path": "./tsconfig.spec.json"
-		},
-		{
-			"path": "./tsconfig.storybook.json"
 		},
 		{
 			"path": "./cypress/tsconfig.json"
