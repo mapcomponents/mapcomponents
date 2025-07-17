@@ -2,7 +2,6 @@
 	"compileOnSave": false,
 	"compilerOptions": {
 		"baseUrl": "./",
-		"composite": true,
 		"declarationMap": true,
 		"emitDeclarationOnly": true,
 		"isolatedModules": true,
@@ -22,6 +21,7 @@
 		"types": ["vite/client"],
 		"paths": {
 			"@mapcomponents/deck-gl": ["libs/deck-gl/src/index.ts"],
+			"@mapcomponents/deck-gl/*": ["libs/deck-gl/src/*"],
 			"@mapcomponents/ra-geospatial": ["libs/ra-geospatial/src/index.ts"]
 		}
 	}
