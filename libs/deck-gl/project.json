@@ -1,0 +1,7 @@
+{
+	"name": "deck-gl",
+	"projectType": "library",
+	"root": "libs/deck-gl",
+	"sourceRoot": "libs/deck-gl/src",
+	"targets": {}
+}

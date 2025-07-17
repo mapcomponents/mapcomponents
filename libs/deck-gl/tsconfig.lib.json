@@ -1,0 +1,36 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"outDir": "../../dist/out-tsc",
+		"types": [
+			"node",
+			"@nx/react/typings/cssmodule.d.ts",
+			"@nx/react/typings/image.d.ts",
+			"vite/client"
+		]
+	},
+	"include": ["src"],
+	"exclude": [
+		"**/*.spec.ts",
+		"**/*.test.ts",
+		"**/*.spec.tsx",
+		"**/*.test.tsx",
+		"**/*.spec.js",
+		"**/*.test.js",
+		"**/*.spec.jsx",
+		"**/*.test.jsx",
+		"jest.config.ts",
+		"src/**/*.spec.ts",
+		"src/**/*.test.ts",
+		"**/*.stories.ts",
+		"**/*.stories.js",
+		"**/*.stories.jsx",
+		"**/*.stories.tsx",
+		"cypress/**/*",
+		"cypress.config.ts",
+		"**/*.cy.ts",
+		"**/*.cy.js",
+		"**/*.cy.tsx",
+		"**/*.cy.jsx"
+	]
+}

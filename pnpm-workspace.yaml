@@ -1,0 +1,8 @@
+packages:
+  - apps/**
+  - libs/**
+
+onlyBuiltDependencies:
+  - cypress
+
+sideEffectsCache: false
