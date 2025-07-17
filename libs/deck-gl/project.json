@@ -12,13 +12,6 @@
 				"tsConfig": "libs/deck-gl/tsconfig.lib.json",
 				"assets": ["libs/deck-gl/src/assets"]
 			}
-		},
-		"test": {
-			"executor": "@nx/jest:jest",
-			"options": {
-				"jestConfig": "libs/deck-gl/jest.config.ts",
-				"passWithNoTests": true
-			}
 		}
 	},
 	"tags": ["npm:public"]
