@@ -29,7 +29,7 @@ export const PropertyEdit = () => (
     <SimpleForm>
       <TextInput source="title" />
       <TextInput source="geom" />
-      <GeospatialInput type="polygon" />
+      <GeospatialInput type="polygon" source={''} />
     </SimpleForm>
   </Edit>
 );
@@ -38,7 +38,7 @@ export const PropertyCreate = () => (
     <SimpleForm>
       <TextInput source="title" />
       <TextInput source="geom" />
-      <GeospatialInput type="polygon" />
+      <GeospatialInput type="polygon" source={''} />
     </SimpleForm>
   </Create>
 );
@@ -48,7 +48,7 @@ export const PropertyShow = () => (
     <SimpleShowLayout>
       <TextField source="id" />
       <TextField source="title" />
-      <GeospatialShow  />
+      <GeospatialShow source={""}  />
     </SimpleShowLayout>
   </Show>
 );

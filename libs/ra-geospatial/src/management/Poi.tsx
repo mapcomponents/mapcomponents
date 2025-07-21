@@ -27,7 +27,7 @@ export const PoiEdit = () => (
     <SimpleForm>
       <TextInput source="title" />
       <TextInput source="geom" />
-      <GeospatialInput/>
+      <GeospatialInput source={""}/>
     </SimpleForm>
   </Edit>
 );
@@ -36,7 +36,7 @@ export const PoiCreate = () => (
     <SimpleForm>
       <TextInput source="title" />
       <TextInput source="geom" />
-      <GeospatialInput />
+      <GeospatialInput source={""} />
     </SimpleForm>
   </Create>
 );
@@ -46,7 +46,7 @@ export const PoiShow = () => (
     <SimpleShowLayout>
       <TextField source="id" />
       <TextField source="title" />
-      <GeospatialShow />
+      <GeospatialShow source={""} />
     </SimpleShowLayout>
   </Show>
 );
