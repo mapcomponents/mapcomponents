@@ -161,7 +161,7 @@ function GeospatialShowMap(props: GeospatialShowMapProps) {
 				"id": 9
 			}
 		]
-	});
+	});  // todo: remove this default value
 	useEffect(() => {
 		if (!record?.[source]) return;
 
