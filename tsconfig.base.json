@@ -6,7 +6,6 @@
 		"declarationMap": true,
 		"emitDeclarationOnly": true,
 		"isolatedModules": true,
-		"esModuleInterop": true,
 		"noEmitOnError": true,
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitOverride": true,
@@ -21,6 +20,8 @@
 		"module": "NodeNext",
 		"types": ["vite/client"],
 		"composite": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
 		"paths": {
 			"@mapcomponents/deck-gl": ["libs/deck-gl/src/index.ts"],
 			"@mapcomponents/deck-gl/*": ["libs/deck-gl/src/*"],

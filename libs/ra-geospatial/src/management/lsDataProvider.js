@@ -1,4 +1,3 @@
-/* eslint-disable eqeqeq */
 import fakeRestProvider from "ra-data-fakerest";
 import pullAt from "lodash/pullAt";
 
@@ -10,12 +9,12 @@ import pullAt from "lodash/pullAt";
  * @example // initialize with no data
  *
  * import localStorageDataProvider from 'ra-data-local-storage';
- * const dataProvider = localStorageDataProvider();
+ * const dataProvider.tsx = localStorageDataProvider();
  *
  * @example // initialize with default data (will be ignored if data has been modified by user)
  *
  * import localStorageDataProvider from 'ra-data-local-storage';
- * const dataProvider = localStorageDataProvider({
+ * const dataProvider.tsx = localStorageDataProvider({
  *   defaultData: {
  *     posts: [
  *       { id: 0, title: 'Hello, world!' },
@@ -28,7 +27,7 @@ import pullAt from "lodash/pullAt";
  *   }
  * });
  */
-export default (params) => {
+export default function localStorageDataProvider (params) {
   const {
     defaultData = {},
     localStorageKey = "ra-data-local-storage",
@@ -89,7 +88,7 @@ export default (params) => {
     update: (resource, params) => {
       updateLocalStorage(() => {
         const index = data[resource]?.findIndex(
-          (record) => record.id == params.id
+          (record) => record.id === params.id
         );
         data[resource][index] = {
           ...data[resource][index],
@@ -101,7 +100,7 @@ export default (params) => {
     updateMany: (resource, params) => {
       updateLocalStorage(() => {
         params.ids.forEach((id) => {
-          const index = data[resource]?.findIndex((record) => record.id == id);
+          const index = data[resource]?.findIndex((record) => record.id === id);
           data[resource][index] = {
             ...data[resource][index],
             ...params.data,
@@ -125,7 +124,7 @@ export default (params) => {
     delete: (resource, params) => {
       updateLocalStorage(() => {
         const index = data[resource]?.findIndex(
-          (record) => record.id == params.id
+          (record) => record.id === params.id
         );
         pullAt(data[resource], [index]);
       });
@@ -134,7 +133,7 @@ export default (params) => {
     deleteMany: (resource, params) => {
       updateLocalStorage(() => {
         const indexes = params.ids.map((id) =>
-          data[resource]?.findIndex((record) => record.id == id)
+          data[resource]?.findIndex((record) => record.id === id)
         );
         pullAt(data[resource], indexes);
       });

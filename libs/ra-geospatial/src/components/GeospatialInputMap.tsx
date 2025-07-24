@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { InputProps, useInput, useRecordContext } from 'react-admin';
 import {
-	GeoJSONGeometry,
 	parse as wellknownParse,
 	stringify as wellknownStringify,
 } from 'wellknown';
+
 import {
 	MapLibreMap,
 	MlFeatureEditor,
@@ -14,6 +14,7 @@ import {
 import { LngLatLike } from 'maplibre-gl';
 import { centroid, feature } from '@turf/turf';
 import { Feature } from '@turf/helpers';
+import { Geometry } from 'geojson';
 
 export interface GeospatialInputMapProps extends InputProps<any> {
 	MapLibreMapProps?: React.ComponentProps<typeof MapLibreMap>;
@@ -29,12 +30,11 @@ function GeospatialInputMap(props: GeospatialInputMapProps) {
 
 	const [geojson, setGeojson] = useState<typeof feature>();
 	const [oldGeoJson, setOldGeoJson] = useState<typeof feature>();
+	const input = useInput(props);
+
 	const {
-		field: { name, onChange, ...rest },
-		fieldState,
-		formState,
-		isRequired,
-	} = useInput(props);
+		field: { onChange },
+	} = input;
 
 	useEffect(() => {
 		if (typeof record === 'undefined' || !record[source]) return;
@@ -69,7 +69,9 @@ function GeospatialInputMap(props: GeospatialInputMapProps) {
 					options={{
 						zoom: 14,
 						style: 'https://wms.wheregroup.com/tileserver/style/klokantech-basic.json',
-						center: [0, 0],
+						center: Array.isArray(props?.MapLibreMapProps?.options?.center) && props.MapLibreMapProps.options.center.length === 2
+							? [props.MapLibreMapProps.options.center[0], props.MapLibreMapProps.options.center[1]]
+							: [0, 0],
 						...props?.MapLibreMapProps?.options,
 					}}
 					style={{
@@ -86,12 +88,14 @@ function GeospatialInputMap(props: GeospatialInputMapProps) {
 						<MlGeoJsonLayer
 							mapId={props?.mapId}
 							geojson={oldGeoJson as typeof feature}
-							paint={{
-								'circle-radius': 8,
-								'circle-color': '#6f6f96',
-								'circle-stroke-color': 'white',
-								'circle-stroke-width': 3,
-								'circle-opacity': 0.8,
+							options={{
+								paint: {
+									'circle-radius': 8,
+									'circle-color': '#6f6f96',
+									'circle-stroke-color': 'white',
+									'circle-stroke-width': 3,
+									'circle-opacity': 0.8,
+								},
 							}}
 							type="circle"
 							insertBeforeLayer="gl-draw-polygon-fill-inactive.cold"
@@ -104,7 +108,7 @@ function GeospatialInputMap(props: GeospatialInputMapProps) {
 						mode={geojson ? 'simple_select' : 'draw_point'}
 						onChange={(_geojson) => {
 							if (typeof _geojson[0] !== 'undefined') {
-								onChange(wellknownStringify(_geojson[0] as GeoJSONGeometry));
+								onChange(wellknownStringify(_geojson[0] as unknown as Geometry));
 							}
 						}}
 					/>
@@ -116,9 +120,11 @@ function GeospatialInputMap(props: GeospatialInputMapProps) {
 						<MlGeoJsonLayer
 							mapId={props?.mapId}
 							geojson={oldGeoJson as typeof feature}
-							paint={{
-								'fill-color': '#6f6f96',
-								'fill-opacity': 0.6,
+							options={{
+								paint: {
+									'fill-color': '#6f6f96',
+									'fill-opacity': 0.6,
+								},
 							}}
 							type="fill"
 							insertBeforeLayer="gl-draw-polygon-fill-inactive.cold"
@@ -131,7 +137,7 @@ function GeospatialInputMap(props: GeospatialInputMapProps) {
 						mode={geojson ? 'simple_select' : 'draw_polygon'}
 						onChange={(_geojson) => {
 							if (typeof _geojson[0] !== 'undefined') {
-								onChange(wellknownStringify(_geojson[0] as GeoJSONGeometry));
+								onChange(wellknownStringify(_geojson[0] as unknown as Geometry));
 							}
 						}}
 					/>
@@ -143,10 +149,12 @@ function GeospatialInputMap(props: GeospatialInputMapProps) {
 						<MlGeoJsonLayer
 							mapId={props?.mapId}
 							geojson={oldGeoJson as typeof feature}
-							paint={{
-								'line-width': 6,
-								'line-color': '#6f6f96',
-								'line-opacity': 0.6,
+							options={{
+								paint: {
+									'line-width': 6,
+									'line-color': '#6f6f96',
+									'line-opacity': 0.6,
+								},
 							}}
 							type="line"
 							insertBeforeLayer="gl-draw-polygon-fill-inactive.cold"
@@ -159,7 +167,7 @@ function GeospatialInputMap(props: GeospatialInputMapProps) {
 						mode={geojson ? 'simple_select' : 'draw_line_string'}
 						onChange={(_geojson) => {
 							if (typeof _geojson[0] !== 'undefined') {
-								onChange(wellknownStringify(_geojson[0] as GeoJSONGeometry));
+								onChange(wellknownStringify(_geojson[0] as unknown as Geometry));
 							}
 						}}
 					/>

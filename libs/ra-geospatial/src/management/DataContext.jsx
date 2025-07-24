@@ -4,12 +4,12 @@ import { feature, featureCollection } from '@turf/helpers';
 
 export const DataContext = React.createContext();
 
-export const DataContextProvider = function (props) {
+export default function DataContextProvider (props) {
   const [data, setData] = useState({});
 
   useEffect(() => {
     refreshData();
-    const _eventHandler = (event) => {
+    const _eventHandler = () => {
       refreshData();
     };
     window.addEventListener("storageItemUpdated", _eventHandler);
@@ -21,7 +21,6 @@ export const DataContextProvider = function (props) {
   const refreshData = () => {
     const storageDataTmp = localStorage.getItem("ra-data-local-storage");
     if (storageDataTmp) {
-      console.log("update layers");
       const storageData = JSON.parse(storageDataTmp);
       const _data = Object.keys(storageData).map((el) => {
         const features = storageData[el].map((entry) => {
@@ -35,7 +34,6 @@ export const DataContextProvider = function (props) {
         };
       });
 
-      console.log(_data);
       setData(_data);
     }
   };

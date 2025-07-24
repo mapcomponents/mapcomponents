@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { MlGeoJsonLayer } from "@mapcomponents/react-maplibre";
 import { DataContext } from "./DataContext";
 
 export default function DataLayers() {
   const dataContext = useContext(DataContext);
-
   return (
     <>
       {dataContext.data &&
