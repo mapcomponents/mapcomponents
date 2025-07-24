@@ -20,6 +20,7 @@
 		"moduleResolution": "nodenext",
 		"module": "NodeNext",
 		"types": ["vite/client"],
+		"composite": true,
 		"paths": {
 			"@mapcomponents/deck-gl": ["libs/deck-gl/src/index.ts"],
 			"@mapcomponents/deck-gl/*": ["libs/deck-gl/src/*"],
