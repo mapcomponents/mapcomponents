@@ -31,7 +31,6 @@ import { MapComponentsProvider, MapLibreMap } from '@mapcomponents/react-maplibr
 import { Admin, defaultLightTheme, Resource } from 'react-admin';
 import { dataProvider } from '../management/dataProvider';
 
-
 const meta: Meta = {
 	component: GeospatialShow,
 	title: 'MapComponents/GeospatialShow',
@@ -44,81 +43,79 @@ type Story = StoryObj<typeof meta>;
 export const DefaultReactAdmin: Story = {
 	args: {
 		primary: true,
+		embeddedMap: true,
 	},
-	decorators: [() => (
-		<DataContextProvider>
-			<MapComponentsProvider>
-				<Admin dataProvider={dataProvider} theme={defaultLightTheme}>
-					<Resource
-						name="pois"
-						list={PoiListShow}
-						create={PoiCreate}
-						show={PoiShow}
-					/>
-					<Resource
-						name="Properties"
-						list={PropertyListShow}
-						create={PropertyCreate}
-						show={PropertyShow}
-					/>
-					<Resource
-						name="Routes"
-						list={RouteListShow}
-						create={RouteCreate}
-						show={RouteShow}
-					/>
-				</Admin>
-				<DataLayers />
-			</MapComponentsProvider>
-		</DataContextProvider>
-	)],
+	decorators: [
+		() => (
+			<DataContextProvider>
+				<MapComponentsProvider>
+					<Admin dataProvider={dataProvider} theme={defaultLightTheme}>
+						<Resource name="pois" list={PoiListShow} create={PoiCreate} show={PoiShow} />
+						<Resource
+							name="Properties"
+							list={PropertyListShow}
+							create={PropertyCreate}
+							show={PropertyShow}
+						/>
+						<Resource name="Routes" list={RouteListShow} create={RouteCreate} show={RouteShow} />
+					</Admin>
+					<DataLayers />
+				</MapComponentsProvider>
+			</DataContextProvider>
+		),
+	],
 };
 
 export const ReactAdminWebgis: Story = {
-	decorators: [() => (
-		<DataContextProvider>
-			<MapComponentsProvider>
-				<Admin dataProvider={dataProvider} layout={GisLayout} theme={defaultLightTheme}>
-					<Resource
-						name="pois"
-						list={PoiListShow}
-						edit={PoiEditWebGis}
-						create={PoiCreateWebGis}
-						show={PoiShowWebGis}
+	args: {
+		embeddedMap: false,
+	},
+
+	decorators: [
+		() => (
+			<DataContextProvider>
+				<MapComponentsProvider>
+					<Admin dataProvider={dataProvider} layout={GisLayout} theme={defaultLightTheme}>
+						<Resource
+							name="pois"
+							list={PoiListShow}
+							edit={PoiEditWebGis}
+							create={PoiCreateWebGis}
+							show={PoiShowWebGis}
+						/>
+						<Resource
+							name="Properties"
+							list={PropertyListShow}
+							edit={PropertyEditWebGis}
+							create={PropertyCreateWebGis}
+							show={PropertyShowWebGis}
+						/>
+						<Resource
+							name="Routes"
+							list={RouteListShow}
+							edit={RouteEditWebGis}
+							create={RouteCreateWebGis}
+							show={RouteShowWebGis}
+						/>
+					</Admin>
+					<MapLibreMap
+						mapId="map_1"
+						options={{
+							zoom: 14.5,
+							style: 'https://wms.wheregroup.com/tileserver/style/klokantech-basic.json',
+							center: [7.080590113226776, 50.740545567043426],
+						}}
+						style={{
+							position: 'absolute',
+							top: 0,
+							right: 0,
+							left: 0,
+							bottom: 0,
+						}}
 					/>
-					<Resource
-						name="Properties"
-						list={PropertyListShow}
-						edit={PropertyEditWebGis}
-						create={PropertyCreateWebGis}
-						show={PropertyShowWebGis}
-					/>
-					<Resource
-						name="Routes"
-						list={RouteListShow}
-						edit={RouteEditWebGis}
-						create={RouteCreateWebGis}
-						show={RouteShowWebGis}
-					/>
-				</Admin>
-				<MapLibreMap
-					mapId="map_1"
-					options={{
-						zoom: 14.5,
-						style:
-							'https://wms.wheregroup.com/tileserver/style/klokantech-basic.json',
-						center: [7.080590113226776, 50.740545567043426],
-					}}
-					style={{
-						position: 'absolute',
-						top: 0,
-						right: 0,
-						left: 0,
-						bottom: 0,
-					}}
-				/>
-				<DataLayers />
-			</MapComponentsProvider>
-		</DataContextProvider>
-	)],
+					<DataLayers />
+				</MapComponentsProvider>
+			</DataContextProvider>
+		),
+	],
 };
