@@ -1,0 +1,32 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"baseUrl": "./",
+		"declaration": true,
+		"declarationMap": true,
+		"emitDeclarationOnly": true,
+		"isolatedModules": true,
+		"noEmitOnError": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"strict": true,
+		"skipLibCheck": true,
+		"jsx": "react-jsx",
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"moduleResolution": "nodenext",
+		"module": "NodeNext",
+		"types": ["vite/client"],
+		"composite": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"paths": {
+			"@mapcomponents/deck-gl": ["libs/deck-gl/src/index.ts"],
+			"@mapcomponents/deck-gl/*": ["libs/deck-gl/src/*"],
+			"@mapcomponents/ra-geospatial": ["libs/ra-geospatial/src/index.ts"],
+			"@mapcomponents/ra-geospatial/*": ["libs/ra-geospatial/src/*"]
+		}
+	}
+}
