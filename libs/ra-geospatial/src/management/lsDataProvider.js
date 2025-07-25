@@ -89,11 +89,11 @@ export default function localStorageDataProvider (params) {
       updateLocalStorage(() => {
         const index = data[resource]?.findIndex(
           (record) => record.id === params.id
-        );
+        ) + 1;
         data[resource][index] = {
-          ...data[resource][index],
           ...params.data,
         };
+
       });
       return baseDataProvider.update(resource, params);
     },
