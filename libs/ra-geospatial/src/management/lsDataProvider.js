@@ -87,9 +87,11 @@ export default function localStorageDataProvider (params) {
     // update methods need to persist changes in localStorage
     update: (resource, params) => {
       updateLocalStorage(() => {
-        const index = data[resource]?.findIndex(
-          (record) => record.id === params.id
-        ) + 1;
+				console.log(resource);
+				console.log(data[resource]);
+				console.log(params);
+        const index = data[resource].findIndex(item => item.id === params.data.id);
+				console.log(index);
         data[resource][index] = {
           ...params.data,
         };
