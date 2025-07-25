@@ -38,7 +38,7 @@ export const PropertyEdit = () => (
     <SimpleForm>
       <TextInput source="title" />
       <TextInput source="geom" />
-			<GeospatialShow {...raGeospatialProps} type="polygon" />
+			<GeospatialInput {...raGeospatialProps} type="polygon" />
     </SimpleForm>
   </Edit>
 );
@@ -47,7 +47,7 @@ export const PropertyEditWebGis = () => (
 		<SimpleForm>
 			<TextInput source="title" />
 			<TextInput source="geom" />
-			<GeospatialShow {...raGeospatialWebGisProps} type="polygon" />
+			<GeospatialInput {...raGeospatialWebGisProps} type="polygon" />
 		</SimpleForm>
 	</Edit>
 );

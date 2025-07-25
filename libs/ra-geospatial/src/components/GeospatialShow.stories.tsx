@@ -1,29 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import GeospatialShow from './GeospatialShow';
-import {
-	PoiCreate,
-	PoiCreateWebGis,
-	PoiEditWebGis,
-	PoiListShow,
-	PoiShow,
-	PoiShowWebGis,
-} from '../management/Poi';
-import {
-	PropertyCreate,
-	PropertyCreateWebGis,
-	PropertyEditWebGis,
-	PropertyListShow,
-	PropertyShow,
-	PropertyShowWebGis,
-} from '../management/Property';
-import {
-	RouteCreate,
-	RouteCreateWebGis,
-	RouteEditWebGis,
-	RouteListShow,
-	RouteShow,
-	RouteShowWebGis,
-} from '../management/Route';
+import { PoiListShow, PoiShow, PoiShowWebGis } from '../management/Poi';
+import { PropertyListShow, PropertyShow, PropertyShowWebGis } from '../management/Property';
+import { RouteListShow, RouteShow, RouteShowWebGis } from '../management/Route';
 import DataContextProvider from '../management/DataContext';
 import GisLayout from '../management/GisLayout';
 import DataLayers from '../management/DataLayers';
@@ -34,70 +13,20 @@ import { dataProvider } from '../management/dataProvider';
 const meta: Meta = {
 	component: GeospatialShow,
 	title: 'MapComponents/GeospatialShow',
-	decorators: [],
-} satisfies Meta<typeof GeospatialShow>;
+	decorators: [(Story, context) => {
 
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const DefaultReactAdmin: Story = {
-	args: {
-		primary: true,
-		embeddedMap: true,
-	},
-	decorators: [
-		() => (
-			<DataContextProvider>
-				<MapComponentsProvider>
-					<Admin dataProvider={dataProvider} theme={defaultLightTheme}>
-						<Resource name="pois" list={PoiListShow} create={PoiCreate} show={PoiShow} />
-						<Resource
-							name="Properties"
-							list={PropertyListShow}
-							create={PropertyCreate}
-							show={PropertyShow}
-						/>
-						<Resource name="Routes" list={RouteListShow} create={RouteCreate} show={RouteShow} />
-					</Admin>
-					<DataLayers />
-				</MapComponentsProvider>
-			</DataContextProvider>
-		),
-	],
-};
-
-export const ReactAdminWebgis: Story = {
-	args: {
-		embeddedMap: false,
-	},
-
-	decorators: [
-		() => (
-			<DataContextProvider>
-				<MapComponentsProvider>
-					<Admin dataProvider={dataProvider} layout={GisLayout} theme={defaultLightTheme}>
-						<Resource
-							name="pois"
-							list={PoiListShow}
-							edit={PoiEditWebGis}
-							create={PoiCreateWebGis}
-							show={PoiShowWebGis}
-						/>
-						<Resource
-							name="Properties"
-							list={PropertyListShow}
-							edit={PropertyEditWebGis}
-							create={PropertyCreateWebGis}
-							show={PropertyShowWebGis}
-						/>
-						<Resource
-							name="Routes"
-							list={RouteListShow}
-							edit={RouteEditWebGis}
-							create={RouteCreateWebGis}
-							show={RouteShowWebGis}
-						/>
-					</Admin>
+		return(
+		<DataContextProvider>
+			<MapComponentsProvider>
+				<Admin dataProvider={dataProvider} layout={context.parameters?.layout}
+							 theme={defaultLightTheme} key={context.parameters?.name}>
+					<Resource
+						name={context.parameters.name}
+						list={context.parameters.list}
+						show={(<Story />)}
+					/>
+				</Admin>
+				{!context.args.embeddedMap && (
 					<MapLibreMap
 						mapId="map_1"
 						options={{
@@ -113,9 +42,76 @@ export const ReactAdminWebgis: Story = {
 							bottom: 0,
 						}}
 					/>
-					<DataLayers />
-				</MapComponentsProvider>
-			</DataContextProvider>
-		),
-	],
+				)}
+				<DataLayers />
+			</MapComponentsProvider>
+		</DataContextProvider>
+	)}],
+} satisfies Meta<typeof GeospatialShow>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const PoiShowStory = PoiShow.bind({});
+PoiShowStory.decorators = [];
+PoiShowStory.args = {
+	primary: true,
+	embeddedMap: true,
+};
+PoiShowStory.parameters = {
+	name: 'pois',
+	list: PoiListShow,
+};
+
+export const PropertyShowStory = PropertyShow.bind({});
+PropertyShowStory.args = {
+	primary: true,
+	embeddedMap: true,
+};
+PropertyShowStory.parameters = {
+	name: 'properties',
+	list: PropertyListShow,
+};
+
+export const RouteShowStory = RouteShow.bind({});
+RouteShowStory.args = {
+	primary: true,
+	embeddedMap: true,
+};
+RouteShowStory.parameters = {
+	name: 'routes',
+	list: RouteListShow,
+};
+
+export const PoiShowStoryWebGis = PoiShowWebGis.bind({});
+PoiShowStoryWebGis.args = {
+	primary: true,
+	embeddedMap: false,
+};
+PoiShowStoryWebGis.parameters = {
+	name: 'pois',
+	list: PoiListShow,
+	layout: GisLayout,
+};
+
+export const PropertyShowStoryWebGis = PropertyShowWebGis.bind({});
+PropertyShowStoryWebGis.args = {
+	primary: true,
+	embeddedMap: false,
+};
+PropertyShowStoryWebGis.parameters = {
+	name: 'properties',
+	list: PropertyListShow,
+	layout: GisLayout,
+};
+
+export const RouteShowStoryWebGis = RouteShowWebGis.bind({});
+RouteShowStoryWebGis.args = {
+	primary: true,
+	embeddedMap: false,
+};
+RouteShowStoryWebGis.parameters = {
+	name: 'routes',
+	list: RouteListShow,
+	layout: GisLayout,
 };

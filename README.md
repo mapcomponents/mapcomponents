@@ -60,6 +60,13 @@ To see all available targets to run for a project, run:
   npx nx show project MapComponents
 ```
 
+To run any task from any package, run:
+
+```shell
+	npx nx run {package-name}:{task-name}
+```
+example:
+
 These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
 
 [More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)

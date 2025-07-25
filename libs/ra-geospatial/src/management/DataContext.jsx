@@ -10,6 +10,7 @@ export default function DataContextProvider (props) {
   useEffect(() => {
     refreshData();
     const _eventHandler = () => {
+			console.log("refreshing data from localStorage");
       refreshData();
     };
     window.addEventListener("storageItemUpdated", _eventHandler);

@@ -23,8 +23,7 @@ const AppFrame = styled('div')(({ theme }) => ({
 const ContentWithSidebar = styled('main')(({ theme }) => ({
 	display: 'flex',
 	flexGrow: 1,
-	marginTop: '2em',
-	marginLeft: '-1em',
+	marginTop: '3em',
 }));
 
 const Content = styled('div')(({ theme }) => ({

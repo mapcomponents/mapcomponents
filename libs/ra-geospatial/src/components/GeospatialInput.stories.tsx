@@ -2,117 +2,28 @@ import type { Meta, StoryObj } from '@storybook/react';
 import GeospatialInput from './GeospatialInput';
 import { MapComponentsProvider, MapLibreMap } from '@mapcomponents/react-maplibre';
 import { Admin, defaultLightTheme, Resource } from 'react-admin';
-import {
-	PoiCreate,
-	PoiCreateWebGis,
-	PoiEdit,
-	PoiEditWebGis,
-	PoiListInput,
-	PoiShow,
-	PoiShowWebGis,
-} from '../management/Poi';
-import {
-	PropertyCreate,
-	PropertyCreateWebGis,
-	PropertyEdit,
-	PropertyEditWebGis,
-	PropertyListInput,
-	PropertyShow,
-	PropertyShowWebGis,
-} from '../management/Property';
-import {
-	RouteCreate,
-	RouteCreateWebGis,
-	RouteEdit,
-	RouteEditWebGis,
-	RouteListInput,
-	RouteShow,
-	RouteShowWebGis,
-} from '../management/Route';
+import { PoiEdit, PoiEditWebGis, PoiListInput } from '../management/Poi';
 import DataContextProvider from '../management/DataContext';
-import GisLayout from '../management/GisLayout';
 import DataLayers from '../management/DataLayers';
 import { dataProvider } from '../management/dataProvider';
+import { PropertyEdit, PropertyEditWebGis, PropertyListInput } from '../management/Property';
+import { RouteEdit, RouteEditWebGis, RouteListInput } from '../management/Route';
+import GisLayout from '../management/GisLayout';
 
-const meta: Meta = {
+const storyoptions: Meta = {
 	component: GeospatialInput,
 	title: 'MapComponents/GeospatialInput',
-} satisfies Meta<typeof GeospatialInput>;
-
-export const DefaultReactAdmin: Story = {
-	args: {
-		primary: true,
-		embeddedMap: true,
-	},
-	decorators: [
-		() => (
-			<DataContextProvider>
-				<MapComponentsProvider>
-					<Admin dataProvider={dataProvider} theme={defaultLightTheme}>
-						<Resource
-							name="pois"
-							list={PoiListInput}
-							edit={PoiEdit}
-							create={PoiCreate}
-							show={PoiShow}
-						/>
-						<Resource
-							name="Properties"
-							list={PropertyListInput}
-							edit={PropertyEdit}
-							create={PropertyCreate}
-							show={PropertyShow}
-						/>
-						<Resource
-							name="Routes"
-							list={RouteListInput}
-							edit={RouteEdit}
-							create={RouteCreate}
-							show={RouteShow}
-						/>
-					</Admin>
-					<DataLayers />
-				</MapComponentsProvider>
-			</DataContextProvider>
-		),
-	],
-};
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const ReactAdminWebgis: Story = {
-	args: {
-		embeddedMap: false,
-	},
-
-	decorators: [
-		() => (
-			<DataContextProvider>
-				<MapComponentsProvider>
-					<Admin dataProvider={dataProvider} layout={GisLayout} theme={defaultLightTheme}>
-						<Resource
-							name="pois"
-							list={PoiListInput}
-							edit={PoiEditWebGis}
-							create={PoiCreateWebGis}
-							show={PoiShowWebGis}
-						/>
-						<Resource
-							name="Properties"
-							list={PropertyListInput}
-							edit={PropertyEditWebGis}
-							create={PropertyCreateWebGis}
-							show={PropertyShowWebGis}
-						/>
-						<Resource
-							name="Routes"
-							list={RouteListInput}
-							edit={RouteEditWebGis}
-							create={RouteCreateWebGis}
-							show={RouteShowWebGis}
-						/>
-					</Admin>
+	decorators: [(Story, context) => (
+		<DataContextProvider>
+			<MapComponentsProvider>
+				<Admin dataProvider={dataProvider} layout={context.parameters?.layout} theme={defaultLightTheme}>
+					<Resource
+						name={context.parameters.name}
+						list={context.parameters.list}
+						edit={(<Story />)}
+					/>
+				</Admin>
+				{!context.args.embeddedMap && (
 					<MapLibreMap
 						mapId="map_1"
 						options={{
@@ -128,9 +39,78 @@ export const ReactAdminWebgis: Story = {
 							bottom: 0,
 						}}
 					/>
-					<DataLayers />
-				</MapComponentsProvider>
-			</DataContextProvider>
-		),
-	],
+				)}
+				<DataLayers />
+			</MapComponentsProvider>
+		</DataContextProvider>
+	)],
+} satisfies Meta<typeof GeospatialInput>;
+
+
+export default storyoptions;
+
+type Story = StoryObj<typeof storyoptions>;
+
+export const PoiEditStory = PoiEdit.bind({});
+PoiEditStory.decorators = [];
+PoiEditStory.args = {
+	primary: true,
+	embeddedMap: true,
 };
+PoiEditStory.parameters = {
+	name: 'pois',
+	list: PoiListInput,
+}
+
+export const PropertyEditStory = PropertyEdit.bind({});
+PropertyEditStory.args = {
+	primary: true,
+	embeddedMap: true,
+};
+PropertyEditStory.parameters = {
+	name: 'properties',
+	list: PropertyListInput,
+}
+
+export const RouteEditStory = RouteEdit.bind({});
+RouteEditStory.args = {
+	primary: true,
+	embeddedMap: true,
+};
+RouteEditStory.parameters = {
+	name: 'routes',
+	list: RouteListInput,
+};
+
+export const PoiEditStoryWebGis = PoiEditWebGis.bind({});
+PoiEditStoryWebGis.args = {
+	primary: true,
+	embeddedMap: false,
+};
+PoiEditStoryWebGis.parameters = {
+	name: 'pois',
+	list: PoiListInput,
+	layout: GisLayout,
+}
+
+export const PropertyEditStoryWebGis = PropertyEditWebGis.bind({});
+PropertyEditStoryWebGis.args = {
+	primary: true,
+	embeddedMap: false,
+};
+PropertyEditStoryWebGis.parameters = {
+	name: 'properties',
+	list: PropertyListInput,
+	layout: GisLayout,
+}
+
+export const RouteEditStoryWebGis = RouteEditWebGis.bind({});
+RouteEditStoryWebGis.args = {
+	primary: true,
+	embeddedMap: false,
+};
+RouteEditStoryWebGis.parameters = {
+	name: 'routes',
+	list: RouteListInput,
+	layout: GisLayout,
+}
