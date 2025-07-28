@@ -34,7 +34,7 @@ export const PoiListShow = () => (
 	</List>
 );
 export const PoiEdit = () => (
-  <Edit mutationMode='optimistic'>
+  <Edit mutationMode='optimistic'  resource="pois" id="0">
     <SimpleForm>
       <TextInput source="title" />
       <TextInput source="geom" />
@@ -43,7 +43,7 @@ export const PoiEdit = () => (
   </Edit>
 );
 export const PoiEditWebGis = () => (
-	<Edit mutationMode='optimistic'>
+	<Edit mutationMode='optimistic'  resource="pois" id="0">
 		<SimpleForm>
 			<TextInput source="title" />
 			<TextInput source="geom" />
@@ -71,7 +71,7 @@ export const PoiCreateWebGis = () => (
 );
 
 export const PoiShow = () => (
-  <Show>
+  <Show resource="pois" id="0">
     <SimpleShowLayout>
       <TextField source="id" />
       <TextField source="title" />
@@ -80,7 +80,7 @@ export const PoiShow = () => (
   </Show>
 );
 export const PoiShowWebGis = () => (
-	<Show>
+	<Show resource="pois" id="0">
 		<SimpleShowLayout>
 			<TextField source="id" />
 			<TextField source="title" />

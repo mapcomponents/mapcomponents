@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import GeospatialInput from './GeospatialInput';
 import { MapComponentsProvider, MapLibreMap } from '@mapcomponents/react-maplibre';
-import { Admin, defaultLightTheme, Resource } from 'react-admin';
+import { Admin, CustomRoutes, defaultLightTheme, Resource } from 'react-admin';
 import { PoiEdit, PoiEditWebGis, PoiListInput } from '../management/Poi';
 import DataContextProvider from '../management/DataContext';
 import DataLayers from '../management/DataLayers';
@@ -9,6 +9,7 @@ import { dataProvider } from '../management/dataProvider';
 import { PropertyEdit, PropertyEditWebGis, PropertyListInput } from '../management/Property';
 import { RouteEdit, RouteEditWebGis, RouteListInput } from '../management/Route';
 import GisLayout from '../management/GisLayout';
+import { Route } from 'react-router-dom';
 
 const storyoptions: Meta = {
 	component: GeospatialInput,
@@ -17,11 +18,9 @@ const storyoptions: Meta = {
 		<DataContextProvider>
 			<MapComponentsProvider>
 				<Admin dataProvider={dataProvider} layout={context.parameters?.layout} theme={defaultLightTheme}>
-					<Resource
-						name={context.parameters.name}
-						list={context.parameters.list}
-						edit={(<Story />)}
-					/>
+					<CustomRoutes>
+						<Route path={'/'} element={<Story/>}/>
+					</CustomRoutes>
 				</Admin>
 				{!context.args.embeddedMap && (
 					<MapLibreMap
