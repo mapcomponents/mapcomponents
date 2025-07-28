@@ -52,7 +52,6 @@ export default storyoptions;
 type Story = StoryObj<typeof storyoptions>;
 
 export const PoiEditStory = PoiEdit.bind({});
-PoiEditStory.decorators = [];
 PoiEditStory.args = {
 	primary: true,
 	embeddedMap: true,

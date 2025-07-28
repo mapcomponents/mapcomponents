@@ -4,6 +4,8 @@ import { DataContext } from "./DataContext";
 
 export default function DataLayers() {
   const dataContext = useContext(DataContext);
+
+	console.log(dataContext.data);
   return (
     <>
       {dataContext.data &&

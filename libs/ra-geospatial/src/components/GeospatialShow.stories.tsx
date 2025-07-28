@@ -7,15 +7,14 @@ import DataContextProvider from '../management/DataContext';
 import GisLayout from '../management/GisLayout';
 import DataLayers from '../management/DataLayers';
 import { MapComponentsProvider, MapLibreMap } from '@mapcomponents/react-maplibre';
-import { Admin, defaultLightTheme, Resource } from 'react-admin';
+import { Admin, defaultLightTheme, Resource, useRedirect } from 'react-admin';
 import { dataProvider } from '../management/dataProvider';
+import { useEffect } from 'react';
 
 const meta: Meta = {
 	component: GeospatialShow,
 	title: 'MapComponents/GeospatialShow',
-	decorators: [(Story, context) => {
-
-		return(
+	decorators: [(Story, context) => (
 		<DataContextProvider>
 			<MapComponentsProvider>
 				<Admin dataProvider={dataProvider} layout={context.parameters?.layout}
@@ -46,14 +45,14 @@ const meta: Meta = {
 				<DataLayers />
 			</MapComponentsProvider>
 		</DataContextProvider>
-	)}],
+	)],
+
 } satisfies Meta<typeof GeospatialShow>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const PoiShowStory = PoiShow.bind({});
-PoiShowStory.decorators = [];
 PoiShowStory.args = {
 	primary: true,
 	embeddedMap: true,

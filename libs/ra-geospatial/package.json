@@ -17,6 +17,7 @@
 		"@mui/material": "^7.2.0",
 		"@storybook/react-webpack5": "^9.0.17",
 		"@turf/helpers": "^7.2.0",
+		"@turf/rewind": "^7.2.0",
 		"@turf/turf": "^7.2.0",
 		"@types/geojson": "^7946.0.16",
 		"lodash": "^4.17.21",
