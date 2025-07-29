@@ -1,7 +1,5 @@
 {
-	"compilerOptions": {
-		"baseUrl": "./src",
-	},
+	"include": ["src/**/*"],
 	"references": [
 		{
 			"path": "./tsconfig.lib.json"

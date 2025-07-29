@@ -34,6 +34,15 @@ Keep your dependencies consistent across your monorepo using [Syncpack](https://
   npx syncpack fix-mismatches
 ```
 
+
+## Depcheck can be used to find unused dependencies
+
+go to your package directory and run:
+
+```sh
+  npx depcheck --skip-missing
+```
+
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
 ✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
@@ -62,10 +71,13 @@ To see all available targets to run for a project, run:
 
 To run any task from any package, run:
 
-```shell
-	npx nx run {package-name}:{task-name}
+```sh
+  npx nx run {package-name}:{task-name}
 ```
 example:
+```sh
+  npx nx run deck-gl:storybook
+```
 
 These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
 
@@ -97,8 +109,51 @@ You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx 
 
 [Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 
+## Import from other packages in this monorepo
+
+Instead of using relative paths to import from other packages in this monorepo, you can use the package name as an alias.
+Ensure that nx added the alias correctly to the `tsconfig.base.json` file.
+
+Should look like this:
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@mapcomponents/deck-gl/*": ["libs/deck-gl/src/*"],
+      "@mapcomponents/ra-geospatial/*": ["libs/mapbox/src/*"],
+      "@mapcomponents/{app/lib name}/*": ["path/{app/lib name}/src/*"]
+    }
+  }
+}
+```
+
+Also don't forget to set the type to `module` in the `package.json` of the package you want to import from:
+
+```json
+{
+	"name": "@mapcomponents/{app/lib name}",
+	"version": "0.0.1",
+	"type": "module",
+	"...": "..."
+}
+```
+
+Then you can import from other packages like this:
+
+```ts
+import {component} from '@mapcomponents/{app/lib name}/path/to/component';
+```
+You also need to ensure that the `tsconfig.lib/app.json` file in the current package has the other package included.
+Example:
+```json
+{
+  "rest of the tsconfig.lib/app.json": "...",
+  "include": ["src/**/*", "../path/to/package/src/**/*"]
+}
+```
 ## Add storybook to an existing project
 
-```shell
-  nx g @nrwl/storybook:configuration {app/lib name} --tsConfiguration=true
+```sh
+  npx nx g @nrwl/storybook:configuration {app/lib name} --tsConfiguration=true
 ```
