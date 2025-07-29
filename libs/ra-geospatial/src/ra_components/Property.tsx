@@ -5,7 +5,7 @@ import raGeospatialProps from './raGeospatialProps';
 import raGeospatialWebGisProps from './raGeospatialWebGisProps';
 
 export const PropertyEdit = () => (
-	<Edit mutationMode="optimistic" resource="properties" id="0">
+	<Edit mutationMode="optimistic" resource="properties" id="0" redirect={false}>
 		<SimpleForm>
 			<TextInput source="title" />
 			<TextInput source="geom" />
@@ -14,7 +14,7 @@ export const PropertyEdit = () => (
 	</Edit>
 );
 export const PropertyEditWebGis = () => (
-	<Edit mutationMode="optimistic" resource="properties" id="0">
+	<Edit mutationMode="optimistic" resource="properties" id="0" redirect={false}>
 		<SimpleForm>
 			<TextInput source="title" />
 			<TextInput source="geom" />

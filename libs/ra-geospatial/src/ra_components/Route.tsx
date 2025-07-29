@@ -5,7 +5,7 @@ import raGeospatialProps from './raGeospatialProps';
 import raGeospatialWebGisProps from './raGeospatialWebGisProps';
 
 export const RouteEdit = () => (
-	<Edit mutationMode="optimistic" resource="routes" id="0">
+	<Edit mutationMode="optimistic" resource="routes" id="0" redirect={false}>
 		<SimpleForm>
 			<TextInput source="title" />
 			<TextInput source="geom" />
@@ -14,7 +14,7 @@ export const RouteEdit = () => (
 	</Edit>
 );
 export const RouteEditWebGis = () => (
-	<Edit mutationMode="optimistic" resource="routes" id="0">
+	<Edit mutationMode="optimistic" resource="routes" id="0" redirect={false}>
 		<SimpleForm>
 			<TextInput source="title" />
 			<TextInput source="geom" />
