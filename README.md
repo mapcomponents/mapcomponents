@@ -74,10 +74,13 @@ To run any task from any package, run:
 ```sh
   npx nx run {package-name}:{task-name}
 ```
-example:
+
+To run all tasks in parallel, use:
+
 ```sh
-  npx nx run deck-gl:storybook
+  npx nx run-many --target={task-name} --all
 ```
+
 
 These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
 
@@ -92,22 +95,31 @@ Use the plugin's generator to create new projects.
 To generate a new application, use:
 
 ```sh
-  npx nx g @nx/react:app apps/my-app --bundler=vite
+  npx nx g @nx/react:application --directory=apps/my-app --name=my-app --no-interactive --e2eTestRunner=none
+
 ```
 
 To generate a new library, use:
 
 ```sh
-  npx nx g @nx/react:lib libs/my-lib --bundler=vite
+  npx nx g @nx/react:library --directory=libs/my-lib --bundler=vite --name=my-lib --importPath=@mapcomponents/my-lib --no-interactive
+
 ```
+
+Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to use the generator form.
 
 <mark> Nx uses project.json for its own configuration—keep its name simple, like my-app.
 For publishing, you need a package.json with a full package name, e.g. @mapcomponents/my-app.
 Both files are needed, but serve different purposes. </mark>
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+### Things to know lib generation
+This is a hint of things you should change to integrate your library into the monorepo correctly
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+<mark>If you use the command as shown at the upper section ^, then the generation will be successful</mark>
+
+- go to your `tsconfig.base.json` (in your root directory) under the property `"paths"` and change `"@mapcomponents/my-lib": ["libs/my-lib/src/index.ts"],` -> to `"@mapcomponents/my-lib/*": ["libs/my-lib/src/*"],`
+- go to your `package.json` in your new library and set the `main` property to `src/index.ts`
+
 
 ## Import from other packages in this monorepo
 
@@ -155,5 +167,31 @@ Example:
 ## Add storybook to an existing project
 
 ```sh
-  npx nx g @nrwl/storybook:configuration {app/lib name} --tsConfiguration=true
+  npx nx g @nx/react:storybook-configuration --project=my-lib --generateStories=false --interactionTests=false --no-interactive
+```
+
+#### Storybook config hint:
+- Remove file `tsconfig.storybook.json`
+- Go to the tsconfig.json and remove under `references` the entry to `tsconfig.storybook.json`
+```json
+{
+  "path": "./tsconfig.storybook.json"
+}
+```
+
+## Add cypress component testing to an existing project
+Before running the command. Got to the project.json and add the following to the `"targets"` parameter
+
+```json
+{
+  "build": {
+    "executor": "@nx/vite:build",
+    "options": {
+      "outputPath": "dist/libs/my-lib"
+    }
+  }
+}
+```
+```sh
+  npx nx g @nx/react:cypress-component-configuration --project=my-lib --build-target=my-lib:build --no-interactive
 ```
