@@ -12,7 +12,6 @@
 			"!{projectRoot}/cypress/**/*",
 			"!{projectRoot}/**/*.cy.[jt]s?(x)",
 			"!{projectRoot}/cypress.config.[jt]s",
-			"!{projectRoot}/jest.config.[jt]s",
 			"!{projectRoot}/test-setup.[jt]s",
 			"!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
 			"!{projectRoot}/.storybook/**/*",
@@ -70,12 +69,6 @@
 			}
 		},
 		{
-			"plugin": "@nx/jest/plugin",
-			"options": {
-				"targetName": "test"
-			}
-		},
-		{
 			"plugin": "@nx/storybook/plugin",
 			"options": {
 				"serveStorybookTargetName": "storybook",
@@ -109,8 +102,7 @@
 			},
 			"library": {
 				"style": "css",
-				"linter": "eslint",
-				"unitTestRunner": "jest"
+				"linter": "eslint"
 			}
 		}
 	}
