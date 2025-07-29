@@ -30,9 +30,7 @@ export default function DataContextProvider(props) {
 				});
 				return {
 					name: el,
-					featureCollection: features?.[0]
-						? featureCollection(features)
-						: undefined,
+					featureCollection: features?.[0] ? featureCollection(features) : undefined,
 				};
 			});
 
@@ -44,27 +42,25 @@ export default function DataContextProvider(props) {
 				features.push({
 					name: counter === 0 ? 'pois' : counter === 1 ? 'properties' : 'routes',
 					featureCollection: {
-						type: 'FeatureCollection', features: geomArray.map((geom) => {
+						type: 'FeatureCollection',
+						features: geomArray.map((geom) => {
 							return {
 								type: 'Feature',
 								properties: {},
 								geometry: wellknownParse(geom.geom),
-							}
-						},
-					)}});
+							};
+						}),
+					},
+				});
 				counter++;
-			})
-				setData(features);
-			}
+			});
+			setData(features);
 		}
-		;
-
-		const value = {
-			data,
-			refreshData,
-		};
-
-		return (
-			<DataContext.Provider value={value}>{props.children}</DataContext.Provider>
-		);
 	};
+	const value = {
+		data,
+		refreshData,
+	};
+
+	return <DataContext.Provider value={value}>{props.children}</DataContext.Provider>;
+}

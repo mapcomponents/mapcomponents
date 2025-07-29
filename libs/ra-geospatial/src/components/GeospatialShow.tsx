@@ -20,6 +20,3 @@ GeospatialShow.defaultProps = {
 
 export default GeospatialShow;
 
-//todo: ist diese Komponente vergleichbar mit dieser Demo https://mapcomponents.github.io/react-admin-demo-apps/webgis-demo/#/pois
-//       oder was genau ist die Funktionalität dieser Komponente?
-

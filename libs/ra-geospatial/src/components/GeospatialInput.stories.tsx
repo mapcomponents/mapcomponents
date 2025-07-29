@@ -1,66 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import GeospatialInput from './GeospatialInput';
-import { MapComponentsProvider, MapLibreMap } from '@mapcomponents/react-maplibre';
-import { Admin, CustomRoutes, defaultLightTheme, Resource } from 'react-admin';
-import { PoiCreate, PoiEdit, PoiEditWebGis, PoiListInput } from '../management/Poi';
-import {
-	PropertyEdit,
-	PropertyCreate,
-	PropertyEditWebGis,
-	PropertyListInput,
-} from '../management/Property';
-import { RouteEdit, RouteCreate, RouteEditWebGis, RouteListInput } from '../management/Route';
-import DataContextProvider from '../management/DataContext';
-import DataLayers from '../management/DataLayers';
-import { dataProvider } from '../management/dataProvider';
-import GisLayout from '../management/GisLayout';
-import { Route } from 'react-router-dom';
+import { ReactAdminDefaultDecorator } from '../decorators/ReactAdminDefaultDecorator';
+import { PoiEdit, PoiEditWebGis } from '../ra_components/Poi';
+import { PropertyEdit, PropertyEditWebGis } from '../ra_components/Property';
+import { RouteEdit, RouteEditWebGis } from '../ra_components/Route';
+import GisLayout from '../layout/GisLayout';
 
-const storyoptions: Meta = {
+const meta = {
 	component: GeospatialInput,
 	title: 'MapComponents/GeospatialInput',
-	decorators: [
-		(Story, context) => {
-			return (
-				<DataContextProvider>
-					<MapComponentsProvider>
-						<Admin
-							dataProvider={dataProvider}
-							layout={context.parameters?.layout}
-							theme={defaultLightTheme}
-						>
-							<CustomRoutes>
-								<Route path={'/'} element={<Story />} />
-							</CustomRoutes>
-						</Admin>
-						{!context.args.embeddedMap && (
-							<MapLibreMap
-								mapId="map_1"
-								options={{
-									zoom: 14.5,
-									style: 'https://wms.wheregroup.com/tileserver/style/klokantech-basic.json',
-									center: [7.080590113226776, 50.740545567043426],
-								}}
-								style={{
-									position: 'absolute',
-									top: 0,
-									right: 0,
-									left: 0,
-									bottom: 0,
-								}}
-							/>
-						)}
-						<DataLayers />
-					</MapComponentsProvider>
-				</DataContextProvider>
-			);
-		},
-	],
+	decorators: [ReactAdminDefaultDecorator],
 } satisfies Meta<typeof GeospatialInput>;
 
-export default storyoptions;
-
-type Story = StoryObj<typeof storyoptions>;
+export default meta;
 
 export const PoisEdit = PoiEdit.bind({});
 PoisEdit.args = {
@@ -69,7 +21,6 @@ PoisEdit.args = {
 };
 PoisEdit.parameters = {
 	name: 'pois',
-	list: PoiListInput,
 };
 
 export const PropertiesEdit = PropertyEdit.bind({});
@@ -79,7 +30,6 @@ PropertiesEdit.args = {
 };
 PropertiesEdit.parameters = {
 	name: 'properties',
-	list: PropertyListInput,
 };
 
 export const RoutesEdit = RouteEdit.bind({});
@@ -89,7 +39,6 @@ RoutesEdit.args = {
 };
 RoutesEdit.parameters = {
 	name: 'routes',
-	list: RouteListInput,
 };
 
 export const PoisEditGIS = PoiEditWebGis.bind({});
@@ -99,7 +48,6 @@ PoisEditGIS.args = {
 };
 PoisEditGIS.parameters = {
 	name: 'pois',
-	list: PoiListInput,
 	layout: GisLayout,
 };
 
@@ -110,7 +58,6 @@ PropertiesEditGIS.args = {
 };
 PropertiesEditGIS.parameters = {
 	name: 'properties',
-	list: PropertyListInput,
 	layout: GisLayout,
 };
 
@@ -121,6 +68,5 @@ RoutesEditGIS.args = {
 };
 RoutesEditGIS.parameters = {
 	name: 'routes',
-	list: RouteListInput,
 	layout: GisLayout,
 };
