@@ -9,7 +9,7 @@
 			"vite/client"
 		]
 	},
-	"include": ["src/**/*",	"../ra-geospatial/src/**/*"],
+	"include": ["src/**/*"],
 	"exclude": [
 		"**/*.spec.ts",
 		"**/*.test.ts",
