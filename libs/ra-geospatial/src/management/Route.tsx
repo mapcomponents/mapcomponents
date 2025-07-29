@@ -36,7 +36,7 @@ export const RouteListShow = () => (
 );
 
 export const RouteEdit = () => (
-	<Edit mutationMode="optimistic">
+	<Edit mutationMode="optimistic" resource="routes" id="0">
 		<SimpleForm>
 			<TextInput source="title" />
 			<GeospatialInput {...raGeospatialProps} type="line" />
@@ -44,7 +44,7 @@ export const RouteEdit = () => (
 	</Edit>
 );
 export const RouteEditWebGis = () => (
-	<Edit mutationMode="optimistic">
+	<Edit mutationMode="optimistic" resource="routes" id="0">
 		<SimpleForm>
 			<TextInput source="title" />
 			<GeospatialInput {...raGeospatialWebGisProps} type="line" />
@@ -69,7 +69,7 @@ export const RouteCreateWebGis = () => (
 );
 
 export const RouteShow = () => (
-	<Show>
+	<Show resource="routes" id="0">
 		<SimpleShowLayout>
 			<TextField source="title" />
 			<GeospatialShow {...raGeospatialProps} />
@@ -78,7 +78,7 @@ export const RouteShow = () => (
 	</Show>
 );
 export const RouteShowWebGis = () => (
-	<Show>
+	<Show resource="routes" id="0">
 		<SimpleShowLayout>
 			<TextField source="title" />
 			<GeospatialShow {...raGeospatialWebGisProps} />

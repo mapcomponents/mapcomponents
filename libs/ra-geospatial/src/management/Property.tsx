@@ -34,16 +34,16 @@ export const PropertyListShow = () => (
 	</List>
 );
 export const PropertyEdit = () => (
-  <Edit mutationMode='optimistic'>
-    <SimpleForm>
-      <TextInput source="title" />
-      <TextInput source="geom" />
+	<Edit mutationMode="optimistic" resource="properties" id="0">
+		<SimpleForm>
+			<TextInput source="title" />
+			<TextInput source="geom" />
 			<GeospatialInput {...raGeospatialProps} type="polygon" />
-    </SimpleForm>
-  </Edit>
+		</SimpleForm>
+	</Edit>
 );
 export const PropertyEditWebGis = () => (
-	<Edit mutationMode='optimistic'>
+	<Edit mutationMode="optimistic" resource="properties" id="0">
 		<SimpleForm>
 			<TextInput source="title" />
 			<TextInput source="geom" />
@@ -71,20 +71,20 @@ export const PropertyCreateWebGis = () => (
 );
 
 export const PropertyShow = () => (
-  <Show>
-    <SimpleShowLayout>
-      <TextField source="id" />
-      <TextField source="title" />
-			<GeospatialShow  {...raGeospatialProps} />
-    </SimpleShowLayout>
-  </Show>
-);
-export const PropertyShowWebGis = () => (
-	<Show>
+	<Show resource="properties" id="0">
 		<SimpleShowLayout>
 			<TextField source="id" />
 			<TextField source="title" />
-			<GeospatialShow  {...raGeospatialWebGisProps} />
+			<GeospatialShow {...raGeospatialProps} />
+		</SimpleShowLayout>
+	</Show>
+);
+export const PropertyShowWebGis = () => (
+	<Show resource="properties" id="0">
+		<SimpleShowLayout>
+			<TextField source="id" />
+			<TextField source="title" />
+			<GeospatialShow {...raGeospatialWebGisProps} />
 		</SimpleShowLayout>
 	</Show>
 );

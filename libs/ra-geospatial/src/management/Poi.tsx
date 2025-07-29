@@ -34,50 +34,50 @@ export const PoiListShow = () => (
 	</List>
 );
 export const PoiEdit = () => (
-  <Edit mutationMode='optimistic'  resource="pois" id="0">
-    <SimpleForm>
-      <TextInput source="title" />
-      <TextInput source="geom" />
-      <GeospatialInput {...raGeospatialProps} type="point"/>
-    </SimpleForm>
-  </Edit>
-);
-export const PoiEditWebGis = () => (
-	<Edit mutationMode='optimistic'  resource="pois" id="0">
+	<Edit mutationMode="optimistic" resource="pois" id="0">
 		<SimpleForm>
 			<TextInput source="title" />
 			<TextInput source="geom" />
-			<GeospatialInput {...raGeospatialWebGisProps} type="point"/>
+			<GeospatialInput {...raGeospatialProps} type="point" />
+		</SimpleForm>
+	</Edit>
+);
+export const PoiEditWebGis = () => (
+	<Edit mutationMode="optimistic" resource="pois" id="0">
+		<SimpleForm>
+			<TextInput source="title" />
+			<TextInput source="geom" />
+			<GeospatialInput {...raGeospatialWebGisProps} type="point" />
 		</SimpleForm>
 	</Edit>
 );
 export const PoiCreate = () => (
-  <Create>
-    <SimpleForm>
-      <TextInput source="title" />
-      <TextInput source="geom" />
-			<GeospatialInput {...raGeospatialProps} type='point' />
-    </SimpleForm>
-  </Create>
+	<Create>
+		<SimpleForm>
+			<TextInput source="title" />
+			<TextInput source="geom" />
+			<GeospatialInput {...raGeospatialWebGisProps} type="point" />
+		</SimpleForm>
+	</Create>
 );
 export const PoiCreateWebGis = () => (
 	<Create>
 		<SimpleForm>
 			<TextInput source="title" />
 			<TextInput source="geom" />
-			<GeospatialInput {...raGeospatialProps} type='point' />
+			<GeospatialInput {...raGeospatialProps} type="point" />
 		</SimpleForm>
 	</Create>
 );
 
 export const PoiShow = () => (
-  <Show resource="pois" id="0">
-    <SimpleShowLayout>
-      <TextField source="id" />
-      <TextField source="title" />
-      <GeospatialShow {...raGeospatialProps} />
-    </SimpleShowLayout>
-  </Show>
+	<Show resource="pois" id="0">
+		<SimpleShowLayout>
+			<TextField source="id" />
+			<TextField source="title" />
+			<GeospatialShow {...raGeospatialProps} />
+		</SimpleShowLayout>
+	</Show>
 );
 export const PoiShowWebGis = () => (
 	<Show resource="pois" id="0">

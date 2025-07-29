@@ -20,104 +20,106 @@ const StoryRedirect = () => {
 const meta: Meta = {
 	component: GeospatialShow,
 	title: 'MapComponents/GeospatialShow',
-	decorators: [(Story, context) => {
-
-
-
-		return (
-			<DataContextProvider>
-				<MapComponentsProvider>
-					<Admin dataProvider={dataProvider} layout={context.parameters?.layout}
-								 theme={defaultLightTheme} key={context.parameters?.name}>
-						<CustomRoutes>
-							<Route path={'/'} element={<Story/>}/>
-						</CustomRoutes>
-					</Admin>
-					{!context.args.embeddedMap && (
-						<MapLibreMap
-							mapId="map_1"
-							options={{
-								zoom: 14.5,
-								style: 'https://wms.wheregroup.com/tileserver/style/klokantech-basic.json',
-								center: [7.080590113226776, 50.740545567043426],
-							}}
-							style={{
-								position: 'absolute',
-								top: 0,
-								right: 0,
-								left: 0,
-								bottom: 0,
-							}}
-						/>
-					)}
-				</MapComponentsProvider>
-			</DataContextProvider>
-		);
-	}],
+	decorators: [
+		(Story, context) => {
+			return (
+				<DataContextProvider>
+					<MapComponentsProvider>
+						<Admin
+							dataProvider={dataProvider}
+							layout={context.parameters?.layout}
+							theme={defaultLightTheme}
+							key={context.parameters?.name}
+						>
+							<CustomRoutes>
+								<Route path={'/'} element={<Story />} />
+							</CustomRoutes>
+						</Admin>
+						{!context.args.embeddedMap && (
+							<MapLibreMap
+								mapId="map_1"
+								options={{
+									zoom: 14.5,
+									style: 'https://wms.wheregroup.com/tileserver/style/klokantech-basic.json',
+									center: [7.080590113226776, 50.740545567043426],
+								}}
+								style={{
+									position: 'absolute',
+									top: 0,
+									right: 0,
+									left: 0,
+									bottom: 0,
+								}}
+							/>
+						)}
+					</MapComponentsProvider>
+				</DataContextProvider>
+			);
+		},
+	],
 } satisfies Meta<typeof GeospatialShow>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const PoiShowStory = PoiShow.bind({});
-PoiShowStory.args = {
+export const PoisShow = PoiShow.bind({});
+PoisShow.args = {
 	primary: true,
 	embeddedMap: true,
 };
-PoiShowStory.parameters = {
+PoisShow.parameters = {
 	name: 'pois',
 	list: PoiListShow,
-
 };
 
-export const PropertyShowStory = PropertyShow.bind({});
-PropertyShowStory.args = {
+export const PropertiesShow = PropertyShow.bind({});
+PropertiesShow.args = {
 	primary: true,
 	embeddedMap: true,
 };
-PropertyShowStory.parameters = {
+PropertiesShow.parameters = {
 	name: 'properties',
 	list: PropertyListShow,
 };
 
-export const RouteShowStory = RouteShow.bind({});
-RouteShowStory.args = {
+export const RoutesShow = RouteShow.bind({});
+RoutesShow.args = {
 	primary: true,
 	embeddedMap: true,
 };
-RouteShowStory.parameters = {
+RoutesShow.parameters = {
 	name: 'routes',
 	list: RouteListShow,
 };
 
-export const PoiShowStoryWebGis = PoiShowWebGis.bind({});
-PoiShowStoryWebGis.args = {
+export const PoisShowGIS = PoiShowWebGis.bind({});
+PoisShowGIS.args = {
 	primary: true,
 	embeddedMap: false,
 };
-PoiShowStoryWebGis.parameters = {
+PoisShowGIS.parameters = {
 	name: 'pois',
 	list: PoiListShow,
 	layout: GisLayout,
 };
 
-export const PropertyShowStoryWebGis = PropertyShowWebGis.bind({});
-PropertyShowStoryWebGis.args = {
+export const PropertiesShowGIS = PropertyShowWebGis.bind({});
+PropertiesShowGIS.args = {
 	primary: true,
 	embeddedMap: false,
 };
-PropertyShowStoryWebGis.parameters = {
+PropertiesShowGIS.parameters = {
 	name: 'properties',
 	list: PropertyListShow,
 	layout: GisLayout,
 };
 
-export const RouteShowStoryWebGis = RouteShowWebGis.bind({});
-RouteShowStoryWebGis.args = {
+export const RoutesShowGIS = RouteShowWebGis.bind({});
+RoutesShowGIS.args = {
 	primary: true,
 	embeddedMap: false,
 };
-RouteShowStoryWebGis.parameters = {
+RoutesShowGIS.parameters = {
 	name: 'routes',
 	list: RouteListShow,
 	layout: GisLayout,
