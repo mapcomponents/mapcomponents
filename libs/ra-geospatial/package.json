@@ -21,8 +21,8 @@
 		"@types/geojson": "^7946.0.16",
 		"lodash": "^4.17.21",
 		"maplibre-gl": "^5.6.1",
-		"ra-data-fakerest": "^5.9.2",
-		"react-admin": "^5.9.1",
+		"ra-data-fakerest": "^5.10.0",
+		"react-admin": "^5.10.0",
 		"wellknown": "^0.5.0"
 	}
 }
