@@ -19,7 +19,6 @@
 		],
 		"sharedGlobals": []
 	},
-	"neverConnectToCloud": true,
 	"plugins": [
 		{
 			"plugin": "@nx/js/typescript",
