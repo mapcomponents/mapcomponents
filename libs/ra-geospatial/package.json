@@ -1,6 +1,6 @@
 {
 	"name": "@mapcomponents/ra-geospatial",
-	"version": "0.0.2",
+	"version": "1.0.0",
 	"main": "src/index.ts",
 	"types": "./index.d.ts",
 	"type": "module",
