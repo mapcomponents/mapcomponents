@@ -22,7 +22,7 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
       - run: npx nx run-many -t build --all
-      - run: npx nx run-many -t test:noninteractive --all --skip-nx-cache || npx nx run-many -t test --all --skip-nx-cache || true
+      - run: npx nx run-many -t component-test --all --skip-nx-cache
       - run: npx nx run-many -t nx-release-publish --all --skip-nx-cache
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
