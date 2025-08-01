@@ -54,19 +54,19 @@ go to your package directory and run:
 To run the dev server for your app, use:
 
 ```sh
-  npx nx serve MapComponents
+  npx nx serve {package-name}
 ```
 
 To create a production bundle:
 
 ```sh
-  npx nx build MapComponents
+  npx nx build {package-name}
 ```
 
 To see all available targets to run for a project, run:
 
 ```sh
-  npx nx show project MapComponents
+  npx nx show project {package-name}
 ```
 
 To run any task from any package, run:
@@ -112,15 +112,6 @@ Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?
 For publishing, you need a package.json with a full package name, e.g. @mapcomponents/my-app.
 Both files are needed, but serve different purposes. </mark>
 
-### Things to know lib generation
-This is a hint of things you should change to integrate your library into the monorepo correctly
-
-<mark>If you use the command as shown at the upper section ^, then the generation will be successful</mark>
-
-- go to your `tsconfig.base.json` (in your root directory) under the property `"paths"` and change `"@mapcomponents/my-lib": ["libs/my-lib/src/index.ts"],` -> to `"@mapcomponents/my-lib/*": ["libs/my-lib/src/*"],`
-- go to your `package.json` in your new library and set the `main` property to `src/index.ts`
-
-
 ## Import from other packages in this monorepo
 
 Instead of using relative paths to import from other packages in this monorepo, you can use the package name as an alias.
@@ -132,9 +123,9 @@ Should look like this:
 {
   "compilerOptions": {
     "paths": {
-      "@mapcomponents/deck-gl/*": ["libs/deck-gl/src/*"],
-      "@mapcomponents/ra-geospatial/*": ["libs/mapbox/src/*"],
-      "@mapcomponents/{app/lib name}/*": ["path/{app/lib name}/src/*"]
+      "@mapcomponents/deck-gl": ["libs/deck-gl/src/index.ts"],
+      "@mapcomponents/ra-geospatial": ["libs/ra-geospatial/src/index.ts"],
+      "@mapcomponents/{app/lib name}": ["path/{app/lib name}/src/index.ts"]
     }
   }
 }
@@ -154,7 +145,7 @@ Also don't forget to set the type to `module` in the `package.json` of the packa
 Then you can import from other packages like this:
 
 ```ts
-import {component} from '@mapcomponents/{app/lib name}/path/to/component';
+import {component} from '@mapcomponents/{app/lib name}';
 ```
 You also need to ensure that the `tsconfig.lib/app.json` file in the current package has the other package included.
 Example:
@@ -170,24 +161,17 @@ Example:
   npx nx g @nx/react:storybook-configuration --project=my-lib --generateStories=false --interactionTests=false --no-interactive
 ```
 
-#### Storybook config hint:
-- Remove file `tsconfig.storybook.json`
-- Go to the tsconfig.json and remove under `references` the entry to `tsconfig.storybook.json`
-```json
-{
-  "path": "./tsconfig.storybook.json"
-}
-```
-
 ## Add cypress component testing to an existing project
-Before running the command. Got to the project.json and add the following to the `"targets"` parameter
+Before running the command. Got to the `project.json` and add the following to the `"targets"` parameter
 
 ```json
 {
-  "build": {
-    "executor": "@nx/vite:build",
-    "options": {
-      "outputPath": "dist/libs/my-lib"
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "options": {
+        "outputPath": "dist/libs/my-lib"
+      }
     }
   }
 }
