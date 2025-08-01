@@ -1,23 +1,5 @@
 # MapComponents monorepo
 
-### create a new version
-
-Using lerna for this as there is no nx feature for simultaneous versioning of multiple packages.
-
-```shell
-  npx lerna version patch --force-publish
-```
-
-```shell
-  npx lerna version minor --force-publish
-```
-
-```shell
-  npx lerna version major --force-publish
-```
-
-### Standard NX readme - TODO replace with project specific info
-
 ## Sync `package.json` files with Syncpack
 
 Keep your dependencies consistent across your monorepo using [Syncpack](https://github.com/JamieMason/syncpack):
@@ -178,4 +160,11 @@ Before running the command. Got to the `project.json` and add the following to t
 ```
 ```sh
   npx nx g @nx/react:cypress-component-configuration --project=my-lib --build-target=my-lib:build --no-interactive
+```
+
+## Increase version and pulish
+
+<mark>Make sure not to forget this flag</mark> `--skip-publish`
+```sh
+  npx nx release --skip-publish
 ```
