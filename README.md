@@ -168,3 +168,4 @@ Before running the command. Got to the `project.json` and add the following to t
 ```sh
   npx nx release --skip-publish
 ```
+<mark>Make sure to replace "This was a version bump only, there were no code changes." with the related changes in the CHANGELOG.md</mark>
