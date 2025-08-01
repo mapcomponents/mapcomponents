@@ -1,3 +1,0 @@
-Testing setup: Jest & Cypress
-
-Storybook: Setup
