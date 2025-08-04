@@ -22,14 +22,13 @@ jobs:
 
       - name: Collect Storybook builds 📦
         run: |
-          mkdir -p docs-build
           for dir in apps libs; do
             echo "Collecting Storybook builds from $dir"
             for subdir in $dir/*/; do
               name=$(basename "$subdir")
               if [ -d "$subdir/storybook-static" ]; then
                 echo "Processing $subdir"
-                mv "$subdir/storybook-static" "docs-build/$name"
+                mv "$subdir/storybook-static" "./$name"
               fi
             done
           done
