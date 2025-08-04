@@ -20,6 +20,20 @@ jobs:
           npx nx run-many -t build-catalogue-meta --all
           npx nx run-many -t build-storybook --all
 
+      - name: Collect Storybook builds 📦
+        run: |
+          mkdir -p docs
+          for dir in apps libs; do
+            echo "Collecting Storybook builds from $dir"
+            for subdir in $dir/*/; do
+              name=$(basename "$subdir")
+              if [ -d "$subdir/storybook-static" ]; then
+                echo "Processing $subdir"
+                mv "$subdir/storybook-static" "docs/$name"
+              fi
+            done
+          done
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
