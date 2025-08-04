@@ -4,5 +4,11 @@
 	"sourceRoot": "libs/ra-geospatial/src",
 	"projectType": "library",
 	"tags": [],
-	"targets": {}
+	"targets": {
+		"storybook": {
+			"options": {
+				"port": 4402
+			}
+		}
+	}
 }

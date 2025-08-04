@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import GeospatialInput from './GeospatialInput';
 import { ReactAdminDefaultDecorator } from '../decorators/ReactAdminDefaultDecorator';
 import { PoiEdit, PoiEditWebGis } from '../ra_components/Poi';
