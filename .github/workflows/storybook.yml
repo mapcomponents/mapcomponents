@@ -29,7 +29,7 @@ jobs:
               name=$(basename "$subdir")
               if [ -d "$subdir/storybook-static" ]; then
                 echo "Processing $subdir"
-                mv "$subdir/storybook-static" "docs/$name"
+                mv "$subdir/storybook-static" "docs-build/$name"
               fi
             done
           done
