@@ -22,7 +22,7 @@ jobs:
 
       - name: Collect Storybook builds 📦
         run: |
-          mkdir -p docs
+          mkdir -p docs-build
           for dir in apps libs; do
             echo "Collecting Storybook builds from $dir"
             for subdir in $dir/*/; do
