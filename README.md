@@ -142,7 +142,7 @@ Example:
 ```sh
   npx nx g @nx/react:storybook-configuration --project=my-lib --generateStories=false --interactionTests=false --no-interactive
 ```
-
+### Add Storybook to [storybook-composition](https://nx.dev/technologies/test-tools/storybook/recipes/storybook-composition-setup) 
 ## Add cypress component testing to an existing project
 Before running the command. Got to the `project.json` and add the following to the `"targets"` parameter
 

@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import GeospatialShow from './GeospatialShow';
 import { ReactAdminDefaultDecorator } from '../decorators/ReactAdminDefaultDecorator';
 import { PoiShow, PoiShowWebGis } from '../ra_components/Poi';

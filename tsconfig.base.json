@@ -26,7 +26,7 @@
 		"target": "ES2020",
 		"paths": {
 			"@mapcomponents/deck-gl": ["libs/deck-gl/src/index.ts"],
-			"@mapcomponents/ra-geospatial": ["./libs/ra-geospatial/src/index.ts"],
+			"@mapcomponents/ra-geospatial": ["./libs/ra-geospatial/src/index.ts"]
 		}
 	}
 }

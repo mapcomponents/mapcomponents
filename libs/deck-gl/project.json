@@ -3,5 +3,11 @@
 	"projectType": "library",
 	"root": "libs/deck-gl",
 	"sourceRoot": "libs/deck-gl/src",
-	"targets": {}
+	"targets": {
+		"storybook": {
+			"options": {
+				"port": 4401
+			}
+		}
+	}
 }
