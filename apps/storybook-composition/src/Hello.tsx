@@ -5,7 +5,7 @@ export default function Hello() {
 				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'center',
-				height: '100vh',
+				height: '90vh',
 			}}
 		>
 			<svg xmlns="http://www.w3.org/2000/svg" width="961.37" height="165.654"
