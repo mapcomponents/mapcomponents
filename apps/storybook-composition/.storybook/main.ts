@@ -28,13 +28,9 @@ const config: StorybookConfig = {
 					title: 'Ra Geospatial',
 					url: 'http://localhost:4402',
 				},
-				'storybook-website-storybook': {
-					title: 'The Storybook of the Storybook website',
-					url: 'https://master--5ccbc373887ca40020446347.chromatic.com/',
-				},
-				'mapcomponents': {
-					title: 'The Storybook of the Storybook website',
-					url: 'https://mapcomponents.github.io/react-map-components-maplibre/?path=/docs/core-maplibremap--docs',
+				'react-maplibre': {
+					title: 'React MapLibreMap',
+					url: 'https://mapcomponents.github.io/react-map-components-maplibre',
 				},
 			};
 		}
