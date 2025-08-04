@@ -35,13 +35,17 @@ const config: StorybookConfig = {
 			};
 		}
 		return {
-			react: {
+			'deck-gl': {
 				title: 'Deck.gl',
-				url: 'https://your-production-react-storybook-url', //todo: Replace after init
+				url: 'https://mapcomponents.github.io/mapcomponents/deck-gl/',
 			},
 			'ra-geospatial': {
-				title: 'Ra Geospatial',
-				url: 'https://your-production-angular-storybook-url', //todo: Replace after init
+				title: 'React Admin Geospatial',
+				url: 'https://mapcomponents.github.io/mapcomponents/ra-geospatial/',
+			},
+			'react-maplibre': {
+				title: 'React MapLibreMap',
+				url: 'https://mapcomponents.github.io/react-map-components-maplibre/',
 			},
 		};
 	},
