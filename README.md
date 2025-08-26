@@ -137,12 +137,68 @@ Example:
   "include": ["src/**/*", "../path/to/package/src/**/*"]
 }
 ```
-## Add storybook to an existing project
+## Add Storybook to an existing project
 
 ```sh
   npx nx g @nx/react:storybook-configuration --project=my-lib --generateStories=false --interactionTests=false --no-interactive
 ```
 ### Add Storybook to [storybook-composition](https://nx.dev/technologies/test-tools/storybook/recipes/storybook-composition-setup) 
+
+## Storybook Composition: How to use it
+
+Add a `refs` object to the `.storybook/main.ts` file from your host Storybook and add the links for the composed Storybooks.  
+You can adjust the composition based on the current development environment (e.g., development, production) as in the following example:
+
+```ts
+{
+  refs: (config, { configType }) => {
+		if (configType === 'DEVELOPMENT') {
+			return {
+				'deck-gl': {
+					title: 'Deck.gl',
+					url: 'http://localhost:4401',
+				},
+				'ra-geospatial': {
+					title: 'Ra Geospatial',
+					url: 'http://localhost:4402',
+				},
+				'react-maplibre': {
+					title: 'React MapLibreMap',
+					url: 'https://mapcomponents.github.io/react-map-components-maplibre',
+				},
+			};
+		}
+		return {
+			'deck-gl': {
+				title: 'Deck.gl',
+				url: 'https://mapcomponents.github.io/mapcomponents/deck-gl/',
+			},
+			'ra-geospatial': {
+				title: 'React Admin Geospatial',
+				url: 'https://mapcomponents.github.io/mapcomponents/ra-geospatial/',
+			},
+			'react-maplibre': {
+				title: 'React MapLibreMap',
+				url: 'https://mapcomponents.github.io/react-map-components-maplibre/',
+			},
+		};
+	},
+}
+```
+It is necessary to statically set a different port for each project in the `project.json` file of the respective project.
+
+```json
+{
+  "targets": {
+		"storybook": {
+			"options": {
+				"port": 4401 // set a different port than for the other projects
+			}
+		}
+	}
+}
+```
+
 ## Add cypress component testing to an existing project
 Before running the command. Got to the `project.json` and add the following to the `"targets"` parameter
 
