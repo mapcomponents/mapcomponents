@@ -20,6 +20,10 @@ const config: StorybookConfig = {
 	refs: (config, { configType }) => {
 		if (configType === 'DEVELOPMENT') {
 			return {
+				'react-maplibre': {
+					title: 'React MapLibreMap',
+					url: 'https://mapcomponents.github.io/react-map-components-maplibre',
+				},
 				'deck-gl': {
 					title: 'Deck.gl',
 					url: 'http://localhost:4401',
@@ -28,13 +32,13 @@ const config: StorybookConfig = {
 					title: 'Ra Geospatial',
 					url: 'http://localhost:4402',
 				},
-				'react-maplibre': {
-					title: 'React MapLibreMap',
-					url: 'https://mapcomponents.github.io/react-map-components-maplibre',
-				},
 			};
 		}
 		return {
+			'react-maplibre': {
+				title: 'React MapLibreMap',
+				url: 'https://mapcomponents.github.io/react-map-components-maplibre/',
+			},
 			'deck-gl': {
 				title: 'Deck.gl',
 				url: 'https://mapcomponents.github.io/mapcomponents/deck-gl/',
@@ -42,10 +46,6 @@ const config: StorybookConfig = {
 			'ra-geospatial': {
 				title: 'React Admin Geospatial',
 				url: 'https://mapcomponents.github.io/mapcomponents/ra-geospatial/',
-			},
-			'react-maplibre': {
-				title: 'React MapLibreMap',
-				url: 'https://mapcomponents.github.io/react-map-components-maplibre/',
 			},
 		};
 	},

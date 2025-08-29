@@ -56,6 +56,11 @@ To run any task from any package, run:
 ```sh
   npx nx run {package-name}:{task-name}
 ```
+alternatively, you can also use:
+
+```sh
+  npx nx {task-name} {package-name}
+```
 
 To run all tasks in parallel, use:
 
@@ -152,37 +157,37 @@ You can adjust the composition based on the current development environment (e.g
 ```ts
 {
   refs: (config, { configType }) => {
-		if (configType === 'DEVELOPMENT') {
-			return {
-				'deck-gl': {
-					title: 'Deck.gl',
-					url: 'http://localhost:4401',
-				},
-				'ra-geospatial': {
-					title: 'Ra Geospatial',
-					url: 'http://localhost:4402',
-				},
-				'react-maplibre': {
-					title: 'React MapLibreMap',
-					url: 'https://mapcomponents.github.io/react-map-components-maplibre',
-				},
-			};
-		}
-		return {
-			'deck-gl': {
-				title: 'Deck.gl',
-				url: 'https://mapcomponents.github.io/mapcomponents/deck-gl/',
-			},
-			'ra-geospatial': {
-				title: 'React Admin Geospatial',
-				url: 'https://mapcomponents.github.io/mapcomponents/ra-geospatial/',
-			},
-			'react-maplibre': {
-				title: 'React MapLibreMap',
-				url: 'https://mapcomponents.github.io/react-map-components-maplibre/',
-			},
-		};
-	},
+    if (configType === 'DEVELOPMENT') {
+      return {
+        'deck-gl': {
+          title: 'Deck.gl',
+          url: 'http://localhost:4401',
+        },
+        'ra-geospatial': { 
+          title: 'Ra Geospatial',
+          url: 'http://localhost:4402',
+        },
+        'react-maplibre': {
+          title: 'React MapLibreMap',
+          url: 'https://mapcomponents.github.io/react-map-components-maplibre',
+        },
+      };
+    }
+    return {
+      'deck-gl': {
+        title: 'Deck.gl',
+        url: 'https://mapcomponents.github.io/mapcomponents/deck-gl/',
+      },
+      'ra-geospatial': {
+        title: 'React Admin Geospatial',
+        url: 'https://mapcomponents.github.io/mapcomponents/ra-geospatial/',
+      },
+      'react-maplibre': {
+        title: 'React MapLibreMap',
+        url: 'https://mapcomponents.github.io/react-map-components-maplibre/',
+      },
+    };
+  }
 }
 ```
 It is necessary to statically set a different port for each project in the `project.json` file of the respective project.
@@ -190,12 +195,44 @@ It is necessary to statically set a different port for each project in the `proj
 ```json
 {
   "targets": {
-		"storybook": {
-			"options": {
-				"port": 4401 // set a different port than for the other projects
-			}
-		}
-	}
+    "storybook": {
+      "options": {
+        "port": 4401 // set a different port than for the other projects
+      }
+    }
+  }
+}
+```
+### Run the local Storybook-Composition
+
+This is the command to run all the Storybooks in composition mode locally in parallel.
+```shell
+  npx nx run storybook-composition:storybook-composition
+```
+and in a new terminal run:
+```shell
+  npx nx run storybook-composition:storybook
+```
+
+<mark>If a new Storybook is added. Make sure to add it to the run command in the</mark> `project.json` <mark>under</mark> `apps/storybook-composition/targets/storybook-composition/options/commands`
+
+This is how it should look like:
+
+```json
+{
+  "targets": {
+    "storybook-composition": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx storybook deck-gl",
+          "nx storybook ra-geospatial",
+          "nx storybook my-new-storybook"  // <--- Add new Storybooks here
+        ],
+        "parallel": true
+      }
+    }
+  }
 }
 ```
 
@@ -218,7 +255,7 @@ Before running the command. Got to the `project.json` and add the following to t
   npx nx g @nx/react:cypress-component-configuration --project=my-lib --build-target=my-lib:build --no-interactive
 ```
 
-## Increase version and pulish
+## Increase version and publish
 
 <mark>Make sure not to forget this flag</mark> `--skip-publish`
 ```sh
