@@ -1,25 +1,24 @@
-# MapComponents monorepo
+# MapComponents Monorepo
 
-## Sync `package.json` files with Syncpack
+## Sync `package.json` Files with Syncpack
 
 Keep your dependencies consistent across your monorepo using [Syncpack](https://github.com/JamieMason/syncpack):
 
-### List mismatched dependency versions
+### List Mismatched Dependency Versions
 
 ```bash
   npx syncpack list-mismatches
 ```
 
-### Automatically fix mismatched versions
+### Automatically Fix Mismatched Versions
 
 ```bash
   npx syncpack fix-mismatches
 ```
 
+## Use Depcheck to Find Unused Dependencies
 
-## Depcheck can be used to find unused dependencies
-
-go to your package directory and run:
+Go to your package directory and run:
 
 ```sh
   npx depcheck --skip-missing
@@ -31,7 +30,7 @@ go to your package directory and run:
 
 [Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/react-monorepo-tutorial?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
 
-## Run tasks
+## Run Tasks
 
 To run the dev server for your app, use:
 
@@ -56,7 +55,8 @@ To run any task from any package, run:
 ```sh
   npx nx run {package-name}:{task-name}
 ```
-alternatively, you can also use:
+
+Alternatively, you can also use:
 
 ```sh
   npx nx {task-name} {package-name}
@@ -71,11 +71,11 @@ To run all tasks in parallel, use:
 
 These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+[Learn more about running tasks in the documentation &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 
-## Add new projects
+## Add New Projects
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+While you can add new projects to your workspace manually, you may want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
 
 Use the plugin's generator to create new projects.
 
@@ -95,16 +95,16 @@ To generate a new library, use:
 
 Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to use the generator form.
 
-<mark> Nx uses project.json for its own configuration—keep its name simple, like my-app.
-For publishing, you need a package.json with a full package name, e.g. @mapcomponents/my-app.
-Both files are needed, but serve different purposes. </mark>
+<mark>Nx uses `project.json` for its own configuration—keep its name simple, like `my-app`.
+For publishing, you need a `package.json` with the full package name, e.g., `@mapcomponents/my-app`.
+Both files are needed, but serve different purposes.</mark>
 
-## Import from other packages in this monorepo
+## Import from Other Packages in This Monorepo
 
 Instead of using relative paths to import from other packages in this monorepo, you can use the package name as an alias.
-Ensure that nx added the alias correctly to the `tsconfig.base.json` file.
+Ensure that Nx added the alias correctly to the `tsconfig.base.json` file.
 
-Should look like this:
+It should look like this:
 
 ```json
 {
@@ -118,7 +118,7 @@ Should look like this:
 }
 ```
 
-Also don't forget to set the type to `module` in the `package.json` of the package you want to import from:
+Also, don't forget to set the type to `module` in the `package.json` of the package you want to import from:
 
 ```json
 {
@@ -129,29 +129,34 @@ Also don't forget to set the type to `module` in the `package.json` of the packa
 }
 ```
 
-Then you can import from other packages like this:
+Then, you can import from other packages like this:
 
 ```ts
-import {component} from '@mapcomponents/{app/lib name}';
+import { component } from '@mapcomponents/{app/lib name}';
 ```
-You also need to ensure that the `tsconfig.lib/app.json` file in the current package has the other package included.
+
+You also need to ensure that the `tsconfig.lib/app.json` file in the current package includes the other package.
 Example:
+
 ```json
 {
-  "rest of the tsconfig.lib/app.json": "...",
+  // rest of the tsconfig.lib/app.json
   "include": ["src/**/*", "../path/to/package/src/**/*"]
 }
 ```
 ## Add Storybook to an existing project
 
+## Add Storybook to an Existing Project
+
 ```sh
   npx nx g @nx/react:storybook-configuration --project=my-lib --generateStories=false --interactionTests=false --no-interactive
 ```
-### Add Storybook to [storybook-composition](https://nx.dev/technologies/test-tools/storybook/recipes/storybook-composition-setup) 
 
-## Storybook Composition: How to use it
+### Add Storybook to [storybook-composition](https://nx.dev/technologies/test-tools/storybook/recipes/storybook-composition-setup)
 
-Add a `refs` object to the `.storybook/main.ts` file from your host Storybook and add the links for the composed Storybooks.  
+## Storybook Composition: How to Use It
+
+Add a `refs` object to the `.storybook/main.ts` file in your host Storybook and add the links for the composed Storybooks.
 You can adjust the composition based on the current development environment (e.g., development, production) as in the following example:
 
 ```ts
@@ -192,6 +197,8 @@ You can adjust the composition based on the current development environment (e.g
 ```
 It is necessary to statically set a different port for each project in the `project.json` file of the respective project.
 
+You need to statically set a different port for each project in the `project.json` file of the respective project.
+
 ```json
 {
   "targets": {
@@ -203,20 +210,24 @@ It is necessary to statically set a different port for each project in the `proj
   }
 }
 ```
-### Run the local Storybook-Composition
 
-This is the command to run all the Storybooks in composition mode locally in parallel.
+### Run the Local Storybook Composition
+
+This is the command to run all the Storybooks in composition mode locally and in parallel:
+
 ```shell
   npx nx run storybook-composition:storybook-composition
 ```
-and in a new terminal run:
+
+Then, in a new terminal, run:
+
 ```shell
   npx nx run storybook-composition:storybook
 ```
 
-<mark>If a new Storybook is added. Make sure to add it to the run command in the</mark> `project.json` <mark>under</mark> `apps/storybook-composition/targets/storybook-composition/options/commands`
+<mark>If a new Storybook is added, make sure to add it to the run command in the</mark> `project.json` <mark>under</mark> `apps/storybook-composition/targets/storybook-composition/options/commands`.
 
-This is how it should look like:
+This is how it should look:
 
 ```json
 {
@@ -236,8 +247,9 @@ This is how it should look like:
 }
 ```
 
-## Add cypress component testing to an existing project
-Before running the command. Got to the `project.json` and add the following to the `"targets"` parameter
+## Add Cypress Component Testing to an Existing Project
+
+Before running the command, go to the `project.json` and add the following to the `"targets"` parameter:
 
 ```json
 {
@@ -251,14 +263,17 @@ Before running the command. Got to the `project.json` and add the following to t
   }
 }
 ```
+
 ```sh
   npx nx g @nx/react:cypress-component-configuration --project=my-lib --build-target=my-lib:build --no-interactive
 ```
 
-## Increase version and publish
+## Increase Version and Publish
 
-<mark>Make sure not to forget this flag</mark> `--skip-publish`
+<mark>Make sure not to forget this flag:</mark> `--skip-publish`
+
 ```sh
   npx nx release --skip-publish
 ```
-<mark>Make sure to replace "This was a version bump only, there were no code changes." with the related changes in the CHANGELOG.md</mark>
+
+<mark>Make sure to replace "This was a version bump only, there were no code changes." with the relevant changes in the </mark> `CHANGELOG.md`.
