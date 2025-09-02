@@ -4,7 +4,7 @@ import { Button } from '@mui/material';
 
 type Props = {
 	setData: (data: string) => void;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	 
 	buttonComponent: any;
 	accept?: string
 };
@@ -17,7 +17,7 @@ export default function UploadButton(props: Props) {
 		const file = fileupload.current?.files?.[0];
 		if (!file) return false;
 		const reader = new FileReader();
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		 
 		reader.onload = (payload: any) => {
 			if (!payload) return;
 

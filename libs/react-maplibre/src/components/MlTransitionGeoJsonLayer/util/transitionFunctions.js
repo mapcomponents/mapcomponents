@@ -14,7 +14,7 @@ const _showNextTransitionSegment = function (
 	if (typeof transitionGeojsonDataRef.current[currentTransitionStepRef.current] !== "undefined") {
 		// if at last transition step set to target geojson
 		// else to an assembled LineString from common geometry and the current transition step geometry
-		let newData =
+		const newData =
 			currentTransitionStepRef.current + 1 === transitionGeojsonDataRef.current.length
 				? props.geojson
 				: turf.lineString([
@@ -35,6 +35,7 @@ const _showNextTransitionSegment = function (
 			currentTransitionStepRef.current < transitionGeojsonDataRef.current.length
 		) {
 			transitionTimeoutRef.current = setTimeout(
+				// eslint-disable-next-line prefer-rest-params
 				() => _showNextTransitionSegment(...arguments),
 				msPerStep
 			);
@@ -62,12 +63,12 @@ const _transitionToGeojson = (
 	// create the transition geojson between oldGeojsonRef.current and props.geojson
 
 	// create a geojson that contains no common point between the two line features
-	let transitionCoordinatesShort = [];
-	let transitionCoordinatesLong = [];
+	const transitionCoordinatesShort = [];
+	const transitionCoordinatesLong = [];
 	let targetCoordinates = [];
 	let srcCoordinates = [];
 	transitionGeojsonCommonDataRef.current = [];
-	let sourceGeojson = oldGeojsonRef.current || {
+	const sourceGeojson = oldGeojsonRef.current || {
 		geometry: {
 			type: "LineString",
 			coordinates: [],
@@ -76,7 +77,7 @@ const _transitionToGeojson = (
 		type: "Feature",
 	};
 
-	let targetGeojson = props.geojson;
+	const targetGeojson = props.geojson;
 
 	let longerGeojson = targetGeojson;
 	let shorterGeojson = sourceGeojson;
@@ -108,7 +109,7 @@ const _transitionToGeojson = (
 	}
 
 	if (longerGeojson && shorterGeojson) {
-		for (var i = 0, len = longerGeojson.geometry.coordinates.length; i < len; i++) {
+		for (let i = 0, len = longerGeojson.geometry.coordinates.length; i < len; i++) {
 			if (
 				typeof shorterGeojson.geometry.coordinates[i] !== "undefined" &&
 				longerGeojson.geometry.coordinates[i][0] === shorterGeojson.geometry.coordinates[i][0] &&
@@ -138,20 +139,20 @@ const _transitionToGeojson = (
 	if (targetCoordinates.length < 2 && srcCoordinates < 2) return;
 	// create props.transitionTime / msPerStep (=: transitionSteps) Versions of transitionGeojsonCommonDataRef.current + transitionCoordinates making the transitionCoordinates transitionCoordinatesDistance / transitionSteps longer on each step
 
-	let transitionSteps = props.transitionTime / msPerStep;
-	let srcCoordinatesDistance =
+	const transitionSteps = props.transitionTime / msPerStep;
+	const srcCoordinatesDistance =
 		srcCoordinates.length > 1 ? Math.round(turf.length(turf.lineString(srcCoordinates))) : 0;
-	let targetCoordinatesDistance =
+	const targetCoordinatesDistance =
 		targetCoordinates.length > 1 ? Math.round(turf.length(turf.lineString(targetCoordinates))) : 0;
-	let transitionDistance = targetCoordinatesDistance + srcCoordinatesDistance;
+	const transitionDistance = targetCoordinatesDistance + srcCoordinatesDistance;
 
-	let srcCoordinatesShare = srcCoordinatesDistance / transitionDistance;
-	let srcTransitionSteps = Math.round(transitionSteps * srcCoordinatesShare);
-	let srcPerStepDistance = Math.round((srcCoordinatesDistance / srcTransitionSteps) * 100) / 100;
+	const srcCoordinatesShare = srcCoordinatesDistance / transitionDistance;
+	const srcTransitionSteps = Math.round(transitionSteps * srcCoordinatesShare);
+	const srcPerStepDistance = Math.round((srcCoordinatesDistance / srcTransitionSteps) * 100) / 100;
 
-	let targetCoordinatesShare = targetCoordinatesDistance / transitionDistance;
-	let targetTransitionSteps = Math.round(transitionSteps * targetCoordinatesShare);
-	let targetPerStepDistance =
+	const targetCoordinatesShare = targetCoordinatesDistance / transitionDistance;
+	const targetTransitionSteps = Math.round(transitionSteps * targetCoordinatesShare);
+	const targetPerStepDistance =
 		Math.round((targetCoordinatesDistance / targetTransitionSteps) * 100) / 100;
 
 	// use srcPerStepDistance as src coordinates are always animated backwards
@@ -196,11 +197,11 @@ const _transitionToGeojson = (
 	);
 };
 
-let createTransitionSteps = (linestringCoordinates, perStepDistance, stepCnt) => {
-	let transitionSteps = [];
+const createTransitionSteps = (linestringCoordinates, perStepDistance, stepCnt) => {
+	const transitionSteps = [];
 
 	if (linestringCoordinates.length > 1) {
-		let tmpChunks = turf.lineChunk(turf.lineString(linestringCoordinates), perStepDistance);
+		const tmpChunks = turf.lineChunk(turf.lineString(linestringCoordinates), perStepDistance);
 		// tmpLineString contains all coordinates of all previous plus current loop iteration
 		let tmpLinestring = tmpChunks.features[0];
 		for (let i = 0; i < stepCnt; i++) {

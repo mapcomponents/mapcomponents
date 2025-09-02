@@ -36,7 +36,7 @@ const MlNavigationCompassTestComponent = (props) => {
 	);
 };
 
-let testAttributes = {};
+const testAttributes = {};
 
 describe("<MlNavigationCompass>", () => {
 	it("should register 1 event listener to the maplibre instance", async () => {

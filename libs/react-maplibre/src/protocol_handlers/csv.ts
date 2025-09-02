@@ -34,7 +34,7 @@ async function convertCsv(filename: string, options: csv2geojsonType.csvOptions 
 	return geojson;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 const CSVProtocolHandler = async (params: RequestParameters) => {
 	const parsedParams = protocolPathParser(params.url);
 

@@ -4,7 +4,7 @@ import { uuid_regex } from '../../setupTests';
 import MlImageMarkerLayer from './MlImageMarkerLayer';
 
 const testComponent = (
-	// eslint-disable-next-line react/react-in-jsx-scope
+	 
 	<MlImageMarkerLayer
 		options={{
 			source: {

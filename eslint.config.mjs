@@ -37,7 +37,8 @@ export default [
 			'**/scripts',
 			'**/vite.config.*.timestamp*',
 			'**/vitest.config.*.timestamp*',
-			'**/eslintErrorTest.js'
+			'**/eslintErrorTest.js',
+			'**/eslint.config.cjs',
 		],
 	},
 	...nx.configs['flat/base'],

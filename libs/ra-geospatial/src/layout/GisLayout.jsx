@@ -5,7 +5,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { AppBar, Menu, Sidebar, useSidebarState } from 'react-admin';
 
-const Root = styled('div')(({ theme }) => ({
+const Root = styled('div')(() => ({
 	display: 'flex',
 	flexDirection: 'column',
 	zIndex: 1,
@@ -15,18 +15,18 @@ const Root = styled('div')(({ theme }) => ({
 	pointerEvents: 'none',
 }));
 
-const AppFrame = styled('div')(({ theme }) => ({
+const AppFrame = styled('div')(() => ({
 	display: 'flex',
 	flexDirection: 'column',
 }));
 
-const ContentWithSidebar = styled('main')(({ theme }) => ({
+const ContentWithSidebar = styled('main')(() => ({
 	display: 'flex',
 	flexGrow: 1,
 	marginTop: '3em',
 }));
 
-const Content = styled('div')(({ theme }) => ({
+const Content = styled('div')(() => ({
 	display: 'flex',
 	flexDirection: 'row',
 	justifyContent: 'center',
@@ -40,7 +40,7 @@ const Content = styled('div')(({ theme }) => ({
 	boxShadow: '0px 0px 8px rgba(0,0,0,0.2)',
 }));
 
-const ContentWrapper = styled(Box)(({ theme }) => ({
+const ContentWrapper = styled(Box)(() => ({
 	maxWidth: '600px',
 	width: '100%',
 	height: '100%',

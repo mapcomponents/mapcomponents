@@ -93,7 +93,7 @@ const MlMeasureTool = (props: MlMeasureToolProps) => {
 
 	useEffect(() => {
 		if (currentFeatures[0]) {
-			let result: number = 0;
+			let result = 0;
 			if (props.measureType === 'polygon') {
 				// Calculate area in square meters
 				result = turf.area(currentFeatures[0] as Feature);
@@ -127,6 +127,7 @@ const MlMeasureTool = (props: MlMeasureToolProps) => {
 		<>
 			<MlFeatureEditor
 				onChange={(features) => {
+					// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 					features && setCurrentFeatures(features);
 				}}
 				mode={props.measureType === 'polygon' ? 'draw_polygon' : 'draw_line_string'}

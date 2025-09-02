@@ -34,7 +34,7 @@ const MlFollowGPSTestComponent = (props) => {
 	);
 };
 
-let testAttributes = {};
+const testAttributes = {};
 
 describe("<MlFollowGps>", () => {
 	it("should call navigator.geolocation.watchPosition once", async () => {

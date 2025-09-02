@@ -6,7 +6,7 @@ import {render, screen} from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 
 // create plain MapLibre mock for this test
-var mockMapLibreMethods = {
+const mockMapLibreMethods = {
 	addLayer: jest.fn(),
 	removeLayer: jest.fn(),
 	addSource: jest.fn(),
@@ -72,7 +72,7 @@ const MlTestComponentTemplate = (props) => {
 	);
 
 	useEffect(() => {
-		let _componentId = componentId.current;
+		const _componentId = componentId.current;
 
 		return () => {
 			if (mapRef.current) {
