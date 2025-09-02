@@ -1,21 +1,32 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from 'eslint-plugin-storybook';
 
+import storybook from 'eslint-plugin-storybook';
 import nx from '@nx/eslint-plugin';
 
+import react from 'eslint-plugin-react';
+import typescriptEslint from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import js from '@eslint/js';
+import { FlatCompat } from '@eslint/eslintrc';
+import globals from 'globals';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const compat = new FlatCompat({
+	baseDirectory: __dirname,
+	recommendedConfig: js.configs.recommended,
+	allConfig: js.configs.all,
+});
+
 export default [
-	...nx.configs['flat/base'],
-	...nx.configs['flat/typescript'],
-	...nx.configs['flat/javascript'],
 	{
 		ignores: [
-			'**/dist',
-			'**/vite.config.*.timestamp*',
-			'**/vitest.config.*.timestamp*',
 			'**/.cache',
 			'**/.github',
 			'**/.storybook',
 			'**/.vscode',
+			'**/config',
 			'**/coverage',
 			'**/dist',
 			'**/docs',
@@ -24,11 +35,47 @@ export default [
 			'**/node_modules',
 			'**/storybook-static',
 			'**/scripts',
+			'**/vite.config.*.timestamp*',
+			'**/vitest.config.*.timestamp*',
+			'**/eslintErrorTest.js'
 		],
 	},
+	...nx.configs['flat/base'],
+	...nx.configs['flat/typescript'],
+	...nx.configs['flat/javascript'],
+	...compat.extends(
+		'eslint:recommended',
+		'plugin:react/recommended',
+		'plugin:@typescript-eslint/recommended',
+		'prettier',
+		'plugin:storybook/recommended'
+	),
 	{
-		files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+		plugins: {
+			react,
+			'@typescript-eslint': typescriptEslint,
+		},
+		languageOptions: {
+			globals: {
+				...globals.browser,
+				...globals.node,
+				...globals.jest,
+			},
+			parser: tsParser,
+			ecmaVersion: 'latest',
+			sourceType: 'module',
+		},
+		settings: {
+			react: {
+				version: 'detect',
+			},
+		},
 		rules: {
+			'react/prop-types': 'off',
+			'react/react-in-jsx-scope': 'off',
+			'@typescript-eslint/no-empty-function': 'off',
+			'@typescript-eslint/no-explicit-any': 'off',
+			'@typescript-eslint/no-unsafe-declaration-merging': 'off',
 			'@nx/enforce-module-boundaries': [
 				'error',
 				{
@@ -55,7 +102,6 @@ export default [
 			'**/*.cjs',
 			'**/*.mjs',
 		],
-		// Override or add rules here
 		rules: {},
 	},
 	...storybook.configs['flat/recommended'],

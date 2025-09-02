@@ -8,17 +8,21 @@
 	},
 	"dependencies": {
 		"@babel/plugin-transform-typescript": "^7.28.0",
+		"@cypress/react": "^9.0.1",
+		"@eslint/eslintrc": "^3.3.1",
 		"@storybook/addon-docs": "^9.1.1",
 		"@storybook/addons": "^7.6.17",
 		"@typescript-eslint/eslint-plugin": "^8.38.0",
 		"@typescript-eslint/parser": "^8.38.0",
 		"babel-plugin-inline-react-svg": "^2.0.2",
 		"babel-plugin-styled-components": "^2.1.4",
+		"globals": "^16.3.0",
 		"react": "19.1.0",
 		"react-dom": "19.1.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.28.0",
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
 		"@babel/preset-react": "^7.27.1",
 		"@cypress/webpack-dev-server": "^4.1.1",
 		"@eslint/js": "^9.32.0",
