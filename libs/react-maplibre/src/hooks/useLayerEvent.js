@@ -20,9 +20,9 @@ function useLayerEvent(props) {
 
 		if (mapHook.map.map.getLayer(props.layerId)) {
 			//console.log("layer avail");
-			var _event = props.event;
-			var _layerId = props.layerId;
-			var _eventHandler = props.eventHandler;
+			const _event = props.event;
+			const _layerId = props.layerId;
+			const _eventHandler = props.eventHandler;
 
 			//console.log(_event);
 			mapHook.map.on(_event, _layerId, _eventHandler, mapHook.componentId);

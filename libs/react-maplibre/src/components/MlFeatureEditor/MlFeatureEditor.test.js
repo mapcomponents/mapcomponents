@@ -55,7 +55,7 @@ const MlFeatureEditorTestComponent = (props) => {
 	);
 };
 
-let testAttributes = {
+const testAttributes = {
 	mode: "custom_select",
 	geojson: {
 		type: "Feature",

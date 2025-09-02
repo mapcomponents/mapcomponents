@@ -22,7 +22,7 @@ export default function Dropzone(props: Props) {
 			// If dropped items aren't files, reject them
 			if (event.dataTransfer.items[0].kind === 'file') {
 				const reader = new FileReader();
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				 
 				reader.onload = (payload: any) => {
 					if (!payload?.currentTarget?.result) return;
 

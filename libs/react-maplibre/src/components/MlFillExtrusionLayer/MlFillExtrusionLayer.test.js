@@ -26,7 +26,7 @@ const TestComponent = () => {
 
 const testComponentWrapper = <TestComponent />;
 
-let testParams = [
+const testParams = [
 	'<MlFillExtrusionLayer />',
 	testComponentWrapper,
 	new RegExp('^.*"MlFillExtrusionLayer-' + uuid_regex + '".*$'),

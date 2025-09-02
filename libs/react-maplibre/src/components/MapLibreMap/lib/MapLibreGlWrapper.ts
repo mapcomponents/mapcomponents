@@ -43,6 +43,7 @@ type ViewportState = {
  */
 
 // @ts-ignore
+ 
 interface MapLibreGlWrapper extends MapType {
 	addImage: (
 		id: string,
@@ -106,6 +107,7 @@ export type MapLibreGlEventName = keyof MapLayerEventType | keyof MapEventType |
 export type MapLibreGlWrapperEventName = keyof MapLibreGlWrapperEventHandlers;
 
 
+ 
 class MapLibreGlWrapper {
 	[key: string]: any;
 	registeredElements: {

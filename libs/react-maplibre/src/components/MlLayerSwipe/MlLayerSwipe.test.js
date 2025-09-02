@@ -6,7 +6,7 @@ import userEvent from '@testing-library/user-event';
 import {render, screen} from '@testing-library/react';
 
 // Mapbox sync-move mockup
-var mockSyncMoveMethods = {
+const mockSyncMoveMethods = {
 	cleanup: jest.fn(),
 };
 

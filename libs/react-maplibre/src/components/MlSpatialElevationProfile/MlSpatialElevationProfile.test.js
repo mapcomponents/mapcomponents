@@ -31,7 +31,7 @@ const sampleGeojson = {
 	]
 }
 
-// eslint-disable-next-line react/react-in-jsx-scope
+ 
 const testComponent = <MlSpatialElevationProfile geojson={sampleGeojson} />;
 
 layerRemovalTest(

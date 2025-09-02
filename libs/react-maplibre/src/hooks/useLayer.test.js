@@ -64,7 +64,7 @@ const TestComponent = (props) => {
 
 describe('useLayer hook', () => {
 	it("should register 1 event listener 'hover' to the maplibre instance", async () => {
-		var testAttributes = {
+		const testAttributes = {
 			onHover: () => {},
 		};
 
@@ -79,7 +79,7 @@ describe('useLayer hook', () => {
 		await waitFor(() => expect(mockMapLibreMethods.on).toHaveBeenCalledTimes(6));
 	});
 	it("should deregister 1 event listener 'hover' to the maplibre instance", async () => {
-		var testAttributes = {
+		const testAttributes = {
 			onHover: () => {},
 		};
 
@@ -95,7 +95,7 @@ describe('useLayer hook', () => {
 		await waitFor(() => expect(mockMapLibreMethods.off).toHaveBeenCalledTimes(2));
 	});
 	it("should register 1 event listener 'leave' to the maplibre instance", async () => {
-		var testAttributes = {
+		const testAttributes = {
 			onLeave: () => {},
 		};
 
@@ -110,7 +110,7 @@ describe('useLayer hook', () => {
 		await waitFor(() => expect(mockMapLibreMethods.on).toHaveBeenCalledTimes(6));
 	});
 	it("should deregister 1 event listener 'leave' to the maplibre instance", async () => {
-		var testAttributes = {
+		const testAttributes = {
 			onLeave: () => {},
 		};
 
@@ -127,7 +127,7 @@ describe('useLayer hook', () => {
 	});
 
 	it("should register 1 event listener 'click' to the maplibre instance", async () => {
-		var testAttributes = {
+		const testAttributes = {
 			onClick: () => {},
 		};
 
@@ -142,7 +142,7 @@ describe('useLayer hook', () => {
 		await waitFor(() => expect(mockMapLibreMethods.on).toHaveBeenCalledTimes(6));
 	});
 	it("should deregister 1 event listener 'click' to the maplibre instance", async () => {
-		var testAttributes = {
+		const testAttributes = {
 			onClick: () => {},
 		};
 
@@ -160,7 +160,7 @@ describe('useLayer hook', () => {
 
 	// if props.type is changed during runtime the hook needs to remove existing additions to the maplibre instance and reinitialize its representation in the maplibre instance
 	it("should deregister 1 event listener 'hover' to the maplibre instance if type is changed during component runtime", async () => {
-		var testAttributes = {
+		const testAttributes = {
 			onHover: () => {},
 		};
 
@@ -176,7 +176,7 @@ describe('useLayer hook', () => {
 		await waitFor(() => expect(mockMapLibreMethods.off).toHaveBeenCalledTimes(1));
 	});
 	it("should deregister 1 event listener 'leave' to the maplibre instance if type is changed during component runtime", async () => {
-		var testAttributes = {
+		const testAttributes = {
 			onLeave: () => {},
 		};
 
@@ -192,7 +192,7 @@ describe('useLayer hook', () => {
 		await waitFor(() => expect(mockMapLibreMethods.off).toHaveBeenCalledTimes(1));
 	});
 	it("should deregister 1 event listener 'click' to the maplibre instance if type is changed during component runtime", async () => {
-		var testAttributes = {
+		const testAttributes = {
 			onClick: () => {},
 		};
 

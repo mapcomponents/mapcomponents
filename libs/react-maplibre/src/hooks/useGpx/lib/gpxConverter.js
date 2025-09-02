@@ -13,14 +13,15 @@ import * as xmldom from '@xmldom/xmldom';
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var toGeoJSON = (function () {
-	var removeSpace = /\s*/g,
+const toGeoJSON = (function () {
+	const removeSpace = /\s*/g,
 		trimSpace = /^\s*|\s*$/g,
 		splitSpace = /\s+/;
 	// generate a short, numeric hash of a string
 	function okhash(x) {
+		let h = 0;
 		if (!x || !x.length) return 0;
-		for (var i = 0, h = 0; i < x.length; i++) {
+		for (let i = 0; i < x.length; i++) {
 			h = ((h << 5) - h + x.charCodeAt(i)) | 0;
 		}
 		return h;
@@ -37,7 +38,7 @@ var toGeoJSON = (function () {
 	}
 	// one Y child of X, if any, otherwise null
 	function get1(x, y) {
-		var n = get(x, y);
+		const n = get(x, y);
 		return n.length ? n[0] : null;
 	}
 	// https://developer.mozilla.org/en-US/docs/Web/API/Node.normalize
@@ -49,8 +50,9 @@ var toGeoJSON = (function () {
 	}
 	// cast array x into numbers
 	function numarray(x) {
-		for (var j = 0, o = []; j < x.length; j++) {
-			o[j] = parseFloat(x[j]);
+		const o = [];
+		for (let j = 0, o = []; j < x.length; j++) {
+			o.push(parseFloat(x[j]));
 		}
 		return o;
 	}
@@ -63,7 +65,8 @@ var toGeoJSON = (function () {
 	}
 	// get the contents of multiple text nodes, if present
 	function getMulti(x, ys) {
-		var o = {},
+		// eslint-disable-next-line prefer-const
+		let o = {},
 			n,
 			k;
 		for (k = 0; k < ys.length; k++) {
@@ -74,7 +77,7 @@ var toGeoJSON = (function () {
 	}
 	// add properties of Y to X, overwriting if present in both
 	function extend(x, y) {
-		for (var k in y) x[k] = y[k];
+		for (const k in y) x[k] = y[k];
 	}
 	// get one coordinate from a coordinate array, if any
 	function coord1(v) {
@@ -82,18 +85,22 @@ var toGeoJSON = (function () {
 	}
 	// get all coordinates from a coordinate array as [[],[]]
 	function coord(v) {
-		var coords = v.replace(trimSpace, '').split(splitSpace),
+		const coords = v.replace(trimSpace, '').split(splitSpace),
 			o = [];
-		for (var i = 0; i < coords.length; i++) {
+		for (let i = 0; i < coords.length; i++) {
 			o.push(coord1(coords[i]));
 		}
 		return o;
 	}
 	function coordPair(x) {
-		var ll = [attrf(x, 'lon'), attrf(x, 'lat')],
+		// eslint-disable-next-line prefer-const
+		let ll = [attrf(x, 'lon'), attrf(x, 'lat')],
+			// eslint-disable-next-line prefer-const
 			ele = get1(x, 'ele'),
 			// handle namespaced attribute in browser
+			// eslint-disable-next-line prefer-const
 			heartRate = get1(x, 'gpxtpx:hr') || get1(x, 'hr'),
+			// eslint-disable-next-line prefer-const
 			time = get1(x, 'time'),
 			e;
 		if (ele) {
@@ -117,13 +124,13 @@ var toGeoJSON = (function () {
 		};
 	}
 
-	var serializer;
+	let serializer;
 	if (typeof XMLSerializer !== 'undefined') {
 		/* istanbul ignore next */
 		serializer = new XMLSerializer();
 	} else {
-		var isNodeEnv = typeof process === 'object' && !process.browser;
-		var isTitaniumEnv = typeof Titanium === 'object';
+		const isNodeEnv = typeof process === 'object' && !process.browser;
+		const isTitaniumEnv = typeof Titanium === 'object';
 		if (typeof exports === 'object' && (isNodeEnv || isTitaniumEnv)) {
 			serializer = xmldom.XMLSerializer;
 		} else {
@@ -138,9 +145,9 @@ var toGeoJSON = (function () {
 		return serializer.serializeToString(str);
 	}
 
-	var t = {
+	const t = {
 		kml: function (doc) {
-			var gj = fc(),
+			const gj = fc(),
 				// styleindex keeps track of hashed styles in order to match features
 				styleIndex = {},
 				styleByHash = {},
@@ -154,25 +161,25 @@ var toGeoJSON = (function () {
 				styles = get(doc, 'Style'),
 				styleMaps = get(doc, 'StyleMap');
 
-			for (var k = 0; k < styles.length; k++) {
-				var hash = okhash(xml2str(styles[k])).toString(16);
+			for (let k = 0; k < styles.length; k++) {
+				const hash = okhash(xml2str(styles[k])).toString(16);
 				styleIndex['#' + attr(styles[k], 'id')] = hash;
 				styleByHash[hash] = styles[k];
 			}
-			for (var l = 0; l < styleMaps.length; l++) {
+			for (let l = 0; l < styleMaps.length; l++) {
 				styleIndex['#' + attr(styleMaps[l], 'id')] = okhash(xml2str(styleMaps[l])).toString(16);
-				var pairs = get(styleMaps[l], 'Pair');
-				var pairsMap = {};
-				for (var m = 0; m < pairs.length; m++) {
+				const pairs = get(styleMaps[l], 'Pair');
+				const pairsMap = {};
+				for (let m = 0; m < pairs.length; m++) {
 					pairsMap[nodeVal(get1(pairs[m], 'key'))] = nodeVal(get1(pairs[m], 'styleUrl'));
 				}
 				styleMapIndex['#' + attr(styleMaps[l], 'id')] = pairsMap;
 			}
-			for (var j = 0; j < placemarks.length; j++) {
+			for (let j = 0; j < placemarks.length; j++) {
 				gj.features = gj.features.concat(getPlacemark(placemarks[j]));
 			}
 			function kmlColor(v) {
-				var color, opacity;
+				let color, opacity;
 				v = v || '';
 				if (v.substr(0, 1) === '#') {
 					v = v.substr(1);
@@ -190,25 +197,29 @@ var toGeoJSON = (function () {
 				return numarray(v.split(' '));
 			}
 			function gxCoords(root) {
-				var elems = get(root, 'coord', 'gx'),
+				let elems = get(root, 'coord', 'gx'),
+					// eslint-disable-next-line prefer-const
 					coords = [],
+					// eslint-disable-next-line prefer-const
 					times = [];
 				if (elems.length === 0) elems = get(root, 'gx:coord');
-				for (var i = 0; i < elems.length; i++) coords.push(gxCoord(nodeVal(elems[i])));
-				var timeElems = get(root, 'when');
-				for (var j = 0; j < timeElems.length; j++) times.push(nodeVal(timeElems[j]));
+				for (let i = 0; i < elems.length; i++) coords.push(gxCoord(nodeVal(elems[i])));
+				const timeElems = get(root, 'when');
+				for (let j = 0; j < timeElems.length; j++) times.push(nodeVal(timeElems[j]));
 				return {
 					coords: coords,
 					times: times,
 				};
 			}
 			function getGeometry(root) {
-				var geomNode,
+				let geomNode,
 					geomNodes,
 					i,
 					j,
 					k,
+					// eslint-disable-next-line prefer-const
 					geoms = [],
+					// eslint-disable-next-line prefer-const
 					coordTimes = [];
 				if (get1(root, 'MultiGeometry')) {
 					return getGeometry(get1(root, 'MultiGeometry'));
@@ -235,7 +246,7 @@ var toGeoJSON = (function () {
 									coordinates: coord(nodeVal(get1(geomNode, 'coordinates'))),
 								});
 							} else if (geotypes[i] === 'Polygon') {
-								var rings = get(geomNode, 'LinearRing'),
+								const rings = get(geomNode, 'LinearRing'),
 									coords = [];
 								for (k = 0; k < rings.length; k++) {
 									coords.push(coord(nodeVal(get1(rings[k], 'coordinates'))));
@@ -245,7 +256,7 @@ var toGeoJSON = (function () {
 									coordinates: coords,
 								});
 							} else if (geotypes[i] === 'Track' || geotypes[i] === 'gx:Track') {
-								var track = gxCoords(geomNode);
+								const track = gxCoords(geomNode);
 								geoms.push({
 									type: 'LineString',
 									coordinates: track.coords,
@@ -261,18 +272,27 @@ var toGeoJSON = (function () {
 				};
 			}
 			function getPlacemark(root) {
-				var geomsAndTimes = getGeometry(root),
+				// eslint-disable-next-line prefer-const
+				let geomsAndTimes = getGeometry(root),
 					i,
+					// eslint-disable-next-line prefer-const
 					properties = {},
+					// eslint-disable-next-line prefer-const
 					name = nodeVal(get1(root, 'name')),
+					// eslint-disable-next-line prefer-const
 					address = nodeVal(get1(root, 'address')),
 					styleUrl = nodeVal(get1(root, 'styleUrl')),
+					// eslint-disable-next-line prefer-const
 					description = nodeVal(get1(root, 'description')),
+					// eslint-disable-next-line prefer-const
 					timeSpan = get1(root, 'TimeSpan'),
+					// eslint-disable-next-line prefer-const
 					timeStamp = get1(root, 'TimeStamp'),
+					// eslint-disable-next-line prefer-const
 					extendedData = get1(root, 'ExtendedData'),
 					lineStyle = get1(root, 'LineStyle'),
 					polyStyle = get1(root, 'PolyStyle'),
+					// eslint-disable-next-line prefer-const
 					visibility = get1(root, 'visibility');
 
 				if (!geomsAndTimes.geoms.length) return [];
@@ -292,15 +312,15 @@ var toGeoJSON = (function () {
 						properties.styleHash = styleIndex[styleMapIndex[styleUrl].normal];
 					}
 					// Try to populate the lineStyle or polyStyle since we got the style hash
-					var style = styleByHash[properties.styleHash];
+					const style = styleByHash[properties.styleHash];
 					if (style) {
 						if (!lineStyle) lineStyle = get1(style, 'LineStyle');
 						if (!polyStyle) polyStyle = get1(style, 'PolyStyle');
-						var iconStyle = get1(style, 'IconStyle');
+						const iconStyle = get1(style, 'IconStyle');
 						if (iconStyle) {
-							var icon = get1(iconStyle, 'Icon');
+							const icon = get1(iconStyle, 'Icon');
 							if (icon) {
-								var href = nodeVal(get1(icon, 'href'));
+								const href = nodeVal(get1(icon, 'href'));
 								if (href) properties.icon = href;
 							}
 						}
@@ -308,15 +328,15 @@ var toGeoJSON = (function () {
 				}
 				if (description) properties.description = description;
 				if (timeSpan) {
-					var begin = nodeVal(get1(timeSpan, 'begin'));
-					var end = nodeVal(get1(timeSpan, 'end'));
+					const begin = nodeVal(get1(timeSpan, 'begin'));
+					const end = nodeVal(get1(timeSpan, 'end'));
 					properties.timespan = { begin: begin, end: end };
 				}
 				if (timeStamp) {
 					properties.timestamp = nodeVal(get1(timeStamp, 'when'));
 				}
 				if (lineStyle) {
-					var linestyles = kmlColor(nodeVal(get1(lineStyle, 'color'))),
+					const linestyles = kmlColor(nodeVal(get1(lineStyle, 'color'))),
 						color = linestyles[0],
 						opacity = linestyles[1],
 						width = parseFloat(nodeVal(get1(lineStyle, 'width')));
@@ -325,7 +345,7 @@ var toGeoJSON = (function () {
 					if (!isNaN(width)) properties['stroke-width'] = width;
 				}
 				if (polyStyle) {
-					var polystyles = kmlColor(nodeVal(get1(polyStyle, 'color'))),
+					const polystyles = kmlColor(nodeVal(get1(polyStyle, 'color'))),
 						pcolor = polystyles[0],
 						popacity = polystyles[1],
 						fill = nodeVal(get1(polyStyle, 'fill')),
@@ -337,7 +357,7 @@ var toGeoJSON = (function () {
 						properties['stroke-opacity'] = outline === '1' ? properties['stroke-opacity'] || 1 : 0;
 				}
 				if (extendedData) {
-					var datas = get(extendedData, 'Data'),
+					const datas = get(extendedData, 'Data'),
 						simpleDatas = get(extendedData, 'SimpleData');
 
 					for (i = 0; i < datas.length; i++) {
@@ -356,7 +376,7 @@ var toGeoJSON = (function () {
 							? geomsAndTimes.coordTimes[0]
 							: geomsAndTimes.coordTimes;
 				}
-				var feature = {
+				const feature = {
 					type: 'Feature',
 					geometry:
 						geomsAndTimes.geoms.length === 1
@@ -373,11 +393,15 @@ var toGeoJSON = (function () {
 			return gj;
 		},
 		gpx: function (doc) {
-			var i,
+			let i,
+				// eslint-disable-next-line prefer-const
 				tracks = get(doc, 'trk'),
+				// eslint-disable-next-line prefer-const
 				routes = get(doc, 'rte'),
+				// eslint-disable-next-line prefer-const
 				waypoints = get(doc, 'wpt'),
 				// a feature collection
+				// eslint-disable-next-line prefer-const
 				gj = fc(),
 				feature;
 			for (i = 0; i < tracks.length; i++) {
@@ -392,20 +416,20 @@ var toGeoJSON = (function () {
 				gj.features.push(getPoint(waypoints[i]));
 			}
 			function initializeArray(arr, size) {
-				for (var h = 0; h < size; h++) {
+				for (let h = 0; h < size; h++) {
 					arr.push(null);
 				}
 				return arr;
 			}
 			function getPoints(node, pointname) {
-				var pts = get(node, pointname),
+				const pts = get(node, pointname),
 					line = [],
 					times = [],
 					heartRates = [],
 					l = pts.length;
 				if (l < 2) return {}; // Invalid line in GeoJSON
-				for (var i = 0; i < l; i++) {
-					var c = coordPair(pts[i]);
+				for (let i = 0; i < l; i++) {
+					const c = coordPair(pts[i]);
 					line.push(c.coordinates);
 					if (c.time) times.push(c.time);
 					if (c.heartRate || heartRates.length) {
@@ -420,19 +444,23 @@ var toGeoJSON = (function () {
 				};
 			}
 			function getTrack(node) {
-				var segments = get(node, 'trkseg'),
+				// eslint-disable-next-line prefer-const
+				let segments = get(node, 'trkseg'),
+					// eslint-disable-next-line prefer-const
 					track = [],
+					// eslint-disable-next-line prefer-const
 					times = [],
+					// eslint-disable-next-line prefer-const
 					heartRates = [],
 					line;
-				for (var i = 0; i < segments.length; i++) {
+				for (let i = 0; i < segments.length; i++) {
 					line = getPoints(segments[i], 'trkpt');
 					if (line) {
 						if (line.line) track.push(line.line);
 						if (line.times && line.times.length) times.push(line.times);
 						if (heartRates.length || (line.heartRates && line.heartRates.length)) {
 							if (!heartRates.length) {
-								for (var s = 0; s < i; s++) {
+								for (let s = 0; s < i; s++) {
 									heartRates.push(initializeArray([], track[s].length));
 								}
 							}
@@ -445,7 +473,7 @@ var toGeoJSON = (function () {
 					}
 				}
 				if (track.length === 0) return;
-				var properties = getProperties(node);
+				const properties = getProperties(node);
 				extend(properties, getLineStyle(get1(node, 'extensions')));
 				if (times.length) properties.coordTimes = track.length === 1 ? times[0] : times;
 				if (heartRates.length)
@@ -460,11 +488,11 @@ var toGeoJSON = (function () {
 				};
 			}
 			function getRoute(node) {
-				var line = getPoints(node, 'rtept');
+				const line = getPoints(node, 'rtept');
 				if (!line.line) return;
-				var prop = getProperties(node);
+				const prop = getProperties(node);
 				extend(prop, getLineStyle(get1(node, 'extensions')));
-				var routeObj = {
+				const routeObj = {
 					type: 'Feature',
 					properties: prop,
 					geometry: {
@@ -475,7 +503,7 @@ var toGeoJSON = (function () {
 				return routeObj;
 			}
 			function getPoint(node) {
-				var prop = getProperties(node);
+				const prop = getProperties(node);
 				extend(prop, getMulti(node, ['sym']));
 				return {
 					type: 'Feature',
@@ -487,11 +515,11 @@ var toGeoJSON = (function () {
 				};
 			}
 			function getLineStyle(extensions) {
-				var style = {};
+				const style = {};
 				if (extensions) {
-					var lineStyle = get1(extensions, 'line');
+					const lineStyle = get1(extensions, 'line');
 					if (lineStyle) {
-						var color = nodeVal(get1(lineStyle, 'color')),
+						const color = nodeVal(get1(lineStyle, 'color')),
 							opacity = parseFloat(nodeVal(get1(lineStyle, 'opacity'))),
 							width = parseFloat(nodeVal(get1(lineStyle, 'width')));
 						if (color) style.stroke = color;
@@ -503,10 +531,10 @@ var toGeoJSON = (function () {
 				return style;
 			}
 			function getProperties(node) {
-				var prop = getMulti(node, ['name', 'cmt', 'desc', 'type', 'time', 'keywords']),
+				const prop = getMulti(node, ['name', 'cmt', 'desc', 'type', 'time', 'keywords']),
 					links = get(node, 'link');
 				if (links.length) prop.links = [];
-				for (var i = 0, link; i < links.length; i++) {
+				for (let i = 0, link; i < links.length; i++) {
 					link = { href: attr(links[i], 'href') };
 					extend(link, getMulti(links[i], ['text', 'type']));
 					prop.links.push(link);

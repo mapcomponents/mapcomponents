@@ -26,22 +26,22 @@ const gpxSample = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	</wpt>
 </gpx>`;
 
-// eslint-disable-next-line react/react-in-jsx-scope
+ 
 const testComponent = <MlGpxViewer gpxData={gpxSample} />;
 
-let sourceTestParams = [
+const sourceTestParams = [
 	'<MlGpxViewer />',
 	testComponent,
 	new RegExp('^.*"gpx-viewer-source-' + uuid_regex + '".*$'),
 	'gpx-viewer-source',
 ];
-let layer1TestParams = [
+const layer1TestParams = [
 	'<MlGpxViewer />',
 	testComponent,
 	new RegExp('^.*"importer-layer-lines-' + uuid_regex + '".*$'),
 	'importer-layer-lines',
 ];
-let layer2TestParams = [
+const layer2TestParams = [
 	'<MlGpxViewer />',
 	testComponent,
 	new RegExp('^.*"importer-layer-points-' + uuid_regex + '".*$'),
