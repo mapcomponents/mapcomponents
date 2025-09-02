@@ -8,7 +8,23 @@ export default [
 	...nx.configs['flat/typescript'],
 	...nx.configs['flat/javascript'],
 	{
-		ignores: ['**/dist', '**/vite.config.*.timestamp*', '**/vitest.config.*.timestamp*'],
+		ignores: [
+			'**/dist',
+			'**/vite.config.*.timestamp*',
+			'**/vitest.config.*.timestamp*',
+			'**/.cache',
+			'**/.github',
+			'**/.storybook',
+			'**/.vscode',
+			'**/coverage',
+			'**/dist',
+			'**/docs',
+			'**/docs-build',
+			'**/js-docs',
+			'**/node_modules',
+			'**/storybook-static',
+			'**/scripts',
+		],
 	},
 	{
 		files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
@@ -42,7 +58,5 @@ export default [
 		// Override or add rules here
 		rules: {},
 	},
-	...storybook.configs['flat/recommended'],
-	...storybook.configs['flat/recommended'],
 	...storybook.configs['flat/recommended'],
 ];
