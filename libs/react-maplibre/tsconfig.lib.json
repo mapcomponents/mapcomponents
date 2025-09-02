@@ -17,7 +17,13 @@
 		"**/*.spec.js",
 		"**/*.test.js",
 		"**/*.spec.jsx",
-		"**/*.test.jsx"
+		"**/*.test.jsx",
+		"cypress/**/*",
+		"cypress.config.ts",
+		"**/*.cy.ts",
+		"**/*.cy.js",
+		"**/*.cy.tsx",
+		"**/*.cy.jsx"
 	],
 	"include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
 }
