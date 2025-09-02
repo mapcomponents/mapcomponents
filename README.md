@@ -94,9 +94,9 @@ To generate a new library, use:
 
 Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to use the generator form.
 
-<mark>Nx uses `project.json` for its own configuration—keep its name simple, like `my-app`.
+Nx uses `project.json` for its own configuration—keep its name simple, like `my-app`.
 For publishing, you need a `package.json` with the full package name, e.g., `@mapcomponents/my-app`.
-Both files are needed, but serve different purposes.</mark>
+Both files are needed, but serve different purposes.
 
 ### Add Prettier Target to `project.json`
 
@@ -160,8 +160,6 @@ Example:
 ```
 
 ## Add Storybook to an existing project
-
-## Add Storybook to an Existing Project
 
 ```sh
   npx nx g @nx/react:storybook-configuration --project=my-lib --generateStories=false --interactionTests=false --no-interactive
@@ -241,7 +239,7 @@ Then, in a new terminal, run:
   npx nx run storybook-composition:storybook
 ```
 
-<mark>If a new Storybook is added, make sure to add it to the run command in the</mark> `project.json` <mark>under</mark> `apps/storybook-composition/targets/storybook-composition/options/commands`.
+If a new Storybook is added, make sure to add it to the run command in the `project.json` under `apps/storybook-composition/targets/storybook-composition/options/commands`.
 
 This is how it should look:
 
@@ -286,10 +284,10 @@ Before running the command, go to the `project.json` and add the following to th
 
 ## Increase Version and Publish
 
-<mark>Make sure not to forget this flag:</mark> `--skip-publish`
+Make sure not to forget this flag: `--skip-publish`
 
 ```sh
   npx nx release --skip-publish
 ```
 
-<mark>Make sure to replace "This was a version bump only, there were no code changes." with the relevant changes in the </mark> `CHANGELOG.md`.
+Make sure to replace "This was a version bump only, there were no code changes." with the relevant changes in the  `CHANGELOG.md`.

@@ -1,3 +1,4 @@
+import { mount } from 'cypress/react';
 // ***********************************************************
 // This example support/component.ts is processed and
 // loaded automatically before your test files.
@@ -12,35 +13,19 @@
 // You can read more here:
 // https://on.cypress.io/configuration
 // ***********************************************************
-import { setGlobalConfig } from "@storybook/testing-react";
-import * as sbPreview from "../../.storybook/preview";
 
-setGlobalConfig(sbPreview);
+// Import commands.ts using ES2015 syntax:
+import './commands';
 
-// Import commands.js using ES2015 syntax:
-import './commands'
-
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
-
-import { mount } from 'cypress/react'
-
-//import MlCreatePdfForm from "../../src/components/MlCreatePdfForm/MlCreatePdfForm";
-
-// Augment the Cypress namespace to include type definitions for
-// your custom command.
-// Alternatively, can be defined in cypress/support/component.d.ts
-// with a <reference path="./component" /> at the top of your spec.
+// add component testing only related command here, such as mount
 declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace Cypress {
-    interface Chainable {
-      mount: typeof mount
-    }
-  }
+	// eslint-disable-next-line @typescript-eslint/no-namespace
+	namespace Cypress {
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		interface Chainable<Subject> {
+			mount: typeof mount;
+		}
+	}
 }
 
-Cypress.Commands.add('mount', mount)
-
-// Example use:
-// cy.mount(<MyComponent />)
+Cypress.Commands.add('mount', mount);
