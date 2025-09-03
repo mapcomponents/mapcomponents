@@ -35128,7 +35128,7 @@ var Tde = R((vo) => {
   vo.roleElements = Fnt;
 });
 
-// ../node_modules/lz-string/libs/lz-string.js
+// ../node_modules/lz-string/packages/lz-string.js
 var Ade = R((MUt, DS) => {
   var QM = function() {
     var e = String.fromCharCode, t = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=", r = "ABCDEFGHIJKLMNOPQRSTUVWXYZabc\
@@ -45847,23 +45847,23 @@ var m_e = Dp(), Bc = "data-scroll-locked", h_e = /* @__PURE__ */ a(function(e, t
     r === "padding" && "padding-right: ".concat(l, "px ").concat(n, ";")
   ].filter(Boolean).join(""), `
   }
-  
+
   .`).concat(Sl, ` {
     right: `).concat(l, "px ").concat(n, `;
   }
-  
+
   .`).concat(Cl, ` {
     margin-right: `).concat(l, "px ").concat(n, `;
   }
-  
+
   .`).concat(Sl, " .").concat(Sl, ` {
     right: 0 `).concat(n, `;
   }
-  
+
   .`).concat(Cl, " .").concat(Cl, ` {
     margin-right: 0 `).concat(n, `;
   }
-  
+
   body[`).concat(Bc, `] {
     `).concat(PT, ": ").concat(l, `px;
   }
@@ -49982,7 +49982,7 @@ var AAe = /\s*\/\s*/, AG = /* @__PURE__ */ a(({
         throw new Error(
           _t`
           Invalid part '${_}', leading to id === parentId ('${q}'), inside title '${g}'
-          
+
           Did you create a path that uses the separator char accidentally, such as 'Vue <docs/>' where '/' is a separator char? See https://github.com/storybookjs/storybook/issues/6128
           `
         );
@@ -54509,8 +54509,8 @@ function tu(e, t, r) {
     let { aAnnotation: s, aColor: l, aIndicator: u, bAnnotation: c, bColor: d, bIndicator: f } = eu(r), p = lI(yJ, r), m = uo(e, p), v = uo(
     t, p), y = 1e5;
     m = b(m), v = b(v);
-    let g = `${l(`${u} ${s}:`)} 
-${m}`, w = `${d(`${f} ${c}:`)} 
+    let g = `${l(`${u} ${s}:`)}
+${m}`, w = `${d(`${f} ${c}:`)}
 ${v}`;
     return `${g}
 
@@ -62505,7 +62505,7 @@ a(fh, "ordinalOf");
 function rM(e, t, r) {
   return e.mock.calls.length && (t += Xe.gray(`
 
-Received: 
+Received:
 
 ${e.mock.calls.map((n, o) => {
     let i = Xe.bold(`  ${fh(o + 1)} ${e.getMockName()} call:
@@ -62525,7 +62525,7 @@ a(rM, "formatCalls");
 function PWe(e, t, r, n) {
   return t.length && (r += Xe.gray(`
 
-Received: 
+Received:
 
 ${t.map((o, i) => {
     let s = Xe.bold(`  ${fh(i + 1)} ${e.getMockName()} call return:

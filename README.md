@@ -89,7 +89,7 @@ To generate a new application, use:
 To generate a new library, use:
 
 ```sh
-  npx nx g @nx/react:library --directory=libs/my-lib --bundler=vite --name=my-lib --importPath=@mapcomponents/my-lib --no-interactive
+  npx nx g @nx/react:library --directory=packages/my-package --bundler=vite --name=my-package --importPath=@mapcomponents/my-package --no-interactive
 
 ```
 
@@ -110,9 +110,9 @@ It should look like this:
 {
   "compilerOptions": {
     "paths": {
-      "@mapcomponents/deck-gl": ["libs/deck-gl/src/index.ts"],
-      "@mapcomponents/ra-geospatial": ["libs/ra-geospatial/src/index.ts"],
-      "@mapcomponents/{app/lib name}": ["path/{app/lib name}/src/index.ts"]
+      "@mapcomponents/deck-gl": ["packages/deck-gl/src/index.ts"],
+      "@mapcomponents/ra-geospatial": ["packages/ra-geospatial/src/index.ts"],
+      "@mapcomponents/{app/package name}": ["path/{app/package name}/src/index.ts"]
     }
   }
 }
@@ -122,7 +122,7 @@ Also, don't forget to set the type to `module` in the `package.json` of the pack
 
 ```json
 {
-	"name": "@mapcomponents/{app/lib name}",
+	"name": "@mapcomponents/{app/package name}",
 	"version": "0.0.1",
 	"type": "module",
 	"...": "..."
@@ -132,22 +132,22 @@ Also, don't forget to set the type to `module` in the `package.json` of the pack
 Then, you can import from other packages like this:
 
 ```ts
-import { component } from '@mapcomponents/{app/lib name}';
+import { component } from '@mapcomponents/{app/package name}';
 ```
 
-You also need to ensure that the `tsconfig.lib/app.json` file in the current package includes the other package.
+You also need to ensure that the `tsconfig.package/app.json` file in the current package includes the other package.
 Example:
 
 ```json
 {
-  // rest of the tsconfig.lib/app.json
+  // rest of the tsconfig.package/app.json
   "include": ["src/**/*", "../path/to/package/src/**/*"]
 }
 ```
 ## Add Storybook to an existing project
 
 ```sh
-  npx nx g @nx/react:storybook-configuration --project=my-lib --generateStories=false --interactionTests=false --no-interactive
+  npx nx g @nx/react:storybook-configuration --project=my-package --generateStories=false --interactionTests=false --no-interactive
 ```
 
 ### Add Storybook to [storybook-composition](https://nx.dev/technologies/test-tools/storybook/recipes/storybook-composition-setup)
@@ -255,7 +255,7 @@ Before running the command, go to the `project.json` and add the following to th
     "build": {
       "executor": "@nx/vite:build",
       "options": {
-        "outputPath": "dist/libs/my-lib"
+        "outputPath": "dist/packages/my-package"
       }
     }
   }
@@ -263,7 +263,7 @@ Before running the command, go to the `project.json` and add the following to th
 ```
 
 ```sh
-  npx nx g @nx/react:cypress-component-configuration --project=my-lib --build-target=my-lib:build --no-interactive
+  npx nx g @nx/react:cypress-component-configuration --project=my-package --build-target=my-package:build --no-interactive
 ```
 
 ## Increase Version and Publish
