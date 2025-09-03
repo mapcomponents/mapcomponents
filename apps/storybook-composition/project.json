@@ -11,7 +11,8 @@
 			"options": {
 				"commands": [
 					"nx storybook deck-gl",
-					"nx storybook ra-geospatial"
+					"nx storybook ra-geospatial",
+					"nx storybook react-maplibre"
 				],
 				"parallel": true
 			}
