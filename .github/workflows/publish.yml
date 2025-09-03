@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       # Install pnpm
@@ -23,6 +23,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: npx nx run-many -t build --all
       - run: npx nx run-many -t component-test --all --skip-nx-cache
+      - run: npx nx run-many -t test:noninteractive --all --skip-nx-cache
       - run: npx nx run-many -t nx-release-publish --all --skip-nx-cache
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

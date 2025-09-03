@@ -99,6 +99,21 @@ Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?
 For publishing, you need a `package.json` with the full package name, e.g., `@mapcomponents/my-app`.
 Both files are needed, but serve different purposes.</mark>
 
+### Add Prettier Target to `project.json`
+
+```json
+{
+  "targets": {
+    "prettier": {
+      "executor": "@nx/workspace:run-commands",
+      "options": {
+        "command": "prettier --check ."
+      }
+	}
+  }
+}
+```
+
 ## Import from Other Packages in This Monorepo
 
 Instead of using relative paths to import from other packages in this monorepo, you can use the package name as an alias.
