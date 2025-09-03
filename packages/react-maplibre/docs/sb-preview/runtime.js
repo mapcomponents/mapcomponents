@@ -16054,7 +16054,7 @@ var l$ = y((Mt) => {
   Mt.roleElements = rye;
 });
 
-// ../node_modules/lz-string/libs/lz-string.js
+// ../node_modules/lz-string/packages/lz-string.js
 var u$ = y((WDe, Oh) => {
   var Yw = function() {
     var e = String.fromCharCode, t = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=", r = "ABCDEFGHIJKLMNOPQRSTUVWXYZabc\
@@ -20349,13 +20349,13 @@ var Ni = Fb, Db = class Db extends Pe {
       documentation: "https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#using-implicit-actions-during-rendering-is-deprecated-\
 for-example-in-the-play-function",
       message: Q`
-        We detected that you use an implicit action arg while ${r.phase} of your story.  
+        We detected that you use an implicit action arg while ${r.phase} of your story.
         ${r.deprecated ? `
 This is deprecated and won't work in Storybook 8 anymore.
 ` : ""}
         Please provide an explicit spy to your args like this:
           import { fn } from 'storybook/test';
-          ... 
+          ...
           args: {
            ${r.name}: fn()
           }`
@@ -20398,10 +20398,10 @@ var Li = Bb, Ub = class Ub extends Pe {
       code: 5,
       message: Q`
         Called \`Preview.${r.methodName}()\` before initialization.
-        
+
         The preview needs to load the story index before most methods can be called. If you want
         to call \`${r.methodName}\`, try \`await preview.initializationPromise;\` first.
-        
+
         If you didn't call the above code, then likely it was called by an addon that needs to
         do the above.`
     });
@@ -20416,7 +20416,7 @@ var We = Ub, Hb = class Hb extends Pe {
       code: 6,
       message: Q`
         Error fetching \`/index.json\`:
-        
+
         ${r.text}
 
         If you are in development, this likely indicates a problem with your Storybook process,
@@ -20437,7 +20437,7 @@ var Fi = Hb, Vb = class Vb extends Pe {
       message: Q`
         Tried to render docs entry ${r.storyId} but it is a MDX file that has no CSF
         references, or autodocs for a CSF file that some doesn't refer to itself.
-        
+
         This likely is an internal error in Storybook's indexing, or you've attached the
         \`attached-mdx\` tag to an MDX file that is not attached.`
     });
@@ -20515,20 +20515,20 @@ var Hi = Yb, Kb = class Kb extends Pe {
       code: 12,
       message: Q`
       Incorrect use of mount in the play function.
-      
-      To use mount in the play function, you must satisfy the following two requirements: 
-      
-      1. You *must* destructure the mount property from the \`context\` (the argument passed to your play function). 
+
+      To use mount in the play function, you must satisfy the following two requirements:
+
+      1. You *must* destructure the mount property from the \`context\` (the argument passed to your play function).
          This makes sure that Storybook does not start rendering the story before the play function begins.
-      
-      2. Your Storybook framework or builder must be configured to transpile to ES2017 or newer. 
-         This is because destructuring statements and async/await usages are otherwise transpiled away, 
+
+      2. Your Storybook framework or builder must be configured to transpile to ES2017 or newer.
+         This is because destructuring statements and async/await usages are otherwise transpiled away,
          which prevents Storybook from recognizing your usage of \`mount\`.
-      
-      Note that Angular is not supported. As async/await is transpiled to support the zone.js polyfill. 
-      
+
+      Note that Angular is not supported. As async/await is transpiled to support the zone.js polyfill.
+
       More info: https://storybook.js.org/docs/writing-tests/interaction-testing#run-code-before-the-component-gets-rendered
-      
+
       Received the following play function:
       ${r.playFunction}`
     });
@@ -20556,13 +20556,13 @@ var Vi = Xb, Jb = class Jb extends Pe {
       code: 15,
       message: Q`
         No component is mounted in your story.
-        
+
         This usually occurs when you destructure mount in the play function, but forget to call it.
-        
+
         For example:
 
         async play({ mount, canvasElement }) {
-          // 👈 mount should be called: await mount(); 
+          // 👈 mount should be called: await mount();
           const canvas = within(canvasElement);
           const button = await canvas.findByRole('button');
           await userEvent.click(button);
@@ -20625,8 +20625,8 @@ var Mb = eg, tg = class tg extends Pe {
       documentation: "https://github.com/storybookjs/storybook/issues/26606",
       message: Q`
         There was a failure when generating detailed ArgTypes in ${r.language} for:
-        ${JSON.stringify(r.type, null, 2)} 
-        
+        ${JSON.stringify(r.type, null, 2)}
+
         Storybook will fall back to use a generic type description instead.
 
         This type is either not supported or it is a bug in the docgen generation in Storybook.
@@ -20646,10 +20646,10 @@ var Nb = tg, rg = class rg extends Pe {
       // documentation: '',
       message: Q`
         Encountered an unsupported value "${r.value}" when setting the viewport ${r.dimension} dimension.
-        
+
         The Storybook plugin only supports values in the following units:
         - px, vh, vw, em, rem and %.
-        
+
         You can either change the viewport for this story to use one of the supported units or skip the test by adding '!test' to the story's tags per https://storybook.js.org/docs/writing-stories/tags
       `
     });
@@ -23701,8 +23701,8 @@ function Sn(e, t, r) {
     let { aAnnotation: a, aColor: l, aIndicator: u, bAnnotation: c, bColor: d, bIndicator: p } = wn(r), f = Zg(JC, r), m = Tt(e, f), h = Tt(
     t, f), b = 1e5;
     m = v(m), h = v(h);
-    let g = `${l(`${u} ${a}:`)} 
-${m}`, w = `${d(`${p} ${c}:`)} 
+    let g = `${l(`${u} ${a}:`)}
+${m}`, w = `${d(`${p} ${c}:`)}
 ${h}`;
     return `${g}
 
@@ -31697,7 +31697,7 @@ o(Os, "ordinalOf");
 function Wx(e, t, r) {
   return e.mock.calls.length && (t += Ee.gray(`
 
-Received: 
+Received:
 
 ${e.mock.calls.map((n, i) => {
     let s = Ee.bold(`  ${Os(i + 1)} ${e.getMockName()} call:
@@ -31717,7 +31717,7 @@ o(Wx, "formatCalls");
 function Qoe(e, t, r, n) {
   return t.length && (r += Ee.gray(`
 
-Received: 
+Received:
 
 ${t.map((i, s) => {
     let a = Ee.bold(`  ${Os(s + 1)} ${e.getMockName()} call return:
@@ -41629,7 +41629,7 @@ var XEe = /* @__PURE__ */ o((e, t, r) => {
     Error sorting stories with sort parameter ${t}:
 
     > ${n.message}
-    
+
     Are you using a V6-style sort function in V7 mode?
 
     More info: https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#v7-style-story-sort
@@ -43119,8 +43119,8 @@ var Swe = /* @__PURE__ */ o(async (e, t) => {
     let u = l;
     return `
       <li class="sb-navigator-story-item">
-        <a href="${u.href}" 
-           class="sb-navigator-story-link${u.isActive ? " active" : ""}" 
+        <a href="${u.href}"
+           class="sb-navigator-story-link${u.isActive ? " active" : ""}"
            aria-current="${u.isActive ? "location" : "false"}">${u.name}</a>
       </li>
     `;
