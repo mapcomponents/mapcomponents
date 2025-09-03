@@ -11,6 +11,11 @@
 			"options": {
 				"outputPath": "dist/libs/react-maplibre"
 			}
+		},
+		"storybook": {
+			"options": {
+				"port": 4400
+			}
 		}
 	}
 }

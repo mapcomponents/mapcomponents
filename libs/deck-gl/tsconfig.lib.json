@@ -9,7 +9,7 @@
 			"vite/client"
 		]
 	},
-	"include": ["src/**/*"],
+	"include": ["src/**/*", "../react-maplibre/src/**/*"],
 	"exclude": [
 		"**/*.spec.ts",
 		"**/*.test.ts",

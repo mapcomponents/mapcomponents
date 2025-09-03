@@ -9,7 +9,11 @@
 		"storybook-composition": {
 			"executor": "nx:run-commands",
 			"options": {
-				"commands": ["nx storybook deck-gl", "nx storybook ra-geospatial"],
+				"commands": [
+					"nx storybook deck-gl",
+					"nx storybook ra-geospatial",
+					"nx storybook react-maplibre"
+				],
 				"parallel": true
 			}
 		}
