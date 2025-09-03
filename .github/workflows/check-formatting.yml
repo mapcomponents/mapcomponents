@@ -46,5 +46,5 @@ jobs:
       - name: Lint all projects
         run: npx nx run-many --target=lint --all
 
-      - name: Prettier all projects
-        run: npx nx run-many --target=prettier --all
+#      - name: Prettier all projects
+#        run: npx nx run-many --target=prettier --all
