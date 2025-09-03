@@ -83,14 +83,12 @@ To generate a new application, use:
 
 ```sh
   npx nx g @nx/react:application --directory=apps/my-app --name=my-app --no-interactive --e2eTestRunner=none
-
 ```
 
 To generate a new library, use:
 
 ```sh
   npx nx g @nx/react:library --directory=packages/my-package --bundler=vite --name=my-package --importPath=@mapcomponents/my-package --no-interactive
-
 ```
 
 Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to use the generator form.
