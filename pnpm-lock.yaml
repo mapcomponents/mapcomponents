@@ -207,7 +207,7 @@ importers:
 
   apps/storybook-composition: {}
 
-  libs/deck-gl:
+  packages/deck-gl:
     dependencies:
       '@deck.gl/aggregation-layers':
         specifier: ^9.1.14
@@ -235,7 +235,7 @@ importers:
         specifier: ^7946.0.16
         version: 7946.0.16
 
-  libs/ra-geospatial:
+  packages/ra-geospatial:
     dependencies:
       '@emotion/react':
         specifier: ^11.14.0
@@ -277,7 +277,7 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0
 
-  libs/react-maplibre:
+  packages/react-maplibre:
     dependencies:
       '@dnd-kit/core':
         specifier: ^6.3.1
@@ -9053,6 +9053,7 @@ packages:
   osm2geojson-lite@1.1.2:
     resolution: {integrity: sha512-6s1uW548fdyLTJ4Cp/hQTKvdgCl/E8nUvBMEzUXnAJPHAFHoIhwMqZ3KGdph2A1g48rsCeA6gVnkPruWGiwupw==}
     hasBin: true
+    bundledDependencies: []
 
   ospath@1.2.2:
     resolution: {integrity: sha512-o6E5qJV5zkAbIDNhGSIlyOhScKXgQrSRMilfph0clDfM0nEnBOlKlH4sWDmG95BW/CvwNz0vmm7dJVtU2KlMiA==}
