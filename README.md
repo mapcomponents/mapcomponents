@@ -160,6 +160,10 @@ You can adjust the composition based on the current development environment (e.g
   refs: (config, { configType }) => {
     if (configType === 'DEVELOPMENT') {
       return {
+        'react-maplibre': {
+          title: 'React MapLibreMap',
+          url: 'http://localhost:4400',
+        },
         'deck-gl': {
           title: 'Deck.gl',
           url: 'http://localhost:4401',
@@ -167,14 +171,14 @@ You can adjust the composition based on the current development environment (e.g
         'ra-geospatial': { 
           title: 'Ra Geospatial',
           url: 'http://localhost:4402',
-        },
-        'react-maplibre': {
-          title: 'React MapLibreMap',
-          url: 'https://mapcomponents.github.io/react-map-components-maplibre',
-        },
+        }
       };
     }
-    return {
+    return { 
+      'react-maplibre': {
+        title: 'React MapLibreMap',
+        url: 'https://mapcomponents.github.io/react-map-components-maplibre/',
+      },
       'deck-gl': {
         title: 'Deck.gl',
         url: 'https://mapcomponents.github.io/mapcomponents/deck-gl/',
@@ -182,11 +186,7 @@ You can adjust the composition based on the current development environment (e.g
       'ra-geospatial': {
         title: 'React Admin Geospatial',
         url: 'https://mapcomponents.github.io/mapcomponents/ra-geospatial/',
-      },
-      'react-maplibre': {
-        title: 'React MapLibreMap',
-        url: 'https://mapcomponents.github.io/react-map-components-maplibre/',
-      },
+      }
     };
   }
 }
