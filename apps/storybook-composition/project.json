@@ -9,11 +9,14 @@
 		"storybook-composition": {
 			"executor": "nx:run-commands",
 			"options": {
-				"commands": [
-					"nx storybook deck-gl",
-					"nx storybook ra-geospatial"
-				],
+				"commands": ["nx storybook deck-gl", "nx storybook ra-geospatial"],
 				"parallel": true
+			}
+		},
+		"prettier": {
+			"executor": "@nx/workspace:run-commands",
+			"options": {
+				"command": "prettier --check ."
 			}
 		}
 	}

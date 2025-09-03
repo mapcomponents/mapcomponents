@@ -11,10 +11,10 @@ jobs:
 
     strategy:
       matrix:
-        node-versions: [16.x]
+        node-versions: [20.x]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -23,7 +23,7 @@ jobs:
         run: pnpm setup
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -45,3 +45,6 @@ jobs:
 
       - name: Lint all projects
         run: npx nx run-many --target=lint --all
+
+      - name: Prettier all projects
+        run: npx nx run-many --target=prettier --all

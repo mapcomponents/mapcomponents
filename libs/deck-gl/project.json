@@ -8,6 +8,12 @@
 			"options": {
 				"port": 4401
 			}
+		},
+		"prettier": {
+			"executor": "@nx/workspace:run-commands",
+			"options": {
+				"command": "prettier --check ."
+			}
 		}
 	}
 }
