@@ -2,7 +2,7 @@ import React, { useContext, useRef, useEffect } from 'react';
 import MapContext from '../../contexts/MapContext';
 import maplibregl, { CustomLayerInterface, LngLatLike, Map } from 'maplibre-gl';
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import MapLibreGlWrapper from '../MapLibreMap/lib/MapLibreGlWrapper';
 
 /**
@@ -113,7 +113,7 @@ const MlThreeJsLayer = (props: MlThreeJsLayerProps) => {
 				loader.load(
 					'assets/3D/godzilla_simple.glb',
 					//"https://docs.mapbox.com/mapbox-gl-js/assets/34M_17/34M_17.gltf",
-					function (gltf: { scene: THREE.Scene }) {
+					function (gltf: { scene: THREE.Object3D<THREE.Object3DEventMap> }) {
 						self.scene?.add(gltf.scene);
 						if (typeof props.onDone === 'function') {
 							props.onDone();
