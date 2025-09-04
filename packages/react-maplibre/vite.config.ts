@@ -5,6 +5,9 @@ import dts from 'vite-plugin-dts';
 import * as path from 'path';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
+/*import * as fs from 'node:fs';
+
+const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));*/
 
 export default defineConfig(() => ({
 	root: __dirname,
@@ -39,11 +42,20 @@ export default defineConfig(() => ({
 			fileName: 'index',
 			// Change this to the formats you want to support.
 			// Don't forget to update your package.json as well.
-			formats: ['es' as const],
+			formats: ['es' as const, 'cjs' as const],
 		},
+		sourcemap: true,
 		rollupOptions: {
 			// External packages that should not be bundled into your library.
-			external: ['react', 'react-dom', 'react/jsx-runtime'],
+			external: [
+				'react',
+				'react-dom',
+				'd3',
+				'sql.js',
+/*				...Object.keys(pkg.dependencies),
+				...Object.keys(pkg.devDependencies),*/
+			],
+			input: ['src/index.ts'],
 		},
 	},
 }));
