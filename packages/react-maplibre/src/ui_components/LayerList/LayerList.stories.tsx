@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LayerSpecification } from 'maplibre-gl';
 import { Feature, FeatureCollection } from 'geojson';
 import { Button } from '@mui/material';

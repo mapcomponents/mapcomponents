@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import MlGpxViewer from './MlGpxViewer';
 import mapContextDecorator from '../../decorators/MapContextDecorator';
 import MlGpxViewerInstructions from './util/MlGpxViewerInstructions';

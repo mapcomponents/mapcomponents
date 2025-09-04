@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { bbox, featureCollection } from '@turf/turf';
 import { FeatureCollection, GeoJSON } from 'geojson';
 import { LngLatBoundsLike } from 'maplibre-gl';

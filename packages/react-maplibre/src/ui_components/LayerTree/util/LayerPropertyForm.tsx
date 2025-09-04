@@ -22,7 +22,7 @@ import {
 	setLayerInMapConfig,
 } from '../../../stores/map.store';
 import { useDispatch, useSelector } from 'react-redux';
-import { MlGeoJsonLayerProps } from 'src/components/MlGeoJsonLayer/MlGeoJsonLayer';
+import { MlGeoJsonLayerProps } from '../../../components/MlGeoJsonLayer/MlGeoJsonLayer';
 
 const PaperStyled = styled(Paper)({
 	marginLeft: '-100px',

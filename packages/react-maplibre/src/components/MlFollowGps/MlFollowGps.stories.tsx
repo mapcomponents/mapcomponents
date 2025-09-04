@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useEffect, useState } from 'react';
 import MlFollowGps, { MlFollowGpsProps } from './MlFollowGps';
 

@@ -1,4 +1,4 @@
-import React, { FC, useRef } from 'react';
+import { FC, useRef } from 'react';
 
 import useMapState from "../../hooks/useMapState";
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import Instructions, { InstructionProps } from '../../../util/Instructions';
 import { Theme, useMediaQuery } from '@mui/material';
 

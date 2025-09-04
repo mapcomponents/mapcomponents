@@ -1,5 +1,3 @@
-import React from 'react';
-
 import useLayerFilter from './useLayerFilter';
 
 import mapContextDecorator from '../../decorators/MapContextDecorator';

@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useEffect, useCallback } from 'react';
+import { useMemo, useRef, useEffect, useCallback } from 'react';
 import useMap from '../../hooks/useMap';
 import { RasterLayerSpecification, RasterSourceSpecification } from 'maplibre-gl';
 

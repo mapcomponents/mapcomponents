@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback } from 'react';
 import useMap from '../../hooks/useMap';
 import { LayerSpecification } from 'maplibre-gl';
 import { VectorSourceSpecification } from 'maplibre-gl';

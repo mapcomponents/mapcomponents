@@ -1,4 +1,3 @@
-import React from 'react';
 import { paintPropsType } from '../LayerPropertyForm';
 import ColorPicker from '../../../ColorPicker/ColorPicker';
 

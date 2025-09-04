@@ -8,7 +8,6 @@ import {
 	ListItemButton,
 	ListItemText,
 } from '@mui/material';
-import React from 'react';
 import { StyleSpecification } from 'maplibre-gl';
 
 export interface SelectStylePopupProps {

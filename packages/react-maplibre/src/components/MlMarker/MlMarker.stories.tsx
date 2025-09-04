@@ -1,4 +1,3 @@
-import React from "react";
 import MlMarker, { MlMarkerProps } from "./MlMarker";
 import mapContextDecorator from "../../decorators/MapContextDecorator";
 

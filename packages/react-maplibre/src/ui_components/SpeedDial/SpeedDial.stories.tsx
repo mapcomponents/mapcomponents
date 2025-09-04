@@ -1,5 +1,3 @@
-import React from 'react';
-
 import SpeedDial from './SpeedDial';
 
 import mapContextDecorator from '../../decorators/NoNavToolsDecorator';

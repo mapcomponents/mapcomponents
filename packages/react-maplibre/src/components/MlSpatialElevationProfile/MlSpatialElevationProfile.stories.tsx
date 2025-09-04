@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import MlSpatialElevationProfile from './MlSpatialElevationProfile';
 import MlGpxViewer from '../MlGpxViewer/MlGpxViewer';
 import useGpx, { MetadataType } from '../../hooks/useGpx/useGpx';

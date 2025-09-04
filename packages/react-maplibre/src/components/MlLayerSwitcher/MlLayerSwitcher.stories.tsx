@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import MlWmsLayer from '../MlWmsLayer/MlWmsLayer';
 import MlLayerSwitcher from './MlLayerSwitcher';
 import MlGeoJsonLayer from '../MlGeoJsonLayer/MlGeoJsonLayer';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import MlShareMapState from './MlShareMapState';
 import mapContextDecorator from '../../decorators/MapContextDecorator';

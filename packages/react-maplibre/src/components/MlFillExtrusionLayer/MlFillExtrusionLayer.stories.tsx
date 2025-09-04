@@ -1,5 +1,3 @@
-import React from 'react';
-
 import MlFillExtrusionLayer, { MlFillExtrusionLayerProps } from './MlFillExtrusionLayer';
 
 import { makeMapContextDecorators } from '../../decorators/MapContextDecorator';

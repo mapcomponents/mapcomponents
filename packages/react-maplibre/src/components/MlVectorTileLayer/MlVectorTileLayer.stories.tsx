@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import MlVectorTileLayer, { MlVectorTileLayerProps } from './MlVectorTileLayer';
 import TopToolbar from '../../ui_components/TopToolbar';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import  MlLayer  from '../../MlLayer/MlLayer';
 import {
 	SymbolLayerSpecification,

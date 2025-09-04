@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { ChromePicker } from 'react-color';
 import { Button, Grid } from '@mui/material';

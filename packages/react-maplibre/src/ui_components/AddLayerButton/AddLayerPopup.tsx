@@ -1,12 +1,12 @@
 import { Dialog } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import GeoJsonLayerForm from './LayerConfigForms/GeoJsonLayerForm';
 import LayerTypeForm from './LayerConfigForms/LayerTypeForm';
 import WmsLayerForm from './LayerConfigForms/WmsLayerForm';
-import { LayerConfig } from 'src/contexts/LayerContext';
 import ProtocolHandlerLayerForm from './LayerConfigForms/ProtocolHandlerLayerForm';
 import MbtilesLayerForm from './LayerConfigForms/MbtilesLayerForm';
-import { MlVectorTileLayerProps } from 'src/components/MlVectorTileLayer/MlVectorTileLayer';
+import { MlVectorTileLayerProps } from '../../components/MlVectorTileLayer/MlVectorTileLayer';
+import { LayerConfig } from '../../stores/map.store';
 
 export interface AddLayerPopupProps {
 	open: boolean;

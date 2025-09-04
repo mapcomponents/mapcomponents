@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import useMap from '../../hooks/useMap';
 import { TerrainSpecification } from 'maplibre-gl';
 

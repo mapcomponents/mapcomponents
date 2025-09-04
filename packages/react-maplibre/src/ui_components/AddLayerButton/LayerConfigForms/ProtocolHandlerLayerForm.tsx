@@ -8,7 +8,7 @@ import {
 	Select,
 	SelectChangeEvent,
 } from '@mui/material';
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { MlGeoJsonLayerProps } from 'src/components/MlGeoJsonLayer/MlGeoJsonLayer';
 import useAddProtocol from '../../../hooks/useAddProtocol/useAddProtocol';
 import CSVOptionsFormular from './utils/CSVOptionsFomular';

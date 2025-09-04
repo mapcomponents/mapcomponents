@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { MlGeoJsonLayerProps } from 'src/components/MlGeoJsonLayer/MlGeoJsonLayer';
-import { MlVectorTileLayerProps } from 'src/components/MlVectorTileLayer/MlVectorTileLayer';
 import { Layer } from 'wms-capabilities';
 import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { MlWmsLayerProps } from '../components/MlWmsLayer/MlWmsLayer';
+import { MlGeoJsonLayerProps } from '../components/MlGeoJsonLayer/MlGeoJsonLayer';
+import { MlVectorTileLayerProps } from '../components/MlVectorTileLayer/MlVectorTileLayer';
 
 export interface wmsLoaderConfigProps {
 	getFeatureInfoUrl: string;

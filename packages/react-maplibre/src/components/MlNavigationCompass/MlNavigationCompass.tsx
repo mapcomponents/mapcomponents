@@ -1,4 +1,4 @@
-import React, { useState, useEffect, CSSProperties } from 'react';
+import { useState, useEffect, CSSProperties } from 'react';
 import { Box, styled } from '@mui/material';
 import useMap from '../../hooks/useMap';
 import CompassBackground from './assets/CompassBackground';

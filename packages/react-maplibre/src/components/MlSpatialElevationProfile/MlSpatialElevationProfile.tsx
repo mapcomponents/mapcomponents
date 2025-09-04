@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from 'react';
+import { useRef, useMemo } from 'react';
 import { featureCollection } from '@turf/helpers';
 import { Feature, FeatureCollection, GeoJSON } from 'geojson';
 import { v4 as uuidv4 } from 'uuid';

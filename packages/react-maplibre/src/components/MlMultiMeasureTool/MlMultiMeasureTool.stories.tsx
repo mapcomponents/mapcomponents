@@ -1,4 +1,3 @@
-import React from 'react';
 import MlMultiMeasureTool from './MlMultiMeasureTool';
 import mapContextDecorator from '../../decorators/MapContextDecorator';
 

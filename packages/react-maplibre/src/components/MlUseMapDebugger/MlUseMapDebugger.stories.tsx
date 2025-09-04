@@ -1,5 +1,3 @@
-import React from "react";
-
 import MlUseMapDebugger, { MlUseMapDebuggerProps } from "./MlUseMapDebugger";
 
 import mapContextDecorator from "../../decorators/MapContextDecorator";
