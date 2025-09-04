@@ -12,12 +12,6 @@
 				"commands": ["nx storybook deck-gl", "nx storybook ra-geospatial"],
 				"parallel": true
 			}
-		},
-		"prettier": {
-			"executor": "@nx/workspace:run-commands",
-			"options": {
-				"command": "prettier --check ."
-			}
 		}
 	}
 }
