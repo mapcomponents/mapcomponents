@@ -1,4 +1,3 @@
-import React from 'react';
 import MlLayer from '../MlLayer/MlLayer';
 import { useLayerProps } from '../../hooks/useLayer';
 

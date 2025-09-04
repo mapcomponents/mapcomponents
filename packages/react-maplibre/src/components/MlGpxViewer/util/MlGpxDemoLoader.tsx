@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';

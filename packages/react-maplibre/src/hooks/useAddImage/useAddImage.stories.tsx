@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import useAddImage from './useAddImage';
 import useMap from '../useMap';
 import mapContextDecorator from '../../decorators/LowZoomDecorator';

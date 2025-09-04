@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import MlNavigationTools, { MlNavigationToolsProps } from './MlNavigationTools';
 import noNavToolsDecorator from '../../decorators/NoNavToolsDecorator';

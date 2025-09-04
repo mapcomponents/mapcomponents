@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import MlScaleReference, { MlScaleReferenceProps } from './MlScaleReference';
 import Box from '@mui/material/Box';

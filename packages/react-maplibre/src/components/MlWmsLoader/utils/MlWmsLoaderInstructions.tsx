@@ -1,4 +1,3 @@
-import React from 'react';
 import Instructions from '../../../util/Instructions';
 
 const steps = [

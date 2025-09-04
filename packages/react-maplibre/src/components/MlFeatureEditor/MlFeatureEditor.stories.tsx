@@ -3,9 +3,9 @@ import { Box, Button, Theme, Typography, useMediaQuery } from '@mui/material';
 import MlFeatureEditor from './MlFeatureEditor';
 import mapContextDecorator from '../../decorators/MapContextDecorator';
 import TopToolbar from '../../ui_components/TopToolbar';
-import { useFeatureEditorProps } from 'src/hooks/useFeatureEditor/useFeatureEditor';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { useFeatureEditorProps } from '../../hooks/useFeatureEditor/useFeatureEditor';
 
 const storyoptions = {
 	title: 'MapComponents/MlFeatureEditor',

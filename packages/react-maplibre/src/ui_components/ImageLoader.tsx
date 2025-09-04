@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import ErrorIcon from '@mui/icons-material/Error';
 import { Box } from '@mui/system';

@@ -1,4 +1,3 @@
-import React from 'react';
 import useLayer, { useLayerProps } from '../../hooks/useLayer';
 import { Feature, FeatureCollection } from 'geojson';
 

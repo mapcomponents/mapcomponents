@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import noNavToolsDecorator from '../../decorators/NoNavToolsDecorator';
 import TopToolbar from '../../ui_components/TopToolbar';
 import Button from '@mui/material/Button';

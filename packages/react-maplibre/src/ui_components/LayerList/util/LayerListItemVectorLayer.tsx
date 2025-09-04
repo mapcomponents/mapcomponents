@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ListItem, IconButton, ListItemIcon, Checkbox, ListItemText, styled } from '@mui/material';
 import TuneIcon from '@mui/icons-material/Tune';
 import LayerPropertyForm from './LayerPropertyForm';

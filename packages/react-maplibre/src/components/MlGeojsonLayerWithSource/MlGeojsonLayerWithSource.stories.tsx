@@ -1,5 +1,3 @@
-import React from "react";
-
 import MlGeojsonLayerWithSource from "./MlGeojsonLayerWithSource";
 
 import mapContextDecorator from "../../decorators/MapContextDecorator";

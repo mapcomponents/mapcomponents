@@ -1,11 +1,11 @@
-import React, { useMemo, ReactElement, FC } from 'react';
+import { useMemo, ReactElement, FC } from 'react';
 
 import { MapComponentsProvider } from '../index';
 import MapLibreMap from '../components/MapLibreMap/MapLibreMap';
 import './style.css';
 import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 import getTheme from '../ui_components/MapcomponentsTheme';
-import { Decorator } from '@storybook/react-webpack5';
+import { Decorator } from '@storybook/react-vite';
 
 interface StoryContext {
   globals: {

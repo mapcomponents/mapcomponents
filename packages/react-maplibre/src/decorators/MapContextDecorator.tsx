@@ -1,4 +1,4 @@
-import React, { useMemo, ReactElement, FC } from 'react';
+import { useMemo, ReactElement, FC } from 'react';
 
 import { MapComponentsProvider } from '../index';
 import MapLibreMap, { MapLibreMapProps } from '../components/MapLibreMap/MapLibreMap';
@@ -7,7 +7,7 @@ import MlNavigationTools from '../components/MlNavigationTools/MlNavigationTools
 import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 import getTheme from '../ui_components/MapcomponentsTheme';
 import MlScaleReference from '../components/MlScaleReference/MlScaleReference';
-import { Decorator } from '@storybook/react-webpack5';
+import { Decorator } from '@storybook/react-vite';
 import { Paper } from '@mui/material';
 
 interface StoryContext {

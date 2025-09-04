@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import MlWmsLayer, { MlWmsLayerProps } from "./MlWmsLayer";
 import TopToolbar from "../../ui_components/TopToolbar";

@@ -1,4 +1,4 @@
-import React, { useMemo, ReactElement, FC } from 'react';
+import { useMemo, ReactElement, FC } from 'react';
 
 import { MapComponentsProvider } from '../index';
 import MapLibreMap, { MapLibreMapProps } from '../components/MapLibreMap/MapLibreMap';
@@ -6,7 +6,7 @@ import './style.css';
 import MlNavigationTools from '../components/MlNavigationTools/MlNavigationTools';
 import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 import getTheme from '../ui_components/MapcomponentsTheme';
-import { Decorator } from '@storybook/react-webpack5';
+import { Decorator } from '@storybook/react-vite';
 import store from '../stores/map.store';
 import { Provider as ReduxStoreProvider } from 'react-redux';
 

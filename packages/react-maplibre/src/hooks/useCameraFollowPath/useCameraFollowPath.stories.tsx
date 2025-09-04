@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useCameraFollowPath from './useCameraFollowPath';
 import TopToolbar from '../../ui_components/TopToolbar';
 import mapContextDecorator from '../../decorators/MapContextDecorator';

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import SelectStyleButton from '../SelectStyleButton/SelectStyleButton';
 import LayerList from '../LayerList/LayerList';

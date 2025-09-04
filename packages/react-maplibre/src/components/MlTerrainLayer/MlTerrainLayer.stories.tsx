@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import MlTerrainLayer from './MlTerrainLayer';
 import MapContextDecorator from '../../decorators/MapContextDecorator';
 import TopToolbar from '../../ui_components/TopToolbar';

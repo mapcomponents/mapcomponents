@@ -1,4 +1,4 @@
-import React, { useState, useEffect, CSSProperties } from 'react';
+import { useState, useEffect, CSSProperties } from 'react';
 import useMap from '../../hooks/useMap';
 import { Button, styled } from '@mui/material';
 import MapIcon from '@mui/icons-material/Map';

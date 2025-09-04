@@ -1,4 +1,3 @@
-import React from 'react';
 import MlLayerSwipe from './MlLayerSwipe';
 import MlWmsLayer from '../MlWmsLayer/MlWmsLayer';
 

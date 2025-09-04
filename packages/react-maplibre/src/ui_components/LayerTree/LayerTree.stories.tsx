@@ -1,4 +1,3 @@
-import React from 'react';
 import LayerTree from './LayerTree';
 import LayerOnMap from './LayerOnMap';
 import Sidebar from '../Sidebar';

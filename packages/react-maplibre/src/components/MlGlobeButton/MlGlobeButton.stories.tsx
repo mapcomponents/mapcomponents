@@ -1,5 +1,3 @@
-import React from 'react';
-
 import MlGlobeButton, { MlGlobeButtonProps } from './MlGlobeButton';
 
 import lowZoomDecorator from '../../decorators/LowZoomDecorator';

@@ -1,5 +1,5 @@
 import useSource from './useSource';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import useMap from './useMap';
 import useMapState from './useMapState';
 import useLayer from './useLayer';

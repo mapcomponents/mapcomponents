@@ -17,7 +17,7 @@ import MlTemporalControllerLabels from './utils/MlTemporalControllerLabels';
 import TemporalControllerPlayer from './utils/TemporalControllerPlayer';
 import useFilterData from './utils/useFilterData';
 import { useTheme } from '@mui/material/styles';
-import { useLayerProps } from 'src/hooks/useLayer';
+import { useLayerProps } from '../../hooks/useLayer';
 
 export interface MlTemporalControllerProps {
 	/**

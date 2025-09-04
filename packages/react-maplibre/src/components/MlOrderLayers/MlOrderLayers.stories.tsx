@@ -1,5 +1,3 @@
-import React from "react";
-
 import MlOrderLayers from "./MlOrderLayers";
 
 import mapContextDecorator from "../../decorators/MapContextDecorator";

@@ -1,4 +1,3 @@
-import React from 'react';
 import MlNavigationCompass, { MlNavigationCompassProps } from './MlNavigationCompass';
 import mapContextDecorator from '../../decorators/MapContextDecorator';
 

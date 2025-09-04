@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { LayerOrderItem, RootState } from '../../stores/map.store';
 import LayerTreeListItem from './LayerTreeListItem';
