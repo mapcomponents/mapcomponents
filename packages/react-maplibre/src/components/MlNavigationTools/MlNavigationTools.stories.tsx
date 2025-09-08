@@ -23,9 +23,9 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = (props: MlNavigationToolsProps) => <MlNavigationTools {...props} />;
+const Template:any = (props: MlNavigationToolsProps) => <MlNavigationTools {...props} />;
 
-const catalogueTemplate = () => {
+const catalogueTemplate: any = () => {
 	const mapHook = useMap();
 	const [openSidebar, setOpenSidebar] = useState(true);
 	const [threeDButton, setThreeDButton] = useState(false);

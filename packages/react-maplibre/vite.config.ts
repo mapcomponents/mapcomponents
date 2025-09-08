@@ -55,7 +55,7 @@ export default defineConfig(() => ({
 /*				...Object.keys(pkg.dependencies),
 				...Object.keys(pkg.devDependencies),*/
 			],
-			input: ['src/index.ts'],
+			input: [path.join(__dirname, 'src/index.ts')],
 		},
 	},
 }));

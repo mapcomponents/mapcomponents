@@ -17,7 +17,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = (props: MlGeoJsonLayerProps) => {
+const Template: any = (props: MlGeoJsonLayerProps) => {
 	const mapHook = useMap({ mapId: undefined });
 
 	useAddImage({

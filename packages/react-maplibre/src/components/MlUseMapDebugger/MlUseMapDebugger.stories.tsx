@@ -13,7 +13,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = (props:MlUseMapDebuggerProps) => {
+const Template: any = (props:MlUseMapDebuggerProps) => {
 	return (
 		<>
 			<MlUseMapDebugger {...props} />

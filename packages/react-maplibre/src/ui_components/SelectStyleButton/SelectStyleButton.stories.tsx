@@ -21,7 +21,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const SelectStyleTemplate = () => {
+const SelectStyleTemplate: any = () => {
 	const layerContext = useContext(LayerContext);
 	const [openSidebar, setOpenSidebar] = useState(true);
 

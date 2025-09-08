@@ -12,10 +12,17 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Tooltip from '@mui/material/Tooltip';
 import LayerListItem from '../../ui_components/LayerList/LayerListItem';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
-import { Feature } from 'geojson';
+import { Feature, LineString, Point, Polygon } from 'geojson';
 import { LngLatLike } from 'maplibre-gl';
-import { SxProps } from '@mui/system/styleFunctionSx/styleFunctionSx';
-import { Button, Checkbox, FormControlLabel, FormGroup, Theme, Typography } from '@mui/material';
+import {
+	Button,
+	Checkbox,
+	FormControlLabel,
+	FormGroup,
+	SxProps,
+	Theme,
+	Typography,
+} from '@mui/material';
 import ScatterPlotIcon from '@mui/icons-material/ScatterPlot';
 import PolylineIcon from '@mui/icons-material/Polyline';
 
@@ -226,7 +233,7 @@ const MlSketchTool = (props: MlSketchToolProps) => {
 					mode={sketchState.drawMode}
 					geojson={sketchState.selectedGeoJson}
 					onChange={(feature: Feature[]) => {
-						console.log(feature);
+						console.log('Features: ', feature);
 						if (!feature?.[0]) return;
 
 						setSketchState((_sketchState) => {
@@ -255,16 +262,13 @@ const MlSketchTool = (props: MlSketchToolProps) => {
 										'Point'
 								) {
 									const selectedCoords = (
-										_sketchState.selectedGeoJson?.geometry as
-											| GeoJSON.Point
-											| GeoJSON.LineString
-											| GeoJSON.Polygon
+										_sketchState.selectedGeoJson?.geometry as Point | LineString | Polygon
 									)?.coordinates;
 									const activeCoords = (
 										_sketchState.geometries[_sketchState.activeGeometryIndex]?.geometry as
-											| GeoJSON.Point
-											| GeoJSON.LineString
-											| GeoJSON.Polygon
+											| Point
+											| LineString
+											| Polygon
 									)?.coordinates;
 
 									// Compare coordinates
@@ -296,7 +300,6 @@ const MlSketchTool = (props: MlSketchToolProps) => {
 
 			<List sx={{ zIndex: 105, marginBottom: '-10px' }}>
 				{sketchState.geometries.map((el, index) => (
-					<>
 						<Box key={el.id} sx={{ display: 'flex', flexDirection: 'column' }}>
 							<br />
 							<Box
@@ -363,6 +366,7 @@ const MlSketchTool = (props: MlSketchToolProps) => {
 								<LayerListItem
 									listItemSx={buttonStyle}
 									configurable={true}
+									visible
 									layerComponent={
 										<MlGeoJsonLayer
 											mapId={props.mapId}
@@ -399,7 +403,7 @@ const MlSketchTool = (props: MlSketchToolProps) => {
 										</Typography>
 									}
 									description={el.geometry.type}
-								></LayerListItem>
+								/>
 								<Box
 									sx={{
 										padding: '3px 30px',
@@ -490,7 +494,6 @@ const MlSketchTool = (props: MlSketchToolProps) => {
 								</Box>
 							</Box>
 						</Box>
-					</>
 				))}
 				{hoveredGeometry && (
 					<MlGeoJsonLayer

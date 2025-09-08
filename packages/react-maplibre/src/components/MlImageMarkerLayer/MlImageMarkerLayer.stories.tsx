@@ -9,7 +9,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = () => (
+const Template: any = () => (
 	<MlImageMarkerLayer
 		options={{
 			source: {

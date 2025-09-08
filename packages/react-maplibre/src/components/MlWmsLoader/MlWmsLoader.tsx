@@ -1,8 +1,8 @@
-import React, { useEffect, useCallback, useState, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import MlWmsLayer from '../MlWmsLayer/MlWmsLayer';
 import MlMarker from '../MlMarker/MlMarker';
-import useWms, { useWmsProps } from '../../hooks/useWms';
+import useWms, { useWmsProps, useWmsReturnType } from '../../hooks/useWms';
 
 import InfoIcon from '@mui/icons-material/Info';
 import List from '@mui/material/List';
@@ -11,7 +11,6 @@ import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import { LngLat, MapMouseEvent } from 'maplibre-gl';
 import { Layer2, Layer3 } from 'wms-capabilities';
-import { useWmsReturnType } from '../../hooks/useWms';
 import useMap from '../../hooks/useMap';
 import { Box, Checkbox, ListItemIcon, Snackbar } from '@mui/material';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -138,7 +137,6 @@ export type LayerType = {
  * @component
  */
 const MlWmsLoader = (props: MlWmsLoaderProps) => {
-
 	const {
 		capabilities: _capabilities,
 		error,
@@ -207,7 +205,10 @@ const MlWmsLoader = (props: MlWmsLoaderProps) => {
 		return layers
 			.filter((el: LayerType) => el.visible && el?.Attribution?.Title)
 			.map((el: LayerType) => el?.Attribution?.Title)
-			.filter((value: string, index: number, self: string[]) => self.indexOf(value) === index)
+			.filter(
+				(value: string | undefined, index: number, self: (string | undefined)[]) =>
+					self.indexOf(value) === index
+			)
 			.join(' ');
 	}, [layers]);
 
@@ -333,6 +334,8 @@ const MlWmsLoader = (props: MlWmsLoaderProps) => {
 			// collect queriable Layer2 layers
 			let _layers: LayerType[] = capabilities?.Capability?.Layer?.Layer.filter(
 				(el) => !el.Layer?.length
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-expect-error
 			).map((layer: Layer2 & { Name: string }, idx: number) => {
 				if (idx === 0) {
 					_LatLonBoundingBox = layer.EX_GeographicBoundingBox;
@@ -484,9 +487,7 @@ const MlWmsLoader = (props: MlWmsLoaderProps) => {
 					{props.layerId && props.sortable && (
 						<SortableContainer layerId={props.layerId}>{listContent}</SortableContainer>
 					)}
-					{props.layerId && !props.sortable && (
-						listContent
-					)}
+					{props.layerId && !props.sortable && listContent}
 					<Box sx={{ display: open ? 'block' : 'none' }}>
 						<List dense component="div" disablePadding sx={{ paddingLeft: '18px' }}>
 							{wmsUrl &&

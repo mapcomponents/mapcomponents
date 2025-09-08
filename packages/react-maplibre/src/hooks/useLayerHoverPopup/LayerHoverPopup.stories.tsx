@@ -12,7 +12,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = () => {
+const Template: any = () => {
 
 return <><LayerHoverPopup getPopupContent={() => 'Popup content'} /></>;
 }

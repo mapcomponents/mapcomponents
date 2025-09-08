@@ -11,7 +11,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = () => <MlOrderLayers layerIds={['layer1','layer2']} />;
+const Template: any = () => <MlOrderLayers layerIds={['layer1','layer2']} />;
 
 export const ExampleConfig = Template.bind({});
 ExampleConfig.parameters = {};

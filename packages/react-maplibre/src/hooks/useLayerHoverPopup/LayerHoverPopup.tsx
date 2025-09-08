@@ -1,10 +1,6 @@
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import useMap from '../useMap';
-import {
-	LngLatLike,
-	Popup,
-	MapEventType,
-} from 'maplibre-gl';
+import { LngLatLike, Popup } from 'maplibre-gl';
 import { Feature } from 'geojson';
 
 export interface LayerHoverPopupProps {
@@ -40,12 +36,7 @@ const LayerHoverPopup = (props: LayerHoverPopupProps) => {
 		mapHook.map.on(
 			'mouseenter',
 			props.layerId,
-			(
-				e: MapEventType & {
-					features?: ({[key:string]:string} & { geometry:{coordinates:[number,number]}})[] | undefined;
-					lngLat: { lng: number; lat: number };
-				}
-			) => {
+			(e: any) => {
 				if (!mapHook.map) return;
 				// Change the cursor style as a UI indicator.
 
@@ -67,7 +58,10 @@ const LayerHoverPopup = (props: LayerHoverPopupProps) => {
 					// Populate the popup and set its coordinates
 
 					// based on the feature found.
-					popup.current.setLngLat(coordinates as LngLatLike).setHTML(content).addTo(mapHook.map.map);
+					popup.current
+						.setLngLat(coordinates as LngLatLike)
+						.setHTML(content)
+						.addTo(mapHook.map.map);
 				}
 			},
 			mapHook.componentId

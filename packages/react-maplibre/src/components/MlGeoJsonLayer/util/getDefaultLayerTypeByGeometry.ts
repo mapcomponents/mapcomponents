@@ -12,7 +12,7 @@ const mapGeometryTypesToLayerTypes: Record<string, LayerSpecification["type"]> =
 	GeometryCollection: "circle",
 };
 
-const getDefaulLayerTypeByGeometry = (
+const getDefaultLayerTypeByGeometry = (
 	geojson: Feature | FeatureCollection | undefined
 ): LayerSpecification['type'] => {
 	if (geojson?.type === "Feature") {
@@ -22,10 +22,10 @@ const getDefaulLayerTypeByGeometry = (
 	}
 	if (geojson?.type === "FeatureCollection") {
 		if (geojson.features.length) {
-			return getDefaulLayerTypeByGeometry(geojson.features[0]);
+			return getDefaultLayerTypeByGeometry(geojson.features[0]);
 		}
 		return "circle";
 	}
 	return "fill";
 };
-export default getDefaulLayerTypeByGeometry;
+export default getDefaultLayerTypeByGeometry;

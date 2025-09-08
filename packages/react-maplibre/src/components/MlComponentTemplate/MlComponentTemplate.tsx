@@ -1,4 +1,3 @@
-import React from "react";
 import useMap from "../../hooks/useMap";
 
 export interface MlComponentTemplateProps {

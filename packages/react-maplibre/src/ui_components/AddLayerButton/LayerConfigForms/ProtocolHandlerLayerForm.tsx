@@ -9,7 +9,6 @@ import {
 	SelectChangeEvent,
 } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
-import { MlGeoJsonLayerProps } from 'src/components/MlGeoJsonLayer/MlGeoJsonLayer';
 import useAddProtocol from '../../../hooks/useAddProtocol/useAddProtocol';
 import CSVOptionsFormular from './utils/CSVOptionsFomular';
 import OsmOptionsFomular from './utils/OsmOptionsFomular';
@@ -18,8 +17,8 @@ import { CSVProtocolHandler } from '../../../protocol_handlers/csv';
 import { TopojsonProtocolHandler } from '../../../protocol_handlers/topojson';
 import { OSMProtocolHandler } from '../../../protocol_handlers/osm';
 import { XMLProtocolHandler } from '../../../protocol_handlers/xml';
-//import { mbTilesProtocolHandler } from '../../../protocol_handlers/mbtiles';
 import * as csv2geojsonType from '../../../protocol_handlers/csv2geojson';
+import { MlGeoJsonLayerProps } from '../../../components/MlGeoJsonLayer/MlGeoJsonLayer';
 
 export interface ProtocolHandlerLayerFormProps {
 	originType: string;

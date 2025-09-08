@@ -23,7 +23,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const LinestringTransitionTemplate = (props:MlTransitionGeoJsonLayerProps) => {
+const LinestringTransitionTemplate: any = (props:MlTransitionGeoJsonLayerProps) => {
 	const mapHook = useMap({ mapId: 'map_1' });
 	const [geojson, setGeojson] = useState<Feature>(sample_geojson_1 as Feature);
 	const initializedRef = useRef(false);

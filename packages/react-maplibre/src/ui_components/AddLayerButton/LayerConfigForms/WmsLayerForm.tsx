@@ -8,7 +8,7 @@ import {
 	OutlinedInput,
 } from '@mui/material';
 import React, { useMemo } from 'react';
-import { wmsConfig } from 'src/contexts/LayerContext';
+import { wmsConfig } from '../../../contexts/LayerContext';
 
 export interface WmsLayerConfig {
 	url: string;

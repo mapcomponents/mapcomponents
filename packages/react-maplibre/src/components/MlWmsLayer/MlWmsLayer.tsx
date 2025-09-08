@@ -2,8 +2,8 @@ import { useMemo, useRef, useEffect, useCallback } from 'react';
 import useMap from '../../hooks/useMap';
 import { RasterLayerSpecification, RasterSourceSpecification } from 'maplibre-gl';
 
-const defaultProps = {
-	visible: true,
+const defaultProps: MlWmsLayerProps = {
+	url: '',
 	urlParameters: {
 		bbox: '{bbox-epsg-3857}',
 		format: 'image/png',
@@ -11,19 +11,10 @@ const defaultProps = {
 		version: '1.1.1',
 		request: 'GetMap',
 		srs: 'EPSG:3857',
-		width: 256,
-		height: 256,
+		width: '256',
+		height: '256',
 		styles: '',
-	},
-	attribution: '',
-	sourceOptions: {
-		minZoom: 0,
-		maxZoom: 20,
-	},
-	layerOptions: {
-		minZoom: 0,
-		maxZoom: 20,
-	},
+	}
 };
 
 export interface MlWmsLayerProps {
@@ -98,7 +89,7 @@ const MlWmsLayer = (props: MlWmsLayerProps) => {
 				type: 'raster',
 				tiles: [tileUrl],
 				tileSize: 256,
-				attribution: props.attribution,
+				attribution: props.attribution ?? '',
 				...props.sourceOptions,
 			},
 			mapHook.componentId
@@ -126,7 +117,7 @@ const MlWmsLayer = (props: MlWmsLayerProps) => {
 			},
 			mapHook.componentId
 		);
-		if (!props.visible) {
+		if (props.visible === false) {
 			mapHook.map.map.setLayoutProperty(layerId.current, 'visibility', 'none');
 		}
 	}, [mapHook.map, props, tileUrl]);
@@ -154,7 +145,7 @@ const MlWmsLayer = (props: MlWmsLayerProps) => {
 		if (!mapHook.map || !initializedRef.current) return;
 
 		// toggle layer visibility by changing the layout object's visibility property
-		if (props.visible) {
+		if (props.visible === undefined || props.visible) {
 			mapHook.map.map.setLayoutProperty(layerId.current, 'visibility', 'visible');
 		} else {
 			mapHook.map.map.setLayoutProperty(layerId.current, 'visibility', 'none');
@@ -164,8 +155,5 @@ const MlWmsLayer = (props: MlWmsLayerProps) => {
 	return <></>;
 };
 
-MlWmsLayer.defaultProps = {
-	...defaultProps,
-};
 
 export default MlWmsLayer;

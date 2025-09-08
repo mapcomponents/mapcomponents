@@ -15,7 +15,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = (props: MlFillExtrusionLayerProps) => {
+const Template: any = (props: MlFillExtrusionLayerProps) => {
 	return <MlFillExtrusionLayer {...props} />;
 };
 

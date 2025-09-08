@@ -15,7 +15,7 @@ interface TemplateProps {
 	magnifierRadius: number;
 }
 
-const Template = (args: TemplateProps) => (
+const Template: any = (args: TemplateProps) => (
 	<>
 		{/* WMS Layer with the provided URL and options */}
 		<MlWmsLayer

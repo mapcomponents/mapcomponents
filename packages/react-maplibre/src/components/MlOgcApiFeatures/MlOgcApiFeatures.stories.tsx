@@ -24,7 +24,7 @@ type TemplateProps = MlOgcApiFeaturesProps & {
 	setOpenSidebar: (open: boolean) => void;
 };
 
-const PointTemplate = (props: TemplateProps) => {
+const PointTemplate: any = (props: TemplateProps) => {
 	const [showLayer, setShowLayer] = useState(true);
 	const mapHook = useMap({
 		mapId: props.mapId,
@@ -74,7 +74,7 @@ Point.args = {
 	openSidebar: true,
 };
 
-const OGCLoaderTemplate = (props: TemplateProps) => {
+const OGCLoaderTemplate: any = (props: TemplateProps) => {
 	interface Mark {
 		value: number;
 		label: string;
@@ -213,7 +213,7 @@ OgcApiLoader.args = {
 	openSidebar: true,
 };
 
-const CatalogueTemplate = () => {
+const CatalogueTemplate: any = () => {
 	const configTitles = {
 		points: 'OGC API Feature Points',
 		featureLoader: 'OGC API Feature Loader',

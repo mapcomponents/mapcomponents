@@ -1,4 +1,3 @@
-import React from "react";
 import MlCreatePngButton from "./MlCreatePngButton";
 import TopToolbar from "../../ui_components/TopToolbar";
 import mapContextDecorator from "../../decorators/MapContextDecorator";

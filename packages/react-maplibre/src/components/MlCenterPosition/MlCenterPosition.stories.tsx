@@ -1,5 +1,3 @@
-import React from 'react';
-
 import MlCenterPosition from './MlCenterPosition';
 
 import mapContextDecorator from '../../decorators/MapContextDecorator';
@@ -13,7 +11,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = () => <MlCenterPosition />;
+const Template: any = () => <MlCenterPosition />;
 
 export const ExampleConfig = Template.bind({});
 ExampleConfig.parameters = {};

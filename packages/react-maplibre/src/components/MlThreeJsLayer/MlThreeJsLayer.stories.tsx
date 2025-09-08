@@ -21,7 +21,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = () => {
+const Template: any = () => {
 	const [showLayer, setShowLayer] = useState(true);
 	const showLayerRef = useRef(true);
 	const loadingOverlayContext = LoadingOverlayContext as {
@@ -41,7 +41,7 @@ const Template = () => {
 						init={() => loadingOverlayContext?.setControlled?.(true)}
 						onDone={() => setTimeout(() => loadingOverlayContext?.setLoadingDone?.(true), 1200)}
 					/>
-				) as JSX.Element)}
+				))}
 
 			<TopToolbar
 				unmovableButtons={

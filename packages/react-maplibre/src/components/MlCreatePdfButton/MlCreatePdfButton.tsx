@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import { CircularProgress } from '@mui/material';
 import useExportMap from '../../hooks/useExportMap';
 import {BBox} from 'geojson';
-import { createExportOptions } from 'src/hooks/useExportMap/lib';
+import { createExportOptions } from '../../hooks/useExportMap/lib';
 
 export interface MlCreatePdfButtonProps {
 	/**

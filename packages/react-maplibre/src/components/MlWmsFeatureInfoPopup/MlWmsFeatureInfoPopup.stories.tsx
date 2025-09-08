@@ -14,7 +14,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = () => <MlWmsFeatureInfoPopup />;
+const Template: any = () => <MlWmsFeatureInfoPopup />;
 
 export const ExampleConfig = Template.bind({});
 ExampleConfig.parameters = {};

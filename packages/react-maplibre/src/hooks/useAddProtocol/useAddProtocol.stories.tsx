@@ -76,7 +76,7 @@ const BackgroundLayers = () => {
 	);
 };
 
-const MbtilesTemplate = () => {
+const MbtilesTemplate: any = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	useAddProtocol({
@@ -124,7 +124,7 @@ MbTiles.parameters = {
 };
 MbTiles.args = {};
 
-const CsvTemplate = () => {
+const CsvTemplate: any = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	//  An optional encoded options object can be added after a '?' sign at the end of the url.
@@ -174,7 +174,7 @@ export const CSVOrTSV = CsvTemplate.bind({});
 CSVOrTSV.parameters = {};
 CSVOrTSV.args = {};
 
-const CsvOptionsTemplate = () => {
+const CsvOptionsTemplate: any = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	//  An optional encoded options object can be added after a '?' sign at the end of the url.
@@ -225,7 +225,7 @@ export const CSVWithOptions = CsvOptionsTemplate.bind({});
 CSVWithOptions.parameters = {};
 CSVWithOptions.args = {};
 
-const OsmTemplate = () => {
+const OsmTemplate: any = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	//  An optional encoded options object can be added after a '?' sign at the end of the url.
@@ -280,7 +280,7 @@ export const OSM = OsmTemplate.bind({});
 OSM.parameters = {};
 OSM.args = {};
 
-const GpxTemplate = () => {
+const GpxTemplate: any = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	useAddProtocol({
@@ -326,7 +326,7 @@ export const GPX = GpxTemplate.bind({});
 GPX.parameters = {};
 GPX.args = {};
 
-const KmlTemplate = () => {
+const KmlTemplate: any = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	useAddProtocol({
@@ -378,7 +378,7 @@ KML.args = {
 	flyTo: { center: [-74.82832, 39.093526], zoom: 9, speed: 2 },
 };
 
-const TcxTemplate = () => {
+const TcxTemplate: any = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	useAddProtocol({
@@ -423,7 +423,7 @@ export const TCX = TcxTemplate.bind({});
 TCX.parameters = {};
 TCX.args = {};
 
-const TopojsonTemplate = () => {
+const TopojsonTemplate: any = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	useAddProtocol({

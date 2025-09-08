@@ -69,7 +69,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = () => {
+const Template: any = () => {
 	const [showCreatePdfForm, setShowCreatePdfForm] = useState(false);
 	const mediaIsMobile = useMediaQuery('(max-width: 600px)');
 	const PdfForm = () => {
@@ -191,7 +191,7 @@ const Template = () => {
 	);
 };
 
-const additionalInfoTemplate = () => {
+const additionalInfoTemplate: any = () => {
 	const [showAdditionalPdfForm, setShowAdditionalPdfForm] = useState(false);
 	const mediaIsMobile = useMediaQuery('(max-width: 600px)');
 	const PdfFormLong = () => {

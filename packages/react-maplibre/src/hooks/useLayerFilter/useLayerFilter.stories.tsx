@@ -13,7 +13,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = (args: { filter_name: string }) => {
+const Template: any = (args: { filter_name: string }) => {
 	useLayerFilter({ layerId: 'filter_test', filter: ['==', 'name', args.filter_name] });
 	return <MlGeoJsonLayer layerId="filter_test" geojson={sample as FeatureCollection} />;
 };

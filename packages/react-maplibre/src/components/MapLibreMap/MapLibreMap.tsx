@@ -1,9 +1,9 @@
-import { useRef, useEffect, useContext, FC, RefObject } from 'react';
+import { FC, RefObject, useContext, useEffect, useRef } from 'react';
 
 import MapContext, { MapContextType } from '../../contexts/MapContext';
 import MapLibreGlWrapper from './lib/MapLibreGlWrapper';
 
-import { MapOptions as MapOptionsType, Map } from 'maplibre-gl';
+import { Map, MapOptions as MapOptionsType } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 export type MapLibreMapProps = {
@@ -21,8 +21,6 @@ export type MapLibreMapProps = {
 	 * css style definition passed to the map container DOM element
 	 */
 	style?: object;
-
-
 };
 
 const defaultProps: MapLibreMapProps = {
@@ -100,11 +98,13 @@ const MapLibreMap: MapLibreMapComponent = (props: MapLibreMapProps) => {
 					...(props?.options?.style ? {} : { style: defaultProps?.options?.style }),
 					container: mapContainer.current,
 				},
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-expect-error
 				onReady: (map: Map, wrapper: MapLibreGlWrapper) => {
 					map.once('load', () => {
 						if (!wrapper?.cancelled) {
 							// add maplibre instance to window for debugging purposes
-							(window as {[key:string]: any})['_map'] = map;
+							(window as { [key: string]: any })['_map'] = map;
 							if (props.mapId) {
 								mapContext.registerMap(props.mapId, wrapper);
 							} else {

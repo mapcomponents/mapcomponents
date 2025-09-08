@@ -42,7 +42,7 @@ const storyoptions = {
 
 export default storyoptions;
 
-const Template = (args: MlMarkerProps) => <MlMarker {...args} />;
+const Template: any = (args: MlMarkerProps) => <MlMarker {...args} />;
 
 export const ExampleConfig = Template.bind({});
 ExampleConfig.args = {

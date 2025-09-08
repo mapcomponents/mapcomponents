@@ -10,7 +10,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = (props: MlGlobeButtonProps) => <MlGlobeButton {...props} />;
+const Template: any = (props: MlGlobeButtonProps) => <MlGlobeButton {...props} />;
 
 export const CatalogueDemo = Template.bind({});
 CatalogueDemo.parameters = {};

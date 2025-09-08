@@ -30,7 +30,7 @@ export interface SpeedDialProps {
 const SpeedDial = () => {
 	const [open, setOpen] = useState(false);
 
-	const handleOpen = (_event: React.SyntheticEvent<Event>, reason: OpenReason) => {
+	const handleOpen = (_event: React.SyntheticEvent<object, Event>, reason: OpenReason) => {
 		if (reason === 'toggle') {
 			setOpen(true);
 		}

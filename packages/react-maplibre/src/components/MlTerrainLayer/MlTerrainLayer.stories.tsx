@@ -13,7 +13,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = () => {
+const Template: any = () => {
 	const [active, setActive] = useState<boolean>(true);
 
 	const mapHook = useMap({ mapId: 'map_1' });

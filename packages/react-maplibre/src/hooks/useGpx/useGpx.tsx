@@ -29,6 +29,8 @@ const useGpx = (props: useGpxProps) => {
 			const domParser = new DOMParser();
 			const gpxDoc = domParser.parseFromString(gpxAsString, 'application/xml');
 			const metadata = gpxDoc.querySelector('metadata');
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-expect-error
 			metadata?.childNodes.forEach((node: Element) => {
 				let value = node.textContent;
 				const title = node.nodeName;

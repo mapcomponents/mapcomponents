@@ -27,7 +27,7 @@ export default storyoptions;
 
 const buttonStyle = { marginRight: { xs: '0px', sm: '10px' }, width:'140px' };
 
-const Template = () => {
+const Template: any = () => {
 	const [gpxData, setGpxData] = useState<string | ArrayBuffer | undefined>();
 	const [demoLoaderOpen, setDemoLoaderOpen] = useState(false);
 	const [guide, setGuide] = useState(false);

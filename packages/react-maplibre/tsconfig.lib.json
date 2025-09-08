@@ -25,5 +25,5 @@
 		"**/*.cy.tsx",
 		"**/*.cy.jsx"
 	],
-	"include": ["src", "src/**/*.json", "src/custom.d.tsx"]
+	"include": ["src", "src/**/*.json"]
 }

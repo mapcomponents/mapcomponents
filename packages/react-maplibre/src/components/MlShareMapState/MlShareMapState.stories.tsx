@@ -28,7 +28,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = () => {
+const Template: any = () => {
 	const geoJsonArray = [sample_geojson_1, sample_geojson_2];
 	const [watchState, setWatchState] = useState(true);
 	const mapHook = useMap({ mapId: 'map_1' });

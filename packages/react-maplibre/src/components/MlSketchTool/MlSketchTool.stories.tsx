@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-
 import MlSketchTool from './MlSketchTool';
 import { Feature } from 'geojson';
 
@@ -7,6 +5,7 @@ import mapContextDecorator from '../../decorators/MapContextDecorator';
 import Sidebar from '../../ui_components/Sidebar';
 import TopToolbar from '../../ui_components/TopToolbar';
 import { Button, Paper, Typography } from '@mui/material';
+import { useState } from 'react';
 
 const storyoptions = {
 	title: 'MapComponents/MlSketchTool',
@@ -16,7 +15,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = () => {
+const Template: any = () => {
 	const [openSidebar, setOpenSidebar] = useState(true);
 	return (
 		<>
@@ -40,7 +39,7 @@ const Template = () => {
 	);
 };
 
-const catalgoueTemplate = () => {
+const catalgoueTemplate: any = () => {
 	// const mediaIsMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
 	// const mediaIsMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
 
