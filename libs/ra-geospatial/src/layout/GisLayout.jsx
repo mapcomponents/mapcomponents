@@ -62,7 +62,7 @@ const GisLayout = ({ children, title }) => {
 						sx={{
 							backgroundColor: '#f0f0f0',
 							pointerEvents: 'all',
-							overflow: 'hidden'
+							overflow: 'hidden',
 						}}
 					>
 						<Menu />
@@ -76,22 +76,15 @@ const GisLayout = ({ children, title }) => {
 							onClick={() => setContentOpen((val) => !val)}
 							sx={{ position: 'absolute', top: 0, zIndex: 100 }}
 						>
-							{contentOpen ? (
-								<KeyboardArrowDownIcon />
-							) : (
-								<KeyboardArrowUpIcon />
-							)}
+							{contentOpen ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
 						</IconButton>
 
-						<ContentWrapper>
-							{children}
-						</ContentWrapper>
+						<ContentWrapper>{children}</ContentWrapper>
 					</Content>
 				</ContentWithSidebar>
 			</AppFrame>
 		</Root>
 	);
 };
-
 
 export default GisLayout;

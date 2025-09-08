@@ -11,7 +11,8 @@ glob('src/**/**/*.meta.json', options, function (er, files) {
 	console.log(files);
 
 	// eslint-disable-next-line prefer-const
-	let i = 0, len = files.length;
+	let i = 0,
+		len = files.length;
 	for (; i < len; i++) {
 		const rawdata = fs.readFileSync(files[i]);
 		const metaObj = JSON.parse(rawdata);

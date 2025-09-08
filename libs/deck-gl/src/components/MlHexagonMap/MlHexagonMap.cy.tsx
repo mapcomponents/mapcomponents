@@ -9,12 +9,12 @@ describe('MlHexagonMap Test', () => {
 		cy.mount(<NoiseMap />);
 		cy.window()
 			.should((win) => expect((win as any)._map).to.exist)
-			.then(win => {
+			.then((win) => {
 				const map = (win as any)._map;
 				cy.wrap(map._controls)
 					.should('have.length.at.least', 2)
 					.then((controls) => {
-						expect(controls[1]._props.id).to.equal("deckgl-layer");
+						expect(controls[1]._props.id).to.equal('deckgl-layer');
 					});
 			});
 	});

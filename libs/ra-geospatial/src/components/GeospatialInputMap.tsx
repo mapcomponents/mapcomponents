@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { InputProps, useInput, useRecordContext } from 'react-admin';
-import {
-	parse as wellknownParse,
-	stringify as wellknownStringify,
-} from 'wellknown';
+import { parse as wellknownParse, stringify as wellknownStringify } from 'wellknown';
 
 import {
 	MapLibreMap,
@@ -69,9 +66,14 @@ function GeospatialInputMap(props: GeospatialInputMapProps) {
 					options={{
 						zoom: 14,
 						style: 'https://wms.wheregroup.com/tileserver/style/klokantech-basic.json',
-						center: Array.isArray(props?.MapLibreMapProps?.options?.center) && props.MapLibreMapProps.options.center.length === 2
-							? [props.MapLibreMapProps.options.center[0], props.MapLibreMapProps.options.center[1]]
-							: [0, 0],
+						center:
+							Array.isArray(props?.MapLibreMapProps?.options?.center) &&
+							props.MapLibreMapProps.options.center.length === 2
+								? [
+										props.MapLibreMapProps.options.center[0],
+										props.MapLibreMapProps.options.center[1],
+									]
+								: [0, 0],
 						...props?.MapLibreMapProps?.options,
 					}}
 					style={{

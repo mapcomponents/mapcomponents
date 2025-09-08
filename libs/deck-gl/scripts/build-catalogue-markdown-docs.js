@@ -17,7 +17,8 @@ glob('src/components/**/*.doc.*.md', options, function (er, files) {
 	console.log(files);
 
 	// eslint-disable-next-line prefer-const
-	let i = 0, len = files.length;
+	let i = 0,
+		len = files.length;
 	for (; i < len; i++) {
 		const language = files[i].slice(-5, -3);
 		const rawdata = fs.readFileSync(files[i]);
