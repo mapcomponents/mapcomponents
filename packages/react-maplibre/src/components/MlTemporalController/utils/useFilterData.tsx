@@ -10,7 +10,7 @@ export interface useTemporalControllerProps {
 	minVal?: number;
 	maxVal?: number;
 	mapId: string | undefined;
-	}
+}
 
 function getMinVal(geojson: FeatureCollection | undefined, timeField: string) {
 	if (geojson?.features) {
@@ -35,36 +35,27 @@ export default function useFilterData(props: useTemporalControllerProps) {
 		mapId: props.mapId,
 	});
 
-    const minVal = useMemo(() => {
+	const minVal = useMemo(() => {
 		if (props.minVal) {
 			return props.minVal;
-		} 
-		if (minVal  === undefined){
-			return getMinVal(props.geojson, props.timeField);
 		}
-		
+		return getMinVal(props.geojson, props.timeField);
 	}, [props.minVal, props.geojson, props.timeField]);
 
 	const maxVal = useMemo(() => {
 		if (props.maxVal) {
 			return props.maxVal;
 		}
-		if (maxVal  === undefined){
 		return getMaxVal(props.geojson, props.timeField);
-		}
 	}, [props.maxVal, props.geojson, props.timeField]);
 
-
-
-	
 	// filter geojson
 	const filteredData = useMemo<FeatureCollection | undefined>(() => {
 		if (props.geojson !== undefined && mapHook.map && minVal && maxVal) {
 			return featureCollection(
 				props.geojson.features.filter((e) => {
 					return (
-						e.properties?.[props.timeField] >= minVal &&
-						e.properties?.[props.timeField] <= maxVal
+						e.properties?.[props.timeField] >= minVal && e.properties?.[props.timeField] <= maxVal
 					);
 				})
 			);
@@ -72,6 +63,5 @@ export default function useFilterData(props: useTemporalControllerProps) {
 		return;
 	}, [props.geojson, mapHook.map, props.timeField]);
 
-
-    return {filteredData, minVal, maxVal }
+	return { filteredData, minVal, maxVal };
 }
