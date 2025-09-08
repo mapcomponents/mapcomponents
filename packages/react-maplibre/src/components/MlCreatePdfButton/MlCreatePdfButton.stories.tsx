@@ -1,5 +1,3 @@
-import React from "react";
-
 import MlCreatePdfButton from "./MlCreatePdfButton";
 
 import TopToolbar from "../../ui_components/TopToolbar";

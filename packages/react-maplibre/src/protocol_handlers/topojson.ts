@@ -41,7 +41,7 @@ async function convertTopojson(params: { filename: string }): Promise<FeatureCol
 			arcs: [],
 		};
 
-		getProtocolData(params.filename).then((rawData) => {
+		getProtocolData(params.filename).then((rawData: any) => {
 			try {
 				topoJsonData = JSON.parse(rawData);
 			} catch (e) {

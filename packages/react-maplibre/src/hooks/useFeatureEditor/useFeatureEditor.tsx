@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
 
@@ -8,7 +7,7 @@ import useMap from '../useMap';
 import { Feature } from 'geojson';
 import { MapEventType } from 'maplibre-gl';
 import featureEditorStyle from './utils/FeatureEditorStyle';
-import { MapLibreGlEventName } from 'src/components/MapLibreMap/lib/MapLibreGlWrapper';
+import { MapLibreGlEventName } from '../../components/MapLibreMap/lib/MapLibreGlWrapper';
 
 export interface useFeatureEditorProps {
 	/**
@@ -98,6 +97,8 @@ const useFeatureEditor = (props: useFeatureEditorProps) => {
 
 			mapHook.map.addControl(draw.current, 'top-left', mapHook.componentId);
 
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-expect-error
 			mapHook.map.on('draw.modechange' as MapLibreGlEventName, modeChangeHandler, mapHook.componentId);
 
 			setDrawToolsReady(true);

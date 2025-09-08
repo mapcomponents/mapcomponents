@@ -117,12 +117,12 @@ const LayerTreeMultipleLayertypes = () => {
 		</>
 	);
 };
-export const LayerTreeMultipleLayertypesExample = LayerTreeMultipleLayertypes.bind({});
+export const LayerTreeMultipleLayertypesExample: any = LayerTreeMultipleLayertypes.bind({});
 
 LayerTreeMultipleLayertypesExample.parameters = {};
 LayerTreeMultipleLayertypesExample.args = {};
 
-const MultipleLayerTrees = () => {
+const MultipleLayerTrees: any = () => {
 	const demoData: MapState = {
 		mapConfigs: {
 			mapConfig1: {

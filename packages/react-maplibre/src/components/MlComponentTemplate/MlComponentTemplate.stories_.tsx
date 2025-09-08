@@ -1,5 +1,3 @@
-import React from "react";
-
 import MlComponentTemplate from "./MlComponentTemplate";
 
 import mapContextDecorator from "../../decorators/MapContextDecorator";
@@ -13,7 +11,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = () => <MlComponentTemplate />;
+const Template: any = () => <MlComponentTemplate />;
 
 export const ExampleConfig = Template.bind({});
 ExampleConfig.parameters = {};

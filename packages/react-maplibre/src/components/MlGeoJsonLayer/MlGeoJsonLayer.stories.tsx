@@ -46,7 +46,7 @@ const configTitles = {
 	polygon: 'Parks&Squares in Bonn',
 };
 
-const CircleTemplate = (props: MlGeoJsonLayerProps) => {
+const CircleTemplate: any = (props: MlGeoJsonLayerProps) => {
 	const mapHook = useMap({
 		mapId: undefined,
 	});
@@ -95,7 +95,7 @@ const CircleTemplate = (props: MlGeoJsonLayerProps) => {
 	);
 };
 
-const OsmProtocolSourceDemo = () => {
+const OsmProtocolSourceDemo: any = () => {
 	const mapHook = useMap({
 		mapId: undefined,
 	});
@@ -139,7 +139,7 @@ const OsmProtocolSourceDemo = () => {
 	);
 };
 
-const LabelSbDemo = () => {
+const LabelSbDemo: any = () => {
 	const mapHook = useMap({
 		mapId: undefined,
 	});
@@ -176,7 +176,7 @@ const LabelSbDemo = () => {
 	);
 };
 
-const LineTemplate = (props: TemplateProps) => {
+const LineTemplate: any = (props: TemplateProps) => {
 	const mapHook = useMap({
 		mapId: undefined,
 	});
@@ -207,7 +207,7 @@ const LineTemplate = (props: TemplateProps) => {
 	);
 };
 
-const PolygonTemplate = (props: TemplateProps) => {
+const PolygonTemplate: any = (props: TemplateProps) => {
 	const mapHook = useMap({
 		mapId: undefined,
 	});
@@ -235,7 +235,7 @@ const PolygonTemplate = (props: TemplateProps) => {
 	);
 };
 
-const HeatmapTemplate = (props: MlGeoJsonLayerProps) => {
+const HeatmapTemplate: any = (props: MlGeoJsonLayerProps) => {
 	const mapHook = useMap({
 		mapId: undefined,
 	});
@@ -293,7 +293,7 @@ const HeatmapTemplate = (props: MlGeoJsonLayerProps) => {
 	);
 };
 
-const SymbolTemplate = (props: MlGeoJsonLayerProps) => {
+const SymbolTemplate: any = (props: MlGeoJsonLayerProps) => {
 	const mapHook = useMap({
 		mapId: undefined,
 	});
@@ -374,7 +374,7 @@ const Template = (props: MlGeoJsonLayerProps) => {
 		</>
 	);
 };
-const catalogueTemplate = () => {
+const catalogueTemplate = (context: any) => {
 	const [openSidebar, setOpenSidebar] = useState(true);
 	const [selectedLayer, setSelectedLayer] = useState<string>('circle');
 
@@ -444,24 +444,24 @@ const catalogueTemplate = () => {
 				}
 			/>
 
-			{selectedLayer === 'circle' && <CircleTemplate geojson={Circle.args.geojson} />}
+			{selectedLayer === 'circle' && <CircleTemplate geojson={context.args.geojson} />}
 			{selectedLayer === 'line' && (
 				<LineStyler
 					openSidebar={openSidebar}
 					setOpenSidebar={setOpenSidebar}
-					geojson={Linestring.args.geojson}
+					geojson={context.args.geojson}
 				/>
 			)}
 			{selectedLayer === 'polygon' && (
 				<PolygonStyler
 					openSidebar={openSidebar}
 					setOpenSidebar={setOpenSidebar}
-					geojson={Polygon.args.geojson}
+					geojson={context.args.geojson}
 				/>
 			)}
-			{selectedLayer === 'heatmap' && <HeatmapTemplate geojson={HeatMap.args.geojson} />}
-			{selectedLayer === 'symbol' && <SymbolTemplate geojson={Symbol.args.geojson} />}
-			{selectedLayer === 'default' && <Template geojson={DefaultPaintOverrides.args.geojson} />}
+			{selectedLayer === 'heatmap' && <HeatmapTemplate geojson={context.args.geojson} />}
+			{selectedLayer === 'symbol' && <SymbolTemplate geojson={context.args.geojson} />}
+			{selectedLayer === 'default' && <Template geojson={context.args.geojson} />}
 		</>
 	);
 };
@@ -508,10 +508,10 @@ Symbol.args = {
 	title: 'WhereGroup locations by number of employees',
 };
 
-export const DefaultPaintOverrides = Template.bind({});
+export const DefaultPaintOverrides: any = Template.bind({});
 DefaultPaintOverrides.parameters = {};
 DefaultPaintOverrides.args = { geojson: sample_geojson_1, type: 'fill' };
 
-export const CatalogueDemo = catalogueTemplate.bind({});
+export const CatalogueDemo: any = catalogueTemplate.bind({});
 CatalogueDemo.parameters = {};
 CatalogueDemo.args = {};

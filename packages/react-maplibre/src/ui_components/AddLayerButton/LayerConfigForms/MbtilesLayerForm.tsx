@@ -9,11 +9,11 @@ import {
 } from '@mui/material';
 import React, { useEffect, useMemo, useState } from 'react';
 import useMap from '../../../hooks/useMap';
-import { MlVectorTileLayerProps } from 'src/components/MlVectorTileLayer/MlVectorTileLayer';
 import { LayerSpecification } from 'maplibre-gl';
 import MbtilesLayerPropFormular from './utils/MbtilesLayerPropFormular';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { MlVectorTileLayerProps } from '../../../components/MlVectorTileLayer/MlVectorTileLayer';
 
 export interface WmsLayerConfig {
 	url: string;

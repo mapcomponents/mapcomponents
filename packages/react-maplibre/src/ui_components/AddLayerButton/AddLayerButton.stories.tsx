@@ -22,7 +22,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const FolderTemplate = () => {
+const FolderTemplate: any = () => {
 	const [openSidebar, setOpenSidebar] = useState(true);
 	const layerContext = useContext(LayerContext);
 
@@ -83,7 +83,7 @@ export const FolderExample = FolderTemplate.bind({});
 FolderExample.parameters = {};
 FolderExample.args = {};
 
-const StyleJsonTemplate = () => {
+const StyleJsonTemplate: any = () => {
 	const [openSidebar, setOpenSidebar] = useState(true);
 
 	const layerContext = useContext(LayerContext);

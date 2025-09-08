@@ -32,7 +32,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = () => {
+const Template: any = () => {
 	const [openSidebar, setOpenSidebar] = useState(true);
 	const [unit, setUnit] = useState<MlMeasureToolProps['unit']>('meters');
 	const handleChange = (event: SelectChangeEvent<MlMeasureToolProps['unit']>) => {
@@ -279,7 +279,7 @@ const CatalogueSidebar: React.FC<CatalogueSidebarProps> = ({ openSidebar, setOpe
 	);
 };
 
-const LineTemplate = () => {
+const LineTemplate:any  = () => {
 	const [openSidebar, setOpenSidebar] = useState(true);
 	const [unit, setUnit] = useState<MlMeasureToolProps['unit']>('kilometers');
 	const handleChange = (event: SelectChangeEvent<MlMeasureToolProps['unit']>) => {
@@ -311,7 +311,7 @@ const LineTemplate = () => {
 	);
 };
 
-const catalogueTemplate = () => {
+const catalogueTemplate: any = () => {
 	const [openSidebar, setOpenSidebar] = useState(true);
 
 	return (

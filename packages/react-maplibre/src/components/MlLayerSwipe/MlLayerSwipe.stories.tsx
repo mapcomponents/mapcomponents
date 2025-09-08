@@ -12,9 +12,10 @@ const storyoptions = {
 
 export default storyoptions;
 
-const Template = () => (
+const Template: any = () => (
 	<>
 		<MlWmsLayer
+			visible
 			url="https://www.wms.nrw.de/geobasis/wms_nw_uraufnahme"
 			urlParameters={{
 				layers: 'nw_uraufnahme_rw',

@@ -8,7 +8,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = (props:MlNavigationCompassProps) => <MlNavigationCompass {...props} />;
+const Template: any = (props:MlNavigationCompassProps) => <MlNavigationCompass {...props} />;
 
 export const CatalogueDemo = Template.bind({});
 CatalogueDemo.args = {

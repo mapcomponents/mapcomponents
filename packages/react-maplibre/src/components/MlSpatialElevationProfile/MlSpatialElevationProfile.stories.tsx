@@ -27,7 +27,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = () => {
+const Template: any = () => {
 	const [gpxData, setGpxData] = useState<string | undefined>();
 	const parsedGpx = useGpx({ data: gpxData });
 	const [demoLoaderOpen, setDemoLoaderOpen] = useState(false);

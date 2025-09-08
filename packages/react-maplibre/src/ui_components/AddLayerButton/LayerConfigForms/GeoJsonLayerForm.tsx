@@ -9,7 +9,7 @@ import {
 	SelectChangeEvent,
 } from '@mui/material';
 import React, { useMemo } from 'react';
-import { MlGeoJsonLayerProps } from 'src/components/MlGeoJsonLayer/MlGeoJsonLayer';
+import { MlGeoJsonLayerProps } from '../../../components/MlGeoJsonLayer/MlGeoJsonLayer';
 
 
 export interface GeoJsonLayerFormProps {

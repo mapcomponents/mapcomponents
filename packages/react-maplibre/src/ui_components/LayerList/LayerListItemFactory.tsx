@@ -117,7 +117,7 @@ function LayerListItemFactory(props: LayerListItemFactoryProps) {
 		return [];
 	}, [props.layers, layerContext.layers]);
 
-	const setLayers: (arg1: LayerConfig[] | ((arg: LayerConfig[]) => void)) => void = useMemo(() => {
+	const setLayers: (layers: LayerConfig[] | ((state: LayerConfig[]) => LayerConfig[])) => void = useMemo(() => {
 		if (props.setLayers) return props.setLayers;
 		return layerContext.setLayers;
 	}, [props.setLayers, layerContext.setLayers]);

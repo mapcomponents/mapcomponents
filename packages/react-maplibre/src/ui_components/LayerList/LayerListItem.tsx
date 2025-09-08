@@ -1,4 +1,12 @@
-import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+	Dispatch,
+	ReactNode,
+	SetStateAction,
+	useEffect,
+	useMemo,
+	useRef,
+	useState,
+} from 'react';
 import { LayerSpecification } from 'maplibre-gl';
 import { IconButton, ListItemText, styled, SxProps } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -30,7 +38,7 @@ interface LayerListItemProps {
 	type?: 'background' | 'background-labels' | 'layer' | 'wms-layer' | 'vector-tile-layer';
 	name: string | ReactNode;
 	description?: string;
-	setLayerState?: (state: unknown) => void;
+	setLayerState?: Dispatch<SetStateAction<any>>
 	showDeleteButton?: boolean;
 	listItemSx?: SxProps;
 	buttons?: React.JSX.Element;

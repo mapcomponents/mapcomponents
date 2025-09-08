@@ -1,18 +1,19 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
-	Map,
+	ControlPosition,
+	CustomLayerInterface,
 	IControl,
-	MapOptions as MapOptionsType,
+	LayerSpecification,
+	Map,
+	Map as MapType,
 	MapEventType,
 	MapLayerEventType,
-	StyleImageInterface,
-	LayerSpecification,
-	CustomLayerInterface,
+	MapOptions as MapOptionsType,
 	SourceSpecification,
-	ControlPosition,
+	Style,
+	StyleImageInterface,
 	StyleImageMetadata,
 } from 'maplibre-gl';
-import { Map as MapType, Style } from 'maplibre-gl';
 
 type WrapperEventArgArray = [MapLibreGlWrapperEventName, MapLibreGlWrapperEventHandlerType];
 type EventArgArray = [
@@ -33,7 +34,6 @@ type ViewportState = {
 	pitch: number;
 };
 
-
 /**
  * Creates a MapLibre-gl-js instance and offers all of the native MapLibre functions and properties as well as additional functionality such as element registration & cleanup and more events.
  *
@@ -43,7 +43,7 @@ type ViewportState = {
  */
 
 // @ts-ignore
- 
+
 interface MapLibreGlWrapper extends MapType {
 	addImage: (
 		id: string,
@@ -106,8 +106,6 @@ export type MapLibreGlEventName = keyof MapLayerEventType | keyof MapEventType |
 
 export type MapLibreGlWrapperEventName = keyof MapLibreGlWrapperEventHandlers;
 
-
- 
 class MapLibreGlWrapper {
 	[key: string]: any;
 	registeredElements: {
@@ -151,9 +149,12 @@ class MapLibreGlWrapper {
 	};
 	initRegisteredElements: (componentId: string, force?: boolean | undefined) => void;
 	addNativeMaplibreFunctionsAndProps: () => void;
+	// @ts-ignore
 	map: MapType;
+	// @ts-ignore
 	style: Style;
 
+	// @ts-ignore
 	styleJson: object;
 	addSource: (id: string, source: SourceSpecification, componentId?: string | undefined) => this;
 	addControl: (
@@ -234,7 +235,11 @@ class MapLibreGlWrapper {
 			 * @param {function} handler
 			 * @returns {undefined}
 			 */
-			off: (eventName: MapLibreGlWrapperEventName, handler: MapLibreGlWrapperEventHandlerType) => {
+			// @ts-ignore
+			off: (
+				eventName: MapLibreGlWrapperEventName,
+				handler: MapLibreGlWrapperEventHandlerType
+			): undefined => {
 				if (!self.eventHandlers[eventName]) return;
 
 				self.eventHandlers[eventName] = self.eventHandlers[eventName].filter((item) => {
@@ -251,7 +256,8 @@ class MapLibreGlWrapper {
 			 * @param {object} context
 			 * @returns {undefined}
 			 */
-			fire: (eventName: MapLibreGlWrapperEventName, context: any) => {
+			// @ts-ignore
+			fire: (eventName: MapLibreGlWrapperEventName, context: any): undefined => {
 				if (!self.eventHandlers[eventName]) return;
 
 				const scope = context || window;
@@ -484,6 +490,7 @@ class MapLibreGlWrapper {
 		 * @param {function} handler
 		 * @param {string} componentId
 		 */
+		// @ts-ignore
 		this.on = (
 			type: MapLibreGlEventName,
 			layerId: string | ((ev: unknown) => void),
@@ -491,6 +498,7 @@ class MapLibreGlWrapper {
 			componentId?: string
 		) => {
 			if (typeof handler === 'string' && typeof layerId === 'function') {
+				// @ts-ignore
 				return self.on.call(self, type, undefined, layerId, handler);
 			}
 
@@ -504,7 +512,6 @@ class MapLibreGlWrapper {
 				self.registeredElements[componentId].events.push(_arguments);
 			}
 
-			 
 			// @ts-ignore
 			self.map.on(..._arguments);
 			return this;
@@ -535,6 +542,7 @@ class MapLibreGlWrapper {
 		this.cleanup = (componentId: string) => {
 			if (self.map.style && typeof self.registeredElements[componentId] !== 'undefined') {
 				// cleanup layers
+				// @ts-ignore
 				self.registeredElements[componentId].layers.forEach((item: string) => {
 					if (self.map.style.getLayer(item)) {
 						self.map.style.removeLayer(item);
@@ -542,6 +550,7 @@ class MapLibreGlWrapper {
 				});
 
 				// cleanup sources
+				// @ts-ignore
 				self.registeredElements[componentId].sources.forEach((item: string) => {
 					if (self.map.style.getSource(item)) {
 						self.map.style.removeSource(item);
@@ -549,6 +558,7 @@ class MapLibreGlWrapper {
 				});
 
 				// cleanup images
+				// @ts-ignore
 				self.registeredElements[componentId].images.forEach((item: string) => {
 					if (self.map.hasImage(item)) {
 						self.map.style.removeImage(item);
@@ -556,8 +566,8 @@ class MapLibreGlWrapper {
 				});
 
 				// cleanup events
+					// @ts-ignore
 				self.registeredElements[componentId].events.forEach((item: EventArgArray) => {
-					 
 					// @ts-ignore
 					self.map.off(...item);
 				});
@@ -568,6 +578,7 @@ class MapLibreGlWrapper {
 				});
 
 				// cleanup wrapper events
+					// @ts-ignore
 				self.registeredElements[componentId].wrapperEvents.forEach((item: WrapperEventArgArray) => {
 					self.wrapper.off(...item);
 				});

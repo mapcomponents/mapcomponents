@@ -46,7 +46,7 @@ const marks = [
 	{ value: 20, label: '20' },
 ];
 
-const Template = () => {
+const Template: any = () => {
 	const [state, setState] = useState({
 		pause: true,
 		zoom: 18,

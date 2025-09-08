@@ -1,4 +1,3 @@
-import React from 'react';
 import PdfForm, { PdfFormProps } from './lib/PdfForm';
 import { PdfContextProvider } from './lib/PdfContext';
 

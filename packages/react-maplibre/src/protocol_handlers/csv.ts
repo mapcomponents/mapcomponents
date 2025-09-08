@@ -18,7 +18,7 @@ async function convertCsv(filename: string, options: csv2geojsonType.csvOptions 
 			options.delimiter = '\t';
 		}
 
-		getProtocolData(filename).then((rawData) => {
+		getProtocolData(filename).then((rawData: string) => {
 		// Use the csv2geojson library to convert the CSV to GeoJSON	
 		
 		csv2geojson.csv2geojson(rawData, useOptions, (err: string, data: FeatureCollection) => {

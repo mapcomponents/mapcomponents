@@ -20,7 +20,15 @@ const storyOptions: StoryOptions = {
 
 export default storyOptions;
 
-const Template: React.FC<any> = (props) => {
+const Template: any = (props: {
+	mapId?: string;
+	watch?: { layers?: boolean; sources?: boolean; viewport?: boolean };
+	filter?: {
+		includeBaseLayers?: boolean;
+		matchLayerIds?: RegExp | string;
+		matchSourceIds?: RegExp | string;
+	};
+}) => {
 	const mapState = useMapState({ ...props });
 
 	useEffect(() => {
@@ -31,24 +39,24 @@ const Template: React.FC<any> = (props) => {
 		<>
 			<div
 				style={{
-					position: "fixed",
+					position: 'fixed',
 					zIndex: 10000,
-					display: "flex",
-					flexWrap: "wrap",
+					display: 'flex',
+					flexWrap: 'wrap',
 					top: 0,
 					left: 0,
 					right: 0,
 					bottom: 0,
 					maxHeight: '100VH',
-					backgroundColor: "rgba(80,80,80,.8)",
-					padding: "50px",
-					fontSize: "20px",
-					color: "#51ff09",
+					backgroundColor: 'rgba(80,80,80,.8)',
+					padding: '50px',
+					fontSize: '20px',
+					color: '#51ff09',
 					overflow: 'hidden',
-					pointerEvents: "none",
+					pointerEvents: 'none',
 				}}
 			>
-				<pre>{JSON.stringify(mapState, null, "\t")}</pre>
+				<pre>{JSON.stringify(mapState, null, '\t')}</pre>
 			</div>
 		</>
 	);

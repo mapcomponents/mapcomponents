@@ -20,7 +20,7 @@ const storyoptions: any = {
 };
 export default storyoptions;
 
-const GeojsonExample = (args: any) => {
+const GeojsonExample: any = (args: any) => {
 	const { source } = useSource({ ...args });
 
 	useLayer({
@@ -50,7 +50,7 @@ const GeojsonExample = (args: any) => {
 	return <></>;
 };
 
-const VectorExample = (args: any) => {
+const VectorExample: any = (args: any) => {
 	useSource({ ...args });
 	const mapHook = useMap({
 		mapId: args.mapId,
@@ -90,7 +90,7 @@ const VectorExample = (args: any) => {
 	return <></>;
 };
 
-const RasterExample = (args: any) => {
+const RasterExample: any = (args: any) => {
 	useSource({ ...args });
 	const mapHook = useMap({
 		mapId: args.mapId,
@@ -110,7 +110,7 @@ const RasterExample = (args: any) => {
 	return <></>;
 };
 
-const removeExample = (args: any) => {
+const removeExample: any = (args: any) => {
 	const [sourceStatus, setSourceStatus] = useState(true);
 	const [activeSources, setActiveSources] = useState<string[]>([]);
 	const mapHook = useMap({

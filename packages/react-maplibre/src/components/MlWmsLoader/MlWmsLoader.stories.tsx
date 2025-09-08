@@ -23,7 +23,7 @@ export default storyoptions;
 interface MlWmsLoaderStoryProps {
 	url: string;
 }
-const Template = (props: MlWmsLoaderStoryProps) => {
+const Template: any = (props: MlWmsLoaderStoryProps) => {
 	const [url, setUrl] = useState(props.url || 'https://magosm.magellium.com/geoserver/wms');
 	const [demoMode, setDemoMode] = useState(false);
 	const [guide, setGuide] = useState(false);
@@ -113,7 +113,7 @@ export const ExampleConfig = Template.bind({});
 ExampleConfig.parameters = {};
 ExampleConfig.args = {};
 
-const FixedConfigTemplate = () => {
+const FixedConfigTemplate: any = () => {
 	const [openSidebar, setOpenSidebar] = useState(true);
 	const [config, setConfig] = useState(wmsConfig as unknown as WmsConfig);
 	const mapHook = useMap({

@@ -17,11 +17,11 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const ToolbarTemplate = (props: MlScaleReferenceProps) => {
+const ToolbarTemplate: any = (props: MlScaleReferenceProps) => {
 	return <TopToolbar unmovableButtons={<MlScaleReference {...props} />} />;
 };
 
-const catalgoueTemplate = (props: MlScaleReferenceProps) => {
+const catalgoueTemplate: any = (props: MlScaleReferenceProps) => {
 	const [showTooltip, setShowTooltip] = useState(true);
 	const mediaIsMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
@@ -60,7 +60,7 @@ const catalgoueTemplate = (props: MlScaleReferenceProps) => {
 	);
 };
 
-const OverlayTemplate = (props: MlScaleReferenceProps) => {
+const OverlayTemplate: any = (props: MlScaleReferenceProps) => {
 	const mediaIsMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
 	return (

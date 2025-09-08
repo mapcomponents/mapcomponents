@@ -49,16 +49,35 @@ const MlLayerSwipe = (props: MlLayerSwipeProps) => {
 		syncCleanupFunctionRef.current();
 	};
 
-	const onMove = useCallback(
-		(e: TouchEvent & MouseEvent) => {
+	const onMoveTouch = useCallback(
+		(e: TouchEvent) => {
 			if (!mapExists()) return;
-
 			const bounds = mapContext.maps[props.map1Id].getCanvas().getBoundingClientRect();
 			let clientX =
-				e.clientX ||
 				(typeof e.touches !== 'undefined' && typeof e.touches[0] !== 'undefined'
 					? e.touches[0].clientX
 					: 0);
+
+			clientX -= bounds.x;
+			const swipeX_tmp = parseFloat(((clientX / bounds.width) * 100).toFixed(2));
+
+			if (swipeXRef.current !== swipeX_tmp) {
+				setSwipeX(swipeX_tmp);
+				swipeXRef.current = swipeX_tmp;
+
+				const clipA = 'rect(0, ' + (swipeXRef.current * bounds.width) / 100 + 'px, 999em, 0)';
+
+				mapContext.maps[props.map2Id].getContainer().style.clip = clipA;
+			}
+		},
+		[mapContext, mapExists, props.map1Id, props.map2Id]
+	);
+
+	const onMoveMouse = useCallback(
+		(e: MouseEvent) => {
+			if (!mapExists()) return;
+			const bounds = mapContext.maps[props.map1Id].getCanvas().getBoundingClientRect();
+			let clientX = e.clientX;
 
 			clientX -= bounds.x;
 			const swipeX_tmp = parseFloat(((clientX / bounds.width) * 100).toFixed(2));
@@ -87,28 +106,28 @@ const MlLayerSwipe = (props: MlLayerSwipeProps) => {
 			mapContext.getMap(props.map1Id).map,
 			mapContext.getMap(props.map2Id).map
 		);
-		onMove({
+		onMoveMouse({
 			clientX: mapContext.maps[props.map1Id].getCanvas().clientWidth / 2,
-		} as TouchEvent & MouseEvent);
-	}, [mapContext.mapIds, mapContext, props, onMove, mapExists]);
+		} as MouseEvent);
+	}, [mapContext.mapIds, mapContext, props, onMoveMouse, mapExists]);
 
 	const onDown = (e: React.MouseEvent | React.TouchEvent) => {
 		if (window?.TouchEvent && e.nativeEvent instanceof window.TouchEvent) {
-			document.addEventListener('touchmove', onMove);
+			document.addEventListener('touchmove', onMoveTouch);
 			document.addEventListener('touchend', onTouchEnd);
 		} else {
-			document.addEventListener('mousemove', onMove);
+			document.addEventListener('mousemove', onMoveMouse);
 			document.addEventListener('mouseup', onMouseUp);
 		}
 	};
 
 	const onTouchEnd = () => {
-		document.removeEventListener('touchmove', onMove);
+		document.removeEventListener('touchmove', onMoveTouch);
 		document.removeEventListener('touchend', onTouchEnd);
 	};
 
 	const onMouseUp = () => {
-		document.removeEventListener('mousemove', onMove);
+		document.removeEventListener('mousemove', onMoveMouse);
 		document.removeEventListener('mouseup', onMouseUp);
 	};
 

@@ -5,7 +5,7 @@ import useLayer from '../../hooks/useLayer';
 import { v4 as uuidv4 } from 'uuid';
 
 import getDefaultPaintPropsByType from './util/getDefaultPaintPropsByType';
-import getDefaulLayerTypeByGeometry from './util/getDefaultLayerTypeByGeometry';
+import getDefaultLayerTypeByGeometry from './util/getDefaultLayerTypeByGeometry';
 import { Feature, FeatureCollection,GeoJSON } from 'geojson';
 import { useLayerProps } from '../../hooks/useLayer';
 import useSource from '../../hooks/useSource';
@@ -116,7 +116,7 @@ export type MlGeoJsonLayerProps = {
  */
 
 const MlGeoJsonLayer = (props: MlGeoJsonLayerProps) => {
-	const layerType = props.type || getDefaulLayerTypeByGeometry(props.geojson);
+	const layerType = props.type || getDefaultLayerTypeByGeometry(props.geojson);
 	const layerId = useRef(props.layerId || 'MlGeoJsonLayer-' + uuidv4());
 	const labelLayerId = `label-${layerId.current}`;
 
@@ -186,7 +186,7 @@ const MlGeoJsonLayer = (props: MlGeoJsonLayerProps) => {
 				'text-size': 12,
 				'text-anchor': 'top',
 				...(props?.labelOptions?.layout ? props.labelOptions.layout : {}),
-				...(props?.layout?.visibility ? { visibility: props.layout.visibility } : {}),
+				'visibility': props?.layout?.visibility ?? props?.options?.layout?.visibility ?? "visible"
 			},
 			paint: {
 				'text-halo-width': 1,

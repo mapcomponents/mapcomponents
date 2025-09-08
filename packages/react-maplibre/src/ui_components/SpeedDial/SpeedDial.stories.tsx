@@ -11,7 +11,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = () => <SpeedDial />;
+const Template: any = () => <SpeedDial />;
 
 export const ExampleConfig = Template.bind({});
 ExampleConfig.parameters = {};

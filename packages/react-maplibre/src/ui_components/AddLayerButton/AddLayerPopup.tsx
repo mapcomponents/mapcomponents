@@ -6,7 +6,7 @@ import WmsLayerForm from './LayerConfigForms/WmsLayerForm';
 import ProtocolHandlerLayerForm from './LayerConfigForms/ProtocolHandlerLayerForm';
 import MbtilesLayerForm from './LayerConfigForms/MbtilesLayerForm';
 import { MlVectorTileLayerProps } from '../../components/MlVectorTileLayer/MlVectorTileLayer';
-import { LayerConfig } from '../../stores/map.store';
+import { LayerConfig } from '../../contexts/LayerContext';
 
 export interface AddLayerPopupProps {
 	open: boolean;
@@ -27,6 +27,7 @@ type validTypes =
 	| 'kml'
 	| 'tcx';
 
+
 const AddLayerPopup = (props: AddLayerPopupProps) => {
 	const [layerConfig, setLayerConfig] = useState<LayerConfig | undefined>(props?.config);
 	const [originType, setOriginType] = useState<string>();
@@ -35,6 +36,7 @@ const AddLayerPopup = (props: AddLayerPopupProps) => {
 		(el) => el !== 'wms' && el !== 'geojson' && el !== 'mbtiles'
 	);
 
+	const validTypes: string[] = ['wms', 'geojson', 'vt', 'csv', 'mbtiles', 'topojson','osm', 'gpx', 'kml', 'tcx'];
 
 	const updateLayerType = (type: validTypes) => {
 		setOriginType(type);
@@ -81,8 +83,10 @@ const AddLayerPopup = (props: AddLayerPopupProps) => {
 	};
 
 	return (
-		<Dialog open={props.open} onClose={handleCancel} PaperProps={{ sx: { padding: '20px' } }}>
-			{!layerConfig?.type && <LayerTypeForm onSelect={updateLayerType} layerTypes={layerTypes} />}
+		<Dialog open={props.open} onClose={handleCancel}>
+			{!layerConfig?.type && <LayerTypeForm onSelect={(type:string) => {
+				if (validTypes.includes(type)) updateLayerType(type as validTypes)
+			}} layerTypes={layerTypes} />}
 			{layerConfig?.type === 'geojson' && originType === 'geojson' && (
 				<GeoJsonLayerForm
 					onSubmit={(config) => {
@@ -101,10 +105,10 @@ const AddLayerPopup = (props: AddLayerPopupProps) => {
 					onCancel={handleCancel}
 				/>
 			)}
-		{layerConfig?.type === 'vt' && originType !== undefined && (
+			{layerConfig?.type === 'vt' && originType !== undefined && (
 				<MbtilesLayerForm
-				config={layerConfig as unknown as MlVectorTileLayerProps} 
-				originType={originType}
+					config={layerConfig as unknown as MlVectorTileLayerProps}
+					originType={originType}
 					onSubmit={(config) => {
 						if (layerConfig) {
 							props?.onComplete?.({ ...layerConfig, config: config } as LayerConfig);
@@ -113,7 +117,7 @@ const AddLayerPopup = (props: AddLayerPopupProps) => {
 					}}
 					onCancel={handleCancel}
 				/>
-			)}	
+			)}
 			<ProtocolTypeFormulars key={'protocol'} />
 		</Dialog>
 	);
@@ -122,4 +126,3 @@ const AddLayerPopup = (props: AddLayerPopupProps) => {
 AddLayerPopup.defaultProps = {};
 
 export default AddLayerPopup;
-

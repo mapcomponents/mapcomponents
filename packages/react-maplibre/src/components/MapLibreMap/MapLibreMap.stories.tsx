@@ -47,7 +47,7 @@ const styles = [
 	},
 ];
 
-const StyleChangeTemplate = (args:MapLibreMapProps) => {
+const StyleChangeTemplate: any = (args:MapLibreMapProps) => {
 	const [activeStyle, setActiveStyle] = useState(styles[1].url);
 
 	return (

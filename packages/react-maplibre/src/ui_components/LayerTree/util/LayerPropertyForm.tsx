@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import {
 	CircleLayerSpecification,
 	FillLayerSpecification,
@@ -10,9 +10,9 @@ import {
 	Paper,
 	Slider,
 	SliderProps,
+	styled,
 	TextField,
 	Typography,
-	styled,
 } from '@mui/material';
 import ColorPicker from './input/ColorPicker';
 import {
@@ -141,8 +141,8 @@ function LayerPropertyForm(props: LayerPropertyFormProps) {
 									{...(inputPropsByPropKey[key] as SliderProps)}
 									value={paintProps[key] as number | number[] | undefined}
 									valueLabelDisplay="auto"
-									onChange={(_ev: Event, value: number) => {
-										if (value) {
+									onChange={(_ev: Event, value: number | number[]) => {
+										if (value && typeof value === 'number') {
 											updatePaintProp(key, value);
 										}
 									}}
@@ -195,7 +195,10 @@ function LayerPropertyForm(props: LayerPropertyFormProps) {
 				<ListItem key={key.current + '_paintPropForm'}>
 					<BoxStyled>
 						{paintProps &&
-							Object.keys(paintProps).map((el: keyof paintPropsType) => getFormInputByType(el))}
+							Object.keys(paintProps).map((el: string) =>
+								getFormInputByType(el as keyof paintPropsType)
+							)
+						}
 					</BoxStyled>
 				</ListItem>
 			</PaperStyled>

@@ -24,7 +24,7 @@ const configTitles = {
 	DrawLinestring: 'Draw Linestring',
 };
 
-const Template = (args: useFeatureEditorProps) => {
+const Template: any = (args: useFeatureEditorProps) => {
 	const [visible, setVisible] = useState(true);
 
 	useEffect(() => {
@@ -50,7 +50,7 @@ const Template = (args: useFeatureEditorProps) => {
 	);
 };
 
-const catalogueTemplate = () => {
+const catalogueTemplate: any = () => {
 	const mediaIsMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
 	const [visible, setVisible] = useState(true);

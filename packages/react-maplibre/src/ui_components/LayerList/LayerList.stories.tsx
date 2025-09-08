@@ -68,7 +68,7 @@ const FolderTemplate = () => {
 		</>
 	);
 };
-export const FolderExample = FolderTemplate.bind({});
+export const FolderExample: any = FolderTemplate.bind({});
 
 FolderExample.parameters = {};
 FolderExample.args = {};
@@ -117,7 +117,7 @@ const VectortileTemplate = () => {
 	);
 };
 
-export const VectortileExample = VectortileTemplate.bind({});
+export const VectortileExample: any = VectortileTemplate.bind({});
 
 VectortileExample.parameters = {};
 VectortileExample.args = {};
@@ -172,7 +172,7 @@ const WmsLayerTemplate = () => {
 		</>
 	);
 };
-export const WmsLayerExample = WmsLayerTemplate.bind({});
+export const WmsLayerExample: any = WmsLayerTemplate.bind({});
 
 WmsLayerExample.parameters = {};
 WmsLayerExample.args = {};
@@ -222,7 +222,7 @@ const GeoJsonLayerTemplate = () => {
 		</>
 	);
 };
-export const GeoJsonLayerExample = GeoJsonLayerTemplate.bind({});
+export const GeoJsonLayerExample: any = GeoJsonLayerTemplate.bind({});
 
 GeoJsonLayerExample.parameters = {};
 GeoJsonLayerExample.args = {};
@@ -272,12 +272,12 @@ const ConfigurableTemplate = () => {
 		</>
 	);
 };
-export const ConfigurableExample = ConfigurableTemplate.bind({});
+export const ConfigurableExample: any = ConfigurableTemplate.bind({});
 
 ConfigurableExample.parameters = {};
 ConfigurableExample.args = {};
 
-const LabelTemplate = () => {
+const LabelTemplate: any = () => {
 	const [layerOneState, setLayerOneState] = useState({
 		geojson: sample_geojson_1 as Feature,
 		type: 'symbol' as const,

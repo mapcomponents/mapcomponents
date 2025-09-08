@@ -57,10 +57,10 @@ const MlLayerMagnify = (props: MlLayerMagnifyProps) => {
 	const onResize = useRef(() => {
 		if (!mapExists()) return;
 
-		onMove({
+		onMoveMouse({
 			clientX: swipeXRef.current,
 			clientY: swipeYRef.current,
-		} as (TouchEvent & MouseEvent));
+		} as MouseEvent);
 	});
 
 	useEffect(() => {
@@ -73,21 +73,49 @@ const MlLayerMagnify = (props: MlLayerMagnifyProps) => {
 		};
 	}, []);
 
-	const onMove = useCallback(
-		(e:(TouchEvent & MouseEvent)) => {
+	const onMoveTouch = useCallback(
+		(e: TouchEvent) => {
 			if (!mapExists()) return;
 
 			const bounds = mapContext.maps[props.map1Id].getCanvas().getBoundingClientRect();
 			let clientX =
-				e?.clientX ||
-				(typeof e?.touches !== 'undefined' && typeof e?.touches[0] !== 'undefined'
-					? e?.touches[0].clientX
+				(typeof e.touches !== 'undefined' && typeof e.touches[0] !== 'undefined'
+					? e.touches[0].clientX
 					: 0);
 			let clientY =
-				e?.clientY ||
 				(typeof e.touches !== 'undefined' && typeof e.touches[0] !== 'undefined'
 					? e.touches[0].clientY
 					: 0);
+
+			clientX -= bounds.x;
+			clientY -= bounds.y;
+			const swipeX_tmp = parseFloat(((clientX / bounds.width) * 100).toFixed(2));
+			const swipeY_tmp = parseFloat(((clientY / bounds.height) * 100).toFixed(2));
+
+			if (swipeXRef.current !== swipeX_tmp || swipeYRef.current !== swipeY_tmp) {
+				setSwipeX(swipeX_tmp);
+				swipeXRef.current = swipeX_tmp;
+				setSwipeY(swipeY_tmp);
+				swipeYRef.current = swipeY_tmp;
+
+				mapContext.maps[props.map2Id].getContainer().style.clipPath =
+					`circle(${magnifierRadius}px at ` +
+					(swipeXRef.current * bounds.width) / 100 +
+					'px ' +
+					(swipeYRef.current * bounds.height) / 100 +
+					'px)';
+			}
+		},
+		[mapContext, mapExists, props, magnifierRadius]
+	);
+
+	const onMoveMouse = useCallback(
+		(e: MouseEvent) => {
+			if (!mapExists()) return;
+
+			const bounds = mapContext.maps[props.map1Id].getCanvas().getBoundingClientRect();
+			let clientX = e.clientX;
+			let clientY = e.clientY;
 
 			clientX -= bounds.x;
 			clientY -= bounds.y;
@@ -120,60 +148,34 @@ const MlLayerMagnify = (props: MlLayerMagnifyProps) => {
 			mapContext.getMap(props.map2Id).map
 		);
 
-		onMove({
+		onMoveMouse({
 			clientX: swipeXRef.current,
 			clientY: swipeYRef.current,
-		} as (TouchEvent & MouseEvent));
-		/*
-		automatically adjust radius for small screens
-		if (
-			mapContext.maps[props.map1Id].getCanvas().clientWidth >
-				mapContext.maps[props.map1Id].getCanvas().clientHeight &&
-			magnifierRadius * 2 >
-				mapContext.maps[props.map1Id].getCanvas().clientHeight
-		) {
-			magnifierRadius = Math.floor(
-				mapContext.maps[props.map1Id].getCanvas().clientHeight / 2
-			);
-			setMagnifierRadius(magnifierRadius);
-		}
+		} as MouseEvent);
 
-		if (
-			mapContext.maps[props.map1Id].getCanvas().clientHeight >
-				mapContext.maps[props.map1Id].getCanvas().clientWidth &&
-			magnifierRadius * 2 >
-				mapContext.maps[props.map1Id].getCanvas().clientWidth
-		) {
-			magnifierRadius = Math.floor(
-				mapContext.maps[props.map1Id].getCanvas().clientWidth / 2
-			);
-			setMagnifierRadius(magnifierRadius);
-		}
-		*/
-
-		onMove({
+		onMoveMouse({
 			clientX: mapContext.maps[props.map1Id].getCanvas().clientWidth / 2,
 			clientY: mapContext.maps[props.map1Id].getCanvas().clientHeight / 2,
-		} as (TouchEvent & MouseEvent));
-	}, [mapContext.mapIds, mapContext, mapExists, props, onMove]);
+		} as MouseEvent);
+	}, [mapContext.mapIds, mapContext, mapExists, props, onMoveMouse]);
 
 	const onDown = (e: React.MouseEvent | React.TouchEvent) => {
 		if (e.nativeEvent instanceof TouchEvent) {
-			document.addEventListener('touchmove', onMove);
+			document.addEventListener('touchmove', onMoveTouch);
 			document.addEventListener('touchend', onTouchEnd);
 		} else {
-			document.addEventListener('mousemove', onMove);
+			document.addEventListener('mousemove', onMoveMouse);
 			document.addEventListener('mouseup', onMouseUp);
 		}
 	};
 
 	const onTouchEnd = () => {
-		document.removeEventListener('touchmove', onMove);
+		document.removeEventListener('touchmove', onMoveTouch);
 		document.removeEventListener('touchend', onTouchEnd);
 	};
 
 	const onMouseUp = () => {
-		document.removeEventListener('mousemove', onMove);
+		document.removeEventListener('mousemove', onMoveMouse);
 		document.removeEventListener('mouseup', onMouseUp);
 	};
 

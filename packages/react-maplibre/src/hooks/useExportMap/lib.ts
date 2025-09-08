@@ -39,6 +39,8 @@ const createExport = (options: createExportOptions) => {
 	for (const name in style.sources) {
 		const src = style.sources[name];
 
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-expect-error
 		Object.keys(src).forEach((key: keyof SourceSpecification) => {
 			// delete property if value is undefined.
 			// for instance, raster-dem might have undefined value in "url" and "bounds"

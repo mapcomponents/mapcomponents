@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from 'react';
+import { useContext, useRef, useEffect } from 'react';
 import MapContext from '../../contexts/MapContext';
 import maplibregl, { CustomLayerInterface, LngLatLike, Map } from 'maplibre-gl';
 import * as THREE from 'three';

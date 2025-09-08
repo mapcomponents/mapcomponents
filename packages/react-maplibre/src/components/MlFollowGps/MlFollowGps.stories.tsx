@@ -12,7 +12,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = (props:MlFollowGpsProps) => {
+const Template: any = (props:MlFollowGpsProps) => {
 	const mediaIsMobile = useMediaQuery((theme:Theme) => theme.breakpoints.down('md'));
 
 	return (
@@ -34,7 +34,7 @@ const Template = (props:MlFollowGpsProps) => {
 	);
 };
 
-const catalogueTemplate = (props:MlFollowGpsProps) => {
+const catalogueTemplate: any = (props:MlFollowGpsProps) => {
 	const mediaIsMobile = useMediaQuery((theme:Theme) => theme.breakpoints.down('md'));
 
 	const [showTooltip, setShowTooltip] = useState(true);

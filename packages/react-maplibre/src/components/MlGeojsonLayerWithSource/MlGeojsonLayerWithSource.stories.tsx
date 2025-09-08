@@ -11,7 +11,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template = () => <MlGeojsonLayerWithSource />;
+const Template: any = () => <MlGeojsonLayerWithSource />;
 
 export const ExampleConfig = Template.bind({});
 ExampleConfig.args = { mapId: "map_1" };
