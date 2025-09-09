@@ -97,10 +97,10 @@ const useFeatureEditor = (props: useFeatureEditorProps) => {
 
 			mapHook.map.addControl(draw.current, 'top-left', mapHook.componentId);
 
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-expect-error
 			mapHook.map.on(
 				'draw.modechange' as MapLibreGlEventName,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-expect-error
 				modeChangeHandler,
 				mapHook.componentId
 			);
