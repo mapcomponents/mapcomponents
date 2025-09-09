@@ -22,7 +22,13 @@ export interface SelectStyleButtonProps {
 const defaultStyleThumbnailPath =
 	'https://mapcomponents.github.io/react-map-components-maplibre/assets/style_thumbnails/';
 
-const SelectStyleButton = (props: SelectStyleButtonProps) => {
+const SelectStyleButton = ({
+	sx,
+	onComplete,
+	styles = [],
+	defaultStyles = true,
+	styleThumbnailPaths,
+}: SelectStyleButtonProps) => {
 	const layerContext = React.useContext(LayerContext);
 	const [popupOpen, setPopupOpen] = React.useState<boolean>(false);
 
@@ -30,7 +36,7 @@ const SelectStyleButton = (props: SelectStyleButtonProps) => {
 		<>
 			<Button
 				variant="contained"
-				sx={{ marginTop: '10px', ...props.sx }}
+				sx={{ marginTop: '10px', ...sx }}
 				onClick={() => setPopupOpen(true)}
 			>
 				<WallpaperIcon />
@@ -38,22 +44,22 @@ const SelectStyleButton = (props: SelectStyleButtonProps) => {
 			<SelectStylePopup
 				styles={
 					[
-						...(props.defaultStyles
+						...(defaultStyles
 							? [MonokaiStyle, SolarizedStyle, OceanicNextStyle, MedievalKingdomStyle, GruvboxStyle]
 							: []),
-						...(props.styles || []),
+						...(styles || []),
 					] as StyleSpecification[]
 				}
 				styleThumbnailPaths={{
-					...props?.styleThumbnailPaths,
-					...(props.defaultStyles
+					...styleThumbnailPaths,
+					...(defaultStyles
 						? {
 								Monokai: defaultStyleThumbnailPath + 'monokai.png',
 								Gruvbox: defaultStyleThumbnailPath + 'gruvbox.png',
 								'Oceanic Next': defaultStyleThumbnailPath + 'oceanic_next.png',
 								Solarized: defaultStyleThumbnailPath + 'solarized.png',
 								'Medieval Kingdom': defaultStyleThumbnailPath + 'medieval_kingdom.png',
-						  }
+							}
 						: {}),
 				}}
 				open={popupOpen}
@@ -69,11 +75,6 @@ const SelectStyleButton = (props: SelectStyleButtonProps) => {
 			/>
 		</>
 	);
-};
-
-SelectStyleButton.defaultProps = {
-	style: [],
-	defaultStyles: true,
 };
 
 export default SelectStyleButton;
