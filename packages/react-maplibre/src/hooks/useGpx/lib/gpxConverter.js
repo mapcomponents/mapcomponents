@@ -13,15 +13,16 @@ import * as xmldom from '@xmldom/xmldom';
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 const toGeoJSON = (function () {
 	const removeSpace = /\s*/g,
 		trimSpace = /^\s*|\s*$/g,
 		splitSpace = /\s+/;
 	// generate a short, numeric hash of a string
 	function okhash(x) {
-		let h = 0;
 		if (!x || !x.length) return 0;
-		for (let i = 0; i < x.length; i++) {
+		// eslint-disable-next-line no-var
+		for (var i = 0, h = 0; i < x.length; i++) {
 			h = ((h << 5) - h + x.charCodeAt(i)) | 0;
 		}
 		return h;
@@ -50,9 +51,9 @@ const toGeoJSON = (function () {
 	}
 	// cast array x into numbers
 	function numarray(x) {
-		const o = [];
-		for (let j = 0, o = []; j < x.length; j++) {
-			o.push(parseFloat(x[j]));
+		// eslint-disable-next-line no-var
+		for (var j = 0, o = []; j < x.length; j++) {
+			o[j] = parseFloat(x[j]);
 		}
 		return o;
 	}
@@ -384,7 +385,7 @@ const toGeoJSON = (function () {
 							: {
 									type: 'GeometryCollection',
 									geometries: geomsAndTimes.geoms,
-							  },
+								},
 					properties: properties,
 				};
 				if (attr(root, 'id')) feature.id = attr(root, 'id');
@@ -492,7 +493,8 @@ const toGeoJSON = (function () {
 				if (!line.line) return;
 				const prop = getProperties(node);
 				extend(prop, getLineStyle(get1(node, 'extensions')));
-				const routeObj = {
+
+				return {
 					type: 'Feature',
 					properties: prop,
 					geometry: {
@@ -500,7 +502,6 @@ const toGeoJSON = (function () {
 						coordinates: line.line,
 					},
 				};
-				return routeObj;
 			}
 			function getPoint(node) {
 				const prop = getProperties(node);
