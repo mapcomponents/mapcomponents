@@ -19,4 +19,3 @@ GeospatialShow.defaultProps = {
 };
 
 export default GeospatialShow;
-

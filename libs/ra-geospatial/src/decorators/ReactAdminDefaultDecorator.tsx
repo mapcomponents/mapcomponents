@@ -3,8 +3,7 @@ import DataContextProvider from '../contexts/DataContext';
 import { MapComponentsProvider, MapLibreMap } from '@mapcomponents/react-maplibre';
 import { Admin, CustomRoutes, defaultLightTheme } from 'react-admin';
 import { dataProvider } from '../contexts/dataProvider';
-import { Route } from "react-router-dom";
-
+import { Route } from 'react-router-dom';
 
 export const ReactAdminDefaultDecorator = (Story: React.ComponentType, context: any) => (
 	<DataContextProvider>

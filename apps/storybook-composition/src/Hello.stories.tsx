@@ -1,9 +1,8 @@
-import Hello from "./Hello";
+import Hello from './Hello';
 
 export default {
-  title: "Example/Hello",
-  component: Hello,
+	title: 'Example/Hello',
+	component: Hello,
 };
 
 export const Default = () => <Hello />;
-

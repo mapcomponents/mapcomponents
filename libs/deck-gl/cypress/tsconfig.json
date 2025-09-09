@@ -6,7 +6,7 @@
 		"module": "commonjs",
 		"types": ["cypress", "node"],
 		"sourceMap": false,
-		"rootDir": "../",
+		"rootDir": "../"
 	},
 	"include": [
 		"**/*.ts",
