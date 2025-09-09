@@ -300,200 +300,200 @@ const MlSketchTool = (props: MlSketchToolProps) => {
 
 			<List sx={{ zIndex: 105, marginBottom: '-10px' }}>
 				{sketchState.geometries.map((el, index) => (
-						<Box key={el.id} sx={{ display: 'flex', flexDirection: 'column' }}>
-							<br />
-							<Box
-								flexDirection={'row'}
-								sx={{
-									'&:hover': {
-										backgroundColor: 'rgb(177, 177, 177, 0.2)',
-									},
-									marginTop: '25px',
-								}}
-								onMouseOver={() => {
-									setHoveredGeometry(el);
-								}}
-								onMouseLeave={() => {
-									setHoveredGeometry(undefined);
-								}}
-							>
-								{/* Input field for user-defined name */}
-								{!el.properties?.customName && (
-									<input
-										type="text"
-										value={el.properties?.name || ''}
-										placeholder="Assign name"
-										onChange={(e) => {
-											const newName = e.target.value;
-											setSketchState((_sketchState) => {
-												const updatedGeometries = [..._sketchState.geometries];
-												if (!updatedGeometries[index].properties) {
-													updatedGeometries[index].properties = {};
-												}
-												updatedGeometries[index].properties!.name = newName;
-												return {
-													..._sketchState,
-													geometries: updatedGeometries,
-												};
-											});
-										}}
-										style={{
-											padding: '5px',
-											border: '1px solid #ccc',
-											borderRadius: '4px',
-											outline: 'none',
-										}}
-										onFocus={(e) => (e.target.style.borderColor = '#009ee0')}
-										onBlur={(e) => {
-											e.target.style.borderColor = '#ccc';
-											setSketchState((_sketchState) => {
-												const updatedGeometries = [..._sketchState.geometries];
-												if (!updatedGeometries[index].properties) {
-													updatedGeometries[index].properties = {};
-												}
-												updatedGeometries[index].properties!.customName = true;
-												return {
-													..._sketchState,
-													geometries: updatedGeometries,
-												};
-											});
+					<Box key={el.id} sx={{ display: 'flex', flexDirection: 'column' }}>
+						<br />
+						<Box
+							flexDirection={'row'}
+							sx={{
+								'&:hover': {
+									backgroundColor: 'rgb(177, 177, 177, 0.2)',
+								},
+								marginTop: '25px',
+							}}
+							onMouseOver={() => {
+								setHoveredGeometry(el);
+							}}
+							onMouseLeave={() => {
+								setHoveredGeometry(undefined);
+							}}
+						>
+							{/* Input field for user-defined name */}
+							{!el.properties?.customName && (
+								<input
+									type="text"
+									value={el.properties?.name || ''}
+									placeholder="Assign name"
+									onChange={(e) => {
+										const newName = e.target.value;
+										setSketchState((_sketchState) => {
+											const updatedGeometries = [..._sketchState.geometries];
+											if (!updatedGeometries[index].properties) {
+												updatedGeometries[index].properties = {};
+											}
+											updatedGeometries[index].properties!.name = newName;
+											return {
+												..._sketchState,
+												geometries: updatedGeometries,
+											};
+										});
+									}}
+									style={{
+										padding: '5px',
+										border: '1px solid #ccc',
+										borderRadius: '4px',
+										outline: 'none',
+									}}
+									onFocus={(e) => (e.target.style.borderColor = '#009ee0')}
+									onBlur={(e) => {
+										e.target.style.borderColor = '#ccc';
+										setSketchState((_sketchState) => {
+											const updatedGeometries = [..._sketchState.geometries];
+											if (!updatedGeometries[index].properties) {
+												updatedGeometries[index].properties = {};
+											}
+											updatedGeometries[index].properties!.customName = true;
+											return {
+												..._sketchState,
+												geometries: updatedGeometries,
+											};
+										});
+									}}
+								/>
+							)}
+
+							{/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+							{/* @ts-ignore-next-line */}
+							<LayerListItem
+								listItemSx={buttonStyle}
+								configurable={true}
+								visible
+								layerComponent={
+									<MlGeoJsonLayer
+										mapId={props.mapId}
+										geojson={el}
+										layerId={String(el.id)}
+										defaultPaintOverrides={{
+											fill: { 'fill-opacity': 0.5 },
 										}}
 									/>
-								)}
-
-								{/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-								{/* @ts-ignore-next-line */}
-								<LayerListItem
-									listItemSx={buttonStyle}
-									configurable={true}
-									visible
-									layerComponent={
-										<MlGeoJsonLayer
-											mapId={props.mapId}
-											geojson={el}
-											layerId={String(el.id)}
-											defaultPaintOverrides={{
-												fill: { 'fill-opacity': 0.5 },
+								}
+								type={'layer'}
+								name={
+									<Typography
+										onClick={() => {
+											setSketchState((_sketchState) => {
+												const updatedGeometries = [..._sketchState.geometries];
+												if (!updatedGeometries[index].properties) {
+													updatedGeometries[index].properties = {};
+												}
+												updatedGeometries[index].properties!.customName = false;
+												return {
+													..._sketchState,
+													geometries: updatedGeometries,
+												};
+											});
+										}}
+										sx={{
+											cursor: 'pointer',
+											overflow: 'hidden',
+											whiteSpace: 'nowrap',
+										}}
+									>
+										{el.properties?.name || String(el.id)}
+									</Typography>
+								}
+								description={el.geometry.type}
+							/>
+							<Box
+								sx={{
+									padding: '3px 30px',
+								}}
+							>
+								<ButtonGroup size="small">
+									<Tooltip title="Center">
+										<Button
+											sx={{
+												color: (theme) => theme.palette.primary.main,
+												backgroundColor: (theme) => theme.palette.navigation.navColor,
+												...buttonStyle,
 											}}
-										/>
-									}
-									type={'layer'}
-									name={
-										<Typography
+											onClick={() => {
+												mapHook?.map?.map.setCenter(
+													el.geometry.type === 'Point'
+														? (el.geometry.coordinates as LngLatLike)
+														: (turf.centerOfMass(el).geometry.coordinates as LngLatLike)
+												);
+											}}
+										>
+											<GpsFixedIcon />
+										</Button>
+									</Tooltip>
+
+									<Tooltip title="Edit">
+										<Button
+											sx={{
+												color: (theme) => {
+													if (
+														sketchState.drawMode === 'simple_select' &&
+														sketchState.selectedGeoJson?.id === el.id
+													) {
+														return theme.palette.navigation.navColor;
+													} else {
+														return theme.palette.primary.main;
+													}
+												},
+												backgroundColor: (theme) => {
+													if (
+														sketchState.drawMode === 'simple_select' &&
+														sketchState.selectedGeoJson?.id === el.id
+													) {
+														return theme.palette.primary.main;
+													} else {
+														return theme.palette.navigation.navColor;
+													}
+												},
+												...buttonStyle,
+											}}
 											onClick={() => {
 												setSketchState((_sketchState) => {
-													const updatedGeometries = [..._sketchState.geometries];
-													if (!updatedGeometries[index].properties) {
-														updatedGeometries[index].properties = {};
-													}
-													updatedGeometries[index].properties!.customName = false;
+													const newDrawMode =
+														_sketchState.drawMode === 'simple_select' &&
+														_sketchState.selectedGeoJson?.id === el.id
+															? undefined
+															: 'simple_select';
+
 													return {
 														..._sketchState,
-														geometries: updatedGeometries,
+														selectedGeoJson: el,
+														activeGeometryIndex: _sketchState.geometries.indexOf(el),
+														drawMode: newDrawMode,
 													};
 												});
 											}}
+										>
+											<EditIcon />
+										</Button>
+									</Tooltip>
+
+									<Tooltip title="Delete">
+										<Button
 											sx={{
-												cursor: 'pointer',
-												overflow: 'hidden',
-												whiteSpace: 'nowrap',
+												color: (theme) => theme.palette.primary.main,
+												backgroundColor: (theme) => theme.palette.navigation.navColor,
+												...buttonStyle,
+											}}
+											onClick={() => {
+												removeGeoJson(el);
+												setHoveredGeometry(undefined);
 											}}
 										>
-											{el.properties?.name || String(el.id)}
-										</Typography>
-									}
-									description={el.geometry.type}
-								/>
-								<Box
-									sx={{
-										padding: '3px 30px',
-									}}
-								>
-									<ButtonGroup size="small">
-										<Tooltip title="Center">
-											<Button
-												sx={{
-													color: (theme) => theme.palette.primary.main,
-													backgroundColor: (theme) => theme.palette.navigation.navColor,
-													...buttonStyle,
-												}}
-												onClick={() => {
-													mapHook?.map?.map.setCenter(
-														el.geometry.type === 'Point'
-															? (el.geometry.coordinates as LngLatLike)
-															: (turf.centerOfMass(el).geometry.coordinates as LngLatLike)
-													);
-												}}
-											>
-												<GpsFixedIcon />
-											</Button>
-										</Tooltip>
-
-										<Tooltip title="Edit">
-											<Button
-												sx={{
-													color: (theme) => {
-														if (
-															sketchState.drawMode === 'simple_select' &&
-															sketchState.selectedGeoJson?.id === el.id
-														) {
-															return theme.palette.navigation.navColor;
-														} else {
-															return theme.palette.primary.main;
-														}
-													},
-													backgroundColor: (theme) => {
-														if (
-															sketchState.drawMode === 'simple_select' &&
-															sketchState.selectedGeoJson?.id === el.id
-														) {
-															return theme.palette.primary.main;
-														} else {
-															return theme.palette.navigation.navColor;
-														}
-													},
-													...buttonStyle,
-												}}
-												onClick={() => {
-													setSketchState((_sketchState) => {
-														const newDrawMode =
-															_sketchState.drawMode === 'simple_select' &&
-															_sketchState.selectedGeoJson?.id === el.id
-																? undefined
-																: 'simple_select';
-
-														return {
-															..._sketchState,
-															selectedGeoJson: el,
-															activeGeometryIndex: _sketchState.geometries.indexOf(el),
-															drawMode: newDrawMode,
-														};
-													});
-												}}
-											>
-												<EditIcon />
-											</Button>
-										</Tooltip>
-
-										<Tooltip title="Delete">
-											<Button
-												sx={{
-													color: (theme) => theme.palette.primary.main,
-													backgroundColor: (theme) => theme.palette.navigation.navColor,
-													...buttonStyle,
-												}}
-												onClick={() => {
-													removeGeoJson(el);
-													setHoveredGeometry(undefined);
-												}}
-											>
-												<DeleteIcon />
-											</Button>
-										</Tooltip>
-									</ButtonGroup>
-								</Box>
+											<DeleteIcon />
+										</Button>
+									</Tooltip>
+								</ButtonGroup>
 							</Box>
 						</Box>
+					</Box>
 				))}
 				{hoveredGeometry && (
 					<MlGeoJsonLayer

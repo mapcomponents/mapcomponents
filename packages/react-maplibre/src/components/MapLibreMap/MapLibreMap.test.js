@@ -69,7 +69,6 @@ describe('<MapLibreMap>', () => {
 		);
 
 		expect(screen.getByTestId('map_1_exists').innerHTML).toEqual('true');
-
 	});
 
 	it("should remove a maplibre object with the id 'map_1' to mapContext", async () => {

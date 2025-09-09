@@ -54,9 +54,9 @@ const MlLayerSwipe = (props: MlLayerSwipeProps) => {
 			if (!mapExists()) return;
 			const bounds = mapContext.maps[props.map1Id].getCanvas().getBoundingClientRect();
 			let clientX =
-				(typeof e.touches !== 'undefined' && typeof e.touches[0] !== 'undefined'
+				typeof e.touches !== 'undefined' && typeof e.touches[0] !== 'undefined'
 					? e.touches[0].clientX
-					: 0);
+					: 0;
 
 			clientX -= bounds.x;
 			const swipeX_tmp = parseFloat(((clientX / bounds.width) * 100).toFixed(2));
@@ -132,10 +132,9 @@ const MlLayerSwipe = (props: MlLayerSwipeProps) => {
 	};
 
 	function adjustWindowSize() {
-		const clipWidth = parseFloat(mapContext.maps[props.map2Id]
-			.getContainer()
-			.style.clip.split(',')[1]
-			.replace('px', ''));
+		const clipWidth = parseFloat(
+			mapContext.maps[props.map2Id].getContainer().style.clip.split(',')[1].replace('px', '')
+		);
 		const canvasWidth = mapContext.maps[props.map1Id].getCanvas().getBoundingClientRect().width;
 
 		if (clipWidth < canvasWidth) {

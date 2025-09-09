@@ -99,7 +99,11 @@ const useFeatureEditor = (props: useFeatureEditorProps) => {
 
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-expect-error
-			mapHook.map.on('draw.modechange' as MapLibreGlEventName, modeChangeHandler, mapHook.componentId);
+			mapHook.map.on(
+				'draw.modechange' as MapLibreGlEventName,
+				modeChangeHandler,
+				mapHook.componentId
+			);
 
 			setDrawToolsReady(true);
 		}

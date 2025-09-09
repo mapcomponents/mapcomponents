@@ -38,7 +38,7 @@ interface LayerListItemProps {
 	type?: 'background' | 'background-labels' | 'layer' | 'wms-layer' | 'vector-tile-layer';
 	name: string | ReactNode;
 	description?: string;
-	setLayerState?: Dispatch<SetStateAction<any>>
+	setLayerState?: Dispatch<SetStateAction<any>>;
 	showDeleteButton?: boolean;
 	listItemSx?: SxProps;
 	buttons?: React.JSX.Element;

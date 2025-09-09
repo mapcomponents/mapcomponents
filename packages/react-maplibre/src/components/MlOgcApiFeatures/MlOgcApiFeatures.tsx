@@ -94,7 +94,7 @@ const MlOgcApiFeatures = (props: MlOgcApiFeaturesProps) => {
 			if (mapHook?.map?.off) {
 				mapHook.map.off('moveend', getDataHandler);
 			}
-		}
+		};
 	}, [mapHook.map, props.ogcApiFeatureParams, props.ogcApiUrl]);
 
 	useEffect(() => {

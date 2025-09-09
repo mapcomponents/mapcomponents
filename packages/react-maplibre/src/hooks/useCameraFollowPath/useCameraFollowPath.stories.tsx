@@ -93,7 +93,7 @@ const Template: any = () => {
 	};
 
 	// Handle speed change
-	const handleSpeedChange = (value:number) => {
+	const handleSpeedChange = (value: number) => {
 		setState((prev) => ({
 			...prev,
 			speed: value,

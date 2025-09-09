@@ -10,7 +10,7 @@ const bubbleBottomRightStyle = {
 	zIndex: '400',
 };
 
-const getSteps = (mediaIsMobile: boolean):InstructionProps['steps'] => [
+const getSteps = (mediaIsMobile: boolean): InstructionProps['steps'] => [
 	{
 		duration: 3000,
 		props: {

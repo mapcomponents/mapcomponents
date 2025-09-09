@@ -35,7 +35,7 @@ export default function MbtilesLayerForm(props: MbtilesLayerFormProps) {
 	const mapHook = useMap({ mapId: props.mapId });
 	const [expanded, setExpanded] = useState<boolean>(false);
 
-	console.log(layers)
+	console.log(layers);
 
 	const LayersToCall = () => {
 		return (
@@ -55,15 +55,14 @@ export default function MbtilesLayerForm(props: MbtilesLayerFormProps) {
 	 * See the MapComponents AddLayerButton demo and the documentation of useAddProtocolHook to find out more about Protocol handlers.
 	 */
 
-	/* example values: 
-	*	 	id: 'countries',
-	*		type: 'fill',
-	*		'source-layer': 'countries',
-	*   layout: {},
-	*   paint: { "fill-color": "#f9a5f5", "fill-opacity": 0.5 },		
-	*/
-							
-		
+	/* example values:
+	 *	 	id: 'countries',
+	 *		type: 'fill',
+	 *		'source-layer': 'countries',
+	 *   layout: {},
+	 *   paint: { "fill-color": "#f9a5f5", "fill-opacity": 0.5 },
+	 */
+
 	const configIsValid = useMemo(() => {
 		if (!fileName) return false;
 

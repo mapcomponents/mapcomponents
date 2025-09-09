@@ -1,12 +1,11 @@
-import MlComponentTemplate from "./MlComponentTemplate";
+import MlComponentTemplate from './MlComponentTemplate';
 
-import mapContextDecorator from "../../decorators/MapContextDecorator";
+import mapContextDecorator from '../../decorators/MapContextDecorator';
 
 const storyoptions = {
-	title: "MapComponents/MlComponentTemplate",
+	title: 'MapComponents/MlComponentTemplate',
 	component: MlComponentTemplate,
-	argTypes: {
-	},
+	argTypes: {},
 	decorators: mapContextDecorator,
 };
 export default storyoptions;

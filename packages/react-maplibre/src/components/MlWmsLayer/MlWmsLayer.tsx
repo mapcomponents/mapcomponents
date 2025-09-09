@@ -14,7 +14,7 @@ const defaultProps: MlWmsLayerProps = {
 		width: '256',
 		height: '256',
 		styles: '',
-	}
+	},
 };
 
 export interface MlWmsLayerProps {
@@ -129,7 +129,12 @@ const MlWmsLayer = (props: MlWmsLayerProps) => {
 	}, [createLayer]);
 
 	useEffect(() => {
-		if (!mapHook.map || !mapHook.map?.map?.style?.sourceCaches?.[layerId.current] || !initializedRef.current) return;
+		if (
+			!mapHook.map ||
+			!mapHook.map?.map?.style?.sourceCaches?.[layerId.current] ||
+			!initializedRef.current
+		)
+			return;
 
 		const source = mapHook.map.map.getSource(layerId.current) as RasterSourceSpecification;
 		source.tiles = [tileUrl];

@@ -29,14 +29,14 @@ export interface MlMarkerProps {
 	passEventsThrough?: boolean;
 	/** Anchor position of the marker relative to its coordinates */
 	anchor?:
-	| 'top'
-	| 'bottom'
-	| 'left'
-	| 'right'
-	| 'top-left'
-	| 'top-right'
-	| 'bottom-left'
-	| 'bottom-right';
+		| 'top'
+		| 'bottom'
+		| 'left'
+		| 'right'
+		| 'top-left'
+		| 'top-right'
+		| 'bottom-left'
+		| 'bottom-right';
 }
 
 const getBoxTransform = (anchor: MlMarkerProps['anchor'] = 'top') => {
@@ -61,19 +61,44 @@ const getBoxTransform = (anchor: MlMarkerProps['anchor'] = 'top') => {
 	}
 };
 
-function getBoxMargins(anchor: MlMarkerProps['anchor'], offset: number, style?: React.CSSProperties) {
+function getBoxMargins(
+	anchor: MlMarkerProps['anchor'],
+	offset: number,
+	style?: React.CSSProperties
+) {
 	const w = parseInt(String(style?.width || 14), 10);
 	const h = parseInt(String(style?.height || 14), 10);
 	const m: Record<string, string> = {};
 	switch (anchor) {
-		case 'bottom': m.marginTop = `${offset}px`; break;
-		case 'left': m.marginLeft = `-${offset}px`; break;
-		case 'right': m.marginLeft = `${w + offset}px`; break;
-		case 'top-left': m.marginTop = `-${h + offset}px`; m.marginLeft = `-${offset}px`; break;
-		case 'top-right': m.marginTop = `-${h + offset}px`; m.marginLeft = `${w + offset}px`; break;
-		case 'bottom-left': m.marginTop = `${offset}px`; m.marginLeft = `-${offset}px`; break;
-		case 'bottom-right': m.marginTop = `${offset}px`; m.marginLeft = `${w + offset}px`; break;
-		case 'top': default: m.marginTop = `-${h + offset}px`; break;
+		case 'bottom':
+			m.marginTop = `${offset}px`;
+			break;
+		case 'left':
+			m.marginLeft = `-${offset}px`;
+			break;
+		case 'right':
+			m.marginLeft = `${w + offset}px`;
+			break;
+		case 'top-left':
+			m.marginTop = `-${h + offset}px`;
+			m.marginLeft = `-${offset}px`;
+			break;
+		case 'top-right':
+			m.marginTop = `-${h + offset}px`;
+			m.marginLeft = `${w + offset}px`;
+			break;
+		case 'bottom-left':
+			m.marginTop = `${offset}px`;
+			m.marginLeft = `-${offset}px`;
+			break;
+		case 'bottom-right':
+			m.marginTop = `${offset}px`;
+			m.marginLeft = `${w + offset}px`;
+			break;
+		case 'top':
+		default:
+			m.marginTop = `-${h + offset}px`;
+			break;
 	}
 	return m;
 }
@@ -117,10 +142,7 @@ const MlMarker = ({ passEventsThrough = true, contentOffset = 5, ...props }: MlM
 
 		const markerDot = document.createElement('div');
 		Object.entries(markerStyle).forEach(([key, value]) => {
-			markerDot.style.setProperty(
-				key.replace(/([A-Z])/g, '-$1').toLowerCase(),
-				String(value)
-			);
+			markerDot.style.setProperty(key.replace(/([A-Z])/g, '-$1').toLowerCase(), String(value));
 		});
 		container.current.appendChild(markerDot);
 
@@ -177,9 +199,8 @@ const MlMarker = ({ passEventsThrough = true, contentOffset = 5, ...props }: MlM
 	<style>
 		body {
 			${Object.entries(props.iframeBodyStyle || {})
-							.map(([key, val]) => `${key.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${val};`)
-							.join(' ')
-						}
+				.map(([key, val]) => `${key.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${val};`)
+				.join(' ')}
 		}
 	</style>
 	${props.content || ''}

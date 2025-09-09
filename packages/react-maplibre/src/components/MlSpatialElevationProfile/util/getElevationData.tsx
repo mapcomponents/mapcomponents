@@ -15,7 +15,7 @@ interface _geojsonInfo {
 	min: number;
 }
 
-type coordinateObject = {[key: number]: any};
+type coordinateObject = { [key: number]: any };
 
 export default function getElevationData(
 	_geojsonInfo: _geojsonInfo,
@@ -55,7 +55,6 @@ export default function getElevationData(
 		//const point = createPoint(coordinate[0],coordinate[1],coordinate[2]-min);
 		//points.push(point);
 		if (_geojsonInfo.line.geometry.coordinates[index + 1] && Array.isArray(coordinate)) {
-
 			const wayLength = distance(
 				[coordinate[0], coordinate[1]],
 				[
@@ -79,7 +78,8 @@ export default function getElevationData(
 				);
 				const z = lerp(
 					(_geojsonInfo.line.geometry.coordinates as coordinateObject)[index][2] - _geojsonInfo.min,
-					(_geojsonInfo.line.geometry.coordinates as coordinateObject)[index + 1][2] - _geojsonInfo.min,
+					(_geojsonInfo.line.geometry.coordinates as coordinateObject)[index + 1][2] -
+						_geojsonInfo.min,
 					i / listLength
 				);
 

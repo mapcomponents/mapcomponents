@@ -397,7 +397,7 @@ const catalogueTemplate = (context: any) => {
 				unmovableButtons={
 					<>
 						<Typography variant="h6" color={'ButtonText'} marginRight={'20px'}>
-							{(configTitles as {[key:string]:any})[selectedLayer]}
+							{(configTitles as { [key: string]: any })[selectedLayer]}
 						</Typography>
 						{(selectedLayer === 'polygon' || selectedLayer === 'line') && (
 							<Button

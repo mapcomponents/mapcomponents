@@ -4,7 +4,7 @@ import { Select, Typography, Slider, Stack, MenuItem, FormControl } from '@mui/m
 import ColorPicker from '../../../ui_components/ColorPicker/ColorPicker';
 import MlGeoJsonLayer from '../MlGeoJsonLayer';
 import useMap from '../../../hooks/useMap';
-import {FeatureCollection, Feature} from 'geojson';
+import { FeatureCollection, Feature } from 'geojson';
 interface PolygonStylerProps {
 	geojson: FeatureCollection;
 	openSidebar: boolean;
@@ -55,9 +55,7 @@ const PolygonStyler: React.FC<PolygonStylerProps> = ({ geojson, openSidebar, set
 		}
 		return {
 			type: 'FeatureCollection',
-			features: geojson.features.filter(
-				(item: Feature) => item.properties?.name === featureToShow
-			),
+			features: geojson.features.filter((item: Feature) => item.properties?.name === featureToShow),
 		};
 	}, [featureToShow, geojson]);
 

@@ -4,9 +4,9 @@ import { Button } from '@mui/material';
 
 type Props = {
 	setData: (data: string) => void;
-	 
+
 	buttonComponent: any;
-	accept?: string
+	accept?: string;
 };
 
 export default function UploadButton(props: Props) {
@@ -17,7 +17,7 @@ export default function UploadButton(props: Props) {
 		const file = fileupload.current?.files?.[0];
 		if (!file) return false;
 		const reader = new FileReader();
-		 
+
 		reader.onload = (payload: any) => {
 			if (!payload) return;
 
@@ -52,7 +52,7 @@ export default function UploadButton(props: Props) {
 				accept={props.accept}
 				id="input"
 				multiple
-				style={{ display: 'none' }}			
+				style={{ display: 'none' }}
 			></input>
 		</>
 	);

@@ -1,19 +1,19 @@
-import { layerRemovalTest, sourceRemovalTest } from "../../util";
+import { layerRemovalTest, sourceRemovalTest } from '../../util';
 
-import MlWmsLayer from "./MlWmsLayer";
-import { uuid_regex } from "../../setupTests";
+import MlWmsLayer from './MlWmsLayer';
+import { uuid_regex } from '../../setupTests';
 
-const testComponent = <MlWmsLayer url="mock" urlParameters={{ layers: "mock" }} />;
+const testComponent = <MlWmsLayer url="mock" urlParameters={{ layers: 'mock' }} />;
 
 layerRemovalTest(
-	"<MlWmsLayer />",
+	'<MlWmsLayer />',
 	testComponent,
 	new RegExp('^.*"MlWmsLayer-' + uuid_regex + '".*$'),
-	"MlWmsLayer-{uuid}"
+	'MlWmsLayer-{uuid}'
 );
 sourceRemovalTest(
-	"<MlWmsLayer />",
+	'<MlWmsLayer />',
 	testComponent,
 	new RegExp('^.*"MlWmsLayer-' + uuid_regex + '".*$'),
-	"MlWmsLayer-{uuid}"
+	'MlWmsLayer-{uuid}'
 );

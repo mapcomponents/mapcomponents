@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { GeoJsonContextProvider } from "./GeoJsonContext";
+import React, { useState } from 'react';
+import { GeoJsonContextProvider } from './GeoJsonContext';
 import { FeatureCollection } from 'geojson';
 
 interface geoJsonProviderValue {
@@ -8,14 +8,14 @@ interface geoJsonProviderValue {
 	getEmptyFeatureCollection: () => FeatureCollection;
 }
 
-const GeoJsonProvider = ({ children }:{children:React.JSX.Element}) => {
+const GeoJsonProvider = ({ children }: { children: React.JSX.Element }) => {
 	const [data, setData] = useState<FeatureCollection>({
-		type: "FeatureCollection",
+		type: 'FeatureCollection',
 		features: [],
 	});
 	const getEmptyFeatureCollection: () => FeatureCollection = () => {
 		return {
-			type: "FeatureCollection",
+			type: 'FeatureCollection',
 			features: [],
 		};
 	};

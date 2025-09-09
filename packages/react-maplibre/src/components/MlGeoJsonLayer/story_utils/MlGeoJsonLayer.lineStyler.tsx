@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import ColorPicker from '../../../ui_components/ColorPicker/ColorPicker';
 import MlGeoJsonLayer from '../MlGeoJsonLayer';
-import {GeoJSON, FeatureCollection} from 'geojson';
+import { GeoJSON, FeatureCollection } from 'geojson';
 import useMap from '../../../hooks/useMap';
 
 interface LineStylerProps {

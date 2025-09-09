@@ -104,7 +104,7 @@ const MlGpxDemoLoader = (props: MlGpxDemoLoaderProps) => {
 								</Grid>
 							</Grid>
 							<Divider />
-							<Grid container key={"demo-container"}>
+							<Grid container key={'demo-container'}>
 								<List>
 									{samples.map((el, idx) => (
 										<>

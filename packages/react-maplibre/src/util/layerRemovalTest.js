@@ -73,14 +73,14 @@ const layerRemovalTest = (
 					await afterWrapperInit();
 				}
 
-				await userEvent.click(screen.getByTestId("trigger_refresh"));
+				await userEvent.click(screen.getByTestId('trigger_refresh'));
 
 				// debug helper
 				//console.log('layer removal test')
 				//console.log(wrapper.find(".layers_json").text());
 				//console.log(regexLayerNameTest.toString());
 				//console.log(regexLayerNameTest.test(wrapper.find(".layers_json").text()));
-				expect(regexLayerNameTest.test(screen.getByTestId("layers_json").innerHTML)).toEqual(true);
+				expect(regexLayerNameTest.test(screen.getByTestId('layers_json').innerHTML)).toEqual(true);
 			}
 		);
 
@@ -99,15 +99,15 @@ const layerRemovalTest = (
 					await afterWrapperInit();
 				}
 
-				await userEvent.click(screen.getByTestId("trigger_refresh"));
+				await userEvent.click(screen.getByTestId('trigger_refresh'));
 
-				expect(regexLayerNameTest.test(screen.getByTestId("layers_json").innerHTML)).toEqual(true);
+				expect(regexLayerNameTest.test(screen.getByTestId('layers_json').innerHTML)).toEqual(true);
 
-				await userEvent.click(screen.getByTestId("toggle_layer_visible"));
+				await userEvent.click(screen.getByTestId('toggle_layer_visible'));
 
-				await userEvent.click(screen.getByTestId("trigger_refresh"));
+				await userEvent.click(screen.getByTestId('trigger_refresh'));
 
-				expect(regexLayerNameTest.test(screen.getByTestId("layers_json").innerHTML)).toEqual(false);
+				expect(regexLayerNameTest.test(screen.getByTestId('layers_json').innerHTML)).toEqual(false);
 			}
 		);
 	});

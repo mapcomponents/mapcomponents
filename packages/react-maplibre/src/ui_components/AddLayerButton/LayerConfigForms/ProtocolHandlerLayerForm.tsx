@@ -28,12 +28,11 @@ export interface ProtocolHandlerLayerFormProps {
 	onCancel: () => void;
 }
 
-
 const handlers = {
 	csv: CSVProtocolHandler,
-	topojson: TopojsonProtocolHandler, 
+	topojson: TopojsonProtocolHandler,
 	osm: OSMProtocolHandler,
-	gpx: XMLProtocolHandler, 
+	gpx: XMLProtocolHandler,
 	kml: XMLProtocolHandler,
 	tcx: XMLProtocolHandler,
 	//mbtiles: mbTilesProtocolHandler
@@ -44,46 +43,47 @@ export default function ProtocolHandlerLayerForm(props: ProtocolHandlerLayerForm
 	const [config, setConfig] = useState<Partial<MlGeoJsonLayerProps>>({ type: 'circle' });
 	const [fileName, setFileName] = useState<string>();
 	const [filePath, setFilePath] = useState<string>();
-	const [optionsObject, setOptionsObject] = useState<csv2geojsonType.csvOptions>({})
+	const [optionsObject, setOptionsObject] = useState<csv2geojsonType.csvOptions>({});
 	const mapHook = useMap({ mapId: props.mapId });
- 	const optionsURL = '?' + new URLSearchParams(optionsObject as string).toString();
+	const optionsURL = '?' + new URLSearchParams(optionsObject as string).toString();
 
-	
 	useAddProtocol({
-	 	protocol: props.originType,
-		handler: (handlers as {[key:string]:any})[props.originType],
-	 });
+		protocol: props.originType,
+		handler: (handlers as { [key: string]: any })[props.originType],
+	});
 
 	const configIsValid = useMemo(() => {
 		if (!config?.type) return false;
-		if(filePath && fileName) return true;
-		else return false
+		if (filePath && fileName) return true;
+		else return false;
 	}, [config, filePath, fileName]);
 
 	useEffect(() => {
 		if (typeof fileName !== 'undefined' && typeof filePath !== 'undefined') {
-			if (!mapHook.map?.getSource(fileName)) 
-			mapHook.map?.addSource(fileName, {
+			if (!mapHook.map?.getSource(fileName))
+				mapHook.map?.addSource(fileName, {
 					type: 'geojson',
-					data: optionsObject ? props.originType + '://' + filePath + optionsURL : props.originType + '://' + filePath ,
+					data: optionsObject
+						? props.originType + '://' + filePath + optionsURL
+						: props.originType + '://' + filePath,
 				});
-				config.options = { source: fileName };					
+			config.options = { source: fileName };
 		}
 
 		return () => {};
 	}, [fileName, mapHook.map, filePath]);
 
-	//the temporally storage adress of the uploaded file will be revoked, after source and layer are loaded in the map  
+	//the temporally storage adress of the uploaded file will be revoked, after source and layer are loaded in the map
 	useEffect(() => {
 		if (filePath && fileName && mapHook.map?.getLayer(fileName)) {
 			URL.revokeObjectURL(filePath);
 		}
 	}, [fileName, filePath, mapHook.map]);
 
-	function addOption(newObject: JSON){
-const newOptions = {...optionsObject, ...newObject}
+	function addOption(newObject: JSON) {
+		const newOptions = { ...optionsObject, ...newObject };
 
-		return setOptionsObject(newOptions)
+		return setOptionsObject(newOptions);
 	}
 
 	return (
@@ -126,9 +126,8 @@ const newOptions = {...optionsObject, ...newObject}
 						}}
 					/>
 				</Button>
-				{props.originType === 'csv' && <CSVOptionsFormular setter={addOption}/>}
+				{props.originType === 'csv' && <CSVOptionsFormular setter={addOption} />}
 				{props.originType === 'osm' && <OsmOptionsFomular setter={addOption} />}
-				
 			</FormControl>
 			<DialogActions>
 				<Button onClick={props.onCancel}>Cancel</Button>

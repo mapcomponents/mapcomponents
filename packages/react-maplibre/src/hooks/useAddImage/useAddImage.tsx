@@ -28,11 +28,11 @@ const useAddImage = (props: useAddImageProps) => {
 		mapHook.map?.loadImage(props.imagePath).then(function (res) {
 			if (!res?.data) {
 				console.log('image ' + props.imagePath + 'could not be loaded');
-				return; 
+				return;
 			}
 
 			mapHook.map?.addImage(props.imageId, res.data);
-			return; 
+			return;
 		});
 		return () => {
 			mapHook.map?.removeImage(props.imageId);

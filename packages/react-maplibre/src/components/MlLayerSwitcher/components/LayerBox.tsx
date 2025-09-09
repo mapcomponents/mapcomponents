@@ -59,10 +59,7 @@ const LayerBox: React.FC<LayerBoxProps> = (props) => {
 					props?.handleLayerBoxClick?.(props.layerId);
 				}}
 			>
-				{props?.thumbnail && <ImageLoader
-					sx={imageLoaderStyle}
-					src={props.thumbnail}
-				/>}
+				{props?.thumbnail && <ImageLoader sx={imageLoaderStyle} src={props.thumbnail} />}
 
 				<div
 					className="mllayerswitcher-layer-text"

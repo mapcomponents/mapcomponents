@@ -11,7 +11,7 @@ const LoadingOverlayProvider = (children: React.ReactNode) => {
 	const [loadingDone, setLoadingDone] = useState(false);
 	const [visible, setVisible] = useState(true);
 	const [fadeoutAnimation, setFadeoutAnimation] = useState(false);
-	const mapJobsRef = useRef<{[key: string]: any}>({});
+	const mapJobsRef = useRef<{ [key: string]: any }>({});
 	const [checkIdleTrigger, setCheckIdleTrigger] = useState(0);
 
 	const createOnMapIdleFunction = (mapId: string) => () => {

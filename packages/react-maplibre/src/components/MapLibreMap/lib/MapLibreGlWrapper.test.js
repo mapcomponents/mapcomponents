@@ -1,8 +1,8 @@
-import React, { useRef, useEffect, useContext, useState } from "react";
-import MapContext, { MapComponentsProvider } from "../../../contexts/MapContext";
-import { v4 as uuidv4 } from "uuid";
-import MapLibreMap from "../MapLibreMap";
-import {render, screen} from "@testing-library/react";
+import React, { useRef, useEffect, useContext, useState } from 'react';
+import MapContext, { MapComponentsProvider } from '../../../contexts/MapContext';
+import { v4 as uuidv4 } from 'uuid';
+import MapLibreMap from '../MapLibreMap';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 // create plain MapLibre mock for this test
@@ -27,8 +27,8 @@ const mockMapLibreMethods = {
 mockMapLibreMethods.style = {
 	...mockMapLibreMethods,
 };
-jest.mock("maplibre-gl", () => {
-	const originalModule = jest.requireActual("maplibre-gl");
+jest.mock('maplibre-gl', () => {
+	const originalModule = jest.requireActual('maplibre-gl');
 
 	return {
 		...originalModule,
@@ -67,9 +67,7 @@ const MlTestComponentTemplate = (props) => {
 
 	const initializedRef = useRef(false);
 	const mapRef = useRef(undefined);
-	const componentId = useRef(
-		(props.idPrefix ? props.idPrefix : "LayerTestComponent-") + uuidv4()
-	);
+	const componentId = useRef((props.idPrefix ? props.idPrefix : 'LayerTestComponent-') + uuidv4());
 
 	useEffect(() => {
 		const _componentId = componentId.current;
@@ -108,8 +106,8 @@ const LayerTestComponent = (props) => {
 	);
 };
 
-describe("MapLibreGlWrapper - layer tests", () => {
-	it("should add a layer using addLayer to MapLibreGl", async () => {
+describe('MapLibreGlWrapper - layer tests', () => {
+	it('should add a layer using addLayer to MapLibreGl', async () => {
 		render(
 			<MapComponentsProvider>
 				<MapLibreGlWrapperTestComponent>
@@ -121,7 +119,7 @@ describe("MapLibreGlWrapper - layer tests", () => {
 		expect(mockMapLibreMethods.addLayer).toHaveBeenCalledTimes(1);
 	});
 
-	it("should remove a layer using removeLayer from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)", async () => {
+	it('should remove a layer using removeLayer from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)', async () => {
 		render(
 			<MapComponentsProvider>
 				<MapLibreGlWrapperTestComponent>
@@ -137,7 +135,7 @@ describe("MapLibreGlWrapper - layer tests", () => {
 		expect(mockMapLibreMethods.removeLayer).toHaveBeenCalledTimes(1);
 	});
 
-	it("should remove 3 layers using removeLayer from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)", async () => {
+	it('should remove 3 layers using removeLayer from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)', async () => {
 		render(
 			<MapComponentsProvider>
 				<MapLibreGlWrapperTestComponent>
@@ -168,8 +166,8 @@ const SourceTestComponent = (props) => {
 	);
 };
 
-describe("MapLibreGlWrapper - source tests", () => {
-	it("should add a source using addSource to MapLibreGl", async () => {
+describe('MapLibreGlWrapper - source tests', () => {
+	it('should add a source using addSource to MapLibreGl', async () => {
 		render(
 			<MapComponentsProvider>
 				<MapLibreGlWrapperTestComponent>
@@ -181,7 +179,7 @@ describe("MapLibreGlWrapper - source tests", () => {
 		expect(mockMapLibreMethods.addSource).toHaveBeenCalledTimes(1);
 	});
 
-	it("should remove a source using removeSource from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)", async () => {
+	it('should remove a source using removeSource from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)', async () => {
 		render(
 			<MapComponentsProvider>
 				<MapLibreGlWrapperTestComponent>
@@ -197,7 +195,7 @@ describe("MapLibreGlWrapper - source tests", () => {
 		expect(mockMapLibreMethods.removeSource).toHaveBeenCalledTimes(1);
 	});
 
-	it("should remove 3 sources using removeSource from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)", async () => {
+	it('should remove 3 sources using removeSource from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)', async () => {
 		render(
 			<MapComponentsProvider>
 				<MapLibreGlWrapperTestComponent>
@@ -228,8 +226,8 @@ const ImageTestComponent = (props) => {
 	);
 };
 
-describe("MapLibreGlWrapper - image tests", () => {
-	it("should add an image using addImage to MapLibreGl", async () => {
+describe('MapLibreGlWrapper - image tests', () => {
+	it('should add an image using addImage to MapLibreGl', async () => {
 		render(
 			<MapComponentsProvider>
 				<MapLibreGlWrapperTestComponent>
@@ -241,7 +239,7 @@ describe("MapLibreGlWrapper - image tests", () => {
 		expect(mockMapLibreMethods.addImage).toHaveBeenCalledTimes(1);
 	});
 
-	it("should remove an image using removeImage from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)", async () => {
+	it('should remove an image using removeImage from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)', async () => {
 		render(
 			<MapComponentsProvider>
 				<MapLibreGlWrapperTestComponent>
@@ -257,7 +255,7 @@ describe("MapLibreGlWrapper - image tests", () => {
 		expect(mockMapLibreMethods.removeImage).toHaveBeenCalledTimes(1);
 	});
 
-	it("should remove 3 images using removeImage from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)", async () => {
+	it('should remove 3 images using removeImage from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)', async () => {
 		render(
 			<MapComponentsProvider>
 				<MapLibreGlWrapperTestComponent>
@@ -281,15 +279,15 @@ const EventTestComponent = (props) => {
 			{...props}
 			afterInit={(map, componentId) => {
 				for (let i = 0; i < props.cnt; i++) {
-					map.on("event", () => ({}), componentId);
+					map.on('event', () => ({}), componentId);
 				}
 			}}
 		/>
 	);
 };
 
-describe("MapLibreGlWrapper - event tests", () => {
-	it("should add a event listener using on to MapLibreGl", async () => {
+describe('MapLibreGlWrapper - event tests', () => {
+	it('should add a event listener using on to MapLibreGl', async () => {
 		render(
 			<MapComponentsProvider>
 				<MapLibreGlWrapperTestComponent>
@@ -302,7 +300,7 @@ describe("MapLibreGlWrapper - event tests", () => {
 		expect(mockMapLibreMethods.on).toHaveBeenCalledTimes(5);
 	});
 
-	it("should remove an event using off from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)", async () => {
+	it('should remove an event using off from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)', async () => {
 		render(
 			<MapComponentsProvider>
 				<MapLibreGlWrapperTestComponent>
@@ -319,7 +317,7 @@ describe("MapLibreGlWrapper - event tests", () => {
 		expect(mockMapLibreMethods.off).toHaveBeenCalledTimes(1);
 	});
 
-	it("should remove 3 events using off from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)", async () => {
+	it('should remove 3 events using off from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)', async () => {
 		render(
 			<MapComponentsProvider>
 				<MapLibreGlWrapperTestComponent>
@@ -343,15 +341,15 @@ const ControlTestComponent = (props) => {
 			{...props}
 			afterInit={(map, componentId) => {
 				for (let i = 0; i < props.cnt; i++) {
-					map.addControl({}, "top-left", componentId);
+					map.addControl({}, 'top-left', componentId);
 				}
 			}}
 		/>
 	);
 };
 
-describe("MapLibreGlWrapper - control tests", () => {
-	it("should add a control using addControl to MapLibreGl", async () => {
+describe('MapLibreGlWrapper - control tests', () => {
+	it('should add a control using addControl to MapLibreGl', async () => {
 		render(
 			<MapComponentsProvider>
 				<MapLibreGlWrapperTestComponent>
@@ -363,7 +361,7 @@ describe("MapLibreGlWrapper - control tests", () => {
 		expect(mockMapLibreMethods.addControl).toHaveBeenCalledTimes(1);
 	});
 
-	it("should remove a control using removeControl from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)", async () => {
+	it('should remove a control using removeControl from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)', async () => {
 		render(
 			<MapComponentsProvider>
 				<MapLibreGlWrapperTestComponent>
@@ -379,7 +377,7 @@ describe("MapLibreGlWrapper - control tests", () => {
 		expect(mockMapLibreMethods.removeControl).toHaveBeenCalledTimes(1);
 	});
 
-	it("should remove 3 controls using removeControl from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)", async () => {
+	it('should remove 3 controls using removeControl from MapLibreGl using MapLibreGlWrapper.cleanup(componentId)', async () => {
 		render(
 			<MapComponentsProvider>
 				<MapLibreGlWrapperTestComponent>

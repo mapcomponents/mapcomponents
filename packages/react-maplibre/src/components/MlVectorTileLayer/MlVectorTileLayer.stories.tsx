@@ -17,7 +17,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template: any = (args:MlVectorTileLayerProps) => {
+const Template: any = (args: MlVectorTileLayerProps) => {
 	const [showLayer, setShowLayer] = useState(true);
 
 	return (

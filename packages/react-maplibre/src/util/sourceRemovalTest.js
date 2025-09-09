@@ -97,7 +97,9 @@ const sourceRemovalTest = (
 				await userEvent.click(screen.getByTestId('toggle_layer_visible'));
 				await userEvent.click(screen.getByTestId('trigger_refresh'));
 
-				expect(regexLayerNameTest.test(screen.getByTestId('sources_json').innerHTML)).toEqual(false);
+				expect(regexLayerNameTest.test(screen.getByTestId('sources_json').innerHTML)).toEqual(
+					false
+				);
 			}
 		);
 	});

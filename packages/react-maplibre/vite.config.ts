@@ -52,7 +52,7 @@ export default defineConfig(() => ({
 				'react-dom',
 				'd3',
 				'sql.js',
-/*				...Object.keys(pkg.dependencies),
+				/*				...Object.keys(pkg.dependencies),
 				...Object.keys(pkg.devDependencies),*/
 			],
 			input: [path.join(__dirname, 'src/index.ts')],

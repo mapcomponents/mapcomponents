@@ -79,13 +79,13 @@ const MlLayerMagnify = (props: MlLayerMagnifyProps) => {
 
 			const bounds = mapContext.maps[props.map1Id].getCanvas().getBoundingClientRect();
 			let clientX =
-				(typeof e.touches !== 'undefined' && typeof e.touches[0] !== 'undefined'
+				typeof e.touches !== 'undefined' && typeof e.touches[0] !== 'undefined'
 					? e.touches[0].clientX
-					: 0);
+					: 0;
 			let clientY =
-				(typeof e.touches !== 'undefined' && typeof e.touches[0] !== 'undefined'
+				typeof e.touches !== 'undefined' && typeof e.touches[0] !== 'undefined'
 					? e.touches[0].clientY
-					: 0);
+					: 0;
 
 			clientX -= bounds.x;
 			clientY -= bounds.y;

@@ -1,9 +1,9 @@
-import MlUseMapDebugger, { MlUseMapDebuggerProps } from "./MlUseMapDebugger";
+import MlUseMapDebugger, { MlUseMapDebuggerProps } from './MlUseMapDebugger';
 
-import mapContextDecorator from "../../decorators/MapContextDecorator";
+import mapContextDecorator from '../../decorators/MapContextDecorator';
 
 const storyoptions = {
-	title: "MapComponents/MlUseMapDebugger",
+	title: 'MapComponents/MlUseMapDebugger',
 	component: MlUseMapDebugger,
 	argTypes: {
 		url: {},
@@ -13,7 +13,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template: any = (props:MlUseMapDebuggerProps) => {
+const Template: any = (props: MlUseMapDebuggerProps) => {
 	return (
 		<>
 			<MlUseMapDebugger {...props} />
@@ -24,5 +24,5 @@ const Template: any = (props:MlUseMapDebuggerProps) => {
 export const ExampleConfig = Template.bind({});
 ExampleConfig.parameters = {};
 ExampleConfig.args = {
-	mapId: "map_1",
+	mapId: 'map_1',
 };

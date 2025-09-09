@@ -10,7 +10,7 @@ const storyoptions = {
 		center: [13.738382110055795, 51.052846749921514],
 		bearing: 180,
 		zoom: 16.5,
-		pitch: 60
+		pitch: 60,
 	}),
 };
 export default storyoptions;

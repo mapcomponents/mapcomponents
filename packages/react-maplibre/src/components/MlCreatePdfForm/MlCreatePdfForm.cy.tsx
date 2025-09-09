@@ -20,4 +20,3 @@ describe('MlCreatePdfForm Tests', () => {
 		cy.readFile('./cypress/downloads/Map.pdf').should('contain', 'WhereGroup');
 	});
 });
-

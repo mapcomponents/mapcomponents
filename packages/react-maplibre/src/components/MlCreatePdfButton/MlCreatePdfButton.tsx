@@ -4,7 +4,7 @@ import PrinterIcon from '@mui/icons-material/Print';
 import Button from '@mui/material/Button';
 import { CircularProgress } from '@mui/material';
 import useExportMap from '../../hooks/useExportMap';
-import {BBox} from 'geojson';
+import { BBox } from 'geojson';
 import { createExportOptions } from '../../hooks/useExportMap/lib';
 
 export interface MlCreatePdfButtonProps {
@@ -15,7 +15,7 @@ export interface MlCreatePdfButtonProps {
 	/**
 	 * Option overrides for the createExport function
 	 */
-	exportOptions?: createExportOptions
+	exportOptions?: createExportOptions;
 }
 
 /**

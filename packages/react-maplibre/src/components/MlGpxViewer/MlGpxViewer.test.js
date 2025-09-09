@@ -26,7 +26,6 @@ const gpxSample = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	</wpt>
 </gpx>`;
 
- 
 const testComponent = <MlGpxViewer gpxData={gpxSample} />;
 
 const sourceTestParams = [

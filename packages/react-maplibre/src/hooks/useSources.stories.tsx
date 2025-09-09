@@ -57,35 +57,31 @@ const VectorExample: any = (args: any) => {
 	});
 	useEffect(() => {
 		if (!mapHook.map) return;
-		mapHook.map.addLayer(
-			{
-				id: 'vector-lineLayer',
-				type: 'line',
-				source: args.sourceId,
-				minzoom: 0,
-				maxzoom: 22,
-				'source-layer': 'landuse',
-				layout: {
-					'line-cap': 'round',
-					'line-join': 'round',
-				},
-				paint: { 'line-width': 2, 'line-color': '#ff0000' },
+		mapHook.map.addLayer({
+			id: 'vector-lineLayer',
+			type: 'line',
+			source: args.sourceId,
+			minzoom: 0,
+			maxzoom: 22,
+			'source-layer': 'landuse',
+			layout: {
+				'line-cap': 'round',
+				'line-join': 'round',
 			},
-		);
-		mapHook.map.addLayer(
-			{
-				id: 'vector-FillLayer',
-				type: 'fill',
-				source: args.sourceId,
-				minzoom: 0,
-				maxzoom: 22,
-				'source-layer': 'landuse',
-				paint: {
-					'fill-color': '#32a850',
-					'fill-opacity': 0.4,
-				},
+			paint: { 'line-width': 2, 'line-color': '#ff0000' },
+		});
+		mapHook.map.addLayer({
+			id: 'vector-FillLayer',
+			type: 'fill',
+			source: args.sourceId,
+			minzoom: 0,
+			maxzoom: 22,
+			'source-layer': 'landuse',
+			paint: {
+				'fill-color': '#32a850',
+				'fill-opacity': 0.4,
 			},
-		);
+		});
 	}, [mapHook.map]);
 	return <></>;
 };
@@ -97,15 +93,13 @@ const RasterExample: any = (args: any) => {
 	});
 	useEffect(() => {
 		if (!mapHook.map) return;
-		mapHook.map.addLayer(
-			{
-				id: 'raster-wms',
-				type: 'raster',
-				source: args.sourceId,
-				minzoom: 0,
-				maxzoom: 22,
-			}
-		);
+		mapHook.map.addLayer({
+			id: 'raster-wms',
+			type: 'raster',
+			source: args.sourceId,
+			minzoom: 0,
+			maxzoom: 22,
+		});
 	}, [mapHook.map]);
 	return <></>;
 };

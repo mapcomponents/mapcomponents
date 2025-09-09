@@ -1,5 +1,5 @@
 import { RequestParameters } from 'maplibre-gl';
-import { FeatureCollection} from 'geojson';
+import { FeatureCollection } from 'geojson';
 import * as externParser from '@tmcw/togeojson';
 import toGeoJSON from '../hooks/useGpx/lib/gpxConverter';
 import protocolPathParser from './utils/protocolPathParser';
@@ -21,7 +21,7 @@ async function convertXML(params: {
 
 					// use the projects gpxConverter function for gpx and kml files
 				} else {
-					return (toGeoJSON as {[key:string]:any})[params.protocolId](
+					return (toGeoJSON as { [key: string]: any })[params.protocolId](
 						new DOMParser().parseFromString(rawData, 'text/xml')
 					) as FeatureCollection;
 				}

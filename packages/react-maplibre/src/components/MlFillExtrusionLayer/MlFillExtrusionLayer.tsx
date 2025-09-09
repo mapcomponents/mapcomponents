@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from "uuid";
-import useLayer from "../../hooks/useLayer";
+import { v4 as uuidv4 } from 'uuid';
+import useLayer from '../../hooks/useLayer';
 
 export interface MlFillExtrusionLayerProps {
 	/**
@@ -47,12 +47,12 @@ export interface MlFillExtrusionLayerProps {
 const MlFillExtrusionLayer = (props: MlFillExtrusionLayerProps) => {
 	useLayer({
 		mapId: props.mapId,
-		layerId: props.layerId || "MlFillExtrusionLayer-" + uuidv4(),
+		layerId: props.layerId || 'MlFillExtrusionLayer-' + uuidv4(),
 		options: {
-			id: "",
-			type: "fill-extrusion",
-			source: props.sourceId || "openmaptiles",
-			"source-layer": props.sourceLayer || "building",
+			id: '',
+			type: 'fill-extrusion',
+			source: props.sourceId || 'openmaptiles',
+			'source-layer': props.sourceLayer || 'building',
 			minzoom: props.minZoom || 6,
 			paint: {
 				...props.paint,
@@ -67,16 +67,16 @@ const MlFillExtrusionLayer = (props: MlFillExtrusionLayerProps) => {
 MlFillExtrusionLayer.defaultProps = {
 	mapId: undefined,
 	paint: {
-		"fill-extrusion-color": "hsl(196, 61%, 83%)",
-		"fill-extrusion-height": {
-			property: "render_height",
-			type: "identity",
+		'fill-extrusion-color': 'hsl(196, 61%, 83%)',
+		'fill-extrusion-height': {
+			property: 'render_height',
+			type: 'identity',
 		},
-		"fill-extrusion-base": {
-			property: "render_min_height",
-			type: "identity",
+		'fill-extrusion-base': {
+			property: 'render_min_height',
+			type: 'identity',
 		},
-		"fill-extrusion-opacity": 1,
+		'fill-extrusion-opacity': 1,
 	},
 };
 

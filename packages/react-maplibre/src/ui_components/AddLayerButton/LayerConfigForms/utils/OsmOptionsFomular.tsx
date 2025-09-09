@@ -31,10 +31,11 @@ function OsmOptionsFomular(props: OsmOptionsFomularProps) {
 							<>
 								<ListItem>
 									<Typography> {el} </Typography>
-									<Checkbox										
+									<Checkbox
 										onChange={(ev) => {
 											const newObject = {};
-											(newObject as {[key:string]:any})[el] = ev.target.value === 'on' ? true : false;
+											(newObject as { [key: string]: any })[el] =
+												ev.target.value === 'on' ? true : false;
 											props.setter(newObject);
 										}}
 									/>

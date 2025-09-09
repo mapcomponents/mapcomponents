@@ -29,7 +29,7 @@ interface LayerListItemVectorLayerProps {
 	visibleMaster?: boolean;
 }
 
-type idIsStringObject = {[key:string]:any}
+type idIsStringObject = { [key: string]: any };
 
 function LayerListItemVectorLayer({
 	configurable,
@@ -45,7 +45,8 @@ function LayerListItemVectorLayer({
 	useEffect(() => {
 		if (
 			!setVtProps ||
-			(typeof (vtProps.layers as idIsStringObject)[id]?.layout?.visibility === 'undefined' && visible) ||
+			(typeof (vtProps.layers as idIsStringObject)[id]?.layout?.visibility === 'undefined' &&
+				visible) ||
 			(!visible && (vtProps.layers as idIsStringObject)[id]?.layout?.visibility === 'none') ||
 			(visible && (vtProps.layers as idIsStringObject)[id]?.layout?.visibility === 'visible')
 		)
@@ -68,7 +69,9 @@ function LayerListItemVectorLayer({
 	useEffect(() => {
 		if (!setVtProps) return;
 
-		if (JSON.stringify(paintProps) !== JSON.stringify((vtProps.layers as idIsStringObject)[id].paint)) {
+		if (
+			JSON.stringify(paintProps) !== JSON.stringify((vtProps.layers as idIsStringObject)[id].paint)
+		) {
 			const _paintProps = { ...paintProps };
 			const _layers = [...vtProps.layers];
 			(_layers as idIsStringObject)[id].paint = _paintProps;

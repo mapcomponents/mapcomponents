@@ -1,10 +1,10 @@
-import useMap from "./useMap";
+import useMap from './useMap';
 import { bbox, AllGeoJSON } from '@turf/turf';
 import { LngLatBoundsLike, FitBoundsOptions, GeoJSONSource } from 'maplibre-gl';
 
 export interface useFitLayerBoundsPros {
 	layerId: string;
-	type: "geojson" | "wms" | "vt";
+	type: 'geojson' | 'wms' | 'vt';
 	fitBoundsOptions?: FitBoundsOptions;
 }
 
@@ -33,10 +33,7 @@ function useFitLayerBounds(props: useFitLayerBoundsPros) {
 	}
 
 	if (geojson) {
-		mapHook.map?.fitBounds(
-			bbox(geojson) as LngLatBoundsLike,
-			props.fitBoundsOptions
-		);
+		mapHook.map?.fitBounds(bbox(geojson) as LngLatBoundsLike, props.fitBoundsOptions);
 	}
 }
 

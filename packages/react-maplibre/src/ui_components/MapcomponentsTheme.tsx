@@ -5,7 +5,7 @@ import { Theme } from '@mui/system';
 declare module '@mui/material' {
 	interface Palette {
 		topToolbar: { barColor: string };
-		navigation: { buttonColor: string, navColor: string; navHover: string };
+		navigation: { buttonColor: string; navColor: string; navHover: string };
 		GPS: { GPSActiveColor: string; GPSInactiveColor: string; GPSActiveBackgroundColor: string };
 		compass: {
 			compColor: string;
@@ -67,7 +67,7 @@ const getDesignTokens = (mode: 'light' | 'dark') => ({
 						compNorth: '#cf003f',
 						compSouth: '#d3dcf0',
 					},
-			  }
+				}
 			: {
 					primary: {
 						main: '#009EE0',
@@ -91,14 +91,13 @@ const getDesignTokens = (mode: 'light' | 'dark') => ({
 						compNorth: '#cf003f',
 						compSouth: '#d3dcf0',
 					},
-			  }),
+				}),
 	},
 });
 const getTheme = (mode: 'light' | 'dark' | undefined) => {
 	const theme: Theme = getDesignTokens(
-		mode && ['light', 'dark'].includes(mode as string) ?
-		(mode) :
-		'light');
+		mode && ['light', 'dark'].includes(mode as string) ? mode : 'light'
+	);
 
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore

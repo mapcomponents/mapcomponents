@@ -8,7 +8,7 @@ interface SwipeIconProps {
 	color?: string;
 }
 
-const SwipeIcon:React.FC<SwipeIconProps> = ({ className = '', title, onClick, style, color}) => {
+const SwipeIcon: React.FC<SwipeIconProps> = ({ className = '', title, onClick, style, color }) => {
 	return (
 		<svg
 			viewBox="0 0 47 30"

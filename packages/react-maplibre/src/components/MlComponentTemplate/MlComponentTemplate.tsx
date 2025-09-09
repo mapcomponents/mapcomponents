@@ -1,4 +1,4 @@
-import useMap from "../../hooks/useMap";
+import useMap from '../../hooks/useMap';
 
 export interface MlComponentTemplateProps {
 	/**
@@ -15,7 +15,7 @@ const MlComponentTemplate = (props: MlComponentTemplateProps) => {
 	const mapHook = useMap({
 		mapId: props.mapId,
 	});
-	console.log(mapHook.componentId + " remove this log");
+	console.log(mapHook.componentId + ' remove this log');
 
 	return <></>;
 };

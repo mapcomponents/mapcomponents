@@ -87,10 +87,10 @@ export default function Sidebar({
 									setOpen
 										? () => {
 												setOpen?.(false);
-										  }
+											}
 										: () => {
 												setDrawerOpen(false);
-										  }
+											}
 								}
 								sx={{
 									position: 'absolute',
@@ -120,19 +120,19 @@ export default function Sidebar({
 							setOpen
 								? () => {
 										setOpen?.(false);
-								  }
+									}
 								: () => {
 										setDrawerOpen(false);
-								  }
+									}
 						}
 						onOpen={
 							setOpen
 								? () => {
 										setOpen?.(true);
-								  }
+									}
 								: () => {
 										setDrawerOpen(true);
-								  }
+									}
 						}
 						swipeAreaWidth={drawerBleeding}
 						disableSwipeToOpen={false}

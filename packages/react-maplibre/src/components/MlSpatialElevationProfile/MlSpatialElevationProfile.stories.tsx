@@ -99,11 +99,7 @@ const Template: any = () => {
 				setGpx={setGpxData}
 			/>
 
-			<Sidebar
-				open={openSidebar}
-				setOpen={setOpenSidebar}
-				name={'GPX Informations'}
-			>
+			<Sidebar open={openSidebar} setOpen={setOpenSidebar} name={'GPX Informations'}>
 				<Metadata metadata={metadata} />
 			</Sidebar>
 			<Dropzone setData={(data) => setGpxData(data)} />

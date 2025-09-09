@@ -11,7 +11,6 @@ import './lib/preview.css';
 import mapContextDecorator from '../../decorators/MapContextDecorator';
 import Draggable from 'react-draggable';
 
-
 const PaperComponent = (props: object) => {
 	const nodeRef = React.useRef<HTMLDivElement>(null);
 
@@ -62,9 +61,9 @@ const storyoptions = {
 	argTypes: {},
 	decorators: mapContextDecorator,
 	parameters: {
-    docs: {
-      page: null,
-    },
+		docs: {
+			page: null,
+		},
 	},
 };
 export default storyoptions;
@@ -398,5 +397,4 @@ export const AdditionalInfo = additionalInfoTemplate.bind({});
 AdditionalInfo.parameters = {
 	docs: { page: null },
 };
-AdditionalInfo.args = {
-};
+AdditionalInfo.args = {};

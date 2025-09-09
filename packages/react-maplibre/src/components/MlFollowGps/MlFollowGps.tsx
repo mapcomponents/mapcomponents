@@ -5,15 +5,8 @@ import MlGeoJsonLayer from '../MlGeoJsonLayer/MlGeoJsonLayer';
 import { Button } from '@mui/material';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 
-import {
-	point,
-	circle,
-	lineArc,
-	bbox,
-	booleanContains,
-	bboxPolygon,
-} from '@turf/turf';
-import {Feature, Point, BBox} from 'geojson';
+import { point, circle, lineArc, bbox, booleanContains, bboxPolygon } from '@turf/turf';
+import { Feature, Point, BBox } from 'geojson';
 import { CircleLayerSpecification, FillLayerSpecification, LngLatBoundsLike } from 'maplibre-gl';
 
 export interface MlFollowGpsProps {

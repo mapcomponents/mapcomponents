@@ -151,18 +151,12 @@ export default function PdfForm(props: PdfFormProps) {
 
 	const mediaIsMobile = useMediaQuery('(max-width: 950px)');
 
-	const formControlStyles = useMemo(
-		() => {
-			return {
-				margin: mediaIsMobile ? '1px 0 8px 0 ' : '5px 0 15px 0 ',
-				...(props?.formControlStyles?{...props.formControlStyles}:{}),
-			};
-		},
-		[
-			mediaIsMobile,
-			props.formControlStyles
-		]
-	);
+	const formControlStyles = useMemo(() => {
+		return {
+			margin: mediaIsMobile ? '1px 0 8px 0 ' : '5px 0 15px 0 ',
+			...(props?.formControlStyles ? { ...props.formControlStyles } : {}),
+		};
+	}, [mediaIsMobile, props.formControlStyles]);
 
 	return (
 		<>

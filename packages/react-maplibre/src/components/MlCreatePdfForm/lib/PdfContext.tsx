@@ -2,7 +2,6 @@ import React, { useState, useRef, useMemo } from 'react';
 import templates from './pdf.templates';
 import { PdfContextInterface, PdfPreviewOptions } from './pdfContext';
 
-
 const PdfContext = React.createContext<PdfContextInterface>({} as PdfContextInterface);
 
 const defaultTemplate = templates['A4']['72dpi'];
@@ -28,7 +27,7 @@ const PdfContextProvider = ({ children }: { children: React.ReactNode }) => {
 				: {
 						width: templates[format][quality].height,
 						height: templates[format][quality].width,
-				  };
+					};
 		}
 		return defaultTemplate;
 	}, [format, quality, options.orientation]);

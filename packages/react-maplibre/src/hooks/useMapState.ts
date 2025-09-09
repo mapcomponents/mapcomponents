@@ -1,10 +1,10 @@
-import { useContext, useCallback, useState, useEffect, useRef } from "react";
-import { v4 as uuidv4 } from "uuid";
-import MapContext, { MapContextType } from "../contexts/MapContext";
+import { useContext, useCallback, useState, useEffect, useRef } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import MapContext, { MapContextType } from '../contexts/MapContext';
 import MapLibreGlWrapper, {
 	LayerState,
 	ViewportState,
-} from "../components/MapLibreMap/lib/MapLibreGlWrapper";
+} from '../components/MapLibreMap/lib/MapLibreGlWrapper';
 
 type useMapStateType = {
 	layers: (LayerState | undefined)[];
@@ -39,7 +39,7 @@ function useMapState(props: {
 	const viewportRef = useRef(undefined);
 
 	const [layers, setLayers] = useState<(LayerState | undefined)[]>([]);
-	const layersRef = useRef<string>("");
+	const layersRef = useRef<string>('');
 	//const mapRef = useRef(props.map);
 	const componentId = useRef(uuidv4());
 
@@ -50,12 +50,12 @@ function useMapState(props: {
 	 * @param {object} layer
 	 */
 	const layerIdFilter = useCallback(
-		(layer:LayerState) => {
+		(layer: LayerState) => {
 			if (!props?.filter?.includeBaseLayers && layer?.baseLayer) {
 				return false;
 			}
 
-			if (typeof props.filter?.matchLayerIds !== "undefined") {
+			if (typeof props.filter?.matchLayerIds !== 'undefined') {
 				if (props.filter.matchLayerIds instanceof RegExp) {
 					return props.filter.matchLayerIds.test(layer.id);
 				} else {
@@ -109,7 +109,7 @@ function useMapState(props: {
 
 			// register viewportchange event handler
 			mapRef.current.wrapper.on(
-				"viewportchange",
+				'viewportchange',
 				() => {
 					if (viewportRef.current !== mapRef.current?.wrapper.viewportStateString) {
 						setViewport(mapRef.current?.wrapper.viewportState);
@@ -124,7 +124,7 @@ function useMapState(props: {
 			refreshLayerState();
 
 			mapRef.current.wrapper.on(
-				"layerchange",
+				'layerchange',
 				refreshLayerState,
 				{
 					includeBaseLayers: props?.filter?.includeBaseLayers,

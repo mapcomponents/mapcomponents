@@ -1274,5 +1274,5 @@
 	"wmsUrl": "https://magosm.magellium.com/geoserver/ows?SERVICE=WMS&",
 	"visible": true,
 	"open": false,
-    "name": "magOSM WMS Service"
+	"name": "magOSM WMS Service"
 }

@@ -1,21 +1,22 @@
+import LayerHoverPopup from './LayerHoverPopup';
 
-import LayerHoverPopup from "./LayerHoverPopup";
-
-import mapContextDecorator from "../../decorators/MapContextDecorator";
+import mapContextDecorator from '../../decorators/MapContextDecorator';
 
 const storyoptions = {
-	title: "Hooks/LayerHoverPopup",
+	title: 'Hooks/LayerHoverPopup',
 	component: LayerHoverPopup,
-	argTypes: {
-	},
+	argTypes: {},
 	decorators: mapContextDecorator,
 };
 export default storyoptions;
 
 const Template: any = () => {
-
-return <><LayerHoverPopup getPopupContent={() => 'Popup content'} /></>;
-}
+	return (
+		<>
+			<LayerHoverPopup getPopupContent={() => 'Popup content'} />
+		</>
+	);
+};
 
 export const ExampleConfig = Template.bind({});
 ExampleConfig.parameters = {};

@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { MapComponentsProvider } from "../contexts/MapContext";
-import MapLibreMap from "../components/MapLibreMap/MapLibreMap";
-import { waitFor, render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import React, { useState, useEffect } from 'react';
+import { MapComponentsProvider } from '../contexts/MapContext';
+import MapLibreMap from '../components/MapLibreMap/MapLibreMap';
+import { waitFor, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
-import useMap from "./useMap";
-import useSource from "./useSource";
-import useLayer, { useLayerProps } from "./useLayer";
+import useMap from './useMap';
+import useSource from './useSource';
+import useLayer, { useLayerProps } from './useLayer';
 
 const UseSourceTestComponent = () => {
 	useSource({
-		sourceId: "geojson-source",
+		sourceId: 'geojson-source',
 		source: {
-			type: "geojson",
+			type: 'geojson',
 			data: {
-				type: "FeatureCollection",
+				type: 'FeatureCollection',
 				features: [],
 			},
 		},
@@ -25,12 +25,12 @@ const UseSourceTestComponent = () => {
 
 const UseLayerTestComponent = (props: Partial<useLayerProps>) => {
 	useLayer({
-		layerId: props.layerId || "TestComponent",
+		layerId: props.layerId || 'TestComponent',
 		options: {
-			source: "geojson-source",
-			type: "fill",
+			source: 'geojson-source',
+			type: 'fill',
 			...props.options,
-		} as useLayerProps["options"],
+		} as useLayerProps['options'],
 		insertBeforeLayer: props.insertBeforeLayer,
 		onHover: props.onHover,
 		onClick: props.onClick,
@@ -50,8 +50,8 @@ const TestComponent = () => {
 	useEffect(() => {
 		if (!mapHook.map) return;
 
-		mapHook.map.wrapper.on("addsource", sourceAddEventHandler);
-		mapHook.map.wrapper.on("addlayer", layerAddEventHandler);
+		mapHook.map.wrapper.on('addsource', sourceAddEventHandler);
+		mapHook.map.wrapper.on('addlayer', layerAddEventHandler);
 	}, [mapHook.map]);
 
 	return (
@@ -69,7 +69,7 @@ const TestComponent = () => {
 	);
 };
 
-describe("useSource hook", () => {
+describe('useSource hook', () => {
 	it("should fire an 'addsource' event in MapLibreGlWrapper", async () => {
 		render(
 			<MapComponentsProvider>
@@ -77,18 +77,14 @@ describe("useSource hook", () => {
 			</MapComponentsProvider>
 		);
 
-		await userEvent.click(screen.getByTestId("toggle_includeComponent"));
+		await userEvent.click(screen.getByTestId('toggle_includeComponent'));
 
-		await waitFor(() =>
-			expect(sourceAddEventHandler).toHaveBeenCalledTimes(1)
-		);
+		await waitFor(() => expect(sourceAddEventHandler).toHaveBeenCalledTimes(1));
 
-		await userEvent.click(screen.getByTestId("toggle_includeComponent"));
-		await userEvent.click(screen.getByTestId("toggle_includeComponent"));
+		await userEvent.click(screen.getByTestId('toggle_includeComponent'));
+		await userEvent.click(screen.getByTestId('toggle_includeComponent'));
 
-		await waitFor(() =>
-			expect(sourceAddEventHandler).toHaveBeenCalledTimes(2)
-		);
+		await waitFor(() => expect(sourceAddEventHandler).toHaveBeenCalledTimes(2));
 	});
 
 	it("should fire an 'addlayer' event in MapLibreGlWrapper", async () => {
@@ -99,10 +95,8 @@ describe("useSource hook", () => {
 			</MapComponentsProvider>
 		);
 
-		await userEvent.click(screen.getByTestId("toggle_includeComponent"));
+		await userEvent.click(screen.getByTestId('toggle_includeComponent'));
 
-		await waitFor(() =>
-			expect(layerAddEventHandler).toHaveBeenCalledTimes(1)
-		);
+		await waitFor(() => expect(layerAddEventHandler).toHaveBeenCalledTimes(1));
 	});
 });

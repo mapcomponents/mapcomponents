@@ -145,7 +145,9 @@ const MlThreeJsLayer = (props: MlThreeJsLayerProps) => {
 					modelTransform.rotateZ
 				);
 
-				const m = new THREE.Matrix4().fromArray(Object.values(matrix.defaultProjectionData.mainMatrix));
+				const m = new THREE.Matrix4().fromArray(
+					Object.values(matrix.defaultProjectionData.mainMatrix)
+				);
 				const l = new THREE.Matrix4()
 					.makeTranslation(
 						modelTransform.translateX,

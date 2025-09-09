@@ -1,4 +1,4 @@
-import { RequestParameters} from 'maplibre-gl';
+import { RequestParameters } from 'maplibre-gl';
 import { FeatureCollection } from 'geojson';
 import osm2geojson from 'osm2geojson-lite';
 import protocolPathParser from './utils/protocolPathParser';
@@ -15,10 +15,7 @@ async function convertOSM(params: {
 	// Use the csv2geojson library to convert the CSV to GeoJSON
 	const geojson = await new Promise<FeatureCollection>((resolve, reject) => {
 		getProtocolData(params.filename).then((rawData) => {
-			const newData: FeatureCollection = osm2geojson(
-				rawData,
-				options
-			) as FeatureCollection;
+			const newData: FeatureCollection = osm2geojson(rawData, options) as FeatureCollection;
 
 			if (!newData) {
 				reject('Conversion failed');

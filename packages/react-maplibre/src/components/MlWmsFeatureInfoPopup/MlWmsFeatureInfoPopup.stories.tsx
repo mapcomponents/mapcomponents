@@ -1,4 +1,3 @@
-
 import MlWmsFeatureInfoPopup from './MlWmsFeatureInfoPopup';
 
 import mapContextDecorator from '../../decorators/MapContextDecorator';

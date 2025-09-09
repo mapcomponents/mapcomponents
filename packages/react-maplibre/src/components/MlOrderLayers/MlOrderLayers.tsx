@@ -20,14 +20,16 @@ const MlOrderLayers = (props: MlOrderLayersProps) => {
 			{props?.layerIds?.map((layer, idx) => (
 				<MlLayer
 					layerId={layer}
-					options={{
-						display: 'none',
-					} as useLayerProps['options']}
+					options={
+						{
+							display: 'none',
+						} as useLayerProps['options']
+					}
 					key={layer}
 					{...(idx > 0
 						? {
 								insertBeforeLayer: props?.layerIds?.[idx - 1],
-						  }
+							}
 						: { insertBeforeLayer: props.insertBeforeLayer })}
 				/>
 			))}

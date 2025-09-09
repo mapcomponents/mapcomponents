@@ -11,13 +11,15 @@ import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
 
 export interface LayerTypeFormProps {
 	onSelect: (type: string) => void;
-	layerTypes: string[]
+	layerTypes: string[];
 }
 
 const LayerTypeForm = (props: LayerTypeFormProps) => {
 	return (
 		<>
-			<DialogTitle>{props.layerTypes.length > 1 ? "Select a layer type": "Load new layer"}</DialogTitle>
+			<DialogTitle>
+				{props.layerTypes.length > 1 ? 'Select a layer type' : 'Load new layer'}
+			</DialogTitle>
 			<List>
 				{props.layerTypes.map((type, idx) => (
 					<ListItem disableGutters key={idx}>

@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import getDefaultPaintPropsByType from './util/getDefaultPaintPropsByType';
 import getDefaultLayerTypeByGeometry from './util/getDefaultLayerTypeByGeometry';
-import { Feature, FeatureCollection,GeoJSON } from 'geojson';
+import { Feature, FeatureCollection, GeoJSON } from 'geojson';
 import { useLayerProps } from '../../hooks/useLayer';
 import useSource from '../../hooks/useSource';
 
@@ -37,7 +37,7 @@ export type MlGeoJsonLayerProps = {
 	/**
 	 * GeoJSON data that is supposed to be rendered by this component.
 	 */
-	geojson?:  Feature | FeatureCollection | undefined;
+	geojson?: Feature | FeatureCollection | undefined;
 	/**
 	 * Type of the layer that will be added to the MapLibre instance.
 	 * All types from LayerSpecification union type are supported except the type from
@@ -133,7 +133,7 @@ const MlGeoJsonLayer = (props: MlGeoJsonLayerProps) => {
 		sourceId: 'source-' + layerId.current,
 		source: {
 			type: 'geojson',
-			data: props.geojson as unknown as (string | GeoJSON),
+			data: props.geojson as unknown as string | GeoJSON,
 			...(typeof props?.options?.source !== 'undefined' &&
 			typeof props?.options?.source !== 'string'
 				? props.options.source
@@ -144,11 +144,11 @@ const MlGeoJsonLayer = (props: MlGeoJsonLayerProps) => {
 	useLayer({
 		mapId: props.mapId,
 		layerId: layerId.current,
-		options: {					
+		options: {
 			...(typeof props?.options?.source !== 'undefined' &&
-						typeof props?.options?.source === 'string'
-							? {source: props.options.source}
-							: {source: 'source-' + layerId.current}),				
+			typeof props?.options?.source === 'string'
+				? { source: props.options.source }
+				: { source: 'source-' + layerId.current }),
 			paint: {
 				...(props.paint || getDefaultPaintPropsByType(layerType, props.defaultPaintOverrides)),
 				...props?.options?.paint,
@@ -171,9 +171,9 @@ const MlGeoJsonLayer = (props: MlGeoJsonLayerProps) => {
 		mapId: props.mapId,
 		options: {
 			...(typeof props?.options?.source !== 'undefined' &&
-						typeof props?.options?.source === 'string'
-							? {source: props.options.source}
-							: {source: 'source-' + layerId.current}),						
+			typeof props?.options?.source === 'string'
+				? { source: props.options.source }
+				: { source: 'source-' + layerId.current }),
 			id: labelLayerId,
 			type: 'symbol',
 			maxzoom: 24,
@@ -186,7 +186,7 @@ const MlGeoJsonLayer = (props: MlGeoJsonLayerProps) => {
 				'text-size': 12,
 				'text-anchor': 'top',
 				...(props?.labelOptions?.layout ? props.labelOptions.layout : {}),
-				'visibility': props?.layout?.visibility ?? props?.options?.layout?.visibility ?? "visible"
+				visibility: props?.layout?.visibility ?? props?.options?.layout?.visibility ?? 'visible',
 			},
 			paint: {
 				'text-halo-width': 1,

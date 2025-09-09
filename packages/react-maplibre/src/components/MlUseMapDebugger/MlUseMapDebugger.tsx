@@ -1,11 +1,11 @@
 import { FC, useRef } from 'react';
 
-import useMapState from "../../hooks/useMapState";
+import useMapState from '../../hooks/useMapState';
 
 export interface MlUseMapDebuggerProps {
 	mapId?: string;
 	watch?: string[];
-	filter?: {[key: string]: any};
+	filter?: { [key: string]: any };
 }
 
 //Add default props to MlUseMapDebugger
@@ -61,10 +61,10 @@ const MlUseMapDebugger: MlUseMapDebuggerComponent = (props) => {
 				variant="persistent"
 			></Drawer>
 			*/}
-			<div style={{ overflow: "hidden", width: "100px", height: "20px" }}>
+			<div style={{ overflow: 'hidden', width: '100px', height: '20px' }}>
 				Render: {renderCounter.current}
 				<br />
-				<pre>{JSON.stringify(map, null, " ")}</pre>
+				<pre>{JSON.stringify(map, null, ' ')}</pre>
 			</div>
 		</>
 	);

@@ -15,7 +15,7 @@ export interface MlCreatePngButtonProps {
 	/**
 	 * Option overrides for the createExport function
 	 */
-	exportOptions?: createExportOptions
+	exportOptions?: createExportOptions;
 }
 
 /**

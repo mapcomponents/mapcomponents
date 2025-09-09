@@ -10,7 +10,6 @@ const storyoptions = {
 export default storyoptions;
 
 const Template: any = () => {
-
 	return (
 		<>
 			<MlMultiMeasureTool multiType={true} />

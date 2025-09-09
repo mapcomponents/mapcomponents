@@ -4,7 +4,6 @@ import { uuid_regex } from '../../setupTests';
 import MlImageMarkerLayer from './MlImageMarkerLayer';
 
 const testComponent = (
-	 
 	<MlImageMarkerLayer
 		options={{
 			source: {

@@ -1,5 +1,7 @@
 import React from 'react';
-import useFeatureEditor, { useFeatureEditorProps } from '../../hooks/useFeatureEditor/useFeatureEditor';
+import useFeatureEditor, {
+	useFeatureEditorProps,
+} from '../../hooks/useFeatureEditor/useFeatureEditor';
 import './MlFeatureEditor.css';
 
 const MlFeatureEditor: React.FC<useFeatureEditorProps> = (props) => {
@@ -11,10 +13,7 @@ const MlFeatureEditor: React.FC<useFeatureEditorProps> = (props) => {
 		mapId: props.mapId,
 	});
 
-	return (
-		<>
-		</>
-	);
+	return <></>;
 };
 
 export default MlFeatureEditor;

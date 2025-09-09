@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import MapContext, { MapComponentsProvider } from '../../contexts/MapContext';
 import MapLibreMap from './../MapLibreMap/MapLibreMap';
 import MlLayer from './MlLayer';
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { uuid_regex } from '../../setupTests';
 import userEvent from '@testing-library/user-event';
 
@@ -68,7 +68,9 @@ describe('<MlLayer>', () => {
 		await userEvent.click(screen.getByTestId('trigger_refresh'));
 
 		expect(
-			new RegExp('^.*"MlLayer-' + uuid_regex + '".*$').test(screen.getByTestId('layers_json').innerHTML)
+			new RegExp('^.*"MlLayer-' + uuid_regex + '".*$').test(
+				screen.getByTestId('layers_json').innerHTML
+			)
 		).toEqual(true);
 	});
 
@@ -78,14 +80,18 @@ describe('<MlLayer>', () => {
 		await userEvent.click(screen.getByTestId('trigger_refresh'));
 
 		expect(
-			new RegExp('^.*"MlLayer-' + uuid_regex + '".*$').test(screen.getByTestId('layers_json').innerHTML)
+			new RegExp('^.*"MlLayer-' + uuid_regex + '".*$').test(
+				screen.getByTestId('layers_json').innerHTML
+			)
 		).toEqual(true);
 
 		await userEvent.click(screen.getByTestId('toggle_layer_visible'));
 		await userEvent.click(screen.getByTestId('trigger_refresh'));
 
 		expect(
-			new RegExp('^.*"MlLayer-' + uuid_regex + '".*$').test(screen.getByTestId('layers_json').innerHTML)
+			new RegExp('^.*"MlLayer-' + uuid_regex + '".*$').test(
+				screen.getByTestId('layers_json').innerHTML
+			)
 		).toEqual(false);
 	});
 
@@ -95,7 +101,9 @@ describe('<MlLayer>', () => {
 		await userEvent.click(screen.getByTestId('trigger_refresh'));
 
 		expect(
-			new RegExp('^.*"MlLayer-' + uuid_regex + '".*$').test(screen.getByTestId('sources_json').innerHTML)
+			new RegExp('^.*"MlLayer-' + uuid_regex + '".*$').test(
+				screen.getByTestId('sources_json').innerHTML
+			)
 		).toEqual(true);
 	});
 
@@ -105,14 +113,18 @@ describe('<MlLayer>', () => {
 		await userEvent.click(screen.getByTestId('trigger_refresh'));
 
 		expect(
-			new RegExp('^.*"MlLayer-' + uuid_regex + '".*$').test(screen.getByTestId('sources_json').innerHTML)
+			new RegExp('^.*"MlLayer-' + uuid_regex + '".*$').test(
+				screen.getByTestId('sources_json').innerHTML
+			)
 		).toEqual(true);
 
 		await userEvent.click(screen.getByTestId('toggle_layer_visible'));
 		await userEvent.click(screen.getByTestId('trigger_refresh'));
 
 		expect(
-			new RegExp('^.*"MlLayer-' + uuid_regex + '".*$').test(screen.getByTestId('sources_json').innerHTML)
+			new RegExp('^.*"MlLayer-' + uuid_regex + '".*$').test(
+				screen.getByTestId('sources_json').innerHTML
+			)
 		).toEqual(false);
 	});
 });

@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import MapContext, { MapComponentsProvider } from '../../contexts/MapContext';
 import MapLibreMap from './../MapLibreMap/MapLibreMap';
 import userEvent from '@testing-library/user-event';
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 // Mapbox sync-move mockup
 const mockSyncMoveMethods = {
@@ -56,7 +56,6 @@ const TestComponent = () => {
 	);
 };
 
-
 describe('<MlLayerSwipe/>', () => {
 	//it("should add a MlLayerSwipe Component to that calls syncMaps with both available MapLibre instances once", async () => {
 	//	const spy = jest.spyOn(syncMoveObj, "syncMove");
@@ -73,7 +72,7 @@ describe('<MlLayerSwipe/>', () => {
 		);
 		//expect(syncMove).toHaveBeenCalledTimes(1);
 
-		await userEvent.click(screen.getByTestId('toggle_layer_visible'))
+		await userEvent.click(screen.getByTestId('toggle_layer_visible'));
 
 		//TODO: Fix cleanup test
 		expect(mockSyncMoveMethods.cleanup).toHaveBeenCalledTimes(1);

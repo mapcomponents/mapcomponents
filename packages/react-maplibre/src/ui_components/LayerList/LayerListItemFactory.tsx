@@ -117,10 +117,11 @@ function LayerListItemFactory(props: LayerListItemFactoryProps) {
 		return [];
 	}, [props.layers, layerContext.layers]);
 
-	const setLayers: (layers: LayerConfig[] | ((state: LayerConfig[]) => LayerConfig[])) => void = useMemo(() => {
-		if (props.setLayers) return props.setLayers;
-		return layerContext.setLayers;
-	}, [props.setLayers, layerContext.setLayers]);
+	const setLayers: (layers: LayerConfig[] | ((state: LayerConfig[]) => LayerConfig[])) => void =
+		useMemo(() => {
+			if (props.setLayers) return props.setLayers;
+			return layerContext.setLayers;
+		}, [props.setLayers, layerContext.setLayers]);
 	const pointerSensor = useSensor(PointerSensor, {
 		activationConstraint: {
 			distance: 5,

@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
-import { waitFor, render, screen } from "@testing-library/react";
-import MapContext, { MapComponentsProvider } from "../../contexts/MapContext";
-import MlFeatureEditor from "./MlFeatureEditor";
-import MapLibreMap from "./../MapLibreMap/MapLibreMap";
-import { mockMapLibreMethods } from "../../setupTests";
+import React, { useContext, useState } from 'react';
+import { waitFor, render, screen } from '@testing-library/react';
+import MapContext, { MapComponentsProvider } from '../../contexts/MapContext';
+import MlFeatureEditor from './MlFeatureEditor';
+import MapLibreMap from './../MapLibreMap/MapLibreMap';
+import { mockMapLibreMethods } from '../../setupTests';
 import userEvent from '@testing-library/user-event';
 
-jest.mock("@mapbox/mapbox-gl-draw", () => {
+jest.mock('@mapbox/mapbox-gl-draw', () => {
 	return function () {
 		return {
 			set: jest.fn(),
@@ -43,12 +43,10 @@ const MlFeatureEditorTestComponent = (props) => {
 			>
 				refresh
 			</button>
-			<div className="layers_json"
-			data-testid="layers_json">
+			<div className="layers_json" data-testid="layers_json">
 				{mapContext.map && refreshTrigger && JSON.stringify(mapContext.map.layers)}
 			</div>
-			<div className="sources_json"
-			data-testid="sources_json">
+			<div className="sources_json" data-testid="sources_json">
 				{mapContext.map && refreshTrigger && JSON.stringify(mapContext.map.sources)}
 			</div>
 		</>
@@ -56,9 +54,9 @@ const MlFeatureEditorTestComponent = (props) => {
 };
 
 const testAttributes = {
-	mode: "custom_select",
+	mode: 'custom_select',
 	geojson: {
-		type: "Feature",
+		type: 'Feature',
 		properties: {},
 		geometry: {
 			coordinates: [
@@ -70,13 +68,13 @@ const testAttributes = {
 					[7.0904979943736635, 50.73948334574527],
 				],
 			],
-			type: "Polygon",
+			type: 'Polygon',
 		},
 	},
 };
 
-describe("<MlFeatureEditor>", () => {
-	it("should register 2 event listeners to the maplibre instance", async () => {
+describe('<MlFeatureEditor>', () => {
+	it('should register 2 event listeners to the maplibre instance', async () => {
 		render(
 			<MapComponentsProvider>
 				<MlFeatureEditorTestComponent {...testAttributes} />
@@ -87,7 +85,7 @@ describe("<MlFeatureEditor>", () => {
 		await waitFor(() => expect(mockMapLibreMethods.on).toHaveBeenCalledTimes(7));
 	});
 
-	it("should deregister 2 event listeners to the maplibre instance", async () => {
+	it('should deregister 2 event listeners to the maplibre instance', async () => {
 		render(
 			<MapComponentsProvider>
 				<MlFeatureEditorTestComponent {...testAttributes} />
@@ -97,12 +95,12 @@ describe("<MlFeatureEditor>", () => {
 		// MapLibreGlWrapper now subscribes to "data", "move" events on its own
 		expect(mockMapLibreMethods.on).toHaveBeenCalledTimes(7);
 
-		await userEvent.click(screen.getByTestId("toggle_layer_visible"));
+		await userEvent.click(screen.getByTestId('toggle_layer_visible'));
 
 		expect(mockMapLibreMethods.off).toHaveBeenCalledTimes(3);
 	});
 
-	it("should add MapBox-Gl-draw instance using map.addControl to the maplibre instance", async () => {
+	it('should add MapBox-Gl-draw instance using map.addControl to the maplibre instance', async () => {
 		render(
 			<MapComponentsProvider>
 				<MlFeatureEditorTestComponent {...testAttributes} />
@@ -111,7 +109,7 @@ describe("<MlFeatureEditor>", () => {
 		expect(mockMapLibreMethods.addControl).toHaveBeenCalledTimes(1);
 	});
 
-	it("should remove MapBox-Gl-draw instance using map.addControl to the maplibre instance", async () => {
+	it('should remove MapBox-Gl-draw instance using map.addControl to the maplibre instance', async () => {
 		render(
 			<MapComponentsProvider>
 				<MlFeatureEditorTestComponent {...testAttributes} />
@@ -120,7 +118,7 @@ describe("<MlFeatureEditor>", () => {
 
 		expect(mockMapLibreMethods.addControl).toHaveBeenCalledTimes(1);
 
-		await userEvent.click(screen.getByTestId("toggle_layer_visible"));
+		await userEvent.click(screen.getByTestId('toggle_layer_visible'));
 
 		expect(mockMapLibreMethods.removeControl).toHaveBeenCalledTimes(1);
 	});

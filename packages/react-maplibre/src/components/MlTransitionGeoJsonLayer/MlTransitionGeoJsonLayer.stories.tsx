@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 
-import MlTransitionGeoJsonLayer, { MlTransitionGeoJsonLayerProps } from './MlTransitionGeoJsonLayer';
+import MlTransitionGeoJsonLayer, {
+	MlTransitionGeoJsonLayerProps,
+} from './MlTransitionGeoJsonLayer';
 
 import mapContextDecorator from '../../decorators/MapContextDecorator';
 import useMap from '../../hooks/useMap';
@@ -23,14 +25,14 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const LinestringTransitionTemplate: any = (props:MlTransitionGeoJsonLayerProps) => {
+const LinestringTransitionTemplate: any = (props: MlTransitionGeoJsonLayerProps) => {
 	const mapHook = useMap({ mapId: 'map_1' });
 	const [geojson, setGeojson] = useState<Feature>(sample_geojson_1 as Feature);
 	const initializedRef = useRef(false);
 	const [disabled, setDisabled] = useState(true);
 
-	useEffect(()=>{
-		enableButton(6000)
+	useEffect(() => {
+		enableButton(6000);
 	}, []);
 
 	useEffect(() => {
@@ -53,19 +55,21 @@ const LinestringTransitionTemplate: any = (props:MlTransitionGeoJsonLayerProps) 
 		}
 	}
 
-	function enableButton(time:number) {
-		setTimeout(()=>{setDisabled(false)}, time);
+	function enableButton(time: number) {
+		setTimeout(() => {
+			setDisabled(false);
+		}, time);
 	}
 
 	return (
 		<>
 			<TopToolbar
-			unmovableButtons={
+				unmovableButtons={
 					<Button
 						variant="outlined"
 						onClick={() => {
 							toogleSource();
-							setDisabled(true)
+							setDisabled(true);
 							enableButton(2800);
 						}}
 						sx={{ marginRight: { xs: '5px', sm: '10px' } }}

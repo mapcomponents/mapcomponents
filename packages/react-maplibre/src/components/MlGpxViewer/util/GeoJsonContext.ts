@@ -1,5 +1,5 @@
-import React from "react";
-import { FeatureCollection } from "geojson";
+import React from 'react';
+import { FeatureCollection } from 'geojson';
 
 type ContextProps = {
 	data: FeatureCollection;

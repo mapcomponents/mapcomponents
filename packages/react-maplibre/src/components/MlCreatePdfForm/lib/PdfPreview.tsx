@@ -5,9 +5,9 @@ import useMap from '../../../hooks/useMap';
 import useMapState from '../../../hooks/useMapState';
 import * as turf from '@turf/turf';
 import { PdfPreviewOptions } from './pdfContext';
-import {  LngLatLike, Map as MapType, PointLike } from 'maplibre-gl';
+import { LngLatLike, Map as MapType, PointLike } from 'maplibre-gl';
 import { Units } from '@turf/turf';
-import {Feature} from 'geojson';
+import { Feature } from 'geojson';
 
 type Props = {
 	/**
@@ -17,10 +17,7 @@ type Props = {
 	/**
 	 * Polygon GeoJson Feature representing the printing area
 	 */
-	geojsonRef: React.MutableRefObject<
-		| Feature
-		| undefined
-	>;
+	geojsonRef: React.MutableRefObject<Feature | undefined>;
 	/**
 	 * a state variable containing the PDF previews current state
 	 */
@@ -255,74 +252,76 @@ export default function PdfPreview(props: Props) {
 		transformOrigin,
 	]);
 
-	return mapContainerRef.current ? ReactDOM.createPortal(
-		<>
-			<div
-				className="target"
-				ref={targetRef}
-				style={{ transform: transform, transformOrigin: 'center center' }}
-			></div>
-			<Moveable
-				// eslint-disable-next-line
-				// @ts-ignore:
-				ref={moveableRef}
-				target={targetRef}
-				container={null}
-				origin={true}
-				keepRatio={true}
-				/* draggable */
-				draggable={true}
-				onDrag={(e) => {
-					if (mapHook.map) {
+	return mapContainerRef.current ? (
+		ReactDOM.createPortal(
+			<>
+				<div
+					className="target"
+					ref={targetRef}
+					style={{ transform: transform, transformOrigin: 'center center' }}
+				></div>
+				<Moveable
+					// eslint-disable-next-line
+					// @ts-ignore:
+					ref={moveableRef}
+					target={targetRef}
+					container={null}
+					origin={true}
+					keepRatio={true}
+					/* draggable */
+					draggable={true}
+					onDrag={(e) => {
+						if (mapHook.map) {
+							let _transformParts = e.transform.split('translate(');
+							_transformParts = _transformParts[1].split('px)')[0].split('px, ');
+							const _center = mapHook.map?.map.unproject([
+								parseInt(_transformParts[0]) + transformOrigin[0],
+								parseInt(_transformParts[1]) + transformOrigin[1],
+							]);
+							props.setOptions((val: PdfPreviewOptions) => ({
+								...val,
+								center: [_center.lng, _center.lat],
+							}));
+						}
+					}}
+					/* scalable */
+					scalable={props.options.fixedScale ? false : true}
+					onScale={(e) => {
+						if (mapHook.map) {
+							let _transformParts = e.drag.transform.split('scale(');
+							_transformParts = _transformParts[1].split(')')[0].split(', ');
 
-						let _transformParts = e.transform.split('translate(');
-						_transformParts = _transformParts[1].split('px)')[0].split('px, ');
-						const _center = mapHook.map?.map.unproject([
-							parseInt(_transformParts[0]) + transformOrigin[0],
-							parseInt(_transformParts[1]) + transformOrigin[1],
-						]);
-						props.setOptions((val: PdfPreviewOptions) => ({
-							...val,
-							center: [_center.lng, _center.lat],
-						}));
-					}
-				}}
-				/* scalable */
-				scalable={props.options.fixedScale ? false : true}
-				onScale={(e) => {
-					if (mapHook.map) {
-						let _transformParts = e.drag.transform.split('scale(');
-						_transformParts = _transformParts[1].split(')')[0].split(', ');
+							const centerInPixels = mapHook.map.map.project(props.options.center as LngLatLike);
 
-						const centerInPixels = mapHook.map.map.project(props.options.center as LngLatLike);
+							const x = centerInPixels.x;
+							const y = centerInPixels.y;
 
-						const x = centerInPixels.x;
-						const y = centerInPixels.y;
+							const scale =
+								parseFloat(_transformParts[0]) *
+								(1 / getMapZoomScaleModifier([x, y], mapHook.map.map));
 
-						const scale =
-							parseFloat(_transformParts[0]) *
-							(1 / getMapZoomScaleModifier([x, y], mapHook.map.map));
+							props.setOptions((val: PdfPreviewOptions) => ({ ...val, scale: [scale, scale] }));
+						}
+					}}
+					/* rotatable */
+					rotatable={true}
+					onRotate={(e) => {
+						if (mapHook.map && mapState.viewport) {
+							const _transformParts = e.drag.transform.split('rotate(');
+							const _transformPartString = _transformParts[1].split('deg)')[0];
+							const viewportBearing = mapState?.viewport?.bearing ? mapState.viewport.bearing : 0;
 
-
-						props.setOptions((val: PdfPreviewOptions) => ({ ...val, scale: [scale, scale] }));
-					}
-				}}
-				/* rotatable */
-				rotatable={true}
-				onRotate={(e) => {
-					if (mapHook.map && mapState.viewport) {
-						const _transformParts = e.drag.transform.split('rotate(');
-						const _transformPartString = _transformParts[1].split('deg)')[0];
-						const viewportBearing = mapState?.viewport?.bearing ? mapState.viewport.bearing : 0;
-
-						props.setOptions((val: PdfPreviewOptions) => ({
-							...val,
-							rotate: parseFloat(_transformPartString) + viewportBearing,
-						}));
-					}
-				}}
-			/>
-		</>,
-		mapContainerRef.current
-	):<></>;
+							props.setOptions((val: PdfPreviewOptions) => ({
+								...val,
+								rotate: parseFloat(_transformPartString) + viewportBearing,
+							}));
+						}
+					}}
+				/>
+			</>,
+			mapContainerRef.current
+		)
+	) : (
+		<></>
+	);
 }

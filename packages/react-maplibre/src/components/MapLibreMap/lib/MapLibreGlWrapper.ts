@@ -566,7 +566,7 @@ class MapLibreGlWrapper {
 				});
 
 				// cleanup events
-					// @ts-ignore
+				// @ts-ignore
 				self.registeredElements[componentId].events.forEach((item: EventArgArray) => {
 					// @ts-ignore
 					self.map.off(...item);
@@ -578,7 +578,7 @@ class MapLibreGlWrapper {
 				});
 
 				// cleanup wrapper events
-					// @ts-ignore
+				// @ts-ignore
 				self.registeredElements[componentId].wrapperEvents.forEach((item: WrapperEventArgArray) => {
 					self.wrapper.off(...item);
 				});

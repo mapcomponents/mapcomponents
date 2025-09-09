@@ -240,7 +240,7 @@ const CatalogueTemplate: any = () => {
 				unmovableButtons={
 					<>
 						<Typography variant="h6" color={'ButtonText'} marginRight={'20px'}>
-							{(configTitles as  {[key:string]:any})[selectedStory]}
+							{(configTitles as { [key: string]: any })[selectedStory]}
 						</Typography>
 						<Button
 							variant={openSidebar ? 'contained' : 'outlined'}

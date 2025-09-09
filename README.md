@@ -68,7 +68,6 @@ To run all tasks in parallel, use:
   npx nx run-many --target={task-name} --all
 ```
 
-
 These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
 
 [Learn more about running tasks in the documentation &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
@@ -106,13 +105,13 @@ It should look like this:
 
 ```json
 {
-  "compilerOptions": {
-    "paths": {
-      "@mapcomponents/deck-gl": ["packages/deck-gl/src/index.ts"],
-      "@mapcomponents/ra-geospatial": ["packages/ra-geospatial/src/index.ts"],
-      "@mapcomponents/{app/package name}": ["path/{app/package name}/src/index.ts"]
-    }
-  }
+	"compilerOptions": {
+		"paths": {
+			"@mapcomponents/deck-gl": ["packages/deck-gl/src/index.ts"],
+			"@mapcomponents/ra-geospatial": ["packages/ra-geospatial/src/index.ts"],
+			"@mapcomponents/{app/package name}": ["path/{app/package name}/src/index.ts"]
+		}
+	}
 }
 ```
 
@@ -138,10 +137,11 @@ Example:
 
 ```json
 {
-  // rest of the tsconfig.package/app.json
-  "include": ["src/**/*", "../path/to/package/src/**/*"]
+	// rest of the tsconfig.package/app.json
+	"include": ["src/**/*", "../path/to/package/src/**/*"]
 }
 ```
+
 ## Add Storybook to an existing project
 
 ```sh
@@ -157,53 +157,54 @@ You can adjust the composition based on the current development environment (e.g
 
 ```ts
 {
-  refs: (config, { configType }) => {
-    if (configType === 'DEVELOPMENT') {
-      return {
-        'react-maplibre': {
-          title: 'React MapLibreMap',
-          url: 'http://localhost:4400',
-        },
-        'deck-gl': {
-          title: 'Deck.gl',
-          url: 'http://localhost:4401',
-        },
-        'ra-geospatial': { 
-          title: 'Ra Geospatial',
-          url: 'http://localhost:4402',
-        }
-      };
-    }
-    return { 
-      'react-maplibre': {
-        title: 'React MapLibreMap',
-        url: 'https://mapcomponents.github.io/react-map-components-maplibre/',
-      },
-      'deck-gl': {
-        title: 'Deck.gl',
-        url: 'https://mapcomponents.github.io/mapcomponents/deck-gl/',
-      },
-      'ra-geospatial': {
-        title: 'React Admin Geospatial',
-        url: 'https://mapcomponents.github.io/mapcomponents/ra-geospatial/',
-      }
-    };
-  }
+	refs: (config, { configType }) => {
+		if (configType === 'DEVELOPMENT') {
+			return {
+				'react-maplibre': {
+					title: 'React MapLibreMap',
+					url: 'http://localhost:4400',
+				},
+				'deck-gl': {
+					title: 'Deck.gl',
+					url: 'http://localhost:4401',
+				},
+				'ra-geospatial': {
+					title: 'Ra Geospatial',
+					url: 'http://localhost:4402',
+				},
+			};
+		}
+		return {
+			'react-maplibre': {
+				title: 'React MapLibreMap',
+				url: 'https://mapcomponents.github.io/react-map-components-maplibre/',
+			},
+			'deck-gl': {
+				title: 'Deck.gl',
+				url: 'https://mapcomponents.github.io/mapcomponents/deck-gl/',
+			},
+			'ra-geospatial': {
+				title: 'React Admin Geospatial',
+				url: 'https://mapcomponents.github.io/mapcomponents/ra-geospatial/',
+			},
+		};
+	};
 }
 ```
+
 It is necessary to statically set a different port for each project in the `project.json` file of the respective project.
 
 You need to statically set a different port for each project in the `project.json` file of the respective project.
 
 ```json
 {
-  "targets": {
-    "storybook": {
-      "options": {
-        "port": 4401 // set a different port than for the other projects
-      }
-    }
-  }
+	"targets": {
+		"storybook": {
+			"options": {
+				"port": 4401 // set a different port than for the other projects
+			}
+		}
+	}
 }
 ```
 
@@ -227,19 +228,19 @@ This is how it should look:
 
 ```json
 {
-  "targets": {
-    "storybook-composition": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          "nx storybook deck-gl",
-          "nx storybook ra-geospatial",
-          "nx storybook my-new-storybook"  // <--- Add new Storybooks here
-        ],
-        "parallel": true
-      }
-    }
-  }
+	"targets": {
+		"storybook-composition": {
+			"executor": "nx:run-commands",
+			"options": {
+				"commands": [
+					"nx storybook deck-gl",
+					"nx storybook ra-geospatial",
+					"nx storybook my-new-storybook" // <--- Add new Storybooks here
+				],
+				"parallel": true
+			}
+		}
+	}
 }
 ```
 
@@ -249,14 +250,14 @@ Before running the command, go to the `project.json` and add the following to th
 
 ```json
 {
-  "targets": {
-    "build": {
-      "executor": "@nx/vite:build",
-      "options": {
-        "outputPath": "dist/packages/my-package"
-      }
-    }
-  }
+	"targets": {
+		"build": {
+			"executor": "@nx/vite:build",
+			"options": {
+				"outputPath": "dist/packages/my-package"
+			}
+		}
+	}
 }
 ```
 
@@ -272,4 +273,4 @@ Make sure not to forget this flag: `--skip-publish`
   npx nx release --skip-publish
 ```
 
-Make sure to replace "This was a version bump only, there were no code changes." with the relevant changes in the  `CHANGELOG.md`.
+Make sure to replace "This was a version bump only, there were no code changes." with the relevant changes in the `CHANGELOG.md`.

@@ -12,8 +12,8 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template: any = (props:MlFollowGpsProps) => {
-	const mediaIsMobile = useMediaQuery((theme:Theme) => theme.breakpoints.down('md'));
+const Template: any = (props: MlFollowGpsProps) => {
+	const mediaIsMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
 	return (
 		<>
@@ -34,8 +34,8 @@ const Template: any = (props:MlFollowGpsProps) => {
 	);
 };
 
-const catalogueTemplate: any = (props:MlFollowGpsProps) => {
-	const mediaIsMobile = useMediaQuery((theme:Theme) => theme.breakpoints.down('md'));
+const catalogueTemplate: any = (props: MlFollowGpsProps) => {
+	const mediaIsMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
 	const [showTooltip, setShowTooltip] = useState(true);
 	useEffect(() => {

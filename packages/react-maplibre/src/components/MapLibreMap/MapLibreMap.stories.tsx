@@ -1,13 +1,12 @@
-import { useState } from "react";
+import { useState } from 'react';
 import MapLibreMap, { MapLibreMapProps } from './MapLibreMap';
 import MlGeoJsonLayer from '../MlGeoJsonLayer/MlGeoJsonLayer';
 import { Button } from '@mui/material';
 import TopToolbar from '../../ui_components/TopToolbar';
 import sample_geojson_1 from '../MlGeoJsonLayer/assets/sample_1.json';
-import {FeatureCollection} from 'geojson';
+import { FeatureCollection } from 'geojson';
 import themeDecorator from '../../decorators/ThemeDecorator';
-import { StoryFn } from "@storybook/react-vite";
-
+import { StoryFn } from '@storybook/react-vite';
 
 const storyoptions = {
 	title: 'Core/MapLibreMap',
@@ -26,7 +25,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template: StoryFn<MapLibreMapProps> = (args:MapLibreMapProps) => {
+const Template: StoryFn<MapLibreMapProps> = (args: MapLibreMapProps) => {
 	return <MapLibreMap options={{ ...args.options }} />;
 };
 
@@ -47,7 +46,7 @@ const styles = [
 	},
 ];
 
-const StyleChangeTemplate: any = (args:MapLibreMapProps) => {
+const StyleChangeTemplate: any = (args: MapLibreMapProps) => {
 	const [activeStyle, setActiveStyle] = useState(styles[1].url);
 
 	return (

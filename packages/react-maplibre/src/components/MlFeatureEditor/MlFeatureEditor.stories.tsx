@@ -101,7 +101,7 @@ const catalogueTemplate: any = () => {
 				unmovableButtons={
 					<>
 						<Typography variant="h6" color={'ButtonText'} marginRight={'20px'} marginTop={'1px'}>
-							{(configTitles as {[key:string]: any})[selectedMode]}
+							{(configTitles as { [key: string]: any })[selectedMode]}
 						</Typography>
 						<Button
 							id="basic-button"

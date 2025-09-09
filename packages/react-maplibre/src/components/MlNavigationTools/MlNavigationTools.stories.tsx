@@ -23,7 +23,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template:any = (props: MlNavigationToolsProps) => <MlNavigationTools {...props} />;
+const Template: any = (props: MlNavigationToolsProps) => <MlNavigationTools {...props} />;
 
 const catalogueTemplate: any = () => {
 	const mapHook = useMap();
@@ -163,6 +163,6 @@ CustomButton.args = {
 	),
 };
 
-export const CatalogueDemo =  catalogueTemplate.bind({});
+export const CatalogueDemo = catalogueTemplate.bind({});
 CatalogueDemo.parameters = {};
 CatalogueDemo.args = {};

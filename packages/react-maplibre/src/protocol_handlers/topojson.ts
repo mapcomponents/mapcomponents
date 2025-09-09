@@ -55,7 +55,7 @@ async function convertTopojson(params: { filename: string }): Promise<FeatureCol
 			};
 
 			if (topoJsonData.type === 'Topology' && topoJsonData.objects !== undefined) {
-				const topoJsonDataObjects: {[key:string]:any} = topoJsonData.objects;
+				const topoJsonDataObjects: { [key: string]: any } = topoJsonData.objects;
 				// add the "fromObject" property in each topojson feature
 				Object.keys(topoJsonData.objects).map((key) => {
 					if (topoJsonDataObjects?.[key].type === 'GeometryCollection') {

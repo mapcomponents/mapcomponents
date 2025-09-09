@@ -1,8 +1,8 @@
-import { useContext, useState, useEffect, useRef } from "react";
-import { v4 as uuidv4 } from "uuid";
-import MapContext, { MapContextType } from "../contexts/MapContext";
-import useMapState from "./useMapState";
-import MapLibreGlWrapper, { LayerState } from "../components/MapLibreMap/lib/MapLibreGlWrapper";
+import { useContext, useState, useEffect, useRef } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import MapContext, { MapContextType } from '../contexts/MapContext';
+import useMapState from './useMapState';
+import MapLibreGlWrapper, { LayerState } from '../components/MapLibreMap/lib/MapLibreGlWrapper';
 
 type useMapType = {
 	map: MapLibreGlWrapper | undefined;
@@ -14,7 +14,10 @@ type useMapType = {
 
 function useMap(props?: { mapId?: string; waitForLayer?: string }): useMapType {
 	const mapContext: MapContextType = useContext(MapContext);
-	const [state, setState] = useState<{map:MapLibreGlWrapper | undefined, ready: boolean}>({map:undefined,ready:false});
+	const [state, setState] = useState<{ map: MapLibreGlWrapper | undefined; ready: boolean }>({
+		map: undefined,
+		ready: false,
+	});
 
 	const mapState = useMapState({
 		mapId: props?.mapId,
@@ -32,7 +35,6 @@ function useMap(props?: { mapId?: string; waitForLayer?: string }): useMapType {
 
 	const componentId = useRef(uuidv4());
 
-
 	const cleanup = () => {
 		if (mapRef.current) {
 			mapRef.current.cleanup(componentId.current);
@@ -47,9 +49,9 @@ function useMap(props?: { mapId?: string; waitForLayer?: string }): useMapType {
 	}, []);
 
 	useEffect(() => {
-		if(mapRef.current && mapRef.current.cancelled === true){
-			mapRef.current = null
-			setState({map:undefined, ready: false})
+		if (mapRef.current && mapRef.current.cancelled === true) {
+			mapRef.current = null;
+			setState({ map: undefined, ready: false });
 		}
 		if (mapRef.current || !mapContext.mapExists(props?.mapId)) return;
 
@@ -68,7 +70,7 @@ function useMap(props?: { mapId?: string; waitForLayer?: string }): useMapType {
 			}
 		}
 		mapRef.current = mapContext.getMap(props?.mapId);
-		setState({map:mapRef.current, ready: true});
+		setState({ map: mapRef.current, ready: true });
 	}, [mapContext.mapIds, mapState.layers, mapContext, props]);
 
 	return {

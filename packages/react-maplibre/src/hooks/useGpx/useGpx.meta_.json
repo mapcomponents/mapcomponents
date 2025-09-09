@@ -1,15 +1,15 @@
 {
-  "name": "useGpx",
-  "title": "",
-  "description": "",
-  "i18n": {
-    "de": {
-      "title": "",
-      "description": ""
-    }
-  },
-  "tags": [],
-  "category": "",
-  "type": "component",
-  "price": 0
+	"name": "useGpx",
+	"title": "",
+	"description": "",
+	"i18n": {
+		"de": {
+			"title": "",
+			"description": ""
+		}
+	},
+	"tags": [],
+	"category": "",
+	"type": "component",
+	"price": 0
 }

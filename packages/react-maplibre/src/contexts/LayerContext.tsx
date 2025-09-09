@@ -7,22 +7,21 @@ import { v4 as uuidv4 } from 'uuid';
 import { Layer } from 'wms-capabilities';
 
 export interface LayerContextProps {
-	children: 
-	React.ReactNode;
+	children: React.ReactNode;
 }
 
-export interface wmsLoaderConfigProps{
-	getFeatureInfoUrl: string,
-layers: Layer[] , 
-name: string,
-open: boolean,
-visible: boolean ,
-wmsUrl: string
+export interface wmsLoaderConfigProps {
+	getFeatureInfoUrl: string;
+	layers: Layer[];
+	name: string;
+	open: boolean;
+	visible: boolean;
+	wmsUrl: string;
 }
-export interface wmsConfig{
-featureInfoActive?: boolean;
-config?: wmsLoaderConfigProps,
-url: string
+export interface wmsConfig {
+	featureInfoActive?: boolean;
+	config?: wmsLoaderConfigProps;
+	url: string;
 }
 
 export type WmsLayerConfig = {
@@ -67,7 +66,7 @@ export interface LayerContextType {
 	tileUrl: string;
 	moveUp: (layerId: string) => void;
 	moveDown: (layerId: string) => void;
-	moveLayer: (layerId: string,  getNewPos: (oldPos: number) => number) => void;
+	moveLayer: (layerId: string, getNewPos: (oldPos: number) => number) => void;
 }
 
 const LayerContext = React.createContext({} as LayerContextType);

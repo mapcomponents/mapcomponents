@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import MlWmsLayer from "./MlWmsLayer";
-import TopToolbar from "../../ui_components/TopToolbar";
-import Button from "@mui/material/Button";
+import MlWmsLayer from './MlWmsLayer';
+import TopToolbar from '../../ui_components/TopToolbar';
+import Button from '@mui/material/Button';
 
-import mapContextDecorator from "../../decorators/MapContextDecorator";
+import mapContextDecorator from '../../decorators/MapContextDecorator';
 
 import '../../App.css';
 
@@ -19,7 +19,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const Template : any= (Story: any, context: any) => {
+const Template: any = (Story: any, context: any) => {
 	const [showLayer, setShowLayer] = useState(true);
 
 	return (
@@ -35,16 +35,21 @@ const Template : any= (Story: any, context: any) => {
 					</Button>
 				}
 			/>
-			<MlWmsLayer visible={showLayer} url={context.args.url} urlParameters={context.args.urlParameters} />		</>
+			<MlWmsLayer
+				visible={showLayer}
+				url={context.args.url}
+				urlParameters={context.args.urlParameters}
+			/>{' '}
+		</>
 	);
 };
 
 export const ExampleConfig = Template.bind({});
 ExampleConfig.parameters = {};
 ExampleConfig.args = {
-	url: "https://www.wms.nrw.de/geobasis/wms_nw_uraufnahme",
+	url: 'https://www.wms.nrw.de/geobasis/wms_nw_uraufnahme',
 	urlParameters: {
-		layers: "nw_uraufnahme_rw",
+		layers: 'nw_uraufnahme_rw',
 	},
 };
 //

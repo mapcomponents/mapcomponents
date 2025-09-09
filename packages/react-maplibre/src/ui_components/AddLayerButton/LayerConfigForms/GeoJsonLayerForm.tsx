@@ -11,20 +11,14 @@ import {
 import React, { useMemo } from 'react';
 import { MlGeoJsonLayerProps } from '../../../components/MlGeoJsonLayer/MlGeoJsonLayer';
 
-
 export interface GeoJsonLayerFormProps {
 	config?: MlGeoJsonLayerProps;
 	onSubmit: (config: MlGeoJsonLayerProps) => void;
 	onCancel: () => void;
 }
 
-const types: string[] = [
-	'fill',
-	'line',
-	'circle',
-];
+const types: string[] = ['fill', 'line', 'circle'];
 export default function GeoJsonLayerForm(props: GeoJsonLayerFormProps) {
-
 	const [config, setConfig] = React.useState<Partial<MlGeoJsonLayerProps>>({ type: 'circle' });
 
 	const configIsValid = useMemo(() => {
@@ -74,7 +68,10 @@ export default function GeoJsonLayerForm(props: GeoJsonLayerFormProps) {
 			</FormControl>
 			<DialogActions>
 				<Button onClick={props.onCancel}>Cancel</Button>
-				<Button disabled={!configIsValid} onClick={() => props.onSubmit(config as MlGeoJsonLayerProps)}>
+				<Button
+					disabled={!configIsValid}
+					onClick={() => props.onSubmit(config as MlGeoJsonLayerProps)}
+				>
 					Add
 				</Button>
 			</DialogActions>

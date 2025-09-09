@@ -32,7 +32,7 @@ const mapPropKeyToFormInputType = {
 };
 const mapPropKeyToFormInputTypeKeys = Object.keys(mapPropKeyToFormInputType);
 
-const inputPropsByPropKey:{[key:string]:{ [K in "step" | "min" | "max"]: number }} = {
+const inputPropsByPropKey: { [key: string]: { [K in 'step' | 'min' | 'max']: number } } = {
 	'circle-stroke-width': {
 		step: 1,
 		min: 1,
@@ -67,7 +67,6 @@ interface LayerPropertyFormProps {
 	) => void;
 	layerType: string;
 }
-
 
 function LayerPropertyForm({ paintProps = {}, setPaintProps }: LayerPropertyFormProps) {
 	const key = useRef(Math.round(Math.random() * 10000000000));

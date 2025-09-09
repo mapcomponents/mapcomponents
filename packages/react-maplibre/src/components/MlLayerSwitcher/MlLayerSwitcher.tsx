@@ -105,7 +105,6 @@ const MlLayerSwitcher: React.FC<MlLayerSwitcherProps> = (props) => {
 					newactiveDetailLayers.push(layerId);
 				}
 			});
-
 		}
 	}, [layers]);
 
@@ -119,7 +118,8 @@ const MlLayerSwitcher: React.FC<MlLayerSwitcherProps> = (props) => {
 			handleLayerBoxClick(cfg.linkedTo);
 		}
 		const nextVisiblityClickedLayer =
-			mapContext?.map && mapContext?.map.getLayer(layerId)?.getLayoutProperty('visibility') === 'visible'
+			mapContext?.map &&
+			mapContext?.map.getLayer(layerId)?.getLayoutProperty('visibility') === 'visible'
 				? 'none'
 				: 'visible';
 		changeLayerState(layerId, nextVisiblityClickedLayer);
@@ -128,13 +128,20 @@ const MlLayerSwitcher: React.FC<MlLayerSwitcherProps> = (props) => {
 	const handleLayerBoxClick = (id: string) => {
 		const layers = getLayerListFromId(id);
 		const nextVisiblityClickedLayer =
-			mapContext?.map && layers?.[0] && mapContext?.map.getLayer(layers[0])?.getLayoutProperty('visibility') === 'visible'
+			mapContext?.map &&
+			layers?.[0] &&
+			mapContext?.map.getLayer(layers[0])?.getLayoutProperty('visibility') === 'visible'
 				? 'none'
 				: 'visible';
 
 		props.baseSourceConfig.layers.forEach((config, i) => {
 			const layers = getLayerListFromId(config.layerId);
-			const visible:'visible' | 'none' = nextVisiblityClickedLayer === 'none' && i === 0 ? 'visible' : config.layerId === id ? nextVisiblityClickedLayer : 'none';
+			const visible: 'visible' | 'none' =
+				nextVisiblityClickedLayer === 'none' && i === 0
+					? 'visible'
+					: config.layerId === id
+						? nextVisiblityClickedLayer
+						: 'none';
 
 			layers.forEach((layer) => {
 				if (layer && ['visible', 'none'].includes(visible)) {

@@ -197,8 +197,7 @@ function LayerPropertyForm(props: LayerPropertyFormProps) {
 						{paintProps &&
 							Object.keys(paintProps).map((el: string) =>
 								getFormInputByType(el as keyof paintPropsType)
-							)
-						}
+							)}
 					</BoxStyled>
 				</ListItem>
 			</PaperStyled>

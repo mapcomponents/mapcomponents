@@ -52,8 +52,7 @@ const SelectStylePopup = (props: SelectStylePopupProps) => {
 };
 
 SelectStylePopup.defaultProps = {
-	styleThumbnailPaths: {
-	},
+	styleThumbnailPaths: {},
 };
 
 export default SelectStylePopup;

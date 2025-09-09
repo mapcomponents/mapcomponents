@@ -106,7 +106,6 @@ const MlNavigationTools = (props: MlNavigationToolsProps) => {
 		mapHook.map.easeTo({ pitch: targetPitch });
 	}, [mapHook.map]);
 
-
 	return (
 		<Box
 			sx={{

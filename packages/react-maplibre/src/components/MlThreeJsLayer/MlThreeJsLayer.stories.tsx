@@ -35,13 +35,12 @@ const Template: any = () => {
 
 	return (
 		<>
-			{showLayer &&
-				((
-					<MlThreeJsLayer
-						init={() => loadingOverlayContext?.setControlled?.(true)}
-						onDone={() => setTimeout(() => loadingOverlayContext?.setLoadingDone?.(true), 1200)}
-					/>
-				))}
+			{showLayer && (
+				<MlThreeJsLayer
+					init={() => loadingOverlayContext?.setControlled?.(true)}
+					onDone={() => setTimeout(() => loadingOverlayContext?.setLoadingDone?.(true), 1200)}
+				/>
+			)}
 
 			<TopToolbar
 				unmovableButtons={

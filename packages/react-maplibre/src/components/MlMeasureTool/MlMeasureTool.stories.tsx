@@ -98,7 +98,6 @@ const CatalogueSidebar: React.FC<CatalogueSidebarProps> = ({ openSidebar, setOpe
 		const newMeasureType = event.target.value as string;
 		setMeasureType(newMeasureType);
 
-
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-expect-error
 		if (newMeasureType === 'measure-distance' && (unit === 'acres' || unit === 'hectares')) {
@@ -109,7 +108,6 @@ const CatalogueSidebar: React.FC<CatalogueSidebarProps> = ({ openSidebar, setOpe
 		setIsMeasuring(false);
 		setIsFinished(false);
 	};
-
 
 	const handleUnitChange = (event: SelectChangeEvent<MlMeasureToolProps['unit']>) => {
 		setUnit(event.target.value as MlMeasureToolProps['unit']);
@@ -279,7 +277,7 @@ const CatalogueSidebar: React.FC<CatalogueSidebarProps> = ({ openSidebar, setOpe
 	);
 };
 
-const LineTemplate:any  = () => {
+const LineTemplate: any = () => {
 	const [openSidebar, setOpenSidebar] = useState(true);
 	const [unit, setUnit] = useState<MlMeasureToolProps['unit']>('kilometers');
 	const handleChange = (event: SelectChangeEvent<MlMeasureToolProps['unit']>) => {

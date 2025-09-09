@@ -1,8 +1,8 @@
-import React, { FunctionComponent, useEffect } from "react";
+import React, { FunctionComponent, useEffect } from 'react';
 
-import useMapState from "./useMapState";
+import useMapState from './useMapState';
 
-import mapContextDecoratorHooks from "../decorators/MapContextDecoratorHooks";
+import mapContextDecoratorHooks from '../decorators/MapContextDecoratorHooks';
 
 interface StoryOptions {
 	title: string;
@@ -12,7 +12,7 @@ interface StoryOptions {
 }
 
 const storyOptions: StoryOptions = {
-	title: "Hooks/useMapState",
+	title: 'Hooks/useMapState',
 	component: useMapState as unknown as FunctionComponent<any>,
 	argTypes: {},
 	decorators: mapContextDecoratorHooks,
@@ -65,7 +65,7 @@ const Template: any = (props: {
 export const ViewportOnly = Template.bind({});
 ViewportOnly.parameters = {};
 ViewportOnly.args = {
-	mapId: "map_1",
+	mapId: 'map_1',
 	watch: {
 		viewport: true,
 		layers: false,
@@ -76,7 +76,7 @@ ViewportOnly.args = {
 export const IncludeBaseLayers = Template.bind({});
 IncludeBaseLayers.parameters = {};
 IncludeBaseLayers.args = {
-	mapId: "map_1",
+	mapId: 'map_1',
 	watch: {
 		viewport: false,
 		layers: true,
@@ -90,7 +90,7 @@ IncludeBaseLayers.args = {
 export const MatchLayerIdString = Template.bind({});
 MatchLayerIdString.parameters = {};
 MatchLayerIdString.args = {
-	mapId: "map_1",
+	mapId: 'map_1',
 	watch: {
 		viewport: false,
 		layers: true,
@@ -98,14 +98,14 @@ MatchLayerIdString.args = {
 	},
 	filter: {
 		includeBaseLayers: true,
-		matchLayerIds: "water",
+		matchLayerIds: 'water',
 	},
 };
 
 export const MatchLayerIdRegexp = Template.bind({});
 MatchLayerIdRegexp.parameters = {};
 MatchLayerIdRegexp.args = {
-	mapId: "map_1",
+	mapId: 'map_1',
 	watch: {
 		viewport: false,
 		layers: true,
@@ -113,14 +113,14 @@ MatchLayerIdRegexp.args = {
 	},
 	filter: {
 		includeBaseLayers: true,
-		matchLayerIds: "water",
+		matchLayerIds: 'water',
 	},
 };
 
 export const NonBaseLayersOnly = Template.bind({});
 NonBaseLayersOnly.parameters = {};
 NonBaseLayersOnly.args = {
-	mapId: "map_1",
+	mapId: 'map_1',
 	watch: {
 		viewport: false,
 		layers: true,

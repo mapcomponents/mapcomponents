@@ -7,7 +7,7 @@ import getTheme from '../ui_components/MapcomponentsTheme';
 import { StoryContext } from '@storybook/react-vite';
 
 const decorators = [
-  (Story: React.FC, context?: StoryContext): React.ReactElement => {
+	(Story: React.FC, context?: StoryContext): React.ReactElement => {
 		const theme = useMemo(() => getTheme(context?.globals?.theme), [context?.globals?.theme]);
 
 		return (

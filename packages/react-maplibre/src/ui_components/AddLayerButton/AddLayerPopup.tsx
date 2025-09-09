@@ -27,7 +27,6 @@ type validTypes =
 	| 'kml'
 	| 'tcx';
 
-
 const AddLayerPopup = (props: AddLayerPopupProps) => {
 	const [layerConfig, setLayerConfig] = useState<LayerConfig | undefined>(props?.config);
 	const [originType, setOriginType] = useState<string>();
@@ -36,14 +35,25 @@ const AddLayerPopup = (props: AddLayerPopupProps) => {
 		(el) => el !== 'wms' && el !== 'geojson' && el !== 'mbtiles'
 	);
 
-	const validTypes: string[] = ['wms', 'geojson', 'vt', 'csv', 'mbtiles', 'topojson','osm', 'gpx', 'kml', 'tcx'];
+	const validTypes: string[] = [
+		'wms',
+		'geojson',
+		'vt',
+		'csv',
+		'mbtiles',
+		'topojson',
+		'osm',
+		'gpx',
+		'kml',
+		'tcx',
+	];
 
 	const updateLayerType = (type: validTypes) => {
 		setOriginType(type);
 		if (supportedProtocols.includes(type)) {
 			setLayerConfig({ type: 'geojson', config: {} } as LayerConfig);
 		} else if (type === 'mbtiles') {
-			setLayerConfig({ type: 'vt', config: {layers: []} } );
+			setLayerConfig({ type: 'vt', config: { layers: [] } });
 		} else {
 			setLayerConfig({ type, config: {} } as LayerConfig);
 		}
@@ -84,9 +94,14 @@ const AddLayerPopup = (props: AddLayerPopupProps) => {
 
 	return (
 		<Dialog open={props.open} onClose={handleCancel}>
-			{!layerConfig?.type && <LayerTypeForm onSelect={(type:string) => {
-				if (validTypes.includes(type)) updateLayerType(type as validTypes)
-			}} layerTypes={layerTypes} />}
+			{!layerConfig?.type && (
+				<LayerTypeForm
+					onSelect={(type: string) => {
+						if (validTypes.includes(type)) updateLayerType(type as validTypes);
+					}}
+					layerTypes={layerTypes}
+				/>
+			)}
 			{layerConfig?.type === 'geojson' && originType === 'geojson' && (
 				<GeoJsonLayerForm
 					onSubmit={(config) => {

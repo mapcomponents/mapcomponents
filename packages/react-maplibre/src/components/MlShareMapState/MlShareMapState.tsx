@@ -102,7 +102,7 @@ const MlShareMapState = (props: MlShareMapStateProps) => {
 		});
 		JSON.parse(Object.fromEntries(urlParams).layers).forEach((el: { id: number }) => {
 			// is iD a number?
-			(layersFromUrlParamsRef.current as {[key:string]:any})[el.id] = false;
+			(layersFromUrlParamsRef.current as { [key: string]: any })[el.id] = false;
 		});
 
 		const currentParams = new URLSearchParams(window.location.search);

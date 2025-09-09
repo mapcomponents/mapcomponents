@@ -7,6 +7,7 @@
 ![Tests](https://github.com/mapcomponents/react-map-components-maplibre/actions/workflows/node_version_test.yml/badge.svg)
 
 @mapcomponents/react-maplibre is a react component library for declarative GIS application development.
+
 ## Links
 
 - Documentation: https://mapcomponents.github.io/react-map-components-maplibre/
@@ -37,7 +38,6 @@ yarn dev
 ```
 
 <img src="docs_md/initial_0.gif" />
-
 
 This will start a development server that serves the mapcomponents app on port 5174 of your local machine as well as a browser tab with live reload enabled. This reloads the affected parts of the application if changes are detected to the corresponding files in the filesystem. Open the project folder in the IDE of your choice and start building your map client.
 

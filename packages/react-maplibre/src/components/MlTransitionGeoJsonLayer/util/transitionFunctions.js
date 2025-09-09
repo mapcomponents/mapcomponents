@@ -1,4 +1,4 @@
-import * as turf from "@turf/turf";
+import * as turf from '@turf/turf';
 
 const _showNextTransitionSegment = function (
 	props,
@@ -11,7 +11,7 @@ const _showNextTransitionSegment = function (
 	transitionTimeoutRef,
 	setDisplayGeojson
 ) {
-	if (typeof transitionGeojsonDataRef.current[currentTransitionStepRef.current] !== "undefined") {
+	if (typeof transitionGeojsonDataRef.current[currentTransitionStepRef.current] !== 'undefined') {
 		// if at last transition step set to target geojson
 		// else to an assembled LineString from common geometry and the current transition step geometry
 		const newData =
@@ -25,7 +25,7 @@ const _showNextTransitionSegment = function (
 
 		setDisplayGeojson(newData);
 
-		if (typeof props.onTransitionFrame === "function") {
+		if (typeof props.onTransitionFrame === 'function') {
 			props.onTransitionFrame(newData);
 		}
 
@@ -40,7 +40,7 @@ const _showNextTransitionSegment = function (
 				msPerStep
 			);
 		} else {
-			if (typeof props.onTransitionEnd === "function") {
+			if (typeof props.onTransitionEnd === 'function') {
 				props.onTransitionEnd(props.geojson);
 			}
 			transitionInProgressRef.current = false;
@@ -70,11 +70,11 @@ const _transitionToGeojson = (
 	transitionGeojsonCommonDataRef.current = [];
 	const sourceGeojson = oldGeojsonRef.current || {
 		geometry: {
-			type: "LineString",
+			type: 'LineString',
 			coordinates: [],
 		},
 		properties: {},
-		type: "Feature",
+		type: 'Feature',
 	};
 
 	const targetGeojson = props.geojson;
@@ -84,20 +84,20 @@ const _transitionToGeojson = (
 	let reverseOrder = false;
 	// In case one geojson is missing completely use the first two coordinates of the other geojson
 	if (
-		typeof longerGeojson.geometry === "undefined" &&
-		typeof shorterGeojson.geometry !== "undefined" &&
+		typeof longerGeojson.geometry === 'undefined' &&
+		typeof shorterGeojson.geometry !== 'undefined' &&
 		shorterGeojson.geometry.coordinates.length > 1
 	) {
 		longerGeojson = turf.lineString(shorterGeojson.geometry.coordinates.slice(0, 2));
 	} else if (
-		typeof shorterGeojson.geometry === "undefined" &&
-		typeof longerGeojson.geometry !== "undefined" &&
+		typeof shorterGeojson.geometry === 'undefined' &&
+		typeof longerGeojson.geometry !== 'undefined' &&
 		longerGeojson.geometry.coordinates.length > 1
 	) {
 		shorterGeojson = turf.lineString(longerGeojson.geometry.coordinates.slice(0, 2));
 	} else if (
-		typeof shorterGeojson.geometry === "undefined" &&
-		typeof longerGeojson.geometry === "undefined"
+		typeof shorterGeojson.geometry === 'undefined' &&
+		typeof longerGeojson.geometry === 'undefined'
 	) {
 		return;
 	}
@@ -111,17 +111,17 @@ const _transitionToGeojson = (
 	if (longerGeojson && shorterGeojson) {
 		for (let i = 0, len = longerGeojson.geometry.coordinates.length; i < len; i++) {
 			if (
-				typeof shorterGeojson.geometry.coordinates[i] !== "undefined" &&
+				typeof shorterGeojson.geometry.coordinates[i] !== 'undefined' &&
 				longerGeojson.geometry.coordinates[i][0] === shorterGeojson.geometry.coordinates[i][0] &&
 				longerGeojson.geometry.coordinates[i][1] === shorterGeojson.geometry.coordinates[i][1]
 			) {
 				// if coordinates are equal
 				transitionGeojsonCommonDataRef.current.push(longerGeojson.geometry.coordinates[i]);
 			} else {
-				if (typeof longerGeojson.geometry.coordinates[i] !== "undefined") {
+				if (typeof longerGeojson.geometry.coordinates[i] !== 'undefined') {
 					transitionCoordinatesLong.push(longerGeojson.geometry.coordinates[i]);
 				}
-				if (typeof shorterGeojson.geometry.coordinates[i] !== "undefined") {
+				if (typeof shorterGeojson.geometry.coordinates[i] !== 'undefined') {
 					transitionCoordinatesShort.push(shorterGeojson.geometry.coordinates[i]);
 				}
 			}
@@ -206,7 +206,7 @@ const createTransitionSteps = (linestringCoordinates, perStepDistance, stepCnt) 
 		let tmpLinestring = tmpChunks.features[0];
 		for (let i = 0; i < stepCnt; i++) {
 			transitionSteps.push(tmpLinestring);
-			if (typeof tmpChunks.features[i] !== "undefined") {
+			if (typeof tmpChunks.features[i] !== 'undefined') {
 				tmpLinestring = turf.lineString([
 					...tmpLinestring.geometry.coordinates,
 					...tmpChunks.features[i].geometry.coordinates,

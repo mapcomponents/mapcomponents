@@ -1,8 +1,8 @@
-import { useRef, useEffect, useContext } from "react";
+import { useRef, useEffect, useContext } from 'react';
 
-import MapContext from "../../contexts/MapContext";
-import { v4 as uuidv4 } from "uuid";
-import MapLibreGlWrapper from "../MapLibreMap/lib/MapLibreGlWrapper";
+import MapContext from '../../contexts/MapContext';
+import { v4 as uuidv4 } from 'uuid';
+import MapLibreGlWrapper from '../MapLibreMap/lib/MapLibreGlWrapper';
 
 export interface MlWmsFeatureInfoPopupProps {
 	/**
@@ -18,13 +18,13 @@ export interface MlWmsFeatureInfoPopupProps {
  *
  * @component
  */
-const MlWmsFeatureInfoPopup = (props:MlWmsFeatureInfoPopupProps) => {
+const MlWmsFeatureInfoPopup = (props: MlWmsFeatureInfoPopupProps) => {
 	// Use a useRef hook to reference the layer object to be able to access it later inside useEffect hooks
 	const mapContext = useContext(MapContext);
 
 	const initializedRef = useRef(false);
 	const mapRef = useRef<MapLibreGlWrapper | undefined>(undefined);
-	const componentId = useRef(("MlWmsFeatureInfoPopup-") + uuidv4());
+	const componentId = useRef('MlWmsFeatureInfoPopup-' + uuidv4());
 
 	useEffect(() => {
 		const _componentId = componentId.current;

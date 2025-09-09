@@ -89,7 +89,7 @@ describe('useLayer hook', () => {
 			</MapComponentsProvider>
 		);
 
-		await userEvent.click(screen.getByTestId('toggle_includeComponent'))
+		await userEvent.click(screen.getByTestId('toggle_includeComponent'));
 
 		// useLayer always subscribes to 'styledata' to watch whether its representation within the maplibre instance has been removed
 		await waitFor(() => expect(mockMapLibreMethods.off).toHaveBeenCalledTimes(2));
@@ -120,7 +120,7 @@ describe('useLayer hook', () => {
 			</MapComponentsProvider>
 		);
 
-		await userEvent.click(screen.getByTestId('toggle_includeComponent'))
+		await userEvent.click(screen.getByTestId('toggle_includeComponent'));
 
 		// useLayer always subscribes to 'styledata' to watch whether its representation within the maplibre instance has been removed
 		await waitFor(() => expect(mockMapLibreMethods.off).toHaveBeenCalledTimes(2));
@@ -152,7 +152,7 @@ describe('useLayer hook', () => {
 			</MapComponentsProvider>
 		);
 
-		await userEvent.click(screen.getByTestId('toggle_includeComponent'))
+		await userEvent.click(screen.getByTestId('toggle_includeComponent'));
 
 		// useLayer always subscribes to 'styledata' to watch whether its representation within the maplibre instance has been removed
 		await waitFor(() => expect(mockMapLibreMethods.off).toHaveBeenCalledTimes(2));

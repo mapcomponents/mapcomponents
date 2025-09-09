@@ -1,10 +1,6 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import {
-	extractUuidsFromLayerOrder,
-	LayerOrderItem,
-	RootState,
-} from '../../stores/map.store';
+import { extractUuidsFromLayerOrder, LayerOrderItem, RootState } from '../../stores/map.store';
 import MlGeoJsonLayer from '../../components/MlGeoJsonLayer/MlGeoJsonLayer';
 import useMap from '../../hooks/useMap';
 import MlVectorTileLayer, {
@@ -103,7 +99,9 @@ function LayerOnMap(props: LayerOnMapProps) {
 						newLayer.layout = {
 							...newLayer.layout,
 							visibility:
-								newLayer.masterVisible === false ? 'none' : newLayer.layout.visibility ?? 'visible',
+								newLayer.masterVisible === false
+									? 'none'
+									: (newLayer.layout.visibility ?? 'visible'),
 						};
 					}
 					return newLayer;

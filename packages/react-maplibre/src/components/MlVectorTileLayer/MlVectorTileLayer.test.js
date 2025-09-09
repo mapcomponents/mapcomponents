@@ -1,21 +1,21 @@
-import { layerRemovalTest, sourceRemovalTest } from "../../util";
-import React from 'react'
-import MlVectorTileLayer from "./MlVectorTileLayer";
-import { uuid_regex } from "../../setupTests";
+import { layerRemovalTest, sourceRemovalTest } from '../../util';
+import React from 'react';
+import MlVectorTileLayer from './MlVectorTileLayer';
+import { uuid_regex } from '../../setupTests';
 
 const testComponent = (
 	<MlVectorTileLayer
 		{...{
-			url: "https://wms.wheregroup.com/tileserver/tile/tileserver.php?/europe-0-14/index.json?/europe-0-14/{z}/{x}/{y}.pbf",
+			url: 'https://wms.wheregroup.com/tileserver/tile/tileserver.php?/europe-0-14/index.json?/europe-0-14/{z}/{x}/{y}.pbf',
 			layers: [
 				{
-					id: "landuseLine",
-					"source-layer": "landuse",
+					id: 'landuseLine',
+					'source-layer': 'landuse',
 					layout: {
-						"line-cap": "round",
-						"line-join": "round",
+						'line-cap': 'round',
+						'line-join': 'round',
 					},
-					paint: { "line-width": 1, "line-color": "#ff0000" },
+					paint: { 'line-width': 1, 'line-color': '#ff0000' },
 				},
 			],
 			sourceOptions: {
@@ -27,14 +27,14 @@ const testComponent = (
 );
 
 layerRemovalTest(
-	"<MlVectorTileLayer />",
+	'<MlVectorTileLayer />',
 	testComponent,
 	new RegExp('^.*"landuseLine".*$'),
 	'landuseLine'
 );
 sourceRemovalTest(
-	"<MlVectorTileLayer />",
+	'<MlVectorTileLayer />',
 	testComponent,
 	new RegExp('^.*"MlVectorTileLayer-' + uuid_regex + '".*$'),
-	"MlVectorTileLayer-{uuid}"
+	'MlVectorTileLayer-{uuid}'
 );

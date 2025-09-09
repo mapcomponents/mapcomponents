@@ -2,7 +2,7 @@ import MlLayerMagnify from './MlLayerMagnify';
 import React, { useContext, useState } from 'react';
 import MapContext, { MapComponentsProvider } from '../../contexts/MapContext';
 import MapLibreMap from './../MapLibreMap/MapLibreMap';
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 // we need to import this explicitly, because otherwise it gets mixed up with cypress expect
 import { expect } from '@jest/globals';
 import userEvent from '@testing-library/user-event';
@@ -50,15 +50,12 @@ const TestComponent = () => {
 			>
 				refresh
 			</button>
-			<div className="layers_json"
-			data-testid="layers_json">
+			<div className="layers_json" data-testid="layers_json">
 				{mapContext.map && refreshTrigger && JSON.stringify(mapContext.map.layers)}
 			</div>
 		</>
 	);
 };
-
-
 
 describe('<MlLayerMagnify/>', () => {
 	//it("should add a MlLayerMagnify Component to that calls syncMaps with both available MapLibre instances once", async () => {
@@ -76,7 +73,7 @@ describe('<MlLayerMagnify/>', () => {
 		);
 		//expect(syncMove).toHaveBeenCalledTimes(1);
 
-		await userEvent.click(screen.getByTestId('toggle_layer_visible'))
+		await userEvent.click(screen.getByTestId('toggle_layer_visible'));
 
 		//TODO: Fix cleanup test
 		expect(mockSyncMoveMethods.cleanup).toHaveBeenCalledTimes(1);

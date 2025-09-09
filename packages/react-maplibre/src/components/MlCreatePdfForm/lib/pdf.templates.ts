@@ -1,12 +1,12 @@
-interface PdfTemplateType{
+interface PdfTemplateType {
 	width: number;
 	height: number;
-};
-interface PdfTemplateObject{
-	[key:string]:({[key:string]:PdfTemplateType});
-};
+}
+interface PdfTemplateObject {
+	[key: string]: { [key: string]: PdfTemplateType };
+}
 
-const PdfTemplates:PdfTemplateObject = {
+const PdfTemplates: PdfTemplateObject = {
 	A4: {
 		'300dpi': {
 			width: 2480,

@@ -25,7 +25,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-const buttonStyle = { marginRight: { xs: '0px', sm: '10px' }, width:'140px' };
+const buttonStyle = { marginRight: { xs: '0px', sm: '10px' }, width: '140px' };
 
 const Template: any = () => {
 	const [gpxData, setGpxData] = useState<string | ArrayBuffer | undefined>();
@@ -35,7 +35,7 @@ const Template: any = () => {
 	const [openSidebar, setOpenSidebar] = useState(false);
 
 	const demoLoader = () => {
-		setDemoLoaderOpen(!demoLoaderOpen);		
+		setDemoLoaderOpen(!demoLoaderOpen);
 	};
 	const handleClick2 = () => {
 		setGuide(true);
@@ -75,10 +75,7 @@ const Template: any = () => {
 						<UploadButton
 							setData={setGpxData}
 							buttonComponent={
-								<Button
-									variant="contained"
-									sx={buttonStyle}
-								>
+								<Button variant="contained" sx={buttonStyle}>
 									Upload
 								</Button>
 							}

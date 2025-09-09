@@ -21,8 +21,7 @@ const storyoptions = {
 };
 export default storyoptions;
 
-
-const Template: any = (args:any) => {
+const Template: any = (args: any) => {
 	const [openSidebar, setOpenSidebar] = useState(true);
 	return (
 		<>
@@ -37,11 +36,7 @@ const Template: any = (args:any) => {
 					</Button>
 				}
 			/>
-			<Sidebar
-				open={openSidebar}
-				setOpen={setOpenSidebar}
-				name={'Layer Switcher'}
-			>
+			<Sidebar open={openSidebar} setOpen={setOpenSidebar} name={'Layer Switcher'}>
 				<MlWmsLayer
 					url={args.url}
 					urlParameters={{ layers: args.layer }}
@@ -58,13 +53,13 @@ const Template: any = (args:any) => {
 				/>
 				<MlGeoJsonLayer
 					type="line"
-					options={{layout:{ visibility: args.geojsonLayerVisible ? 'visible' : 'none' }}}
+					options={{ layout: { visibility: args.geojsonLayerVisible ? 'visible' : 'none' } }}
 					geojson={sample_geojson_1 as Feature}
 					layerId="geojson1"
 				/>
 				<MlGeoJsonLayer
 					type="line"
-					options={{layout:{ visibility: args.geojson2LayerVisible ? 'visible' : 'none' }}}
+					options={{ layout: { visibility: args.geojson2LayerVisible ? 'visible' : 'none' } }}
 					geojson={sample_geojson_2 as Feature}
 					layerId="geojson2"
 				/>

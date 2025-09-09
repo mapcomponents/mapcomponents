@@ -3,7 +3,6 @@ import { TextEncoder, TextDecoder } from 'util';
 
 Object.assign(global, { TextDecoder, TextEncoder });
 
-
 const uuid_regex = '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}';
 export { uuid_regex };
 
@@ -21,8 +20,6 @@ const mockMapLibreMethods = {
 	}),
 };
 export { mockMapLibreMethods };
-
-
 
 jest.mock('maplibre-gl/dist/maplibre-gl', () => {
 	const originalModule = jest.requireActual('maplibre-gl/dist/maplibre-gl');
@@ -98,7 +95,7 @@ jest.mock('maplibre-gl/dist/maplibre-gl', () => {
 				setZoom: jest.fn(),
 				setPitch: jest.fn(),
 				setCenter: jest.fn(),
-				style: { ...styleFunctions, '_layers': this.layers },
+				style: { ...styleFunctions, _layers: this.layers },
 				layers: this.layers,
 				sources: this.sources,
 				_update: jest.fn(),
