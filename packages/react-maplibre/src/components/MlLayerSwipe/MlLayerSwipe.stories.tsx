@@ -22,7 +22,7 @@ const Template: any = () => (
 			}}
 			mapId="map_2"
 		/>
-		<MlLayerSwipe map1Id="map_1" map2Id="map_2" />
+		<MlLayerSwipe map1Id="map_1" map2Id="map_2" buttonStyle={undefined} />
 	</>
 );
 

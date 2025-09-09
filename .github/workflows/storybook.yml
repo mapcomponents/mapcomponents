@@ -17,8 +17,8 @@ jobs:
       - name: Install and build 🔧
         run: | # Install packages and build the Storybook files
           pnpm i 
-          npx nx run-many -t build-catalogue-meta --all
-          npx nx run-many -t build-storybook --all
+          npx nx run-many -t build-catalogue-meta --all --exclude docs
+          npx nx run-many -t build-storybook --all --exclude docs
 
       - name: Collect Storybook builds 📦
         run: |

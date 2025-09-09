@@ -24,7 +24,6 @@ const defaultStyleThumbnailPath =
 
 const SelectStyleButton = ({
 	sx,
-	onComplete,
 	styles = [],
 	defaultStyles = true,
 	styleThumbnailPaths,
