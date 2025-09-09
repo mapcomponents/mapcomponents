@@ -4,13 +4,13 @@ import MlGeoJsonLayer from '../MlGeoJsonLayer/MlGeoJsonLayer';
 import { bbox } from '@turf/turf';
 import { FeatureCollection } from 'geojson';
 import {
-	LineLayerSpecification,
 	CircleLayerSpecification,
 	FillLayerSpecification,
-	SymbolLayoutProps,
-	SymbolPaintProps,
+	LineLayerSpecification,
 	LngLatBoundsLike,
 	MapEventType,
+	SymbolLayoutProps,
+	SymbolPaintProps,
 } from 'maplibre-gl';
 import usePaintPicker from './utils/paintPicker';
 import MlTemporalControllerLabels from './utils/MlTemporalControllerLabels';
@@ -108,10 +108,10 @@ export interface MlTemporalControllerProps {
 	 */
 	step?: number;
 	/**
-	 *  The time between each addition to the counter, expressed in milliseconds. 
+	 *  The time between each addition to the counter, expressed in milliseconds.
 	 *  By default, 200 ms.
 	 */
-    interval?: number;
+	interval?: number;
 	/**
 	 * A numeric value that sets how many steps before the feature starts to appear.
 	 * By default it is set to 5 steps.
@@ -235,7 +235,10 @@ const MlTemporalController = (props: MlTemporalControllerProps) => {
 		if (typeof props.onStateChange === 'function') {
 			props.onStateChange({
 				current: currentVal,
-				paint: paint as CircleLayerSpecification['paint'] | FillLayerSpecification['paint'] | LineLayerSpecification['paint'],
+				paint: paint as
+					| CircleLayerSpecification['paint']
+					| FillLayerSpecification['paint']
+					| LineLayerSpecification['paint'],
 			});
 		}
 	}, [props.onStateChange]);
@@ -293,26 +296,32 @@ const MlTemporalController = (props: MlTemporalControllerProps) => {
 					mapId={props.mapId}
 					//layerId="timeController"
 					//insertBeforeLayer={props.insertBeforeLayer || 'timeControllerLabels'}
-					paint={
-						props.paint ||
-						(paint as
-							| CircleLayerSpecification['paint']
-							| FillLayerSpecification['paint']
-							| LineLayerSpecification['paint'])
-					}
+
 					options={{
 						source: {
 							type: 'geojson',
 							attribution: props.attribution as string,
-							data: filteredData
+							data: filteredData,
 						} as useLayerProps['options']['source'],
+						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+						// @ts-expect-error
+						paint: {
+							...(props.paint ||
+								(paint as
+									| CircleLayerSpecification['paint']
+									| FillLayerSpecification['paint']
+									| LineLayerSpecification['paint'])),
+						},
+						layout:{
+							visibility: 'visible'
+						}
 					}}
 				/>
 			)}
 
 			{filteredData && props.label && (
 				<MlTemporalControllerLabels
-					data={(filteredData as FeatureCollection)}
+					data={filteredData as FeatureCollection}
 					currentVal={currentVal}
 					fadeIn={props.labelFadeIn as number}
 					fadeOut={props.labelFadeOut as number}
@@ -344,7 +353,7 @@ const MlTemporalController = (props: MlTemporalControllerProps) => {
 				labelFadeIn={props.labelFadeIn as number}
 				labelFadeOut={props.labelFadeOut as number}
 				accumulate={props.accumulate as boolean}
-				display={(props.displayCurrentValue as boolean)}
+				display={props.displayCurrentValue as boolean}
 			/>
 		</>
 	);
@@ -364,7 +373,7 @@ MlTemporalController.defaultProps = {
 	fitBounds: true,
 	label: true,
 	attribution: '',
-	displayCurrentValue: false
+	displayCurrentValue: false,
 };
 
 export default MlTemporalController;

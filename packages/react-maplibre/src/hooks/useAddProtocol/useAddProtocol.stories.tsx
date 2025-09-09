@@ -34,6 +34,7 @@ import { csvOptions } from '../../protocol_handlers/csv2geojson';
 import MlLayer from '../../components/MlLayer/MlLayer';
 import { useLayerProps } from '../useLayer';
 import useSource from '../useSource';
+import { StoryFn } from '@storybook/react-vite';
 
 const storyoptions = {
 	title: 'hooks/useAddProtocol',
@@ -76,7 +77,7 @@ const BackgroundLayers = () => {
 	);
 };
 
-const MbtilesTemplate: any = () => {
+const MbtilesTemplate: StoryFn = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	useAddProtocol({
@@ -119,12 +120,10 @@ const MbtilesTemplate: any = () => {
 	);
 };
 export const MbTiles = MbtilesTemplate.bind({});
-MbTiles.parameters = {
-	name: 'MBTiles',
-};
 MbTiles.args = {};
+MbTiles.parameters = { name: 'MBTiles' };
 
-const CsvTemplate: any = () => {
+const CsvTemplate: StoryFn = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	//  An optional encoded options object can be added after a '?' sign at the end of the url.
@@ -169,12 +168,11 @@ const CsvTemplate: any = () => {
 		</>
 	);
 };
-
 export const CSVOrTSV = CsvTemplate.bind({});
-CSVOrTSV.parameters = {};
 CSVOrTSV.args = {};
+CSVOrTSV.parameters = {};
 
-const CsvOptionsTemplate: any = () => {
+const CsvOptionsTemplate: StoryFn = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	//  An optional encoded options object can be added after a '?' sign at the end of the url.
@@ -222,10 +220,10 @@ const CsvOptionsTemplate: any = () => {
 	);
 };
 export const CSVWithOptions = CsvOptionsTemplate.bind({});
-CSVWithOptions.parameters = {};
 CSVWithOptions.args = {};
+CSVWithOptions.parameters = {};
 
-const OsmTemplate: any = () => {
+const OsmTemplate: StoryFn = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	//  An optional encoded options object can be added after a '?' sign at the end of the url.
@@ -275,12 +273,11 @@ const OsmTemplate: any = () => {
 		</>
 	);
 };
-
 export const OSM = OsmTemplate.bind({});
-OSM.parameters = {};
 OSM.args = {};
+OSM.parameters = {};
 
-const GpxTemplate: any = () => {
+const GpxTemplate: StoryFn = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	useAddProtocol({
@@ -321,12 +318,11 @@ const GpxTemplate: any = () => {
 		</>
 	);
 };
-
 export const GPX = GpxTemplate.bind({});
-GPX.parameters = {};
 GPX.args = {};
+GPX.parameters = {};
 
-const KmlTemplate: any = () => {
+const KmlTemplate: StoryFn = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	useAddProtocol({
@@ -350,13 +346,10 @@ const KmlTemplate: any = () => {
 				layerId={'UseAddProtocolLayer'}
 				options={
 					{
-						type: 'circle',
+						type: 'fill',
 						source: 'kml-source',
 						paint: {
-							'circle-color': '#ff4533',
-							'circle-stroke-color': '#992513',
-							'circle-stroke-width': 1,
-							'circle-radius': 2,
+							'fill-color': '#ff4533',
 						},
 					} as useLayerProps['options']
 				}
@@ -367,18 +360,11 @@ const KmlTemplate: any = () => {
 		</>
 	);
 };
-
 export const KML = KmlTemplate.bind({});
+KML.args = {};
 KML.parameters = {};
-KML.args = {
-	protocol: 'kml',
-	handler: XMLProtocolHandler,
-	sourceId: 'fromKML-Source',
-	filePath: 'kml/cape_may.kml',
-	flyTo: { center: [-74.82832, 39.093526], zoom: 9, speed: 2 },
-};
 
-const TcxTemplate: any = () => {
+const TcxTemplate: StoryFn = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	useAddProtocol({
@@ -420,10 +406,10 @@ const TcxTemplate: any = () => {
 	);
 };
 export const TCX = TcxTemplate.bind({});
-TCX.parameters = {};
 TCX.args = {};
+TCX.parameters = {};
 
-const TopojsonTemplate: any = () => {
+const TopojsonTemplate: StoryFn = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	useAddProtocol({
@@ -482,10 +468,9 @@ const TopojsonTemplate: any = () => {
 		</>
 	);
 };
-
 export const Topojson = TopojsonTemplate.bind({});
-Topojson.parameters = {};
 Topojson.args = {};
+Topojson.parameters = {};
 
 const currentProps = {
 	mbtiles: {
@@ -606,7 +591,7 @@ const currentProps = {
 	},
 };
 
-const CatalogueTemplate = () => {
+const CatalogueTemplate: StoryFn = () => {
 	const mapHook = useMap({ mapId: undefined });
 
 	const [openSidebar, setOpenSidebar] = useState(true);
@@ -614,7 +599,7 @@ const CatalogueTemplate = () => {
 	const [currentDemo, setCurrentDemo] = useState<string>('csv');
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
-	const props: TemplateProps = (currentProps as {[key:string]:any})[currentDemo];
+	const props: TemplateProps = (currentProps as { [key: string]: any })[currentDemo];
 
 	const optionsURL = '?' + new URLSearchParams(props.options as string).toString();
 
@@ -625,32 +610,31 @@ const CatalogueTemplate = () => {
 
 	useEffect(() => {
 		layerContext.updateStyle(bright as unknown as StyleSpecification);
-
 		layerContext.setLayers([
 			props.protocol === 'mbtiles'
 				? {
-					type: 'vt',
-					name: 'useAddProtocolLayer',
-					config: {
-						layerId: 'useAddProtocolLayer',
-						url: props.protocol + '://' + props.filePath + '/{z}/{x}/{y}',
-						layers: props.layers,
-						insertBeforeLayer: props.insertBeforeLayer,
-						sourceOptions: props.sourceOptions,
-					} as MlVectorTileLayerProps,
-				}
+						type: 'vt',
+						name: 'useAddProtocolLayer',
+						config: {
+							layerId: 'useAddProtocolLayer',
+							url: props.protocol + '://' + props.filePath + '/{z}/{x}/{y}',
+							layers: props.layers,
+							insertBeforeLayer: props.insertBeforeLayer,
+							sourceOptions: props.sourceOptions,
+						} as MlVectorTileLayerProps,
+					}
 				: {
-					type: 'geojson',
-					name: 'useAddProtocolLayer',
-					config: {
-						layerId: 'useAddProtocolLayer',
-						type: props.type || 'line',
-						options: {
-							source: props.sourceId,
-						},
-						paint: props.paint,
-					} as MlGeoJsonLayerProps,
-				},
+						type: 'geojson',
+						name: 'useAddProtocolLayer',
+						config: {
+							layerId: 'useAddProtocolLayer',
+							type: props.type || 'line',
+							options: {
+								source: props.sourceId,
+							},
+							paint: props.paint,
+						} as MlGeoJsonLayerProps,
+					},
 		]);
 	}, [currentDemo]);
 
@@ -692,15 +676,7 @@ const CatalogueTemplate = () => {
 						>
 							Example Configs
 						</Button>
-						<Menu
-							id="basic-menu"
-							anchorEl={anchorEl}
-							open={open}
-							onClose={() => setAnchorEl(null)}
-							MenuListProps={{
-								'aria-labelledby': 'basic-button',
-							}}
-						>
+						<Menu id="basic-menu" anchorEl={anchorEl} open={open} onClose={() => setAnchorEl(null)}>
 							{Object.keys(currentProps).map((el) => (
 								<MenuItem onClick={() => setCurrentDemo(el)} key={el} selected={el === currentDemo}>
 									{el}
@@ -744,5 +720,6 @@ const CatalogueTemplate = () => {
 		</>
 	);
 };
-
 export const CatalogueDemo = CatalogueTemplate.bind({});
+CatalogueDemo.args = {};
+CatalogueDemo.parameters = {};

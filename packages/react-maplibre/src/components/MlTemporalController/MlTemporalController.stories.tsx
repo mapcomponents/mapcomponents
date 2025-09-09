@@ -31,7 +31,7 @@ const titels = {
 	circle: 'Earthquakes with 5 or more magnitude',
 };
 
-const Template = (props: MlTemporalControllerProps) => {
+const Template: any = (props: MlTemporalControllerProps) => {
 	const type = props.type || 'circle';
 
 	return (
@@ -49,7 +49,7 @@ const Template = (props: MlTemporalControllerProps) => {
 	);
 };
 
-const catalogueTemplate = () => {
+const catalogueTemplate: any = () => {
 	const [selectedConfig, setSelectedConfig] = useState<string>('Fill');
 	const [titleNr, setTitleNr] = useState<number>(0);
 	const mapHook = useMap({
@@ -185,6 +185,7 @@ FillConfig.args = {
 	fitBounds: true,
 	displayCurrentValue: true,
 	attribution: 'Made with Natural Earth.',
+	ownLayer: true,
 };
 
 export const CircleConfig = Template.bind({});
@@ -202,6 +203,7 @@ CircleConfig.args = {
 	displayCurrentValue: true,
 	attribution:
 		'National Geophysical Data Center / World Data Service (NGDC/WDS): NCEI/WDS Global Significant Earthquake Database. NOAA National Centers for Environmental Information. doi:10.7289/V5TD9V7K',
+	ownLayer: true,
 };
 
 export const LineConfig = Template.bind({});
@@ -222,6 +224,7 @@ LineConfig.args = {
 	fitBounds: false,
 	displayCurrentValue: true,
 	attribution: 'Source: deutsche-jakobswege.de ',
+	ownLayer: true,
 };
 
 export const CatalogueDemo = catalogueTemplate.bind({});
