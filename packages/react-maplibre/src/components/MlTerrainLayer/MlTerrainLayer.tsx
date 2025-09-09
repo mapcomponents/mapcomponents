@@ -64,7 +64,4 @@ const MlTerrainLayer = (props: MlTerrainLayerProps) => {
 	return <></>;
 };
 
-MlTerrainLayer.defaultProps = {
-	mapId: undefined,
-};
 export default MlTerrainLayer;

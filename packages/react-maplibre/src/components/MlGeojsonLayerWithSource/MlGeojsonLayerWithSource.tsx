@@ -122,7 +122,4 @@ const MlGeojsonLayerWithSource = (props: MlGeojsonLayerWithSourceProps) => {
   return <></>;
 };
 
-MlGeojsonLayerWithSource.defaultProps = {
-  mapId: "map_1",
-};
 export default MlGeojsonLayerWithSource;

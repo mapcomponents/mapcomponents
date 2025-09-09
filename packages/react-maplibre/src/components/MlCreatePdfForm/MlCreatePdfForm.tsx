@@ -16,7 +16,4 @@ const MlCreatePdfForm = (props: PdfFormProps) => {
 	);
 };
 
-MlCreatePdfForm.defaultProps = {
-	mapId: undefined,
-};
 export default MlCreatePdfForm;

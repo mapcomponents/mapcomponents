@@ -57,7 +57,4 @@ const MlWmsFeatureInfoPopup = (props:MlWmsFeatureInfoPopupProps) => {
 	return <></>;
 };
 
-MlWmsFeatureInfoPopup.defaultProps = {
-	mapId: undefined,
-};
 export default MlWmsFeatureInfoPopup;

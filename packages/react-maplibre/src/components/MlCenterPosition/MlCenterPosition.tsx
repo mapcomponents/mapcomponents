@@ -73,7 +73,4 @@ const MlCenterPosition = (props: MlCenterPositionProps) => {
 	);
 };
 
-MlCenterPosition.defaultProps = {
-	mapId: undefined,
-};
 export default MlCenterPosition;

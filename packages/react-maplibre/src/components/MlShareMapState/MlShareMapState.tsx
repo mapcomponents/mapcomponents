@@ -255,7 +255,4 @@ const MlShareMapState = (props: MlShareMapStateProps) => {
 	return <></>;
 };
 
-MlShareMapState.defaultProps = {
-	mapId: undefined,
-};
 export default MlShareMapState;

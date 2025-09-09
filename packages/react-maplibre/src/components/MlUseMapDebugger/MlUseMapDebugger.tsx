@@ -9,7 +9,7 @@ export interface MlUseMapDebuggerProps {
 }
 
 //Add default props to MlUseMapDebugger
-type MlUseMapDebuggerComponent = FC<MlUseMapDebuggerProps> & {defaultProps: MlUseMapDebuggerProps};
+type MlUseMapDebuggerComponent = FC<MlUseMapDebuggerProps>;
 
 /**
  * Renders a collapsible top-drawer containing live map debug information
@@ -68,10 +68,6 @@ const MlUseMapDebugger: MlUseMapDebuggerComponent = (props) => {
 			</div>
 		</>
 	);
-};
-
-MlUseMapDebugger.defaultProps = {
-	mapId: undefined,
 };
 
 export default MlUseMapDebugger;

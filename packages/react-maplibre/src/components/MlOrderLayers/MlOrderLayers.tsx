@@ -35,8 +35,4 @@ const MlOrderLayers = (props: MlOrderLayersProps) => {
 	);
 };
 
-MlOrderLayers.defaultProps = {
-	mapId: undefined,
-	insertBeforeLayer: undefined,
-};
 export default MlOrderLayers;

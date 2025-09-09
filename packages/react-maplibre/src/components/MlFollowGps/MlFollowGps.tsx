@@ -114,7 +114,7 @@ const MlFollowGps = (props: MlFollowGpsProps) => {
 
 				initiallyCentered.current = true;
 			}
-			if (!props.showUserLocation) return;
+			if (props.showUserLocation !== undefined && !props.showUserLocation) return;
 			const geoJsonPoint = point([pos.coords.longitude, pos.coords.latitude]);
 			setUserLocationGeoJson(geoJsonPoint);
 			setAccuracyGeoJson(circle(geoJsonPoint, pos.coords.accuracy / 1000));
@@ -262,16 +262,6 @@ const MlFollowGps = (props: MlFollowGpsProps) => {
 			</Button>
 		</>
 	);
-};
-
-MlFollowGps.defaultProps = {
-	mapId: undefined,
-	offColor: '#666',
-	showAccuracyCircle: true,
-	showUserLocation: true,
-	showOrientation: true,
-	centerUserPosition: true,
-	useFlyTo: false,
 };
 
 export default MlFollowGps;

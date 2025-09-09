@@ -187,65 +187,99 @@ export interface TemporalControllerValues {
 		| LineLayerSpecification['paint'];
 }
 
-const MlTemporalController = (props: MlTemporalControllerProps) => {
+const MlTemporalController = ({
+	mapId = undefined,
+	insertBeforeLayer,
+	geojson,
+	ownLayer = true,
+	attribution = '',
+	type = 'circle',
+	timeField,
+	minVal,
+	maxVal,
+	initialVal,
+	accumulate = false,
+	fitBounds = true,
+	paint,
+	featuresColor,
+	step = 1,
+	interval = 200,
+	fadeIn = 5,
+	fadeOut = 5,
+	label = true,
+	labelColor,
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-expect-error
+	labelField = [],
+	labelFadeIn = 5,
+	labelFadeOut = 5,
+	displayCurrentValue = false,
+	onClick,
+	onHover,
+	onLeave,
+	onStateChange,
+}: MlTemporalControllerProps) => {
 	const mapHook = useMap({
-		mapId: props.mapId,
-		waitForLayer: props.insertBeforeLayer,
+		mapId: mapId,
+		waitForLayer: insertBeforeLayer,
 	});
-	const labelField = props.labelField || props.geojson?.features[0]?.properties?.[0] || '';
 
-	const { filteredData, minVal, maxVal } = useFilterData({
-		geojson: props.geojson,
-		timeField: props.timeField,
-		minVal: props.minVal,
-		maxVal: props.maxVal,
-		initialVal: props.initialVal,
-		mapId: props.mapId,
+	const {
+		filteredData,
+		minVal: filterMinVal,
+		maxVal: filterMaxVal,
+	} = useFilterData({
+		geojson: geojson,
+		timeField: timeField,
+		minVal: minVal,
+		maxVal: maxVal,
+		initialVal: initialVal,
+		mapId: mapId,
 	});
 	const theme = useTheme();
-	const [currentVal, setCurrentVal] = useState<number>(props.initialVal || minVal);
-	const featuresColor = props.featuresColor || theme.palette.primary.main;
-	const labelColor = props.labelColor || theme.palette.text.primary;
+	const [currentVal, setCurrentVal] = useState<number>(initialVal || filterMinVal);
+	const featuresColorValue = featuresColor || theme.palette.primary.main;
+	const labelColorValue = labelColor || theme.palette.text.primary;
 	const [isPlaying, setIsPlaying] = useState(false);
 
-	const paint = usePaintPicker({
-		type: props.type,
-		timeField: props.timeField,
+	const paintValue = usePaintPicker({
+		type: type,
+		timeField: timeField,
 		currentVal: currentVal,
-		minVal: minVal,
+		minVal: filterMinVal,
 		isPlaying: isPlaying,
-		fadeIn: props.fadeIn as number,
-		fadeOut: props.fadeOut as number,
-		step: props.step as number,
-		featuresColor: featuresColor,
-		accumulate: props.accumulate as boolean,
-		userPaint: props.paint,
+		fadeIn: fadeIn as number,
+		fadeOut: fadeOut as number,
+		step: step as number,
+		featuresColor: featuresColorValue,
+		accumulate: accumulate as boolean,
+		userPaint: paint,
 	});
 
 	//Set Initial values and clear references
 	useEffect(() => {
-		if (!props.initialVal && minVal) {
-			setCurrentVal(minVal);
-		} else if (props.initialVal) {
-			setCurrentVal(props.initialVal);
+		if (!initialVal && filterMinVal) {
+			setCurrentVal(filterMinVal);
+		} else if (initialVal) {
+			setCurrentVal(initialVal);
 		}
 	}, []);
 
 	useEffect(() => {
-		if (typeof props.onStateChange === 'function') {
-			props.onStateChange({
+		if (typeof onStateChange === 'function') {
+			onStateChange({
 				current: currentVal,
-				paint: paint as
+				paint: paintValue as
 					| CircleLayerSpecification['paint']
 					| FillLayerSpecification['paint']
 					| LineLayerSpecification['paint'],
 			});
 		}
-	}, [props.onStateChange]);
+	}, [onStateChange]);
 
 	// Fit map to bbox
 	useEffect(() => {
-		if (props.fitBounds && typeof filteredData !== 'undefined') {
+		if (fitBounds && typeof filteredData !== 'undefined') {
 			const geojsonBbox = bbox(filteredData);
 			mapHook.map?.map.fitBounds(geojsonBbox as LngLatBoundsLike);
 		}
@@ -257,16 +291,16 @@ const MlTemporalController = (props: MlTemporalControllerProps) => {
 		let _onClick: ((ev: MapEventType) => void) | undefined,
 			_onHover: ((ev: MapEventType) => void) | undefined,
 			_onLeave: ((ev: MapEventType) => void) | undefined;
-		if (props.onClick) {
-			_onClick = props.onClick;
+		if (onClick) {
+			_onClick = onClick;
 			mapHook.map?.on('click', 'timeController', _onClick);
 		}
-		if (props.onHover) {
-			_onHover = props.onHover;
+		if (onHover) {
+			_onHover = onHover;
 			mapHook.map?.on('mouseenter', 'timeController', _onHover);
 		}
-		if (props.onLeave) {
-			_onLeave = props.onLeave;
+		if (onLeave) {
+			_onLeave = onLeave;
 			mapHook.map?.on('mouseleave', 'timeController', _onLeave);
 		}
 		return () => {
@@ -286,51 +320,51 @@ const MlTemporalController = (props: MlTemporalControllerProps) => {
 				mapHook.map?.off('mouseleave', 'timeController', _onLeave);
 			}
 		};
-	}, [mapHook.map, props.onClick, props.onHover, props.onLeave]);
+	}, [mapHook.map, onClick, onHover, onLeave]);
 
 	return (
 		<>
-			{filteredData && props.ownLayer && (
+			{filteredData && ownLayer && (
 				<MlGeoJsonLayer
-					type={props.type}
-					mapId={props.mapId}
+					type={type}
+					mapId={mapId}
 					//layerId="timeController"
 					//insertBeforeLayer={props.insertBeforeLayer || 'timeControllerLabels'}
 
 					options={{
 						source: {
 							type: 'geojson',
-							attribution: props.attribution as string,
+							attribution: attribution as string,
 							data: filteredData,
 						} as useLayerProps['options']['source'],
 						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 						// @ts-expect-error
 						paint: {
-							...(props.paint ||
-								(paint as
+							...(paint ||
+								(paintValue as
 									| CircleLayerSpecification['paint']
 									| FillLayerSpecification['paint']
 									| LineLayerSpecification['paint'])),
 						},
-						layout:{
-							visibility: 'visible'
-						}
+						layout: {
+							visibility: 'visible',
+						},
 					}}
 				/>
 			)}
 
-			{filteredData && props.label && (
+			{filteredData && label && (
 				<MlTemporalControllerLabels
 					data={filteredData as FeatureCollection}
 					currentVal={currentVal}
-					fadeIn={props.labelFadeIn as number}
-					fadeOut={props.labelFadeOut as number}
-					step={props.step as number}
+					fadeIn={labelFadeIn as number}
+					fadeOut={labelFadeOut as number}
+					step={step as number}
 					labelField={labelField}
-					labelColor={labelColor}
-					timeField={props.timeField}
-					minVal={minVal}
-					accumulate={props.accumulate as boolean}
+					labelColor={labelColorValue}
+					timeField={timeField}
+					minVal={filterMinVal}
+					accumulate={accumulate as boolean}
 					isPlaying={isPlaying}
 				/>
 			)}
@@ -338,42 +372,25 @@ const MlTemporalController = (props: MlTemporalControllerProps) => {
 			<TemporalControllerPlayer
 				currentVal={currentVal}
 				isPlaying={isPlaying}
-				step={props.step as number}
-				interval={props.interval as number}
-				minVal={minVal}
-				maxVal={maxVal}
+				step={step as number}
+				interval={interval as number}
+				minVal={filterMinVal}
+				maxVal={filterMaxVal}
 				returnCurrent={setCurrentVal}
 				returnPlaying={setIsPlaying}
 				open={false}
-				fadeIn={props.fadeIn as number}
-				fadeOut={props.fadeOut as number}
-				featuresColor={featuresColor}
-				labels={props.label as boolean}
-				labelColor={labelColor}
-				labelFadeIn={props.labelFadeIn as number}
-				labelFadeOut={props.labelFadeOut as number}
-				accumulate={props.accumulate as boolean}
-				display={props.displayCurrentValue as boolean}
+				fadeIn={fadeIn as number}
+				fadeOut={fadeOut as number}
+				featuresColor={featuresColorValue}
+				labels={label as boolean}
+				labelColor={labelColorValue}
+				labelFadeIn={labelFadeIn as number}
+				labelFadeOut={labelFadeOut as number}
+				accumulate={accumulate as boolean}
+				display={displayCurrentValue as boolean}
 			/>
 		</>
 	);
-};
-
-MlTemporalController.defaultProps = {
-	mapId: undefined,
-	ownLayer: true,
-	type: 'circle',
-	step: 1,
-	interval: 200,
-	fadeIn: 5,
-	fadeOut: 5,
-	labelFadeIn: 5,
-	labelFadeOut: 5,
-	accumulate: false,
-	fitBounds: true,
-	label: true,
-	attribution: '',
-	displayCurrentValue: false,
 };
 
 export default MlTemporalController;

@@ -14,7 +14,7 @@
 		},
 		"storybook": {
 			"options": {
-				"port": 4405
+				"port": 4400
 			}
 		}
 	}
