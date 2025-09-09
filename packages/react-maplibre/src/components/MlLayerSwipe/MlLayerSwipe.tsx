@@ -195,8 +195,4 @@ const MlLayerSwipe = (props: MlLayerSwipeProps) => {
 	);
 };
 
-MlLayerSwipe.defaultProps = {
-	buttonStyle: {},
-};
-
 export default MlLayerSwipe;

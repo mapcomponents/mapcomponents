@@ -311,10 +311,4 @@ const MlMultiMeasureTool = (props: MlMultiMeasureToolProps) => {
 	);
 };
 
-MlMultiMeasureTool.defaultProps = {
-	mapId: undefined,
-	measureType: 'polygon',
-	buttonStyleOverride: {},
-};
-
 export default MlMultiMeasureTool;

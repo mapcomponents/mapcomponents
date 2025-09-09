@@ -69,9 +69,4 @@ const MlGlobeButton = (props: MlGlobeButtonProps) => {
 		</>
 	);
 };
-
-MlGlobeButton.defaultProps = {
-	mapId: undefined,
-	mode: 'mercator',
-};
 export default MlGlobeButton;

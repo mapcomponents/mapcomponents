@@ -523,8 +523,4 @@ const MlSketchTool = (props: MlSketchToolProps) => {
 	);
 };
 
-MlSketchTool.defaultProps = {
-	mapId: undefined,
-	buttonStyleOverride: {},
-};
 export default MlSketchTool;

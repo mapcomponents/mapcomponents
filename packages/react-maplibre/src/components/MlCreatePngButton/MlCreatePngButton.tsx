@@ -81,8 +81,4 @@ const MlCreatePngButton = (props: MlCreatePngButtonProps) => {
 	);
 };
 
-MlCreatePngButton.defaultProps = {
-	mapId: undefined,
-};
-
 export default MlCreatePngButton;

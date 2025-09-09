@@ -81,8 +81,4 @@ const MlCreatePdfButton = (props: MlCreatePdfButtonProps) => {
 	);
 };
 
-MlCreatePdfButton.defaultProps = {
-	mapId: undefined,
-};
-
 export default MlCreatePdfButton;

@@ -214,9 +214,4 @@ const MlLayerMagnify = (props: MlLayerMagnifyProps) => {
 	);
 };
 
-MlLayerMagnify.defaultProps = {
-	magnifierRadius: 200,
-	magnifierStyle: {},
-};
-
 export default MlLayerMagnify;

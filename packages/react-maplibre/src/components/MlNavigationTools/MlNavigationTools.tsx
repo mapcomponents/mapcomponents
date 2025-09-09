@@ -186,13 +186,4 @@ const MlNavigationTools = (props: MlNavigationToolsProps) => {
 	);
 };
 
-MlNavigationTools.defaultProps = {
-	mapId: undefined,
-	show3DButton: true,
-	showGlobeButton: false,
-	showFollowGpsButton: true,
-	showCenterLocationButton: false,
-	showZoomButtons: true,
-};
-
 export default MlNavigationTools;

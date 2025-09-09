@@ -147,9 +147,4 @@ const MlMeasureTool = (props: MlMeasureToolProps) => {
 	);
 };
 
-MlMeasureTool.defaultProps = {
-	mapId: undefined,
-	measureType: 'line',
-	unit: 'meters',
-};
 export default MlMeasureTool;

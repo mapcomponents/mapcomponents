@@ -97,6 +97,4 @@ const MlGpxViewer = (props: MlGpxViewerProps) => {
 	return <></>;
 };
 
-MlGpxViewer.defaultProps = {};
-
 export default MlGpxViewer;

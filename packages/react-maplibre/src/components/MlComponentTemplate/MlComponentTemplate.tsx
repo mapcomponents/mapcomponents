@@ -20,7 +20,4 @@ const MlComponentTemplate = (props: MlComponentTemplateProps) => {
 	return <></>;
 };
 
-MlComponentTemplate.defaultProps = {
-	mapId: undefined,
-};
 export default MlComponentTemplate;

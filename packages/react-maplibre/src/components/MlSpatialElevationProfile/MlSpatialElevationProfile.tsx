@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import { featureCollection } from '@turf/helpers';
 import { Feature, FeatureCollection, GeoJSON } from 'geojson';
 import { v4 as uuidv4 } from 'uuid';
@@ -62,8 +62,7 @@ export interface MlSpatialElevationProfileProps {
 const MlSpatialElevationProfile = (props: MlSpatialElevationProfileProps) => {
 	const sourceName = useRef('elevationprofile-' + uuidv4());
 	const layerName = useRef('elevationprofile-layer-' + uuidv4());
-	const elevationFactor =
-		props.elevationFactor || MlSpatialElevationProfile.defaultProps.elevationFactor;
+	const elevationFactor = props.elevationFactor || 1;
 
 	const _geojsonInfo = useMemo(() => {
 		if (!props?.geojson?.features) return;
@@ -114,7 +113,7 @@ const MlSpatialElevationProfile = (props: MlSpatialElevationProfileProps) => {
 		sourceId: sourceName.current,
 		source: {
 			type: 'geojson',
-			data: (_geojson || featureCollection([])) as (string | GeoJSON),
+			data: (_geojson || featureCollection([])) as string | GeoJSON,
 		},
 	});
 
@@ -134,10 +133,6 @@ const MlSpatialElevationProfile = (props: MlSpatialElevationProfileProps) => {
 	});
 
 	return <></>;
-};
-
-MlSpatialElevationProfile.defaultProps = {
-	elevationFactor: 1,
 };
 
 export default MlSpatialElevationProfile;
