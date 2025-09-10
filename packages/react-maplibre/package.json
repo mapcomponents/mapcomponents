@@ -10,7 +10,6 @@
 		"test": "node scripts/test.cjs --watchAll=false --coverage",
 		"test:noninteractive": "node scripts/test.cjs --verbose --watchAll=false --coverage",
 		"test:generate-output": "node scripts/test.cjs --watchAll=false --json --outputFile=./src/.jest-test-results.json || true",
-		"build-storybook": "storybook build -o docs-build",
 		"storybook-docs": "storybook dev --docs --no-manager-cache",
 		"build-catalogue-meta": "node scripts/build-catalogue-meta.js",
 		"create-component": "./scripts/create-map-component.sh"
