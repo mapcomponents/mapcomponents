@@ -14,10 +14,9 @@ describe('MlCreatePdfForm Tests', () => {
 		}
 		mount(<ExampleConfig />);
 		cy.get('.pdfFormButton').click();
-		cy.wait(1000);
+		cy.get('#createPdfFormID').should('be.visible');
 		cy.get('.createPdfButton').click();
 
-		cy.wait(4000);
 		cy.readFile('./cypress/downloads/Map.pdf').should('contain', 'WhereGroup');
 	});
 });
