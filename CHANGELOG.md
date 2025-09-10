@@ -1,3 +1,21 @@
+## 1.3.4-0 (2025-09-10)
+
+### 🩹 Fixes
+
+- update directory for Storybook builds to docs-build ([fca8ec1](https://github.com/mapcomponents/mapcomponents/commit/fca8ec1))
+- update ESLint config and improve Storybook URLs for Deck.gl and React MapLibre ([99f0c47](https://github.com/mapcomponents/mapcomponents/commit/99f0c47))
+- update ESLint config and improve Storybook URLs for Deck.gl and React MapLibre ([1e57119](https://github.com/mapcomponents/mapcomponents/commit/1e57119))
+- adjust height in Hello component and update package name for consistency ([db49f60](https://github.com/mapcomponents/mapcomponents/commit/db49f60))
+- update React MapLibreMap configuration and improve README instructions ([b9afc18](https://github.com/mapcomponents/mapcomponents/commit/b9afc18))
+- improve README formatting and consistency in section titles ([b06125a](https://github.com/mapcomponents/mapcomponents/commit/b06125a))
+- comment out Prettier step in check-formatting workflow ([e8643eb](https://github.com/mapcomponents/mapcomponents/commit/e8643eb))
+- update GLTFLoader import path and adjust type in loader callback ([5aae26f](https://github.com/mapcomponents/mapcomponents/commit/5aae26f))
+- update GLTFLoader import path and adjust type in loader callback ([0dac7d2](https://github.com/mapcomponents/mapcomponents/commit/0dac7d2))
+
+### ❤️ Thank You
+
+- jannik brack
+
 ## 1.5.5 (2025-08-01)
 
 This was a version bump only, there were no code changes.
