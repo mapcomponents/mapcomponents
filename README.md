@@ -272,5 +272,5 @@ Make sure not to forget this flag: `--skip-publish`
 ```sh
   npx nx release --skip-publish
 ```
-
+### *Don't forget to Push the automatically commited tag*
 Make sure to replace "This was a version bump only, there were no code changes." with the relevant changes in the `CHANGELOG.md`.
