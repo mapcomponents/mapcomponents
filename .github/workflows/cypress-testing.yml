@@ -27,5 +27,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Remove Xvfb lock file (if exists)
+        run: rm -f /tmp/.X99-lock
+
       - name: Run Cypress tests
-        run: npx nx run-many -t component-test
+        run: npx nx run-many -t component-test --parallel=false

@@ -22,7 +22,7 @@ const config: StorybookConfig = {
 			return {
 				'react-maplibre': {
 					title: 'React MapLibreMap',
-					url: 'https://mapcomponents.github.io/react-map-components-maplibre',
+					url: 'http://localhost:4400',
 				},
 				'deck-gl': {
 					title: 'Deck.gl',
@@ -37,7 +37,7 @@ const config: StorybookConfig = {
 		return {
 			'react-maplibre': {
 				title: 'React MapLibreMap',
-				url: 'https://mapcomponents.github.io/react-map-components-maplibre/',
+				url: 'https://mapcomponents.github.io/mapcomponents/react-maplibre/',
 			},
 			'deck-gl': {
 				title: 'Deck.gl',
