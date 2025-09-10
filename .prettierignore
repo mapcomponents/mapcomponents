@@ -16,3 +16,4 @@ storybook-static/
 pnpm-lock.yaml
 CHANGELOG.md
 README.md
+**/package.json
