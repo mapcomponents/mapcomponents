@@ -1,6 +1,6 @@
 import { composeStories } from '@storybook/testing-react';
 import { mount } from '@cypress/react';
-import stories from './MlCreatePdfForm.stories';
+import * as stories from './MlCreatePdfForm.stories';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
@@ -14,6 +14,7 @@ describe('MlCreatePdfForm Tests', () => {
 		}
 		mount(<ExampleConfig />);
 		cy.get('.pdfFormButton').click();
+		cy.get('.createPdfButton').click();
 
 		cy.wait(2000);
 		cy.readFile('./cypress/downloads/Map.pdf').should('contain', 'WhereGroup');
