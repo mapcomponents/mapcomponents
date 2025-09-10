@@ -1,8 +1,8 @@
 {
 	"name": "deck-gl",
 	"projectType": "library",
-	"root": "libs/deck-gl",
-	"sourceRoot": "libs/deck-gl/src",
+	"root": "packages/deck-gl",
+	"sourceRoot": "packages/deck-gl/src",
 	"targets": {
 		"storybook": {
 			"options": {

@@ -1,7 +1,7 @@
 {
 	"name": "ra-geospatial",
 	"$schema": "../../node_modules/nx/schemas/project-schema.json",
-	"sourceRoot": "libs/ra-geospatial/src",
+	"sourceRoot": "packages/ra-geospatial/src",
 	"projectType": "library",
 	"tags": [],
 	"targets": {
