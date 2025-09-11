@@ -33,7 +33,7 @@ export default defineConfig(() => ({
 			transformMixedEsModules: true,
 		},
 		lib: {
-			entry: './.cli.js',
+			entry: './cli.js',
 			name: 'create-mapcomponents-app',
 			fileName: 'index',
 			formats: ['es' as const],
