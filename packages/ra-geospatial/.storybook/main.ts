@@ -12,7 +12,6 @@ const config: StorybookConfig = {
 			},
 		},
 	},
-	staticDirs: ['../public'],
 
 	typescript: {
 		check: false,
