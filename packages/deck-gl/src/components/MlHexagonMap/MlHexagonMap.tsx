@@ -138,7 +138,4 @@ const MlHexagonMap = (props: MlHexagonMapProps) => {
 	return <></>;
 };
 
-MlHexagonMap.defaultProps = {
-	mapId: undefined,
-};
 export default MlHexagonMap;
