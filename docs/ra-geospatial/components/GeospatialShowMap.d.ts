@@ -1,4 +1,4 @@
-import { default as React } from 'react';
+import { default as React } from '../../../../node_modules/.pnpm/react@19.1.0/node_modules/react';
 import { InputProps } from 'react-admin';
 import { MapLibreMap } from '@mapcomponents/react-maplibre';
 export interface GeospatialShowMapProps extends InputProps<any> {
