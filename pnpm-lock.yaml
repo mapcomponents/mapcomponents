@@ -220,7 +220,7 @@ importers:
         version: 9.1.14(@deck.gl/core@9.1.14)(@luma.gl/core@9.1.9)
       '@mapcomponents/react-maplibre':
         specifier: workspace:^
-        version: link:../react-maplibre
+        version: link:../react-maplibre/dist
       '@mui/icons-material':
         specifier: ^7.3.2
         version: 7.3.2(@mui/material@7.3.2(@emotion/react@11.14.0(@types/react@19.1.12)(react@19.1.0))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.1.12)(react@19.1.0))(@types/react@19.1.12)(react@19.1.0))(@types/react@19.1.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/react@19.1.12)(react@19.1.0)
@@ -238,7 +238,7 @@ importers:
         specifier: ^7946.0.16
         version: 7946.0.16
 
-  packages/deck-gl/storybook-static:
+  packages/deck-gl/dist:
     dependencies:
       '@deck.gl/aggregation-layers':
         specifier: ^9.1.14
@@ -249,6 +249,9 @@ importers:
       '@deck.gl/mapbox':
         specifier: ^9.1.14
         version: 9.1.14(@deck.gl/core@9.1.14)(@luma.gl/core@9.1.9)
+      '@mapcomponents/react-maplibre':
+        specifier: workspace:^
+        version: link:../../react-maplibre/dist
       '@mui/icons-material':
         specifier: ^7.3.2
         version: 7.3.2(@mui/material@7.3.2(@emotion/react@11.14.0(@types/react@19.1.12)(react@19.1.0))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.1.12)(react@19.1.0))(@types/react@19.1.12)(react@19.1.0))(@types/react@19.1.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/react@19.1.12)(react@19.1.0)
@@ -274,6 +277,9 @@ importers:
       '@emotion/styled':
         specifier: ^11.14.1
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.1.12)(react@19.1.0))(@types/react@19.1.12)(react@19.1.0)
+      '@mapcomponents/react-maplibre':
+        specifier: workspace:^
+        version: link:../react-maplibre/dist
       '@mui/icons-material':
         specifier: ^7.3.2
         version: 7.3.2(@mui/material@7.3.2(@emotion/react@11.14.0(@types/react@19.1.12)(react@19.1.0))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.1.12)(react@19.1.0))(@types/react@19.1.12)(react@19.1.0))(@types/react@19.1.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/react@19.1.12)(react@19.1.0)
@@ -573,7 +579,7 @@ importers:
         specifier: ^9.5.4
         version: 9.5.4(typescript@5.9.2)(webpack@5.101.3(@swc/core@1.12.14(@swc/helpers@0.5.17))(esbuild@0.25.9))
 
-  packages/react-maplibre/storybook-static:
+  packages/react-maplibre/dist:
     dependencies:
       '@dnd-kit/core':
         specifier: ^6.3.1
@@ -9532,6 +9538,7 @@ packages:
   osm2geojson-lite@1.1.2:
     resolution: {integrity: sha512-6s1uW548fdyLTJ4Cp/hQTKvdgCl/E8nUvBMEzUXnAJPHAFHoIhwMqZ3KGdph2A1g48rsCeA6gVnkPruWGiwupw==}
     hasBin: true
+    bundledDependencies: []
 
   ospath@1.2.2:
     resolution: {integrity: sha512-o6E5qJV5zkAbIDNhGSIlyOhScKXgQrSRMilfph0clDfM0nEnBOlKlH4sWDmG95BW/CvwNz0vmm7dJVtU2KlMiA==}
