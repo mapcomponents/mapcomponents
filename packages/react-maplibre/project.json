@@ -9,7 +9,7 @@
 		"build": {
 			"executor": "@nx/vite:build",
 			"options": {
-				"outputPath": "dist/libs/react-maplibre"
+				"outputPath": "dist/packages/react-maplibre"
 			}
 		},
 		"storybook": {
