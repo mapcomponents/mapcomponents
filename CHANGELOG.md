@@ -1,3 +1,13 @@
+## 1.5.7-3 (2025-09-11)
+
+### 🩹 Fixes
+
+- update bin path for create-mapcomponents-app command ([ce81eeb](https://github.com/mapcomponents/mapcomponents/commit/ce81eeb))
+
+### ❤️ Thank You
+
+- jannik brack
+
 ## 1.5.7-2 (2025-09-11)
 
 This was a version bump only, there were no code changes.
