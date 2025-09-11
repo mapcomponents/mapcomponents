@@ -1,3 +1,13 @@
+## 1.5.7-4 (2025-09-11)
+
+### 🩹 Fixes
+
+- rename .cli.js to cli.js in package.json and vite.config.ts ([ce024a7](https://github.com/mapcomponents/mapcomponents/commit/ce024a7))
+
+### ❤️ Thank You
+
+- jannik brack
+
 ## 1.5.7-3 (2025-09-11)
 
 ### 🩹 Fixes
