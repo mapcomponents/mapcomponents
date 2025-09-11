@@ -1,0 +1,12 @@
+{
+	"name": "create-mapcomponents-app",
+	"version": "0.0.2-0",
+	"main": "./index.js",
+	"types": "./index.d.ts",
+	"bin": {
+		"create-mapcomponents-app": "./cli.js"
+	},
+	"dependencies": {
+		"degit": "^2.8.4"
+	}
+}

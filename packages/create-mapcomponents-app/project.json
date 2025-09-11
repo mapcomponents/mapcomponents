@@ -1,0 +1,9 @@
+{
+	"name": "create-mapcomponents-app",
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "packages/create-mapcomponents-app/src",
+	"projectType": "library",
+	"tags": [],
+	"// targets": "to see all targets run: nx show project create-mapcomponents-app --web",
+	"targets": {}
+}
