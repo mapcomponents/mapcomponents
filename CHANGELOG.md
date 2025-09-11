@@ -1,3 +1,14 @@
+## 1.5.7-1 (2025-09-11)
+
+### 🩹 Fixes
+
+- update MlHexagonLayer export and adjust package dependencies ([7d320e6](https://github.com/mapcomponents/mapcomponents/commit/7d320e6))
+- change pnpm install to use --no-frozen-lockfile ([a7aff74](https://github.com/mapcomponents/mapcomponents/commit/a7aff74))
+
+### ❤️ Thank You
+
+- jannik brack
+
 ## 1.5.7-0 (2025-09-11)
 
 ### 🩹 Fixes
