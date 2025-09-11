@@ -26,7 +26,7 @@ export default defineConfig(() => ({
 	// Configuration for building your library.
 	// See: https://vitejs.dev/guide/build.html#library-mode
 	build: {
-		outDir: '../../dist/packages/ra-geospatial',
+		outDir: 'packages/ra-geospatial/dist',
 		emptyOutDir: true,
 		reportCompressedSize: true,
 		commonjsOptions: {
