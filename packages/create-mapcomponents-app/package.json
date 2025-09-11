@@ -1,6 +1,6 @@
 {
 	"name": "create-mapcomponents-app",
-	"version": "0.0.2-0",
+	"version": "1.5.7-0",
 	"main": "./index.js",
 	"types": "./index.d.ts",
 	"bin": {
