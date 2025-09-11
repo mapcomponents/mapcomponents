@@ -1,277 +1,93 @@
-# MapComponents Monorepo
+<img src="https://avatars.githubusercontent.com/u/64851912" alt="MapComponents logo" width="200"/>
 
-## Sync `package.json` Files with Syncpack
+# [MapComponents](https://mapcomponents.org/)
 
-Keep your dependencies consistent across your monorepo using [Syncpack](https://github.com/JamieMason/syncpack):
+[![npm version](https://badge.fury.io/js/@mapcomponents%2Freact-maplibre.svg)](https://badge.fury.io/js/@mapcomponents%2Freact-maplibre) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![downloads](https://img.shields.io/npm/dt/@mapcomponents%2Freact-maplibre.svg) ![downloads](https://img.shields.io/npm/dm/@mapcomponents%2Freact-maplibre.svg)
 
-### List Mismatched Dependency Versions
+![Tests](https://github.com/mapcomponents/react-map-components-maplibre/actions/workflows/node_version_test.yml/badge.svg)
 
-```bash
-  npx syncpack list-mismatches
+@mapcomponents is a monorepo containing react component libraries for declarative GIS application development.
+## Links
+
+- Documentation: https://mapcomponents.github.io/mapcomponents/storybook-composition/
+- Catalogue: https://www.mapcomponents.org/
+
+## Getting started
+
+Use our Codesandbox template to quickly try out this library without any setup required. https://codesandbox.io/s/base-template-n0vp9
+
+## **Add any of our packages to your project**
+
+In this case, navigate to your project folder in a terminal and execute the following steps:
+
+1. Add @mapcomponents/{package} as a dependency to your project using `npm i @mapcomponents/{package}`.
+2. Add the MapComponentsProvider (named export of this module) to your applications react-DOM where it makes sense. Only children of this component will be able to render a map canvas or interact with a maplibre-gl instance. Place it in the index.js entrypoint if your application is a dedicated map app and all components have a high probability to interact with the maplibre-gl instance. Place it somewhere higher in the JSX tree if the map constitutes only a small portion of your app and components outside of the MapComponentsProvider have no need to interact with the map instance.
+3. Add a MapLibreMap component to the react-DOM wherever the map canvas is supposed to be placed.
+
+## **How to use @mapcomponents/react-maplibre in a new project**
+
+The easiest way to start a new project using this framework is to bootstrap a react application using our [vite-template](https://github.com/mapcomponents/template).
+
+**Requirements:**
+
+1. node.js >=20
+
+Run the following commands in the terminal:
+
+```
+npx degit mapcomponents/template {your-app-name}
+cd {your-app-name}
+npm i
+npm run dev
 ```
 
-### Automatically Fix Mismatched Versions
+<img src="packages/react-maplibre/docs_md/initial_0.gif"/>
 
-```bash
-  npx syncpack fix-mismatches
-```
 
-## Use Depcheck to Find Unused Dependencies
+This will start a development server that serves the mapcomponents app on port 5174 of your local machine as well as a browser tab with live reload enabled. This reloads the affected parts of the application if changes are detected to the corresponding files in the filesystem. Open the project folder in the IDE of your choice and start building your map client.
 
-Go to your package directory and run:
+<img src="packages/react-maplibre/docs_md/initial_3.gif" width="400" />
 
-```sh
-  npx depcheck --skip-missing
-```
+## Adding data to the map
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+The easiest way to add data to the map is using GeoJSON data and the MlGeoJsonLayer component. The MlGeoJsonLayer component is designed to require only the `geojson` property to be set, while it provides properties to fully customize it to your needs.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+Insert the following code in your app below index.tsx to add a GeoJSON layer to your map.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/react-monorepo-tutorial?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+```JSX
+import MlGeoJsonLayer from '@mapcomponents/react-maplibre';
 
-## Run Tasks
-
-To run the dev server for your app, use:
-
-```sh
-  npx nx serve {package-name}
-```
-
-To create a production bundle:
-
-```sh
-  npx nx build {package-name}
-```
-
-To see all available targets to run for a project, run:
-
-```sh
-  npx nx show project {package-name}
-```
-
-To run any task from any package, run:
-
-```sh
-  npx nx run {package-name}:{task-name}
-```
-
-Alternatively, you can also use:
-
-```sh
-  npx nx {task-name} {package-name}
-```
-
-To run all tasks in parallel, use:
-
-```sh
-  npx nx run-many --target={task-name} --all
-```
-
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[Learn more about running tasks in the documentation &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add New Projects
-
-While you can add new projects to your workspace manually, you may want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-  npx nx g @nx/react:application --directory=apps/my-app --name=my-app --no-interactive --e2eTestRunner=none
-```
-
-To generate a new library, use:
-
-```sh
-  npx nx g @nx/react:library --directory=packages/my-package --bundler=vite --name=my-package --importPath=@mapcomponents/my-package --no-interactive
-```
-
-Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to use the generator form.
-
-Nx uses `project.json` for its own configuration—keep its name simple, like `my-app`.
-For publishing, you need a `package.json` with the full package name, e.g., `@mapcomponents/my-app`.
-Both files are needed, but serve different purposes.
-
-## Import from Other Packages in This Monorepo
-
-Instead of using relative paths to import from other packages in this monorepo, you can use the package name as an alias.
-Ensure that Nx added the alias correctly to the `tsconfig.base.json` file.
-
-It should look like this:
-
-```json
-{
-	"compilerOptions": {
-		"paths": {
-			"@mapcomponents/deck-gl": ["packages/deck-gl/src/index.ts"],
-			"@mapcomponents/ra-geospatial": ["packages/ra-geospatial/src/index.ts"],
-			"@mapcomponents/{app/package name}": ["path/{app/package name}/src/index.ts"]
-		}
+const geojson_data = {
+	"type": "Feature",
+	"properties": {},
+	"geometry": {
+		"coordinates": [
+			[
+				[0.7415817264899545, 56.91203727013931],
+				[0.7743616447289128, 55.2757658775181],
+				[4.609612078732766, 55.23840364745948],
+				[4.642391996971725, 56.91203727013931],
+				[0.7415817264899545, 56.91203727013931]
+			]
+		],
+		"type": "Polygon"
 	}
 }
 ```
 
-Also, don't forget to set the type to `module` in the `package.json` of the package you want to import from:
+And add the following within the JSX.
 
-```json
-{
-	"name": "@mapcomponents/{app/package name}",
-	"version": "0.0.1",
-	"type": "module",
-	"...": "..."
-}
+```JSX
+<MlGeoJsonLayer geojson={geojson_data} />
 ```
 
-Then, you can import from other packages like this:
+<img src="packages/react-maplibre/docs_md/sample_screenshot.png" />
 
-```ts
-import { component } from '@mapcomponents/{app/package name}';
-```
+Please take a look at our storybooks and the code examples provided in the {ComponentName}.stories.tsx files next to the Components in the `./src/components/` folder.
 
-You also need to ensure that the `tsconfig.package/app.json` file in the current package includes the other package.
-Example:
+## more links
 
-```json
-{
-	// rest of the tsconfig.package/app.json
-	"include": ["src/**/*", "../path/to/package/src/**/*"]
-}
-```
-
-## Add Storybook to an existing project
-
-```sh
-  npx nx g @nx/react:storybook-configuration --project=my-package --generateStories=false --interactionTests=false --no-interactive
-```
-
-### Add Storybook to [storybook-composition](https://nx.dev/technologies/test-tools/storybook/recipes/storybook-composition-setup)
-
-## Storybook Composition: How to Use It
-
-Add a `refs` object to the `.storybook/main.ts` file in your host Storybook and add the links for the composed Storybooks.
-You can adjust the composition based on the current development environment (e.g., development, production) as in the following example:
-
-```ts
-{
-	refs: (config, { configType }) => {
-		if (configType === 'DEVELOPMENT') {
-			return {
-				'react-maplibre': {
-					title: 'React MapLibreMap',
-					url: 'http://localhost:4400',
-				},
-				'deck-gl': {
-					title: 'Deck.gl',
-					url: 'http://localhost:4401',
-				},
-				'ra-geospatial': {
-					title: 'Ra Geospatial',
-					url: 'http://localhost:4402',
-				},
-			};
-		}
-		return {
-			'react-maplibre': {
-				title: 'React MapLibreMap',
-				url: 'https://mapcomponents.github.io/react-map-components-maplibre/',
-			},
-			'deck-gl': {
-				title: 'Deck.gl',
-				url: 'https://mapcomponents.github.io/mapcomponents/deck-gl/',
-			},
-			'ra-geospatial': {
-				title: 'React Admin Geospatial',
-				url: 'https://mapcomponents.github.io/mapcomponents/ra-geospatial/',
-			},
-		};
-	};
-}
-```
-
-It is necessary to statically set a different port for each project in the `project.json` file of the respective project.
-
-You need to statically set a different port for each project in the `project.json` file of the respective project.
-
-```json
-{
-	"targets": {
-		"storybook": {
-			"options": {
-				"port": 4401 // set a different port than for the other projects
-			}
-		}
-	}
-}
-```
-
-### Run the Local Storybook Composition
-
-This is the command to run all the Storybooks in composition mode locally and in parallel:
-
-```shell
-  npx nx run storybook-composition:storybook-composition
-```
-
-Then, in a new terminal, run:
-
-```shell
-  npx nx run storybook-composition:storybook
-```
-
-If a new Storybook is added, make sure to add it to the run command in the `project.json` under `apps/storybook-composition/targets/storybook-composition/options/commands`.
-
-This is how it should look:
-
-```json
-{
-	"targets": {
-		"storybook-composition": {
-			"executor": "nx:run-commands",
-			"options": {
-				"commands": [
-					"nx storybook deck-gl",
-					"nx storybook ra-geospatial",
-					"nx storybook my-new-storybook" // <--- Add new Storybooks here
-				],
-				"parallel": true
-			}
-		}
-	}
-}
-```
-
-## Add Cypress Component Testing to an Existing Project
-
-Before running the command, go to the `project.json` and add the following to the `"targets"` parameter:
-
-```json
-{
-	"targets": {
-		"build": {
-			"executor": "@nx/vite:build",
-			"options": {
-				"outputPath": "dist/packages/my-package"
-			}
-		}
-	}
-}
-```
-
-```sh
-  npx nx g @nx/react:cypress-component-configuration --project=my-package --build-target=my-package:build --no-interactive
-```
-
-## Increase Version and Publish
-
-Make sure not to forget this flag: `--skip-publish`
-
-```sh
-  npx nx release --skip-publish
-  git push origin main
-```
-### *Don't forget to Push the automatically commited tag*
-Make sure to replace "This was a version bump only, there were no code changes." with the relevant changes in the `CHANGELOG.md`.
+- @mapcomponents/react-maplibre storybook: https://mapcomponents.github.io/mapcomponents/react-maplibre/
+- @mapcomponents/deck-gl storybook: https://mapcomponents.github.io/mapcomponents/deck-gl/
+- @mapcomponents/ra-geospatial storybook: https://mapcomponents.github.io/mapcomponents/ra-geospatial/
+- @mapcomponents/react-maplibre-lab storybook: https://mapcomponents.github.io/react-map-components-maplibre-lab
