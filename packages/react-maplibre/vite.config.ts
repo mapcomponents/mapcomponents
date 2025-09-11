@@ -29,7 +29,7 @@ export default defineConfig(() => ({
 	// Configuration for building your library.
 	// See: https://vitejs.dev/guide/build.html#library-mode
 	build: {
-		outDir: 'packages/react-maplibre/dist',
+		outDir: 'dist',
 		emptyOutDir: true,
 		reportCompressedSize: true,
 		commonjsOptions: {
