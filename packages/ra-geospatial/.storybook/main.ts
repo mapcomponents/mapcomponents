@@ -1,9 +1,8 @@
-import { dirname, join } from "node:path";
+import { dirname, join } from 'node:path';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
 	stories: ['../src/**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
-	addons: [getAbsolutePath("@storybook/addon-docs")],
 	framework: {
 		name: getAbsolutePath("@storybook/react-vite"),
 		options: {
@@ -12,16 +11,7 @@ const config: StorybookConfig = {
 			},
 		},
 	},
-
-	typescript: {
-		check: false,
-		reactDocgen: 'react-docgen-typescript',
-		reactDocgenTypescriptOptions: {
-			shouldExtractLiteralValuesFromEnum: true,
-			propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
-		},
-	},
-
+	staticDirs: ['../public'],
 };
 
 export default config;

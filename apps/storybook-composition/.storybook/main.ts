@@ -17,6 +17,7 @@ const config: StorybookConfig = {
 			},
 		},
 	},
+	staticDirs: ['../public'],
 	refs: (config, { configType }) => {
 		if (configType === 'DEVELOPMENT') {
 			return {

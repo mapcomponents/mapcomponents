@@ -249,9 +249,6 @@ importers:
       '@mui/material':
         specifier: ^7.3.2
         version: 7.3.2(@emotion/react@11.14.0(@types/react@19.1.12)(react@19.1.0))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.1.12)(react@19.1.0))(@types/react@19.1.12)(react@19.1.0))(@types/react@19.1.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@storybook/addon-docs':
-        specifier: ^9.1.4
-        version: 9.1.4(@types/react@19.1.12)(storybook@9.1.1(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.1.4(@types/node@24.3.1)(jiti@2.4.2)(terser@5.44.0)(yaml@2.8.1)))
       '@turf/helpers':
         specifier: ^7.2.0
         version: 7.2.0
@@ -12631,7 +12628,7 @@ snapshots:
       '@babel/parser': 7.28.3
       '@babel/template': 7.27.2
       '@babel/types': 7.28.2
-      debug: 4.4.1(supports-color@8.1.1)
+      debug: 4.4.1
     transitivePeerDependencies:
       - supports-color
 
@@ -13800,12 +13797,6 @@ snapshots:
   '@math.gl/web-mercator@4.1.0':
     dependencies:
       '@math.gl/core': 4.1.0
-
-  '@mdx-js/react@3.1.1(@types/react@19.1.12)(react@19.1.0)':
-    dependencies:
-      '@types/mdx': 2.0.13
-      '@types/react': 19.1.12
-      react: 19.1.0
 
   '@mdx-js/react@3.1.1(@types/react@19.1.8)(react@19.1.0)':
     dependencies:
@@ -15515,19 +15506,6 @@ snapshots:
 
   '@standard-schema/utils@0.3.0': {}
 
-  '@storybook/addon-docs@9.1.4(@types/react@19.1.12)(storybook@9.1.1(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.1.4(@types/node@24.3.1)(jiti@2.4.2)(terser@5.44.0)(yaml@2.8.1)))':
-    dependencies:
-      '@mdx-js/react': 3.1.1(@types/react@19.1.12)(react@19.1.0)
-      '@storybook/csf-plugin': 9.1.4(storybook@9.1.1(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.1.4(@types/node@24.3.1)(jiti@2.4.2)(terser@5.44.0)(yaml@2.8.1)))
-      '@storybook/icons': 1.4.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@storybook/react-dom-shim': 9.1.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@9.1.1(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.1.4(@types/node@24.3.1)(jiti@2.4.2)(terser@5.44.0)(yaml@2.8.1)))
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-      storybook: 9.1.1(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.1.4(@types/node@24.3.1)(jiti@2.4.2)(terser@5.44.0)(yaml@2.8.1))
-      ts-dedent: 2.2.0
-    transitivePeerDependencies:
-      - '@types/react'
-
   '@storybook/addon-docs@9.1.4(@types/react@19.1.8)(storybook@9.1.1(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.4(@types/node@24.3.1)(jiti@2.4.2)(terser@5.44.0)(yaml@2.8.1)))':
     dependencies:
       '@mdx-js/react': 3.1.1(@types/react@19.1.8)(react@19.1.0)
@@ -15589,11 +15567,6 @@ snapshots:
   '@storybook/csf-plugin@9.1.4(storybook@9.1.1(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.4(@types/node@24.3.1)(jiti@2.4.2)(terser@5.44.0)(yaml@2.8.1)))':
     dependencies:
       storybook: 9.1.1(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.4(@types/node@24.3.1)(jiti@2.4.2)(terser@5.44.0)(yaml@2.8.1))
-      unplugin: 1.16.1
-
-  '@storybook/csf-plugin@9.1.4(storybook@9.1.1(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.1.4(@types/node@24.3.1)(jiti@2.4.2)(terser@5.44.0)(yaml@2.8.1)))':
-    dependencies:
-      storybook: 9.1.1(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.1.4(@types/node@24.3.1)(jiti@2.4.2)(terser@5.44.0)(yaml@2.8.1))
       unplugin: 1.16.1
 
   '@storybook/csf@0.1.13':
@@ -19581,6 +19554,10 @@ snapshots:
       ms: 2.1.3
     optionalDependencies:
       supports-color: 8.1.1
+
+  debug@4.4.1:
+    dependencies:
+      ms: 2.1.3
 
   debug@4.4.1(supports-color@8.1.1):
     dependencies:
