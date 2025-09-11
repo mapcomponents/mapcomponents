@@ -9,11 +9,6 @@ export interface MlHexagonMapProps {
      */
     insertBeforeLayer?: string;
 }
-declare const MlHexagonMap: {
-    (props: MlHexagonMapProps): import("react/jsx-runtime").JSX.Element;
-    defaultProps: {
-        mapId: undefined;
-    };
-};
+declare const MlHexagonMap: (props: MlHexagonMapProps) => import("react/jsx-runtime").JSX.Element;
 export default MlHexagonMap;
 //# sourceMappingURL=MlHexagonMap.d.ts.map
