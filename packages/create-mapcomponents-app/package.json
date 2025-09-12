@@ -1,8 +1,9 @@
 {
 	"name": "create-mapcomponents-app",
 	"version": "1.5.7-8",
+	"files": ["index.js"],
 	"bin": {
-		"create-mapcomponents-app": "index.js"
+		"create-mapcomponents-app": "./index.js"
 	},
 	"type": "module",
 	"license": "MIT",
