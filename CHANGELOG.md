@@ -1,3 +1,13 @@
+## 1.5.7-9 (2025-09-12)
+
+### 🩹 Fixes
+
+- **package:** update bin path and include files in package.json ([5475e1d](https://github.com/mapcomponents/mapcomponents/commit/5475e1d))
+
+### ❤️ Thank You
+
+- jannik brack
+
 ## 1.5.7-8 (2025-09-12)
 
 This was a version bump only, there were no code changes.
