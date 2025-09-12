@@ -35,8 +35,7 @@ The easiest way to start a new project using this framework is to bootstrap a re
 Run the following commands in the terminal:
 
 ```
-npx degit mapcomponents/template {your-app-name}
-cd {your-app-name}
+npm create mapcomponents-app@latest myApp
 npm i
 npm run dev
 ```
