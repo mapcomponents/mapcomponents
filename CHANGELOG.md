@@ -9,12 +9,6 @@
 - add mapcomponents/react-maplibre
 - add create-mapcomponents-app
 
-## @mapcomponents/ra-geospatial
-
-### Added
-
-- test
-
 ---
 ## All versions between v1.3.3 and v1.6.0 (excluding those two) were dedicated to setting up the monorepo.
 
@@ -1106,10 +1100,3 @@
 - adjust MlImageMarkerLayer to make use of the new useMap hook
 
 ### Fixed
-
-## @mapcomponents/deck-gl
-
-### Added
-
-- test
-
