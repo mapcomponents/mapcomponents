@@ -19,7 +19,7 @@
 		"allowSyntheticDefaultImports": true,
 		"moduleResolution": "bundler",
 		"module": "es2015",
-		"types": ["vite/client"],
+		"types": ["vite/client", "node"],
 		"composite": true,
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
