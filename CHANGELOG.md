@@ -1,68 +1,93 @@
-## 1.6.0 (2025-09-12)
+## [v1.6.0]
 
-This was a version bump only, there were no code changes.
+## @mapcomponents/root
+### Added packages
 
-## 1.5.7-10 (2025-09-12)
+- add [Storybook Composition](https://mapcomponents.github.io/mapcomponents/storybook-composition/)
+- add mapcomponents/deck-gl
+- add mapcomponents/ra-geospatial
+- add mapcomponents/react-maplibre
+- add create-mapcomponents-app
 
-This was a version bump only, there were no code changes.
+## @mapcomponents/ra-geospatial
 
+### Added
+
+- test
+
+---
+## All versions between v1.3.3 and v1.6.0 (excluding those two) were dedicated to setting up the monorepo.
+
+---
 
 ## [v1.3.3]
 
-## Added
+## @mapcomponents/react-maplibre
+
+### Added
 
 - ea97284: add new Feature [MlGlobeButton](https://mapcomponents.github.io/react-map-components-maplibre/?path=/docs/mapcomponents-mlglobebutton--docs)
 
-## Fixed
+### Fixed
 
 - 3cc7a83: fix useAddProtocol tcx view in storybook
 
-## Changed
+### Changed
 
 - a72811f: upgrade storybook v.8 -> v.9
 - e22698a: change meta.json (new catalogue system uses meta.json files)
 - 3cc7a83: upgrade dependencies
 
-## Removed
+### Removed
 
 - e22698a: remove stories.json (new catalogue system does not require it)
 
 ## [v1.3.2]
 
-## Changed
+## @mapcomponents/react-maplibre
+
+### Changed
 
 - f2980b6: Design/navigation tool (#225)
 - 570987e: Upgrade to maplibre to 5.6.0 (from 5.5.0)
 
 ## [v1.3.1]
 
-## Changed
+## @mapcomponents/react-maplibre
+
+### Changed
 
 - 3f6b50c: Upgrade to maplibre to 5.5.0 (from 5.3.0) (#223)
 
 ## [v1.3.0]
 
-## Changed
+## @mapcomponents/react-maplibre
+
+### Changed
 
 - UI design/ogc in MlSketchTool and MlOgcApiFeatures
 
-## Fixed
+### Fixed
 
 - fix MlMarker and improve performance by using a maplibre marker instead of an absolute positioned HTML element
 - fix Storybook demos: MlLayerSwitcher, useCameraFollowPath, MlVectorTileLayer, MlPdfForm, MlThreeJsLayer, MlNavigationCompass
 
-## Removed
+### Removed
 
 - remove MlComponentTemplate from storybook
 
 ## [v1.2.0]
 
-## Changed
+## @mapcomponents/react-maplibre
+
+### Changed
 
 - update React v18 -> v19
 - replace enzyme in jest tests with @testing-library/react
 
 ## [v1.1.0] - 2025-03-21
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -82,11 +107,15 @@ This was a version bump only, there were no code changes.
 
 ## [v1.0.11] - 2025-02-14
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - fix package.json `types` property value in release
 
 ## [v1.0.10] - 2025-02-13
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -100,6 +129,8 @@ This was a version bump only, there were no code changes.
 
 ## [v1.0.9] - 2024-11-20
 
+## @mapcomponents/react-maplibre
+
 ### Added
 
 - 75649aa: add MlOgcApiFeatures Component
@@ -111,11 +142,15 @@ This was a version bump only, there were no code changes.
 
 ## [v1.0.8] - 2024-09-16
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - 2862ad4: fix layerComponent identification in LayerListItem component (#185) …
 
 ## [v1.0.7] - 2024-07-30
+
+## @mapcomponents/react-maplibre
 
 ### Changed
 
@@ -127,11 +162,15 @@ This was a version bump only, there were no code changes.
 
 ## [v1.0.6] - 2024-07-30
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - 209ec04: Fix/use layerhook update on functions
 
 ## [v1.0.5] - 2024-06-21
+
+## @mapcomponents/react-maplibre
 
 ### Changed
 
@@ -142,6 +181,8 @@ This was a version bump only, there were no code changes.
 - 78f7106: MlGeojsonlayer options.source bug
 
 ## [v1.0.4] - 2024-06-21
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -165,11 +206,15 @@ This was a version bump only, there were no code changes.
 
 ## [v1.0.3] - 2024-02-22
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - a80667a: import missing maplibre-gl.css again in MapLibreMap component (#164)
 
 ## [v1.0.1] - 2024-02-16
+
+## @mapcomponents/react-maplibre
 
 ### Changed
 
@@ -177,11 +222,15 @@ This was a version bump only, there were no code changes.
 
 ## [v1.0.1] - 2024-02-16
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - 5c37664: fix npm package
 
 ## [v1.0.0] - 2024-02-15 (broken)
+
+## @mapcomponents/react-maplibre
 
 ### Changed
 
@@ -190,11 +239,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.96] - 2024-01-29
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - 2925672: fix overwrite options.paint in LayerListItem
 
 ## [v0.1.95] - 2024-01-23
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -204,6 +257,8 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.94] - 2024-01-17
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - 0af148b: remove conditional use of useLayer hook for label layer in MlGeoJsonLayer
@@ -211,6 +266,8 @@ This was a version bump only, there were no code changes.
 - c6856e6: fix MlTemporalController to work with useLayer, MlGeoJsonLayer adjustments
 
 ## [v0.1.92] - 2024-01-16
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -226,11 +283,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.91] - 2024-01-16
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - 4775728: remove mbtiles protocol handler from build to fix sql.js error
 
 ## [v0.1.90] - 2024-01-16 (broken)
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -238,11 +299,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.89] - 2024-01-02 (broken)
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - ca2fe4e: fix AddLayerButton mbtiles useAddProtocol
 
 ## [v0.1.88] - 2023-12-22
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -257,6 +322,8 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.87] - 2023-10-25
 
+## @mapcomponents/react-maplibre
+
 ### Changed
 
 - 27f1cb2: show measured value in m and in units if measured value is < 0.1km or 0.1mi
@@ -267,6 +334,8 @@ This was a version bump only, there were no code changes.
 - cb3057f: make layerlist items in layerlistitemfactory sortable via drag & drop
 
 ## [v0.1.86] - 2023-09-13
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -283,6 +352,8 @@ This was a version bump only, there were no code changes.
 - 75de07d: add useAddImage hook + story
 
 ## [v0.1.85] - 2023-07-14
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -302,11 +373,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.84] - 2023-06-29
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - 2690227: fix theme, remove unfinished cy test
 
 ## [v0.1.83] - 2023-06-28
+
+## @mapcomponents/react-maplibre
 
 ### Changed
 
@@ -314,11 +389,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.82] - 2023-06-12
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - b89794a: remove mbTilesProtocolHandler from export to remove sql.js dependency as it breaks app builds
 
 ## [v0.1.81] - 2023-06-12
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -326,6 +405,8 @@ This was a version bump only, there were no code changes.
 - 2ba02ba: add mbTilesProtocolHandler
 
 ## [v0.1.80] - 2023-06-01
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -336,6 +417,8 @@ This was a version bump only, there were no code changes.
 - f423ada: fix layerContext moveUp moveDown functions (#114) …
 
 ## [v0.1.79] - 2023-05-31
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -356,11 +439,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.78] - 2023-04-28
 
+## @mapcomponents/react-maplibre
+
 ### Added
 
 - cedf14b: add interval parameter to MlTemporalController
 
 ## [v0.1.77] - 2023-04-05
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -380,6 +467,8 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.76] - 2023-04-04
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - b879750: fix MlGeoJsonLayer layout option props spread order
@@ -390,11 +479,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.75] - 2023-04-04
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - 66c8df2: add missing LayerListItemFactory export
 
 ## [v0.1.74] - 2023-04-03
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -418,11 +511,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.73] - 2023-03-11
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - 547db2c: Fix/layerlist visibility settings
 
 ## [v0.1.72] - 2023-03-08
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -436,11 +533,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.71] - 2023-03-04
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - e3178b5: fix Topbar sidebar defaults
 
 ## [v0.1.70] - 2023-03-03
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -458,11 +559,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.69] - 2023-02-07
 
+## @mapcomponents/react-maplibre
+
 ### Changed
 
 - read dependencies from package.dependencies
 
 ## [v0.1.68] - 2023-02-07
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -474,6 +579,8 @@ This was a version bump only, there were no code changes.
 - 3a7b87b: fix maplibre-gl imports remove ! in front of the module name (webpack exclude) to improve compatibility with dev environments using rollup
 
 ## [v0.1.67] - 2023-01-30
+
+## @mapcomponents/react-maplibre
 
 ### Changed
 
@@ -490,11 +597,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.66] - 2023-01-23
 
+## @mapcomponents/react-maplibre
+
 ### Added
 
 - add missing useLayerFilter export
 
 ## [v0.1.65] - 2023-01-23
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -507,6 +618,8 @@ This was a version bump only, there were no code changes.
 - a6f347f: add useLayerFilter hook
 
 ## [v0.1.64] - 2023-01-15
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -536,6 +649,8 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.63] - 2022-12-16
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - b5d6636: update mui dependencies to fix export 'experimental_sx' (reexported as 'experimental_sx') was not found in '@mui/system'
@@ -555,17 +670,23 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.62] - 2022-11-26
 
+## @mapcomponents/react-maplibre
+
 ### Added
 
 - ba36980: full rewrite of the PdfPreview component, fixing distortion issues in lower zoom levels, offering improved user experience when transforming, adding an option to set a fixed scale
 
 ## [v0.1.61] - 2022-11-16
 
+## @mapcomponents/react-maplibre
+
 ### Added
 
 - 63f11bc: add useCameraFollowPath
 
 ## [v0.1.60] - 2022-11-04
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -577,11 +698,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.59] - 2022-10-04
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - ac559c4: fix MlCreatePdfForm export
 
 ## [v0.1.58] - 2022-10-04
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -596,11 +721,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.57] - 2022-08-30
 
+## @mapcomponents/react-maplibre
+
 ### Added
 
 - f807ffd: add export for MlScaleReference
 
 ## [v0.1.56] - 2022-08-11
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -615,11 +744,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.55] - 2022-07-18
 
+## @mapcomponents/react-maplibre
+
 ### Changed
 
 - be4fa69: make MlLayer geojson attribute optional
 
 ## [v0.1.54] - 2022-07-18
+
+## @mapcomponents/react-maplibre
 
 ### Changed
 
@@ -627,11 +760,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.53] - 2022-07-18
 
+## @mapcomponents/react-maplibre
+
 ### Changed
 
 - 1a7ac4e: add more configuration options to MlNavigationTools
 
 ## [v0.1.52] - 2022-07-18
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -639,12 +776,16 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.51] - 2022-07-12
 
+## @mapcomponents/react-maplibre
+
 ### Changed
 
 - 938f665: improve typescript type definitions for MlGeoJsonLayer attributes, useLayer hook props, maplibre reference returned by useMap hook
 - 3349332: improve MlTransitionGeoJsonLayer attribute types
 
 ## [v0.1.49] - 2022-07-11
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -662,6 +803,8 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.48] - 2022-06-15
 
+## @mapcomponents/react-maplibre
+
 ### Added
 
 - 4d53b8a: add miles option to MlMeasureTool
@@ -672,11 +815,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.47] (broken build) - 2022-06-15
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - ed194ff: fix MlWmsLoader & useWms hooks default param values of GetCapabilities request
 
 ## [v0.1.46] - 2022-06-09
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -689,11 +836,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.45] - 2022-05-10
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - 336bca8: fix useLayer implicit layer types
 
 ## [v0.1.44] - 2022-05-10
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -701,11 +852,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.42] - 2022-05-10
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - d974415: fix geojsonlayer default circle color
 
 ## [v0.1.41] - 2022-05-10
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -714,11 +869,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.39] - 2022-04-21
 
+## @mapcomponents/react-maplibre
+
 ### Changed
 
 - move d3 from devDependencies to dependencies
 
 ## [v0.1.38] - 2022-04-21
+
+## @mapcomponents/react-maplibre
 
 ### Changed
 
@@ -726,9 +885,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.37] (broken build) - 2022-04-20
 
+## @mapcomponents/react-maplibre
+
 ## [v0.1.36] (broken build) - 2022-04-20
 
+## @mapcomponents/react-maplibre
+
 ## [v0.1.35] (broken build) - 2022-04-20
+
+## @mapcomponents/react-maplibre
 
 ### Changed
 
@@ -736,11 +901,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.34] - 2022-03-24
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - 0ced5c1: revert to webpack inline transpilation exclusion as there is no effect on codesandbox installation issues
 
 ## [v0.1.33] - 2022-03-24
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -748,11 +917,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.32] - 2022-03-15
 
+## @mapcomponents/react-maplibre
+
 ### Added
 
 - bd333ce: add exports for useWms and MlMarker
 
 ## [v0.1.31] - 2022-02-24
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -760,11 +933,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.30] - 2022-02-20
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - 26dc071: exclude maplibre-gl from transpilation using ! webpack import syntax to prevent "Uncaught ReferenceError" bug
 
 ## [v0.1.28] - 2022-02-20
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -789,6 +966,8 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.27] - 2022-02-05
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - 743b8ed: set includeBaseLayers filter in useMap hool to true to make waiting for base layers possible
@@ -799,6 +978,8 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.26] - 2022-02-02
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - adjust MlFollowGps position marker style & add flyTo instead of setCenter for new Gps positions
@@ -806,11 +987,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.25] - 2022-01-31
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - fix MlFollowGps needsRedraw bug; refactor MlFollowGps
 
 ## [v0.1.24] - 2022-01-23
+
+## @mapcomponents/react-maplibre
 
 ### Fixed
 
@@ -818,11 +1003,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.23] - 2022-01-23
 
+## @mapcomponents/react-maplibre
+
 ### Changed
 
 - migrate MlVectorTileLayer to useMap hook & provide full control over layer & source id
 
 ## [v0.1.22] - 2022-01-23
+
+## @mapcomponents/react-maplibre
 
 ### Changed
 
@@ -830,11 +1019,15 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.21] - 2022-01-21
 
+## @mapcomponents/react-maplibre
+
 ### Fixed
 
 - migrate MlVectorTileLayer to useMap hook & provide full control over layer & source id
 
 ## [v0.1.20] - 2022-01-17
+
+## @mapcomponents/react-maplibre
 
 ### Changed
 
@@ -854,17 +1047,23 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.19] - 2022-01-09
 
+## @mapcomponents/react-maplibre
+
 ### Added
 
 - add props.options to MlGeoJsonLayer
 
 ## [v0.1.18] - 2022-01-09
 
+## @mapcomponents/react-maplibre
+
 ### Added
 
 - add props.defaultPaintOverrides to MlGeoJsonLayer
 
 ## [v0.1.17] - 2022-01-09
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -877,6 +1076,8 @@ This was a version bump only, there were no code changes.
 - fix MlGeoJsonLayer type prop: remove and add a new layer of the new type, if props.type changes
 
 ## [v0.1.16] - 2021-12-23
+
+## @mapcomponents/react-maplibre
 
 ### Added
 
@@ -893,6 +1094,8 @@ This was a version bump only, there were no code changes.
 
 ## [v0.1.15] - 2021-12-21
 
+## @mapcomponents/react-maplibre
+
 ### Added
 
 - export MlFollowGps component from esm module
@@ -903,4 +1106,10 @@ This was a version bump only, there were no code changes.
 - adjust MlImageMarkerLayer to make use of the new useMap hook
 
 ### Fixed
+
+## @mapcomponents/deck-gl
+
+### Added
+
+- test
 
