@@ -19,7 +19,8 @@ migration process will not work.**
 List all changes under the package they relate to. **Always write the
 relevant package label like this: @mapcomponents/{package/app name}. If a change is made at the root
 or
-is not assignable, write @mapcomponents/root.**
+is not assignable, write @mapcomponents/root.
+Its important that the package/app name is equal to the folder name the package/app is in!**
 
 ## 4. Only use the following keywords to categorize your changes
 

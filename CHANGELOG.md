@@ -14,6 +14,12 @@
 
 ---
 
+## @mapcomponents/deck-gl
+
+### Added
+
+- add testing changelog
+
 ## [v1.3.3]
 
 ## @mapcomponents/react-maplibre
