@@ -18,17 +18,11 @@ const MlOrderLayers = (props: MlOrderLayersProps) => {
 
 	return (
 		<>
-			{reversedLayerIds && reversedLayerIds.map((layer, idx) => {
-				const insertBeforeLayer =
-					idx > 0 ? reversedLayerIds[idx - 1] : props.insertBeforeLayer;
-				return (
-					<MlLayer
-						layerId={layer}
-						key={layer}
-						insertBeforeLayer={insertBeforeLayer}
-					/>
-				);
-			})}
+			{reversedLayerIds &&
+				reversedLayerIds.map((layer, idx) => {
+					const insertBeforeLayer = idx > 0 ? reversedLayerIds[idx - 1] : props.insertBeforeLayer;
+					return <MlLayer layerId={layer} key={layer} insertBeforeLayer={insertBeforeLayer} />;
+				})}
 		</>
 	);
 };
