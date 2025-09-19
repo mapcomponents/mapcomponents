@@ -1,5 +1,4 @@
 import MlLayer from '../MlLayer/MlLayer';
-import { useLayerProps } from '../../hooks/useLayer';
 
 export interface MlOrderLayersProps {
 	/**
@@ -15,22 +14,21 @@ export interface MlOrderLayersProps {
  *
  */
 const MlOrderLayers = (props: MlOrderLayersProps) => {
+	const reversedLayerIds = props?.layerIds.toReversed();
+
 	return (
 		<>
-			{props?.layerIds?.map((layer, idx) => (
-				<MlLayer
-					layerId={layer}
-					options={
-						{
-							display: 'none',
-						} as useLayerProps['options']
-					}
-					key={layer}
-					insertBeforeLayer={
-						idx < props.layerIds.length - 1 ? props?.layerIds?.[idx + 1] : props.insertBeforeLayer
-					}
-				/>
-			))}
+			{reversedLayerIds && reversedLayerIds.map((layer, idx) => {
+				const insertBeforeLayer =
+					idx > 0 ? reversedLayerIds[idx - 1] : props.insertBeforeLayer;
+				return (
+					<MlLayer
+						layerId={layer}
+						key={layer}
+						insertBeforeLayer={insertBeforeLayer}
+					/>
+				);
+			})}
 		</>
 	);
 };
