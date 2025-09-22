@@ -252,6 +252,18 @@ Before running the command, go to the `project.json` and add the following to th
 
 ## Increase Version and Publish
 
+Before publishing change the out dir in the build setting of the `vite.config.js` to `dist`
+
+```
+{
+	// rest of the vite.config.js
+	"build": {
+		"outDir": "dist" 
+	}
+	// rest of the vite.config.js`
+}
+```
+
 Make sure not to forget this flag: `--skip-publish`
 
 ```sh
