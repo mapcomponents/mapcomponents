@@ -46,6 +46,7 @@ To keep it organized, the commit message is split into three parts:
 - 1234567: add example of 5.Commit message to HowToChangelog.md
 ```
 
+## 6. Start Migration
 If everything is listed in the root changelog, you are ready to run the following command:
 
 ```shell
